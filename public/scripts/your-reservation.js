@@ -297,24 +297,21 @@ $scope.from_travel = "false";
 $scope.reservationinit = function () {
 
 
-alert("trip" +  getCookie("tripID"));
-
 if(getCookie("tripID"))
 
 
 {
 
-alert('tripping');
+$scope.from_travel = "false";
 
 $scope.tripID = getCookie("tripID"); 
 
-alert("http://www.sinopiainn.com/api/trip/?tripID="+getCookie("tripID"));
 $http.get("http://www.sinopiainn.com/api/trip/?tripID="+getCookie("tripID")).then(function(response) {
 
 
 $scope.tripTotal = response.data[0].total ; 
 
-$scope.from_travel = "false";
+
 
 });
 
@@ -433,7 +430,7 @@ if(response.data.length > 2 ){
 
   $scope.amenityArray = response.data[2];
 
-} else {
+} else if(response.data.length == 2) {
 
   $scope.roomlist = response.data[0];
 
@@ -441,7 +438,13 @@ if(response.data.length > 2 ){
 
 
 }
-                                                        
+          else{
+
+
+            $scope.availabilityerrorreturn = 'No rooms are available';
+          
+
+          }                                              
 
                                                           
 
