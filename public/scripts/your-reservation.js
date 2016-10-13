@@ -1016,7 +1016,7 @@ $scope.amenityArray = jQuery.grep($scope.amenityArray, function( a,i ) {
 
                                                 }else{
 
-
+alert("distance" + a.price);
 $scope.total += parseInt(a.price);
 
                                                 }
