@@ -412,7 +412,7 @@ $scope.error = 'Checking availability';
                             document.cookie = "promo=" + $("#promo").val();
 
                            
-
+alert("http://www.sinopiainn.com/api/checkhotelavailability/?hotelID="+getCookie('hotelID')+"&fromdate="+getCookie('fromdate')+"&todate="+getCookie('todate')+"&promo="+getCookie('promo'));
 
                                   if (document.getElementById("shortcodeform")) 
 
