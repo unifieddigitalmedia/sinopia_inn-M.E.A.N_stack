@@ -859,7 +859,7 @@ var mailOptions = {
     subject: 'Hello ✔', 
     text: 'Hello world ?', 
     html: "<b>Hello world ?</b>", 
-    attachments:[{ filename: 'Machel Slack Web CV.pdf', path: 'http://localhost:3000/public/pdfs/books/Machel Slack Web CV.pdf'}],
+    attachments:[{ filename: 'Machel Slack Web CV.pdf', path: 'http://www.sinopiainn.com/public/pdfs/books/Machel Slack Web CV.pdf'}],
 };
 
 transporter.sendMail(mailOptions, function(error, info){
@@ -894,7 +894,7 @@ var mailOptions = {
     subject: 'Hello ✔', 
     text: 'Hello world ?',
     html: "<b>Hello world ?</b>", 
-    attachments:[{ filename: file, path: 'http://localhost:3000/public/reservations/'+req.query.reservationID+'.pdf'}],
+    attachments:[{ filename: file, path: 'http://www.sinopiainn.com/public/reservations/'+req.query.reservationID+'.pdf'}],
 };
 
 transporter.sendMail(mailOptions, function(error, info){
@@ -1422,10 +1422,10 @@ mandrill_client.messages.sendTemplate({"template_name": template_name, "template
 res.send('done');
 
 /*
-request('http://localhost:3000/booking-confirmation.html').pipe(fs.createWriteStream('booking.html'));
+request('http://www.sinopiainn.com/booking-confirmation.html').pipe(fs.createWriteStream('booking.html'));
 
 
-request('http://localhost:3000/booking-confirmation.html', function (error, response, body) {
+request('http://www.sinopiainn.com/booking-confirmation.html', function (error, response, body) {
 
   if (!error && response.statusCode == 200) {
   
@@ -1461,7 +1461,7 @@ pdf.create(html, options).toFile('businesscard.pdf', function(err, res) {
 app.get('/api/mandrillTestEmail/', function(req,res) {
 
 
-//http.get('http:///localhost:3000/public/pdfs/books/Machel Slack Web CV.pdf', function(response) {
+//http.get('http:///www.sinopiainn.com/public/pdfs/books/Machel Slack Web CV.pdf', function(response) {
 
 
 /*fs.readFile('public/pdfs/books/Machel Slack Web CV.pdf', function (err, data) {
