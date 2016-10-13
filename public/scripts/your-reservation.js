@@ -308,8 +308,20 @@ $scope.tripID = getCookie("tripID");
 
 $http.get("http://www.sinopiainn.com/api/trip/?tripID="+getCookie("tripID")).then(function(response) {
 
-
 $scope.tripTotal = response.data[0].total ; 
+
+$scope.trip = {       
+
+
+        "name":"Have you just planned a trip ? ", 
+        "description":"",
+        "price":$scope.tripTotal ,
+        "frequency":"distance",
+      
+      
+    };
+
+ $scope.amenityArray.push($scope.trip);
 
 
 
