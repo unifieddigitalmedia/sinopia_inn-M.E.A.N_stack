@@ -463,7 +463,6 @@ if(response.data.length > 2 ){
 
  $scope.amenityArray.push($scope.trip);                                
 
-                      alert($scope.amenityArray.length);
 
                               $scope.numofdays = $scope.lengthofstay(getCookie('fromdate'),getCookie('todate'));
 
@@ -1019,9 +1018,10 @@ $scope.amenityArray = jQuery.grep($scope.amenityArray, function( a,i ) {
                                                  {
 
 
+alert($scope.total);
                                                   $scope.total = parseInt(a.price) + $scope.total;
 
-
+alert($scope.total);
 
 
                                                 }
