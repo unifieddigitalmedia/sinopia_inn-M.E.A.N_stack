@@ -54,7 +54,7 @@ app.use(bodyParser.json());
 
 
 
-var hotelID = '57ff94c5c65f2ec772de3bef';
+var hotelID = '57ff9cf62e74f61d5ec25754';
 
 
 var braintree = require("braintree");
@@ -211,7 +211,7 @@ db.collection('hotels').find().toArray(function(e, results){
 
 app.get('/api/checkhotelavailability/', function (req, res) {
 
-var o_id = new mongo.ObjectID("57ff94c5c65f2ec772de3bef");
+var o_id = new mongo.ObjectID("57ff9cf62e74f61d5ec25754");
 
 var availability = [];
 
@@ -248,18 +248,8 @@ for (z = 0; z < results[0].rooms[x].booking[y].length; z++) {
 
 
 
-console.log(new Date(results[0].rooms[x].booking[y][z].fromdate) +'less than'+ new Date(fromdate)  );
-
-console.log(new Date(results[0].rooms[x].booking[y][z].enddate) +'greater than'+ new Date(fromdate) );
-
-console.log(new Date(results[0].rooms[x].booking[y][z].fromdate) +'less than '+ new Date(todate) )
-
-console.log(new Date(results[0].rooms[x].booking[y][z].enddate) +'greater than'+ new Date(todate) );
-
 
 if ( (new Date(results[0].rooms[x].booking[y][z].fromdate) <= new Date(fromdate)  &&  new Date(results[0].rooms[x].booking[y][z].enddate) >= new Date(fromdate) ) || (new Date(results[0].rooms[x].booking[y][z].fromdate) <= new Date(todate)  &&  new Date(results[0].rooms[x].booking[y][z].enddate) >= new Date(todate) ) ) {
-
-console.log(results[0].rooms[x]);
 
 
             roomsIdArray.push(results[0].rooms[x]._id);
@@ -283,8 +273,6 @@ console.log(results[0].rooms[x]);
 
 }
 
-console.log(roomsIdArray);
-
 
 
  callback(null,roomsIdArray,results);
@@ -298,7 +286,7 @@ console.log(roomsIdArray);
   },function(arg1,arg2,callback){
 
 
-console.log(arg1.length);
+
 
                           if( arg1.length === 0)
                           
@@ -349,7 +337,6 @@ var availableRooms = [];
 
 for (i = 0; i < results[0].rooms.length; i++) { 
 
-console.log(results[0].rooms[i]._id);
 
 if(arrayofIDs.indexOf(results[0].rooms[i]._id) === -1 ){
 
@@ -945,7 +932,7 @@ app.get("/api/reservation-details/", function (req, res) {
 
 
 
-var hotelID = new mongo.ObjectID( '57ff94c5c65f2ec772de3bef');
+var hotelID = new mongo.ObjectID( '57ff9cf62e74f61d5ec25754');
 
 var o_id = new mongo.ObjectID(req.query.reservationID);
 
@@ -1007,19 +994,102 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '57ff94c5c65f2ec772de3bef');
+var hotelID = new mongo.ObjectID( '57ff9cf62e74f61d5ec25754');
 
 waterfall([function(callback){
 
 var nonce = req.query.payment_method_nonce;
 
-  var total = req.query.total.replace(",","");
+var total = req.query.total.replace(",","");
 
-    console.log(nonce);
 
-    console.log(total);
+db.collection("hotels").find({"_id":hotelID}, {'rooms': true} ).toArray(function(err, results) {
+  
+    
+if (err) return next(err)
 
-  gateway.transaction.sale({
+for (x = 0; x < results[0].rooms.length; x++) { 
+
+if (results[0].rooms[x].booking.length != 0) {
+
+for (y = 0; y < results[0].rooms[x].booking.length; y++) { 
+
+for (z = 0; z < results[0].rooms[x].booking[y].length; z++) { 
+
+if ( (new Date(results[0].rooms[x].booking[y][z].fromdate) <= new Date(fromdate)  &&  new Date(results[0].rooms[x].booking[y][z].enddate) >= new Date(fromdate) ) || (new Date(results[0].rooms[x].booking[y][z].fromdate) <= new Date(todate)  &&  new Date(results[0].rooms[x].booking[y][z].enddate) >= new Date(todate) ) ) {
+
+
+            roomsIdArray.push(results[0].rooms[x]._id);
+
+
+      }
+
+}
+
+}
+
+}
+
+}
+
+ callback(null,roomsIdArray,results);
+
+
+});
+
+
+}, function(arg1,arg2,callback){
+    
+
+
+     if(arg1.length > 0 )
+    {
+
+
+
+for (i = 0; i < roomsArray.length; i++) { 
+
+
+if(arg1.indexOf(roomsArray._id) === -1 ){
+
+
+     var response = {"ERROR":"One or more of your rooms has now been booked."};
+        
+      res.json(response);
+
+}
+
+
+
+}
+
+
+
+     
+
+    }
+
+    else
+    
+    {
+
+
+
+          callback(null,roomsIdArray,results);
+
+    }
+
+  
+
+
+
+
+  },  function(arg1,arg2,callback){
+   
+
+    
+ 
+gateway.transaction.sale({
   
                                     amount:total,
   
@@ -1065,81 +1135,6 @@ else
 
 {
 
-
-                           callback(null);
-
-}
-  
-
-  }
-
-
-
-
-
-
-
-
-
-});
-
-
-
-}, function(callback){
-    
-
-db.collection("hotels").find({"_id":hotelID}, {'rooms': true} ).toArray(function(err, results) {
-  
-    
- if (err) return next(err)
-
-
-for (x = 0; x < results[0].rooms.length; x++) { 
-
-if (typeof results[0].rooms[x].booking != 'undefined') {
-
-for (y = 0; y < results[0].rooms[x].booking.length; y++) { 
-
-for (z = 0; z < results[0].rooms[x].booking[y].length; z++) { 
-
-if ( (new Date(results[0].rooms[x].booking[y][z].fromdate) <= new Date(fromdate)  &&  new Date(results[0].rooms[x].booking[y][z].enddate) >= new Date(fromdate) ) || (new Date(results[0].rooms[x].booking[y][z].fromdate) <= new Date(todate)  &&  new Date(results[0].rooms[x].booking[y][z].enddate) >= new Date(todate) ) ) {
-
-
-            roomsIdArray.push(results[0].rooms[x]._id);
-
-
-      }
-
-}
-
-}
-
-}
-
-}
-
- callback(null,roomsIdArray,results);
-
-
-});
-
-
-  },  function(arg1,arg2,callback){
-   
-
-    
-    if(arg1.length > 0 )
-    {
-
-          var response = {"ERROR":"One or more of your rooms has now been booked."};
-        
-          res.json(response);
-
-    }
-
-    else
-    
-    {
 
 
 var offerArray = [];
@@ -1201,7 +1196,25 @@ db.collection('reservation').insert( [
 
 });
 
+                      
+
 }
+  
+
+  }
+
+
+
+
+
+
+
+
+
+});
+
+
+
 
    } ,function(arg1, callback){
    

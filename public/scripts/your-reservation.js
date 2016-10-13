@@ -418,15 +418,8 @@ $scope.error = 'Checking availability';
                                 
                                 {
                  
-                    alert("http://www.sinopiainn.com/api/checkhotelavailability/?hotelID="+getCookie('hotelID')+"&fromdate="+getCookie('fromdate')+"&todate="+getCookie('todate')+"&promo="+getCookie('promo'));
-$http.get("http://www.sinopiainn.com/api/checkhotelavailability/?hotelID="+getCookie('hotelID')+"&fromdate="+getCookie('fromdate')+"&todate="+getCookie('todate')+"&promo="+getCookie('promo')).then(function(response) {
+                    $http.get("http://www.sinopiainn.com/api/checkhotelavailability/?hotelID="+getCookie('hotelID')+"&fromdate="+getCookie('fromdate')+"&todate="+getCookie('todate')+"&promo="+getCookie('promo')).then(function(response) {
 
-alert(response);
-
-alert('s');
-
-
-alert(response.data.length);
 
 
 if(response.data.length > 2 ){
