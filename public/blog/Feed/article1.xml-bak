@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  version="2.0">
+    <channel>
+        <title>Sinopia Inn | Blog - Article 1</title>
+        <description>n/a</description>
+        <link>https://sinopia-inn.herokuapp.com/blog/article_1/</link>
+        <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+        <lastBuildDate>Tue, 07 Jun 2016 18:11:29 +0100</lastBuildDate>
+        <pubDate>Tue, 07 Jun 2016 18:11:06 +0100</pubDate>
+        <generator>FeedForAll Mac v2.1 (2.1.0.1) unlicensed version; http://www.FeedForAll.com/</generator>
+        <item>
+            <title>Part 7</title>
+            <description>Test	</description>
+            <link>https://sinopia-inn.herokuapp.com/blog/article_1/part4.html</link>
+            <guid isPermaLink="false">B6295CA4-7A25-433C-A72F-4FFE5FB704B3-9467-00003649F8ACA275-FFA</guid>
+            <pubDate>Tue, 07 Jun 2016 18:11:29 +0100</pubDate>
+        </item>
+
+        <item>
+            <title>Part 6</title>
+            <description>Minutes after arriving in Jamaica you could be bowling along the empty coast road , bound for Portland where Sinopia Inn resides...</description>
+            <link>https://sinopia-inn.herokuapp.com/blog/article_1/part6.html</link>
+            <guid isPermaLink="false">316E2397-8FB6-4C29-B997-1A1A9B468F7B-2412-00000A2F4DB112C5-FFA</guid>
+            <pubDate>Sun, 29 May 2016 15:13:51 +0100</pubDate>
+        </item>
+
+        <item>
+            <title>Part 5</title>
+            <description>Rum we have a lot of that , Reggae music we have a lot of that too and Rastas are never to far or hard to find . Just some of the things our guest love about Portland but there so much more...</description>
+            <link>https://sinopia-inn.herokuapp.com/blog/article_1/part5.html</link>
+            <guid isPermaLink="false">0E4444A2-E8E9-4D6B-8F02-455A9CBE3EC7-2412-00000A2EEC94C7B1-FFA</guid>
+            <pubDate>Sun, 29 May 2016 15:13:49 +0100</pubDate>
+        </item>
+
+        <item>
+            <title>Part 4</title>
+            <description>When you enter Portland you are entering the parish known to many Jamaicans as the birth place of Jamaica’s tourism. Who feel that Port Antonio's relative underdevelopment compared to the island's other resort towns, gives it a special charm...</description>
+            <link>https://sinopia-inn.herokuapp.com/blog/article_1/part4.html</link>
+            <guid isPermaLink="false">A016D65B-D5D2-4D57-8178-6CFD2CA88552-2412-00000A2D7BF38F34-FFA</guid>
+            <pubDate>Sun, 29 May 2016 15:13:43 +0100</pubDate>
+        </item>
+
+        <item>
+            <title>Part 3</title>
+            <description>Jamaica is well served by three modern international airports, and the island enjoys direct connectivity to most major US gateways. Jamaica averages 37 flights daily from the US, ranging from a low of 30 on Tuesdays to a high of 48 on Saturdays...</description>
+            <link>https://sinopia-inn.herokuapp.com/blog/article_1/part3.html</link>
+            <guid isPermaLink="false">2F0BF12E-F018-485E-9914-D2828417E8FF-2412-00000A2D287B293A-FFA</guid>
+            <pubDate>Sun, 29 May 2016 15:13:41 +0100</pubDate>
+        </item>
+
+        <item>
+            <title>Part 2</title>
+            <description>From the contemporary interior decor and units that compliments the parishes natural rustic charm to the higher level of personal service and recognition provided by the proprietors and staff...</description>
+            <link>https://sinopia-inn.herokuapp.com/blog/article_1/part2.html</link>
+            <guid isPermaLink="false">2903F3D9-F071-4361-802E-A0E10B0D0232-2412-00000A2CA188623F-FFA</guid>
+            <pubDate>Sun, 29 May 2016 15:13:39 +0100</pubDate>
+        </item>
+
+        <item>
+            <title>Part 1</title>
+            <description>Finding Sinopia Inn is easy. However if you drive to fast along Portland's main road you’ll miss the turn into Zion Hill. Here you’ll find a newly renovated country home...</description>
+            <link>https://sinopia-inn.herokuapp.com/blog/article_1/part1.html</link>
+            <guid isPermaLink="false">EF0FD76E-10E3-4D51-8855-24A15FC454F3-2412-000009EE4514DAC7-FFA</guid>
+            <pubDate>Sun, 29 May 2016 15:09:11 +0100</pubDate>
+        </item>
+
+    </channel>
+</rss>

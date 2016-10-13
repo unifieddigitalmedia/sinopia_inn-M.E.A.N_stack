@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="description" content="Self Catering Holiday Villa in Portland Jamaica">
+
+<meta name="keywords" content="Holiday,Villa,Portland,Port Antonio,Jamaica,Self Catering,Travel, Excursions, Beaches, Experiential Trips. Tours, Sight seeing, Yoga, Waterfalls, Rivers, Rafting, Blue Lagoon, Sun ,Sand, Sea">
+
+<meta name="author" content="Machel Slack">
+
+<link rel="stylesheet" type="text/css" href="/styles/main.css">
+
+<link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+<link rel="stylesheet" href="intl-tel-input-9.2.0/build/css/intlTelInput.css">
+
+<script src="braintree-web/client.js"></script>
+
+<link rel="icon" 
+      type="image/png" 
+      href="/images/jmtrax_icon.png">
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="description" content="Self Catering Holiday Villa in Portland Jamaica">
+
+<meta name="keywords" content="Holiday,Villa,Portland,Port Antonio,Jamaica,Self Catering,Travel, Excursions, Beaches, Experiential Trips. Tours, Sight seeing, Yoga, Waterfalls, Rivers, Rafting, Blue Lagoon, Sun ,Sand, Sea">
+
+<title> Sinopia Inn  -  Self Catering Holiday Villa in Portland Jamaica  | Booking Confirmation </title>
+
+<style>
+
+.container-fluid{
+
+width:50%;margin:0 auto;
+}
+
+.resDetails_header { padding:5px; vertical-align:middle; color:#272727!important; font-weight:200; border:none!important;font-size:125%!important; margin-top:20px;margin-bottom:20px;border-bottom:#cb410b thin dotted!important;}
+
+.amount_col{text-align:right!important;}
+
+</style>
+<body class="body-class" ng-app="sinopia" ng-controller="reservationsystem" ng-cloak>
+
+<header style="text-align:center;" >
+
+<a href="index.html" style="padding:10px;margin-top:20px;"><img src="/images/logo_header.png" class="logo" ></a>
+
+ <div style="float:right;padding:10px;margin-top:20px;" id="google_translate_element"></div>
+
+<ul class="topnav-top">
+
+
+
+ <li class="logo_link">  </li>
+
+<li class="dropdown-link"> 
+
+
+
+</li>  
+
+
+
+
+
+</ul></header>
+
+<section class="itinerary-main-section container-fluid" >
+
+
+<section >
+
+<div class="row" >
+  
+<div class="col-sm-12">  
+<p style="float:right"> Booking Reference : {{bookingID}}</p></br>
+<p style="float:right" id="date"></p>
+<p class="side_menu_title" > Booking Confirmation  </p> 
+
+</div>
+
+ </div>
+
+
+                   <div class="row" >
+  
+
+                   <div class="col-sm-12">  
+
+ <h6 class="resDetails_header" > From {{fromdate}} - To : {{todate}}</h6> 
+  
+
+                    <div  ng-repeat="rooms in roomlist"> 
+
+                    <div class="row" >
+
+                    <div class="col-sm-12">
+
+ <div class="w3-container">
+
+         <!--<img src="{{rooms.icon}}" onclick="displayModal(this)" alt="room_tumbnail" class="w3-left w3-circle w3-margin-right myImg" style="width:60px">-->
+
+                                            <p> {{rooms.name}}  @ {{numofdays}} nights</p>
+
+
+                                          </div>
+
+                    </div>
+
+          
+
+                    </div>
+
+
+                    <div class="row" >
+
+                    <div class="col-sm-6">
+
+                                            <p> {{rooms.description}} </p>
+
+                    </div>
+
+                    <div class="col-sm-3 amount_col" >
+
+                                            <p> USD</p>
+
+                    </div>
+
+                    <div class="col-sm-3 amount_col" >
+
+                                            <p> {{tocurrency(rooms.price * numofdays) }} </p>
+
+                    </div>
+
+                    </div>
+
+                    </div>
+
+             <h6 class="resDetails_header" id="toprow">Amenities </h6>
+
+             <div class="row" ng-repeat="amenity in amenitylist">
+
+             <div class="col-sm-6">
+
+
+                                        <p> {{amenity.name}} </p>
+
+
+             </div>
+
+             <div class="col-sm-3 amount_col">
+
+             <p> USD </p>
+
+             </div>
+
+             <div class="col-sm-3 amount_col" >
+           
+
+
+    <p ng-if="amenity.frequency === 'person' "> 
+
+    {{ 
+
+        
+
+               tocurrency(amenity.price * numofadults)
+
+
+
+    }} 
+
+   </p>
+
+   <p ng-if="amenity.frequency === 'room' "> 
+
+    {{ 
+
+        
+
+              tocurrency(amenity.price * roomlist.length)
+
+
+
+    }} 
+
+   </p>
+
+<p ng-if="amenity.frequency === 'night' "> 
+
+    {{ 
+
+        
+
+            tocurrency(amenity.price * numofdays)  
+
+
+
+    }} 
+
+   </p>
+
+
+             </div>
+
+             </div>
+
+ <h6 class="resDetails_header" >Offers </h6>
+
+             <div class="row" ng-repeat="offer in offerlist">
+
+             <div class="col-sm-6">
+
+                                      <p> {{offer.name}} </p>
+
+             </div>
+
+             <div class="col-sm-3 amount_col">
+
+             <p> USD </p>
+
+             </div>
+
+             <div class="col-sm-3 amount_col" >
+
+                                      <p>({{tocurrency(calculateoffertotal($index))}} )</p>
+             </div>
+
+             </div>
+
+
+             <h6 class="resDetails_header" id="toprow">Personal Details </h6>
+
+             <div class="row"  >
+
+             <div class="col-sm-6">
+
+             <p> First Name :</p>
+
+             </div>
+
+             <div class="col-sm-6">
+
+               <p>{{fname}}</p>
+             </div>
+
+             </div>
+
+             <div class="row"  >
+
+             <div class="col-sm-6">
+
+             <p> Last Name :</p>
+
+             </div>
+
+             <div class="col-sm-6">
+
+              <p> {{lname}}</p>
+             </div>
+
+             </div>
+
+             <div class="row"  >
+
+             <div class="col-sm-6">
+
+              <p>Phone :</p>
+
+             </div>
+
+             <div class="col-sm-6">
+
+               <p>{{phone}}</p>
+             </div>
+
+             </div>
+
+             <div class="row"  >
+
+             <div class="col-sm-6">
+
+              <p>Email :</p>
+
+             </div>
+
+             <div class="col-sm-6">
+
+
+               <p>{{email}}</p>
+             </div>
+
+             </div>
+
+              <h6 class="resDetails_header" >Dependents </h6>
+
+              <div class="row" >
+
+              <div class="col-sm-6" >
+
+               <p>Adults :</p>
+
+              </div>
+
+              <div class="col-sm-6">
+              </div>
+
+              
+               <p>{{numofadults}}</p>
+
+              </div>
+
+
+
+              <div class="row" >
+
+              <div class="col-sm-6" >
+
+              <p> Children :</p>
+
+              </div>
+
+              <div class="col-sm-6">
+
+            
+              <p> {{numofchildren}}</p>
+
+              </div>
+
+              
+
+              </div>
+
+
+
+
+              <div class="row" >
+
+              <div class="col-sm-6" >
+
+              <p> Infants :</p>
+
+              </div>
+
+              <div class="col-sm-6">
+
+
+               <p>{{numofinfants}} </p>
+
+              </div>
+
+              </div>
+
+
+              <div class="row" >
+
+             <div class="col-sm-6 ">
+
+             <p>  Tax </p>
+
+             </div>
+
+             <div class="col-sm-3 amount_col">
+
+             <p> USD </p>
+
+             </div>
+
+             <div class="col-sm-3 amount_col">
+
+             <p>  </p>
+
+             </div>
+
+             </div>
+
+
+             <h6 class="resDetails_header" > TOTAL</h6> 
+
+             <div class="row" >
+             
+             <div class="col-sm-6" >
+
+            
+
+             </div>
+             <div class="col-sm-3 amount_col">
+
+             <p> USD </p>
+
+             </div>
+
+             <div class="col-sm-3 amount_col" >
+
+             <p> {{total}} </p>
+
+             </div>
+
+             </div>
+
+
+
+                   </div>
+
+                 
+
+
+                 </div>
+
+  <div class="row">
+
+<div class="col-sm-12">
+
+<p> Rates are per room per night, quoted in U.S. dollars, are based on double occupancy per room. Rates quoted are plus 26.5% Government tax and service charge. </p>
+
+
+&nbsp;
+
+
+<h4>DEPOSIT POLICY:</h4>
+
+&nbsp;
+<p style="text-align:left;"> {{caldeposit(total)}}deposit is required upon making a reservation. Final payment is due in full 14 days prior to arrival date, 30 days for Easter and 60 days for Christmas/New Year and is non-refundable.
+</p>  
+
+&nbsp;
+
+<h4>CANCELLATION, NO-SHOW AND REFUND POLICIES:</h4>
+&nbsp;
+<p>A full refund is due when cancelled 45 days prior to arrival, 60 days for Easter and 90 days during Christmas and New Year. The full amount of the stay is non-refundable when inside 45 days, 60 days for Easter and 90 days during Christmas and New Year.</p>  
+&nbsp;
+<p>No refund and full amount of stay is forfeited when there is a no-show.</p>    
+
+</div>
+
+   </div>
+
+</section>
+
+</section>
+
+<script src="/jquery/dist/jquery.min.js" ></script>
+
+<script src="/bootstrap/dist/js/bootstrap.min.js" ></script>
+
+<script src="/angular/angular.min.js" ></script>
+
+<script src="/angular-resource/angular-resource.min.js" ></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script src="https://js.braintreegateway.com/js/braintree-2.23.0.min.js"></script>
+
+<script src="/scripts/confirmation.js" ></script>
+
+</body>
+
+</html>

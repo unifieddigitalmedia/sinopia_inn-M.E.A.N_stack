@@ -1,0 +1,671 @@
+
+.iti-flag {background-image: url("intl-tel-input-9.2.0/build/img/flags.png"); }
+
+.checkavaiabiltyrow{
+
+border:thin solid #f0f0f1!important;
+padding:10px;
+}
+
+
+.checkavaiabiltyrow label{
+
+
+font-weight:100;
+}
+
+.booking-confirmation-row1 h1{
+
+font-weight:100!important;
+
+font-size:400%!important;
+
+text-align:center;
+}
+
+.hotel-row {
+
+border-bottom:thin solid #f6f6f6;
+padding:40px;
+}
+
+.reservation-hotel-section{
+
+
+}
+
+.destination-room{
+
+
+  float:right;
+}
+.booking-confirmation-row1 h2 {
+
+  font-weight:100!important;
+
+font-size:200%!important;
+
+text-align:center!important;
+
+
+}
+
+.bookinglabel{
+
+ background-color:#f0f0f1!important;
+
+ padding:10px;
+
+}
+
+.bookinglabel label{
+
+font-weight:100!important;font-size:200%!important; 
+
+}
+
+
+
+.body-class{
+
+    /*background-color:#f0f0f1!important;*/
+
+      background-color:white!important;
+
+
+}
+
+.checking{
+
+  background-color:black;
+
+}
+
+.error{
+
+  color:white;
+
+}
+.container-fluid {
+
+                    padding:0px 50px !important;
+
+                    /*background-color:#fefcfc;*/
+
+                    background-color:white;
+
+                    font-size:95%!important;   font-family: 'PT Sans', sans-serif; 
+
+                    font-weight:100!important; 
+                    position:relative;
+
+                }
+
+
+           
+.outline        {
+  
+                    border: 1px solid #cb410b!important;
+                    
+                    color: #cb410b!important;
+                    
+                    background: none;
+
+
+               
+               }
+
+
+.outline-res {  background-color:#eedc00!important; color:#3b0053!important;}
+
+.outline:hover, .outline:focus, .outline:active, .outline.active,  {
+
+                    color: #33a6cc;
+                    
+                    border-color: #33a6cc;
+
+                     background: none!important;
+
+}
+
+
+.glyphicon , .glyphicon-th , .form-control-feedback{color: #33a6cc!important;}
+
+
+a {color:black!important;font-size:100%!important; }
+
+input         {
+
+
+                    border: 1px solid #cccccc!important;
+
+
+              }
+
+input:focus {
+
+
+    border: 1px solid #cb410b!important;
+
+
+}
+
+#cpnbtn {
+
+float:right; cursor:pointer; font-size:90%;
+
+
+}
+
+
+.bkngrmrmv{     
+
+cursor:pointer; font-size:90%;
+
+
+}
+
+#toprow { padding:5px; vertical-align:middle; color:#cb410b; font-size:100%;border-top:white thin solid; margin-top:20px;margin-bottom:20px;border:#cb410b thin solid;}
+
+
+.resDetails_header { padding:5px; vertical-align:middle; color:#272727!important; font-weight:200; border:none!important;font-size:125%!important; margin-top:20px;margin-bottom:20px;border-bottom:#cb410b thin dotted!important;}
+
+
+.bkng , .arooms , .acpns { max-height:250px !important;overflow-y:scroll !important;height:250px !important; }
+
+
+#errormessage > p { text-align:center; }
+
+/*.col-sm-6 > div { margin:1px;  }*/
+
+
+.checking{  text-align:center; color:black;padding:15px;margin-bottom:20px;top:0;}
+
+.col-sm-6{border-right:white thick solid;vertical-align:middle;}
+
+
+
+.amount_col {text-align:left;}
+
+
+/******** START OF HEADER MENU CSS ********/
+
+
+.logo{width:208px; height:30px!important;}
+
+
+
+/*
+
+header{ position:relative; width: 100%; padding-left:40px; height: auto; background: #FFFFFF; color: #fff; font-family: 'PT Sans', sans-serif; 
+  transition: all 0.4s ease;font-size:11px;
+  z-index:99; opacity: 0.7; filter: alpha(opacity=70);}
+
+header:hover{opacity:1.0; filter: alpha(opacity=1); }
+
+background: #EE632C;  header.sticky { height: 100px; background: #efc47D; padding-left: 20px; z-index:99; opacity: 0.6; filter: alpha(opacity=60); }
+
+  line-height: 48px;
+  height: 48px;
+  background: #efc47D;
+  text-align: left;
+  padding-left: 20px;
+*/
+
+.sticky_logo {  height: 25px; }
+
+header.sticky { height:auto; font-size: 9px;background: #cc9999; padding-left: 20px; z-index:99;  transition: all 0.4s ease;}
+
+.topnav-header{ background:/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cb410b+0,cb410b+100,c96c4a+100,c9856c+100 */
+background: #cb410b; /* Old browsers */
+background: -moz-linear-gradient(top,  #cb410b 0%, #cb410b 100%, #c96c4a 100%, #c9856c 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #cb410b 0%,#cb410b 100%,#c96c4a 100%,#c9856c 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #cb410b 0%,#cb410b 100%,#c96c4a 100%,#c9856c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb410b', endColorstr='#c9856c',GradientType=0 ); /* IE6-9 */}
+
+.dropbtn { display: inline-block; color: white!important;  font-family: 'PT Sans', sans-serif; font-weight:100; text-align: center; padding: 14px 16px; 
+text-decoration: none;cursor:pointer; }
+
+.topnav{ width:65%;list-style-type: none; color:white; margin: 0 auto; padding: 0; overflow: hidden; text-align:right; line-height: 100% !important; }
+
+ul.topnav li.icon {display: none;}
+
+ul.topnav li { display: inline-block;  vertical-align:middle; padding:0px; }
+
+.topnav li.dropdown-link {display: inline-block; }
+
+.topnav li a { padding:16px 10px!important; display: block; color:white; font-family: 'PT Sans', sans-serif; font-weight:100!important; font-size:15px;text-align: center;  text-decoration: none;cursor:pointer; }
+
+
+.topnav li a span { padding: 12px   }
+
+.dropdown-content a { color:black !important; padding: 12px 16px !important;text-decoration: none !important; display:block !important; 
+  text-align: left !important; 
+}
+
+
+.dropdown-content { display: none; background-color: white; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); 
+  position: absolute !important;z-index:99;background-color: white; opacity: 0.9; filter: alpha(opacity=90);
+ 
+}
+
+.dropdown-content:hover{opacity:1.0; filter: alpha(opacity=1); }
+
+.dropdown-content a:hover {color: #ffffff!important;font-weight:bold;background:/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cb410b+0,cb410b+100,c96c4a+100,c9856c+100 */
+background: #cb410b; /* Old browsers */
+background: -moz-linear-gradient(top,  #cb410b 0%, #cb410b 100%, #c96c4a 100%, #c9856c 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #cb410b 0%,#cb410b 100%,#c96c4a 100%,#c9856c 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #cb410b 0%,#cb410b 100%,#c96c4a 100%,#c9856c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb410b', endColorstr='#c9856c',GradientType=0 ); /* IE6-9 */}/*background-color: #cb410b;*/
+
+
+.dropdown-link:hover .dropdown-content { display: block; }
+
+
+
+.sidenav {
+    height:600px;
+    width:0%;
+    position: fixed;
+    z-index:100;
+    top: 0;
+    right: 0;
+    background-color: #fff;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    text-align: :left!important;
+    font-size:11px;
+}
+
+.sidenav ul {
+width:100%;
+list-style: none;
+text-align: :left!important;
+padding: 5px!important;
+ height:auto;
+
+}
+
+.sidenav li {
+
+padding-bottom: 5px;
+
+padding-top: 5px;
+ height:auto;
+
+}
+.sidenav .dropdown-content {
+
+
+text-align: :left!important;
+
+}
+
+.sidenav a {
+
+  font-family: 'PT Sans', sans-serif; 
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    text-align: :left!important;
+    font-weight:100;
+
+}
+
+
+.sidenav li a:hover{color: #ffffff!important;font-weight:bold;background:/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cb410b+0,cb410b+100,c96c4a+100,c9856c+100 */
+background: #cb410b; /* Old browsers */
+background: -moz-linear-gradient(top,  #cb410b 0%, #cb410b 100%, #c96c4a 100%, #c9856c 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #cb410b 0%,#cb410b 100%,#c96c4a 100%,#c9856c 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #cb410b 0%,#cb410b 100%,#c96c4a 100%,#c9856c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb410b', endColorstr='#c9856c',GradientType=0 ); 
+text-decoration: none !important;}
+
+.closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px !important;
+    margin-left: 50px;
+}
+
+
+.top_menu_end_link{
+
+font-size:100%!important;
+text-align:right;
+font-weight:600!important;
+
+}
+
+.top_menu_logo_link{
+
+width:80%;text-align: left !important;
+
+
+}
+
+.top_menu_topnav{ list-style-type: none; color:white; margin: 0; padding: 0; overflow: hidden; text-align:right; line-height: 100% !important;}
+
+.top_menu_topnav li a { display: inline-block; color:#666666;  font-weight:50; text-align: center; padding: 14px 16px; text-decoration: none;cursor:pointer; }
+
+
+
+
+
+.topnav-top{ width:100%;list-style-type: none; color:white; margin: 0; padding: 0; overflow: hidden; text-align:left; line-height: 100% !important;}
+
+.topnav-top ul {border:red thin solid; }
+
+
+ul.topnav-bottoptom li.icon {display: none;}
+
+ul.topnav-top li:first-child{ width:80%;text-align: left !important; }
+
+ul.topnav-top li { display: inline-block;  vertical-align:middle; }
+
+.topnav-top li a { display: inline-block; color:black; font-family: 'PT Sans', sans-serif; font-weight:100!important; font-size:15px;text-align: center; padding: 14px 16px; text-decoration: none;cursor:pointer; }
+
+.topnav-top li.dropdown-link {display: inline-block; }
+
+.topnav-top li:first-child a:hover {
+
+    background-color: none !important;
+
+}
+
+
+/******** END OF HEADER MENU CSS ********/
+
+/******** START OF FOOTER CSS ********/
+
+.iconset img {width:30px ; height:30px;}
+.footer_column_1 p{
+
+padding:0px!important;
+}
+
+
+footer{
+position:absolute;
+
+  padding:30px;
+  color:#e8e5e5;
+  background-color:#f1f1f1;
+  
+  border-bottom:black solid thin;
+}
+
+
+.firstrow { 
+  width:85%; margin:0px auto!important; 
+}
+footer a , footer p {
+
+
+color:black!important;font-weight:200!important; 
+
+
+}
+
+footer a:hover {
+
+
+color:#cb410b!important;text-decoration: none;
+
+
+}
+
+
+footer .text {
+
+  color:white;
+
+}
+
+
+
+footer ul {
+
+  
+  list-style-type: none;
+  line-height: 300%;
+  padding: 0;
+
+}
+
+
+.footer_links {
+    
+    text-decoration:none;
+}
+
+.footer_links:link {
+    color:white;
+}
+
+
+.footer_links:visited {
+   
+}
+
+
+
+.footer_links:hover {
+    color: #e8e5e5;
+}
+
+
+.footer_links:active {
+    
+}
+
+
+#footer_column_1 , #footer_column_2 ,#footer_column_3 {  height:320px;}
+
+#footer_column_2 p {
+color:black!important;font-weight:400!important;
+padding: none!important;margin: none!important;
+
+}
+
+#footer_column_3 h6 {
+
+color:black!important;
+padding: none!important;margin: none!important;
+
+}
+
+.footer_column_3_link_title {
+
+color:black!important; font-weight:600!important;
+padding: none!important;margin: none!important;
+
+}
+
+
+#footer_column_3 p {
+color:black!important;font-weight:200!important;
+padding: none!important;margin: none!important;
+
+}
+
+#recent_blog_posts {
+
+  line-height:30%;
+
+
+}
+
+#recent_blog_posts li {
+
+ padding:5px; border-bottom:thin dotted #333333;font-weight:200!important;
+
+}
+
+#recent_blog_posts li p a {
+
+color:green; font-weight:200!important;
+
+}
+
+
+
+#recent_blog_posts li p:nth-child(2) {
+
+color:green!important; font-weight:200!important;
+
+}
+
+
+#footer_column_4 { }
+
+
+
+.footer_title {
+
+padding-bottom:20px;
+border-bottom:black solid thin;
+
+}
+
+
+#send_button {
+
+background-color:black;
+color:white;
+border-radius: 0;
+border-color:black;
+}
+
+
+/******** END OF FOOTER CSS ********/
+
+
+/******** START OF SLIDER CONTAINER CSS ********/
+
+.slideshow-container { max-width:100%; margin: auto;  height:600px; position:relative;top:0;}
+
+
+.slideshow-container-reservation-image { width:100%; height:auto;  }
+
+
+.slideshow-container-reservation{ 
+
+position: relative; width:100%;  background:/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cb410b+0,cb410b+100,c96c4a+100,c9856c+100 */
+background: #cb410b; /* Old browsers */
+background: -moz-linear-gradient(top,  #cb410b 0%, #cb410b 100%, #c96c4a 100%, #c9856c 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #cb410b 0%,#cb410b 100%,#c96c4a 100%,#c9856c 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #cb410b 0%,#cb410b 100%,#c96c4a 100%,#c9856c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb410b', endColorstr='#c9856c',GradientType=0 ); /* IE6-9 */
+
+}
+
+
+.home_text{ position:relative; border:black solid thin; padding:5px;background-color:black;opacity: 0.8;filter: alpha(opacity=80);
+}
+
+.home_text_innerdiv {color:black;padding:20px;text-align:center;border:#262626 thin solid;}
+
+.home_text_caption{color:#aa9d2e;font-size:25px;padding-bottom:10px;}
+
+.home_text_sub_caption{color:white;border-top:#aa9d2e thin dotted; padding-top:5px;font-size:100%!important;}
+
+.home_text_sub_sub_caption{color:white;font-size:100%!important;}
+
+
+.bookingform p {color:#cb410b !important; font-weight:200!important; font-size: 90%!important;}
+
+.bookingform-rewards{margin-top:100px;}
+
+.bookingform-rewards-heading{color:white;font-size:180%!important;}
+
+.bookingform-rewards-heading1{font-size:180%;color:#3b0053;}
+
+.bookingform-subtext {color:black;line-height:none;font-size:100%;}
+
+.booking-form-row {padding:0px 50px 0px 50px; }
+
+.service_icon-res {font-size:30px!important;color:#ffffff;}
+
+.service_icon-res > h4 { color:#ffffff;}
+
+.service_icon-res-text {font-size:120%;font-weight: 300!important; color:#ffffff; }
+
+.side_menu_title_para-res { text-align:center;   border-bottom:#cb410b thin solid;padding-top:30px; }
+
+.service_icon-res-heading{color:#eedc00;}
+/******** END OF SLIDER CONTAINER CSS ********/
+
+
+.download_buttons_col_parent_row{     display: table;  }
+
+
+.download_buttons_col_parent_row div {
+    vertical-align:middle;
+    display: table-cell;
+}
+
+.download_buttons_col p { font-weight:300!important;}
+
+
+.download_buttons{width: 130px; height: 40px;}
+
+.download_buttons_col-left {text-align:right!important;}
+
+.download_buttons_col-right {text-align:left!important;}
+
+.download_buttons_col-title {padding-left:100px;}
+
+.outline-res {  background-color:none!important; color:#3b0053!important;border:thin solid #3b0053!important}
+
+
+.outline-res:hover, .outline-res:focus, .outline-res:active, .outline.active,  {
+
+                    color: #33a6cc;
+                    
+                    border-color: #33a6cc;
+
+                     background: none!important;
+
+}
+
+
+.checking{
+
+  text-align:center;
+}
+
+@media screen and (max-width:1080px) {
+  ul.topnav li:not(:last-child) {display: none;}
+  ul.topnav li.icon {
+    float: right;
+    display: inline-block;
+  }
+  .topnav{ width:100%;list-style-type: none; color:white; margin: 0 auto; padding: 0; overflow: hidden; text-align:right; line-height: 100% !important; }
+
+.menudivider{display:none;}
+}
+
+@media screen and (max-width:1080px) {
+  ul.topnav.responsive {position: relative;}
+  ul.topnav.responsive li.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  ul.topnav.responsive li {
+    float: none;
+    display: inline;
+  }
+  ul.topnav.responsive li a {
+    display: block;
+    text-align: left;
+  }
+}
+
+

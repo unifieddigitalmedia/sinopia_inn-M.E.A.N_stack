@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  version="2.0">
+    <channel>
+        <title>Sinopia Inn Self Catering Holiday Villa in Portland Jamaica |  Blog</title>
+        <description>Sinopia Inn Self Catering Holiday Villa in Portland Jamaica |  Blog</description>
+        <link>https://sinopia-inn.herokuapp.com/blog/index.html</link>
+        <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+        <lastBuildDate>Thu, 26 May 2016 17:51:24 +0100</lastBuildDate>
+        <pubDate>Thu, 26 May 2016 17:51:02 +0100</pubDate>
+        <generator>FeedForAll Mac v2.1 (2.1.0.1) unlicensed version; http://www.FeedForAll.com/</generator>
+        <item>
+            <title>Test</title>
+            <description>Test Description</description>
+            <link>https://sinopia-inn.herokuapp.com/blog/article_1/index.html</link>
+            <guid isPermaLink="false">51083758-9A75-43FD-B569-80A047FB0C8B-1976-0000097348B164E6-FFA</guid>
+            <pubDate>Thu, 26 May 2016 17:50:24 +0100</pubDate>
+        </item>
+
+    </channel>
+</rss>

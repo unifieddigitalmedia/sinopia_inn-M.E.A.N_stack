@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="description" content="Self Catering Holiday Villa in Portland Jamaica">
+
+<meta name="keywords" content="Holiday,Villa,Portland,Port Antonio,Jamaica,Self Catering,Travel, Excursions, Beaches, Experiential Trips. Tours, Sight seeing, Yoga, Waterfalls, Rivers, Rafting, Blue Lagoon, Sun ,Sand, Sea">
+
+<meta name="author" content="Machel Slack">
+
+
+<link rel="stylesheet" href="/styles/w3.css">
+
+<!--<link rel="stylesheet" type="text/css" href="/styles/main.css">-->
+
+<link rel="stylesheet" type="text/css" href="/styles/map.css">
+
+<link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  
+<link rel="icon" 
+      type="image/png" 
+      href="/images/jmtrax_icon.png">
+ <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+
+      }
+     
+    </style>
+
+</head>
+<body ng-app="sinopia" ng-cloak ng-controller = "reservationsystem">
+
+
+
+
+<header class="w3-container ">
+  <!--<span class="w3-opennav w3-xlarge" onclick="w3_open()">&#9776;</span>-->
+
+
+<ul class="topnav">
+
+<li class="logo_link"> <a href="index.html"><img src="/images/logo_header.png" class="logo" ></a> </li>
+
+  <li class="dropdown-link"> <a href="our-villa.html" class="dropbtn"> OUR VILLA </a>  
+
+
+</li> 
+
+<li class="dropdown-link" > <a href="rooms-and-rates.html" class="dropbtn" >ROOMS AND RATES </a>
+</li>  
+
+<li class="dropdown-link"> <a href="food-and-travel.html" class="dropbtn" >FOOD AND TRAVEL</a>  
+
+<div class="dropdown-content">
+
+   <a href="plan-a-trip.html"> Plan  A Trip </a>
+
+   <a href="culinary-experiences.html"> Culinary Experiences </a>  
+ 
+<a href="beaches.html" > Beaches </a>
+
+ <a href="treks.html" > Mountain and Bike Treks </a>
+ 
+ <a href="yoga.html" > Yoga</a>
+ 
+ <a href="experiential-trips.html" > Experiential Trips</a>
+ 
+ <a href="local-experiences.html" > Local Experiences and Events</a>
+
+ <a href="family-sporting-trips.html" > Family and Sporting Trips </a>
+
+</div>
+
+<!--<li class="dropdown-link"> <a href="offers.html"class="dropbtn" >OFFERS</a>  
+
+<div class="dropdown-content">
+
+  <a href="weekend-offers.html"> WEEKEND OFFERS </a> 
+
+  <a href="summer-discounts.html"> SUMMER DISCOUNTS </a> 
+
+  <a href="group-offers.html"> GROUP OFFERS </a>
+
+  <a href="loyalty.html"> LOYALTY </a>
+
+</div>
+
+
+</li>  -->
+
+<li class="dropdown-link" > <a href="shop.html" class="dropbtn" > SHOP </a>
+</li> 
+
+<li class="icon">
+    <a href="javascript:void(0);" style="font-size:15px;" onclick="openNav()">☰</a>
+</li>
+
+
+
+</ul></header>
+
+<div class="main-container" >
+
+
+<nav class="side-panel-left" >
+
+<div class="row filter-first-row">
+
+<div class="col-sm-12" id="firstrow" > REFINE YOUR EXPERIENCE </div>
+
+</div>
+
+<section class = "filter-section-1" >
+
+<div class="row" id="containerdiv" >
+
+  <div class="col-sm-12" id="secondrow"  > Venue: </div>
+
+
+</div>
+
+<div class="row" id="containerdiv" >
+
+<div class="col-sm-12"  id="thridrow"> 
+
+
+<input id="place" class="target"  name="place" type="text" onkeydown="searchbrand()"/> 
+
+
+</div>
+
+</div>
+
+<div class="row" id="containerdiv" >
+
+  <div class="col-sm-12" id="thridrow" > 
+
+
+  <div id="fourthrowdiv" class="brandservice"> 
+
+
+  <p ng-repeat="business in businesses | filterbusinessnames:tosArray" ng-click="placetag(business)" class="businessTag"> {{business.businessname}} </p>
+
+
+  </div> 
+
+
+
+
+
+
+  </div>
+
+
+</div>
+
+
+</section>
+
+<section class = "filter-section-2" >
+
+<div class="row" id="containerdiv" >
+
+  <div class="col-sm-12" id="secondrow"  > Special Interest: </div>
+
+
+</div>
+
+<div class="row" id="containerdiv" >
+
+  <div class="col-sm-12" id="thridrow" > 
+
+
+  <div id="fourthrowdiv" class="brandservice"> 
+
+
+  <div class="row" ng-repeat="interest in businesses | businesstypefilter">
+  <div class="col-sm-8"> {{interest}} </div>
+  <div class="col-sm-4" id="call-back_bis" ><input value="{{interest}}"type="checkbox" class="dbtob" ng-click="tob($event)"></div>
+  </div> 
+
+
+
+  </div> 
+
+
+
+
+  </div>
+
+
+</div>
+
+</scetion>
+
+<section class = "filter-section-3" >
+
+<div class="row" id="containerdiv" >
+
+  <div class="col-sm-12" id="secondrow"  > Type Of Service </div>
+
+
+</div>
+
+
+<div class="row" id="containerdiv" >
+
+<div class="col-sm-12"  id="thridrow"> 
+
+<div id="fourthrowdiv" class=' brandservice' >
+
+ 
+
+  <div class="row" ng-repeat="service in businesses | servicetypefilter:tobArray" >
+  
+  <div class="col-sm-8"> {{service}} </div>
+  
+  <div class="col-sm-4" id="call-back_bis" ><input value="{{service}}"type="checkbox" class="dbserchk" ng-click="tos($event)" ></div>
+  
+  </div> 
+
+
+
+</div>
+
+  </div>
+
+</div>
+
+
+</section>
+
+
+</nav>
+
+
+<div id="map" ></div>
+
+
+<div class='filter-button-panel-right'>
+
+    <div class='button-wrapper' >
+
+    <button  id="filter-button-right" class="filter-button-right"> click </button>
+
+    </div>
+
+</div>
+
+
+<nav class="side-panel-right" ng-init="filter_ini()" >
+
+<!-- <a href="javascript:void(0)" onclick="w3_close()" class="w3-closenav w3-large">Close &times;</a>-->
+<!-- <a href="javascript:void(0)" onclick="w3_close()" class="w3-closenav w3-large">Close &times;</a>-->
+
+<div class="" ng-repeat="business ( filteredBusinesses = ( businesses |  itineraryFilterMain : ItinComps ) ) " class="iTinbusinessTag">
+
+<div class="w3-container"  style="vertical-align:middle;" >
+
+  <p>{{business.businessname}}</p>
+  
+  <hr>
+  
+  <img src="{{business.logourl}}" alt="{{business.businessname}}" class="w3-left w3-circle">
+  
+  <p>{{business.businessdescription}}</p>
+
+
+</div>
+</br>
+</div>
+
+
+
+
+
+</nav>
+
+
+
+
+</div>
+
+
+<footer>
+
+<div class="row">
+
+  <div class="col-sm-3" id="footer_column_1">  
+
+<a href="index.html"><img src='images/logo.png' /></a>
+&nbsp;</br>
+<p>Zion Hill, Fairy Hill P.O </br> Portland, Jamaica </br> +1 212 888 7000 </br> info@sinopiainn.com </p>
+
+
+ </div>
+
+  <div class="col-sm-3" id="footer_column_2">  
+
+  <h6> <a href="blog/index.html" > RECENT BLOG POSTS </a> </h6> 
+
+<ul id="recent_blog_posts" style="list-type:square!important;"></ul>
+
+   </div>
+
+   <div class="col-sm-3" id="footer_column_3">  
+
+<h6>MORE LINKS </h6>
+
+<ul> 
+
+<li> <a href="directions-and-location.html" > Location & Directions </a> </li>
+ 
+<li> <a href="reservation.html" > Make a reservation</li>
+ 
+<li> <a href="mobile-app.html" > Smartphone App</li>
+ 
+<li> <a href="mobile-app.html" > Download the mobile app</li>
+ 
+
+<li> <a href="connect.html" > Contact Us</li>
+ 
+
+
+</ul>
+
+
+
+
+
+
+
+   </div>
+
+   <div class="col-sm-3" id="footer_column_4">  
+
+<p style="padding-bottom:10px;"> STAY IN TOUCH</p>
+
+<p style="padding-bottom:20px;font-size:small;">Missed us when we’re away? Add your email below so we can update you on news and offers from us at Sinopia Inn.</p>
+
+<form action="connect.html" method="POST" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" validate  role="form">
+
+
+<div class="input-group" style="padding-bottom:20px;">
+
+<input type="email" id="subscribers_email" class="form-control" placeholder="Please enter your email address" name="subscribers_email">
+
+<span class="input-group-btn">
+<button class="btn btn-secondary" type="submit" >
+<span class="glyphicon glyphicon-triangle-right" aria-hidden="true">
+</button>
+</span>
+</div>
+
+</form>
+
+<p  style="padding-bottom:10px;font-size:small;">For more information on how we use your personal details please refer to our Privacy Policy and  Cookie Policy
+
+</p>
+
+
+   </div>
+
+
+</div>
+
+</footer>
+
+<script src="/jquery/dist/jquery.min.js" ></script>
+
+<script src="/bootstrap/dist/js/bootstrap.min.js" ></script>
+
+
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRymGUo1SnzUFFYcAjrXO-vJpJ-fwT5NE&libraries=weather&callback=initMap"
+        async defer></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+<script src="/angular/angular.min.js" ></script>
+
+<script src="/angular-resource/angular-resource.min.js" ></script>
+
+
+<script src="/scripts/main.js" ></script>
+
+  <script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'de,en,es,fr,it,ja,la,nl,pa,pl,pt,ru,sv,th,zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+
+     
+      <script>
+      var map;
+
+    
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 18.171100, lng: -76.442305},zoomControl: true,
+    zoomControlOptions: {
+        position: google.maps.ControlPosition.LEFT_CENTER
+    },
+          zoom: 14
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRymGUo1SnzUFFYcAjrXO-vJpJ-fwT5NE&callback=initMap"
+    async defer></script>
+
+</body>
+</html> 

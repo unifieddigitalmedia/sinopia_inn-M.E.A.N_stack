@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ImageLastPublished</key>
+	<date>1970-01-01T00:00:00Z</date>
+	<key>LastPublished</key>
+	<date>1970-01-01T00:00:00Z</date>
+	<key>LocalEnclosureFileInfo</key>
+	<dict/>
+	<key>UniqueIdentifier</key>
+	<string>25B9787A-E5BF-4519-ACA1-8316C40939D0-9467-00003644EBA16D54</string>
+	<key>feedFileName</key>
+	<string>article1.xml</string>
+	<key>feedURL</key>
+	<string>file://localhost/Users/Home/sinopia_inn-M.E.A.N_stack/public/blog/Feed/article1.xml</string>
+	<key>isTransient</key>
+	<integer>0</integer>
+</dict>
+</plist>
