@@ -157,7 +157,7 @@ var reserve = resource.save(
 
 if(reserve.ERROR){ alert(reserve.ERROR); } else {   
 
-alert(reserve.tripID)
+
 
                             document.cookie = "tripID=" + reserve.tripID; 
 
