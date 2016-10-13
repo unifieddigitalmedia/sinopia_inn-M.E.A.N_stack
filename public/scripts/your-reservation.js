@@ -456,6 +456,7 @@ if(response.data.length > 2 ){
         "description":"",
         "price":$scope.tripTotal ,
         "frequency":"distance",
+        "checked":true,
       
       
     };
@@ -1013,6 +1014,11 @@ $scope.amenityArray = jQuery.grep($scope.amenityArray, function( a,i ) {
                                                       $scope.total += parseInt(a.price) * parseInt($scope.numofdays) ;
 
 
+                                                }else{
+
+
+$scope.total += parseInt(a.price);
+
                                                 }
 
 
@@ -1026,15 +1032,6 @@ $scope.amenityArray = jQuery.grep($scope.amenityArray, function( a,i ) {
                                                                     });
   
 
-  if($scope.tripID){
-
-
-
-
-$scope.total = Number($scope.total) + Number($scope.tripTotal);
-
-
-  }
 
   return $scope.total;
 
