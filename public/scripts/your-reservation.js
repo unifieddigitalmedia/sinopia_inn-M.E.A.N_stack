@@ -291,7 +291,7 @@ function getCookie(cname) {
 }
 
 
-$scope.from_travel = "false";
+$scope.from_travel = "true";
 
 
 $scope.reservationinit = function () {
@@ -304,7 +304,6 @@ if(getCookie("tripID"))
 
 alert(getCookie("tripID"));
 
-$scope.from_travel = "false";
 
 $scope.tripID = getCookie("tripID"); 
 
@@ -325,8 +324,10 @@ $scope.trip = {
 
  $scope.amenityArray.push($scope.trip);
 
-alert(scope.amenityArray.length);
+ alert(scope.amenityArray.length);
 
+
+$scope.from_travel = "false";
 
 });
 
