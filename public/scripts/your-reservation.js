@@ -302,6 +302,8 @@ if(getCookie("tripID"))
 
 {
 
+alert(getCookie("tripID"));
+
 $scope.from_travel = "false";
 
 $scope.tripID = getCookie("tripID"); 
@@ -323,6 +325,7 @@ $scope.trip = {
 
  $scope.amenityArray.push($scope.trip);
 
+alert(scope.amenityArray.length);
 
 
 });
