@@ -302,35 +302,16 @@ if(getCookie("tripID"))
 
 {
 
-alert("trip " + getCookie("tripID"));
-
 
 $scope.tripID = getCookie("tripID"); 
 
 $http.get("http://www.sinopiainn.com/api/trip/?tripID="+getCookie("tripID")).then(function(response) {
 
-alert("s");
-
-
-alert(response.data[0].total);
 
 
 $scope.tripTotal = response.data[0].total ; 
 
-$scope.trip = {       
 
-
-        "name":"Have you just planned a trip ? ", 
-        "description":"",
-        "price":$scope.tripTotal ,
-        "frequency":"distance",
-      
-      
-    };
-
- $scope.amenityArray.push($scope.trip);
-
- alert($scope.amenityArray.length);
 
 
 $scope.from_travel = "false";
@@ -468,7 +449,18 @@ if(response.data.length > 2 ){
 
           }                                              
 
-                                                          
+                          $scope.trip = {       
+
+
+        "name":"Have you just planned a trip ? ", 
+        "description":"",
+        "price":$scope.tripTotal ,
+        "frequency":"distance",
+      
+      
+    };
+
+ $scope.amenityArray.push($scope.trip);                                
 
                       alert($scope.amenityArray.length);
 
@@ -1254,15 +1246,17 @@ $scope.amenityArray = [];
 
 $scope.roomsArray = [];
 
-alert(reserve.ReservationID);
 
-            document.cookie = "reservationID=" + reserve.ReservationID; 
+
+                            document.cookie = "reservationID=" + reserve.ReservationID; 
 
                             document.cookie = "fromdate=" ;
 
                             document.cookie = "todate=" ;
 
                             document.cookie = "promo=" ;
+
+                            document.cookie = "tripID=" ;
 
                             window.location = "booking-confirmation.html" ;
 

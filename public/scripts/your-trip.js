@@ -995,7 +995,7 @@ var array_string  = JSON.stringify($scope.ItinComps);
 
 document.cookie = "itinerary=" + array_string;
 
-  window.location = "reservation.html" ;
+  window.location = "itinerary.html" ;
 
 
 });
