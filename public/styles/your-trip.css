@@ -574,7 +574,9 @@ background: #EE632C;  header.sticky { height: 100px; background: #efc47D; paddin
 
 header.sticky { height:auto; font-size: 9px;background: #cc9999; padding-left: 20px; z-index:99;  transition: all 0.4s ease;}
 
-.topnav-header{ background:/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cb410b+0,cb410b+100,c96c4a+100,c9856c+100 */
+.topnav-header{ 
+ box-shadow: 10px 10px 5px #888888;
+  background:/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cb410b+0,cb410b+100,c96c4a+100,c9856c+100 */
 background: #cb410b; /* Old browsers */
 background: -moz-linear-gradient(top,  #cb410b 0%, #cb410b 100%, #c96c4a 100%, #c9856c 100%); /* FF3.6-15 */
 background: -webkit-linear-gradient(top,  #cb410b 0%,#cb410b 100%,#c96c4a 100%,#c9856c 100%); /* Chrome10-25,Safari5.1-6 */
