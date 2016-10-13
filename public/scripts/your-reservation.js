@@ -1132,6 +1132,28 @@ $scope.amenityArray = [];
 
 $scope.reserve = function(para) {
 
+
+
+if( ( $scope.fname.length == 0 || typeof $scope.fname === 'undefined' ) || ( $scope.lname.length == 0 || typeof $scope.lname === 'undefined' ) || ( $scope.phone.length == 0 || typeof $scope.phone === 'undefined' ) || ( $scope.email.length == 0 || typeof $scope.email === 'undefined' ) || ( $scope.email.length == 0 || typeof $scope.email === 'undefined' )  )
+  
+{
+
+
+$scope.detailserror = "All details forms are required ";
+
+
+}
+  else if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($scope.email)) 
+ 
+
+    {
+
+$scope.detailserror = "Please check you email.";
+
+    }
+
+else {
+
 var resource = $resource('http://www.sinopiainn.com/api/personaldetails/',{
 
           id:"@id",
@@ -1170,7 +1192,7 @@ var reserve = resource.save(
 {
 
           tripID:$scope.tripID,
-      deposit:$scope.caldeposit($scope.tocurrency($scope.calculatetotals() - $scope.calculatediscounttotal())),
+          deposit:$scope.caldeposit($scope.tocurrency($scope.calculatetotals() - $scope.calculatediscounttotal())),
           payment_method_nonce:para,
           fname:$scope.fname,
           lname:$scope.lname,
@@ -1221,6 +1243,12 @@ alert(reserve.ReservationID);
 
 
   });
+
+
+} 
+
+
+
 
 
 

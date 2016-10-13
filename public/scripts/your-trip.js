@@ -993,7 +993,7 @@ var array_string  = JSON.stringify($scope.ItinComps);
 
 document.cookie = "itinerary=" + array_string;
 
-
+window.open = ("itinerary.html","_self");
 });
 
 
