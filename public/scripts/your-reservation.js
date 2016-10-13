@@ -297,17 +297,18 @@ $scope.from_travel = "false";
 $scope.reservationinit = function () {
 
 
-alert(getCookie("tripID"));
+alert("trip" +  getCookie("tripID"));
 
 if(getCookie("tripID"))
 
 
 {
 
+alert('tripping');
 
 $scope.tripID = getCookie("tripID"); 
 
-
+alert("http://www.sinopiainn.com/api/trip/?tripID="+getCookie("tripID"));
 $http.get("http://www.sinopiainn.com/api/trip/?tripID="+getCookie("tripID")).then(function(response) {
 
 
