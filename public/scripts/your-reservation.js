@@ -452,8 +452,8 @@ if(response.data.length > 2 ){
                           $scope.trip = {       
 
 
-        "name":"Have you just planned a trip ? ", 
-        "description":"",
+        "name":"Planned trip ? ", 
+        "description":"to book your planned trip ? ",
         "price":$scope.tripTotal ,
         "frequency":"distance",
         "checked":true,
