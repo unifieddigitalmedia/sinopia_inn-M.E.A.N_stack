@@ -122,7 +122,7 @@ console.log(results);
 
          resID = results.insertedIds[0];
 
-       var response = {"ERROR":"","ReservationID":resID};
+       var response = {"ERROR":"","tripID":resID};
         
          res.json(response);
 
@@ -152,6 +152,7 @@ res.json(results);
 });
 
 });
+
 
 
 app.post('/api/reservations/', function (req, res) {

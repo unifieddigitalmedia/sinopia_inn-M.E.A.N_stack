@@ -25,7 +25,7 @@ $( "#subscribe_button" ).click(function() {
 
 
 
-  window.open("connect.html","_self");
+   window.location = "connect.html" ;
 
    document.cookie = "subscribers_email=" + document.getElementById("#subscribers_email").value;
 
@@ -296,6 +296,8 @@ $scope.from_travel = "false";
 
 $scope.reservationinit = function () {
 
+
+alert(getCookie("tripID"));
 
 if(getCookie("tripID"))
 

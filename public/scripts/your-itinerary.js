@@ -10,6 +10,20 @@ function myFunction() {
 
 $(document).ready(function(){
 
+
+$( "#subscribe_button" ).click(function() {
+
+
+
+   window.location = "connect.html" ;
+
+   document.cookie = "subscribers_email=" + document.getElementById("#subscribers_email").value;
+
+
+
+});
+
+
   $(".itinerary-main-section").css("height",window.innerHeight);
   $(".itinerary-main-section-left").css("height",window.innerHeight);
   $(".Itinerary-right-side").css("height",window.innerHeight);
@@ -143,9 +157,9 @@ var reserve = resource.save(
 
 if(reserve.ERROR){ alert(reserve.ERROR); } else {   
 
+alert(reserve.tripID)
 
-
-                            document.cookie = "tripID=" + reserve.ReservationID; 
+                            document.cookie = "tripID=" + reserve.tripID; 
 
                             window.location = "reservation.html" ;
 

@@ -15,7 +15,7 @@ $( "#subscribe_button" ).click(function() {
 
 
 
-  window.open("connect.html","_self");
+   window.location = "connect.html" ;
 
    document.cookie = "subscribers_email=" + document.getElementById("#subscribers_email").value;
 

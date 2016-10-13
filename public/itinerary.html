@@ -205,7 +205,19 @@
     <div class="form-group">
    
     <div class="col-sm-12"> 
-      <input type="text" class="form-control form_field" id="phone" placeholder="phone" data-ng-model="phone">
+
+         <div class="col-sm-6"> 
+<input type="tel" id="phone" class="form-control" placeholder="phone" data-ng-model="phone">
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="intl-tel-input-9.2.0/build/js/intlTelInput.js"></script>
+<script>
+  $("#phone").intlTelInput();
+</script>
+  </div> 
+
+
+  
     </div>
   </div>
 
@@ -326,29 +338,6 @@ Infants
 </span>
 
 
-
-
-
-<!--
-
-  <div class="w3-card-4">
-
-<header class="w3-container w3-light-grey">
-  <h3>John Doe</h3>
-</header>
-
-<div class="w3-container">
-  <p>1 new friend request</p>
-  <hr>
-  <img src="img_avatar3.png" alt="Avatar" class="w3-left w3-circle">
-  <p>President/CEO at Mighty Schools...</p>
-</div>
-
-
-
-<button class="w3-btn-block w3-dark-grey">+ Connect</button> </div>
-
--->
 
 
 

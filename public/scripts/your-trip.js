@@ -1,10 +1,12 @@
 
-$('#mc-embedded-subscribe-form').submit(function(ev) {
-   
- 
+$( "#subscribe_button" ).click(function() {
 
 
- document.cookie = "subscribers_email=" + document.getElementById("#subscribers_email").value;
+
+   window.location = "connect.html" ;
+
+   document.cookie = "subscribers_email=" + document.getElementById("#subscribers_email").value;
+
 
 
 });
@@ -993,7 +995,9 @@ var array_string  = JSON.stringify($scope.ItinComps);
 
 document.cookie = "itinerary=" + array_string;
 
-window.open = ("itinerary.html","_self");
+  window.location = "reservation.html" ;
+
+
 });
 
 
