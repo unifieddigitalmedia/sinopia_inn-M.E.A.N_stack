@@ -89,7 +89,7 @@ var init = function () {
 
 $scope.itinerary_array = JSON.parse(getCookie('itinerary'));
 
-$http.get("http://www.sinopiainn.com/api/businesses").then(function(response) {
+$http.get("http://localhost:3000/api/businesses").then(function(response) {
 
 $scope.businesses = response.data;
 
@@ -110,7 +110,7 @@ init();
 $scope.bookTrip = function(){
 
 
-var resource = $resource('http://www.sinopiainn.com/api/booktrip/',{
+var resource = $resource('http://localhost:3000/api/booktrip/',{
 
           id:"@id",
           name:"@name",
