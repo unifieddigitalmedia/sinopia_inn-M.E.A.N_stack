@@ -188,7 +188,7 @@ padding:0px!important; margin:0px!important;width:auto;max-width:auto;  height:6
 
 .slideshow-container-reservation{ 
 
-padding:0px!important; margin:0px!important;width:auto;max-width:auto;  height:600px; position:relative;top:0;  background:/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cb410b+0,cb410b+100,c96c4a+100,c9856c+100 */
+padding:0px!important; margin:0px!important;width:auto;max-width:auto;  height:auto; position:relative;top:0;  background:/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cb410b+0,cb410b+100,c96c4a+100,c9856c+100 */
 background: #cb410b; /* Old browsers */
 background: -moz-linear-gradient(top,  #cb410b 0%, #cb410b 100%, #c96c4a 100%, #c9856c 100%); /* FF3.6-15 */
 background: -webkit-linear-gradient(top,  #cb410b 0%,#cb410b 100%,#c96c4a 100%,#c9856c 100%); /* Chrome10-25,Safari5.1-6 */
@@ -236,6 +236,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb410b', end
 
 
 /******** START OF BODY CSS ********/
+
+
+
 body{margin:0!important;padding:0!important;}
 
 .w3-container a {font-weight:300;color:black;}
