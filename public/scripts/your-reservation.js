@@ -331,11 +331,11 @@ $scope.from_travel = "false";
                                                                 $scope.fromdate = getCookie('fromdate'); 
                                                                 $scope.todate = getCookie('todate'); 
                                                                 $scope.promo = getCookie('promo'); 
+                                                                $scope.checkavailability();
 
 
 
-
-                  }
+                    }
 
 
 
@@ -423,7 +423,6 @@ $scope.error = 'Checking availability';
 $http.get("http://www.sinopiainn.com/api/checkhotelavailability/?hotelID="+getCookie('hotelID')+"&fromdate="+getCookie('fromdate')+"&todate="+getCookie('todate')+"&promo="+getCookie('promo')).then(function(response) {
 
 
-        alert(response.data.length);
 
 if(response.data.length > 2 ){
 
