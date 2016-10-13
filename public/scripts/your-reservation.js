@@ -1014,10 +1014,11 @@ $scope.amenityArray = jQuery.grep($scope.amenityArray, function( a,i ) {
                                                       $scope.total += parseInt(a.price) * parseInt($scope.numofdays) ;
 
 
-                                                }else{
+                                                }
+                                                 else if (a.frequency === 'distance')
 
-alert("distance" + a.price);
-$scope.total += parseInt(a.price);
+
+$scope.total = parseInt(a.price) + $scope.total;
 
                                                 }
 
@@ -1027,7 +1028,7 @@ $scope.total += parseInt(a.price);
 
                                 
                                                                         return a; 
-
+alert($scope.total);
                                                                     
                                                                     });
   
