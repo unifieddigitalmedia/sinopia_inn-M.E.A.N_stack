@@ -550,7 +550,7 @@ border-color:black;
 
 /******** START OF SLIDER CONTAINER CSS ********/
 
-.slideshow-container { max-width:100%; margin: auto;  height:600px; position:relative;top:0;}
+.slideshow-container { max-width:100%; margin: auto; box-sizing: border-box;  height:600px; position:relative;top:0;}
 
 
 .slideshow-container-reservation-image { width:100%; height:auto;  }
@@ -590,7 +590,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb410b', end
 
 .bookingform-subtext {color:black;line-height:none;font-size:100%;}
 
-.booking-form-row {padding:0px 50px 0px 50px; }
+.booking-form-row {padding:0px 50px 0px 50px; margin:0px!important;}
 
 .service_icon-res {font-size:30px!important;color:#ffffff;}
 
