@@ -346,7 +346,7 @@ footer ul {
 }
 
 
-#footer_column_1 , #footer_column_2 ,#footer_column_3 {  height:320px;}
+#footer_column_1 , #footer_column_2 ,#footer_column_3 {  height:auto;}
 
 #footer_column_2 p {
 color:black!important;font-weight:400!important;
