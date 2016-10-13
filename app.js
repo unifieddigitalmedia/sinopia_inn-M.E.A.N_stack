@@ -18,6 +18,8 @@ var mongoose = require('mongoose');
 
 var MONGOLAB_URI = 'mongodb://sinopiainn-administrator:321123ETz$@ds057476.mlab.com:57476/heroku_mn2k4bdf';
 
+
+
 var db = mongoose.createConnection(MONGOLAB_URI);
 
 var routes = require('./routes/index');
@@ -52,7 +54,7 @@ app.use(bodyParser.json());
 
 
 
-var hotelID = '57ff86405fa2ad142307c2a4';
+var hotelID = '57ff8d05bd53798de9f7b809';
 
 
 var braintree = require("braintree");
@@ -209,7 +211,7 @@ db.collection('hotels').find().toArray(function(e, results){
 
 app.get('/api/checkhotelavailability/', function (req, res) {
 
-var o_id = new mongo.ObjectID("57ff86405fa2ad142307c2a4");
+var o_id = new mongo.ObjectID("57ff8d05bd53798de9f7b809");
 
 var availability = [];
 
@@ -928,7 +930,7 @@ app.get("/api/reservation-details/", function (req, res) {
 
 
 
-var hotelID = new mongo.ObjectID( '57ff86405fa2ad142307c2a4');
+var hotelID = new mongo.ObjectID( '57ff8d05bd53798de9f7b809');
 
 var o_id = new mongo.ObjectID(req.query.reservationID);
 
@@ -990,7 +992,7 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '57ff86405fa2ad142307c2a4');
+var hotelID = new mongo.ObjectID( '57ff8d05bd53798de9f7b809');
 
 waterfall([function(callback){
 
