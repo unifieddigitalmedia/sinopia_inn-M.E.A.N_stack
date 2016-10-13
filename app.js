@@ -54,7 +54,7 @@ app.use(bodyParser.json());
 
 
 
-var hotelID = '57ff9cf62e74f61d5ec25754';
+var hotelID = '57ffa3bd7d73f20010ef5c7e';
 
 
 var braintree = require("braintree");
@@ -211,7 +211,7 @@ db.collection('hotels').find().toArray(function(e, results){
 
 app.get('/api/checkhotelavailability/', function (req, res) {
 
-var o_id = new mongo.ObjectID("57ff9cf62e74f61d5ec25754");
+var o_id = new mongo.ObjectID("57ffa3bd7d73f20010ef5c7e");
 
 var availability = [];
 
@@ -932,7 +932,7 @@ app.get("/api/reservation-details/", function (req, res) {
 
 
 
-var hotelID = new mongo.ObjectID( '57ff9cf62e74f61d5ec25754');
+var hotelID = new mongo.ObjectID( '57ffa3bd7d73f20010ef5c7e');
 
 var o_id = new mongo.ObjectID(req.query.reservationID);
 
@@ -994,13 +994,10 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '57ff9cf62e74f61d5ec25754');
+var hotelID = new mongo.ObjectID( '57ffa3bd7d73f20010ef5c7e');
 
 waterfall([function(callback){
 
-var nonce = req.query.payment_method_nonce;
-
-var total = req.query.total.replace(",","");
 
 
 db.collection("hotels").find({"_id":hotelID}, {'rooms': true} ).toArray(function(err, results) {
@@ -1075,7 +1072,7 @@ if(arg1.indexOf(roomsArray._id) === -1 ){
 
 
 
-          callback(null,roomsIdArray,results);
+          callback(null);
 
     }
 
@@ -1084,14 +1081,17 @@ if(arg1.indexOf(roomsArray._id) === -1 ){
 
 
 
-  },  function(arg1,arg2,callback){
+  },  function(callback){
    
 
     
+var nonce = req.query.payment_method_nonce;
+
+var deposit = req.query.deposit.replace(",","");
  
 gateway.transaction.sale({
   
-                                    amount:total,
+                                    amount:deposit,
   
                                     paymentMethodNonce:nonce,
   options: {
@@ -1124,7 +1124,7 @@ if(!result.success)
 {
 
 
-   console.log("ERRORS"+result.errors);
+   console.log("Payment ERRORS"+result);
 
    res.end();
 
@@ -1246,44 +1246,9 @@ db.collection('reservation').insert( [
 
 var balance = Number(req.query.total) - Number(req.query.deposit);
 
-
-
-      var transporter = nodemailer.createTransport({
-        service: 'hotmail',
-        auth: {
-            user: 'machelslack@hotmail.com', 
-            pass: '321123ETz@'
-        }
-
-    });
-
-var mailOptions = {
-
-    from: '"Fred Foo ?" <machelslack@hotmail.com>',
-    to: 'machelslack@icloud.com', 
-    subject: 'Hello ✔' +arg1, 
-    text: 'reservation ?',
-    html: "<b>new  reservation ?</b>", 
-   
-};
-
-transporter.sendMail(mailOptions, function(error, info){
-
-    if(error){
-
-        return console.log(error);
-    }
-    
-    console.log('Message sent: ' + info.response +'for reservation ID ' + arg1 ) ;
-
-
-       var response = {"ERROR":"","ReservationID":arg1};
+var response = {"ERROR":"","ReservationID":arg1};
         
-       res.json(response);
-
-});
-
-
+res.json(response);
 
 
 

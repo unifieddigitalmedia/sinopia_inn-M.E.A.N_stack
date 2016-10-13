@@ -5,15 +5,14 @@ app.controller('reservationsystem', function($scope,$http,$resource,$compile) {
 
 var init = function () {
 
-
 var d = new Date();
-document.getElementById("date").innerHTML = d.toDateString();
 
+document.getElementById("date").innerHTML = d.toDateString();
 
 $http.get("http://www.sinopiainn.com/api/reservation-details/?reservationID="+getCookie('reservationID')).then(function(response) {
 
 
-             $scope.bookingID = response.data._id;
+                                    $scope.bookingID = response.data._id;
  
                                     $scope.roomlist = response.data.rooms;
 
