@@ -248,10 +248,18 @@ for (z = 0; z < results[0].rooms[x].booking[y].length; z++) {
 
 
 
+console.log(new Date(results[0].rooms[x].booking[y][z].fromdate) +'less than'+ new Date(fromdate)  );
+
+console.log(new Date(results[0].rooms[x].booking[y][z].enddate) +'greater than'+ new Date(fromdate) );
+
+console.log(new Date(results[0].rooms[x].booking[y][z].fromdate) +'less than '+ new Date(todate) )
+
+console.log(new Date(results[0].rooms[x].booking[y][z].enddate) +'greater than'+ new Date(todate) );
 
 
 if ( (new Date(results[0].rooms[x].booking[y][z].fromdate) <= new Date(fromdate)  &&  new Date(results[0].rooms[x].booking[y][z].enddate) >= new Date(fromdate) ) || (new Date(results[0].rooms[x].booking[y][z].fromdate) <= new Date(todate)  &&  new Date(results[0].rooms[x].booking[y][z].enddate) >= new Date(todate) ) ) {
 
+console.log(results[0].rooms[x]);
 
 
             roomsIdArray.push(results[0].rooms[x]._id);
@@ -275,7 +283,7 @@ if ( (new Date(results[0].rooms[x].booking[y][z].fromdate) <= new Date(fromdate)
 
 }
 
-
+console.log(roomsIdArray);
 
 
 
@@ -290,12 +298,13 @@ if ( (new Date(results[0].rooms[x].booking[y][z].fromdate) <= new Date(fromdate)
   },function(arg1,arg2,callback){
 
 
-
+console.log(arg1.length);
 
                           if( arg1.length === 0)
                           
 
                           {
+
 
 
                                    db.collection("hotels").find({"_id":o_id}, {'rooms': true} ).toArray(function(e, results){
@@ -304,6 +313,8 @@ if ( (new Date(results[0].rooms[x].booking[y][z].fromdate) <= new Date(fromdate)
                                             if (e) return next(e)
 
                                             availability.push(results[0].rooms);
+
+
 
                                             callback(null);
     
@@ -408,7 +419,7 @@ if ( (new Date(results[0].offers[x].validdate) <= new Date(fromdate)  &&  new Da
 
 if(req.query.promo){
 
-console.log(req.query.promo);
+
 
 db.collection("hotels").find({"_id":o_id }, { "offers": { $elemMatch: { "token": req.query.promo } } }  ).toArray(function(e, results){
 
@@ -427,26 +438,21 @@ if (e) return next(e)
 
 
 
-    console.log(arg1);
+    
 
     availability.push(arg1);
 
 
-     
+    
       
     
 
 });
 
 
- //callback(null);
-
- } else{
 
 
-  
-
- }
+ } 
 
 
  db.collection("hotels").find({"_id":o_id}, {'amenities': true} ).toArray(function(e, results){
@@ -457,7 +463,7 @@ if (e) return next(e)
 
                                             availability.push(results[0].amenities);
     
-                                     
+                                    
                                             res.json(availability);
                                  
                                                                                                 });

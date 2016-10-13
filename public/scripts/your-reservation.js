@@ -412,23 +412,26 @@ $scope.error = 'Checking availability';
                             document.cookie = "promo=" + $("#promo").val();
 
                            
-alert("http://www.sinopiainn.com/api/checkhotelavailability/?hotelID="+getCookie('hotelID')+"&fromdate="+getCookie('fromdate')+"&todate="+getCookie('todate')+"&promo="+getCookie('promo'));
 
                                   if (document.getElementById("shortcodeform")) 
 
                                 
                                 {
                  
-                    
+                    alert("http://www.sinopiainn.com/api/checkhotelavailability/?hotelID="+getCookie('hotelID')+"&fromdate="+getCookie('fromdate')+"&todate="+getCookie('todate')+"&promo="+getCookie('promo'));
 $http.get("http://www.sinopiainn.com/api/checkhotelavailability/?hotelID="+getCookie('hotelID')+"&fromdate="+getCookie('fromdate')+"&todate="+getCookie('todate')+"&promo="+getCookie('promo')).then(function(response) {
 
+alert(response);
+
+alert('s');
+
+
+alert(response.data.length);
 
 
 if(response.data.length > 2 ){
 
   $scope.roomlist = response.data[0];
-
-  $scope.distance = getCookie("distance");
                                                       
   $scope.offerlist = response.data[1];
 
