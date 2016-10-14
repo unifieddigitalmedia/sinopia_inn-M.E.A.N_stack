@@ -8,6 +8,18 @@ $('#mc-embedded-subscribe-form').submit(function(ev) {
 
 
 });
+function showResponsivemenu() {
+    document.getElementsByClassName("topnav")[0].classList.toggle("responsive");
+}
+
+
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
 
 
 function myFunction() {
@@ -291,7 +303,7 @@ function getCookie(cname) {
 }
 
 
-$scope.from_travel = "true";
+$scope.from_travel = "false";
 
 
 $scope.reservationinit = function () {
