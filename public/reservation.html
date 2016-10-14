@@ -30,12 +30,11 @@
 
 <meta name="keywords" content="Holiday,Villa,Portland,Port Antonio,Jamaica,Self Catering,Travel, Excursions, Beaches, Experiential Trips. Tours, Sight seeing, Yoga, Waterfalls, Rivers, Rafting, Blue Lagoon, Sun ,Sand, Sea">
 
-<title> Sinopia Inn  -  Self Catering Holiday Villa in Portland Jamaica  | Plan a Trip </title>
 
+<title> Sinopia Inn  -  Self Catering Holiday Villa in Portland Jamaica  | Make A Reservation </title>
 
 </head>
-
-<body  ng-app="travellight" ng-controller="travelplanner" ng-cloak>
+<body class="body-class" ng-app="travellight" ng-controller="travelplanner" ng-cloak>
 
 <nav id="mySidenav" class="sidenav">
 
@@ -182,9 +181,9 @@
 <div class="bookingform-rewards">
       <h2 >  
 
-    <span class="bookingform-rewards-heading1" > Amazing value </span>  </br> <span class="bookingform-rewards-heading" > at an affordable price. </span> </h2>
+    <span class="bookingform-rewards-heading1" > Exclusive </span>  </br> <span class="bookingform-rewards-heading" > rewards. </span> </h2>
 &nbsp;
-    <p class="bookingform-subtext" > Book direct for the best rates. You will have access to the entire villa and all of it's amenities.</p>
+    <p class="bookingform-subtext" > Beacome a GOLD, PLATINUM , BLACK card memebr when you book a trip with us.</p>
 </div>
     </div>
 
@@ -249,51 +248,796 @@
 
 <div  class="container-fluid maindiv">
 
-<section>
 
-<div class="row">
-  
-<div class="col-sm-4" >
 
-<p class="side_menu_title" > Things to do </p> 
+<section class="itinerary-main-section container-fluid" >
 
-<ul> 
+<section >
 
-<li> <a> Plan a trip </a> </li>
-
-<li><a href="culinary-experiences.html"> Culinary Experiences </a> </li>
-
-<li> <a href="beaches.html" > Beaches </a></li>
-
-<li> <a href="treks.html" > Mountain and Bike Treks </a></li>
- 
-<li> <a href="yoga.html" > Yoga</a></li>
- 
-<li> <a href="experiential-trips.html" > Experiential Trips</a></li>
- 
-<li> <a href="local-experiences.html" > Local Experiences and Events</a></li>
-
-<li> <a href="family-sporting-trips.html" > Family and Sporting Trips </a></l1> 
-
-</ul>
+<div class="row" ng-hide="from_travel">
+<div class="col-sm-12 booking-confirmation-row1">
+<h1>You must be staying with us to book a trip. Please tell us the dates you would like to travel below.</h1>
+<h2> once you've booked a room your ready to go </h2>
 
 </div>
+</div>
+&nbsp;
+
+<form method="post" id="shortcodeform" class="shortcodeform" name="shortcodeform" ng-init="reservationinit()">
  
-<div class="col-sm-8" >
+<div class="row" >
 
-<p class="side_menu_title"> You’ve one life. Why not live it ? </p> 
+<div class="col-sm-3 bookinglabel" id='bookinglabel' > <label> Reserve online </label> </div><div class="col-sm-9" > </div>
 
-<p> Head to Portland Jamaica and plan your own trip with Sinopia Inn to venues across the island where you’ll find rare flavoursome dishes, estates of coffee premium liquors and a natural blend of fruits to produce a exotic taste made for paradise. Experience relaxing oceanic view, lush green mountain tops and skies streaking with colour as our island excursion include experimental trips; local culture; multi generation travel ; authentic activities and a personalised service provided by the local people of Jamaica. </p>
+</div>
+
+<div class="row checkavaiabiltyrow" ng-hide='availabilty'>
+
+
+<div class="col-sm-3 " id='checkavaiabiltyrow' >
+
+<div class="form-group has-success has-feedback">
+
+<label> CHECK IN DATE </label>
+
+<input type="text" class="form-control"  id="fromdate" name="from" ng-model="fromdate"> 
+
+<span class="glyphicon glyphicon-th form-control-feedback"></span> 
+
+</input> 
+
+</div>
+
+
+
+</div>
+
+<div class="col-sm-3" id='checkavaiabiltyrow' >
+
+<div class="form-group has-success has-feedback">
+
+<label> CHECK OUT DATE </label>
+
+<input type="text" class="form-control" id="todate"  name="to" ng-model="todate"> 
+
+<span class="glyphicon glyphicon-th form-control-feedback"></span>  
+
+</input> 
+
+</div>
+
+</div>
+
+<script type="text/javascript">
+
+           
+        </script>  
+
+<div class="col-sm-3" id='checkavaiabiltyrow' >
+
+<div class="form-group has-success has-feedback">
+<label> PROMO CODE  </label>
+<input id="promo" class="form-control" type="text" name='promo' ng-model="promo" /> 
+
+<span class="glyphicon glyphicon-qrcode form-control-feedback"></span>
+
+</div>
+
+</div>
+
+<div class="col-sm-3" id='checkavaiabiltyrow' >
+<label> </label>
+<button class="btn btn-default btn-block" type="button"  id="checkavailability"  ng-click="checkavailability()">CHECK AVAILABILITY</button> 
+
+</div>
+
+</div>
+
+</div>
+
+<div id='errormessage' class='checking'> <p id="error" class="error"> {{error}} </p> </div>
+
+
+
+</form>
+
+</section>
+
+</section>
+
+
+
+<section>
+
+<div class="row" style="margin:0px!important;">
   
-  <a href="your-trip.html"  style="color: #aa9d2e!important;" > <h1> Click here to get started  </h1> </a>
+<div class="col-sm-12 booking-confirmation-row1">
+
+<section class="reservation-hotel-section">
+
+<div class="container-fluid maindiv">
+
+<div class="row" >
+
+<div class="col-sm-5"> 
+
+<div class="row" class="availablecol" id="availablecol"> 
+
+   <div class="row" id="toprow" style="border:thin solid #aa9d2e!important;"> <div class="col-sm-12"> <h6>Available rooms<h6> </div>  </div>
+
+   <div class="arooms" > 
+
+
+   <div  ng-repeat="room in roomlist" >
+
+     <div class="w3-container">
+
+         <!--<img src="{{room.icon}}" onclick="displayModal(this)" alt="room_tumbnail" class="w3-left w3-circle w3-margin-right myImg" style="width:60px">-->
+
+         <p>{{room.name}} </br> <p id="cpnbtn" type="button" ng-click = "addroom($index)"  >ADD</p> {{room.description}}  </p> 
+
+     </div>
+        
 
     </div>
 
+         &nbsp;
+
+   </div>
+
+   </div>
+
+   <div class="row" id="offerscol">
+
+   <div class="row" id="toprow"> <div class="col-sm-12"> <h6>Offers <h6> </div>  </div>
+   
+   <div class="acpns"> 
+
+
+          <div id="firstinnerrow" ng-repeat="offer in offerlist">
+
+
+
+          <div class="w3-container">
+
+         <img src="" alt="room_tumbnail" class="w3-left w3-circle w3-margin-right" style="width:60px">
+
+        <p>{{offer.name}} </br> {{offer.description}} <p id="cpnbtn" type="button" ng-click = "addoffer($index)"  >ADD</p> </p> 
+         
+         </div>
+
+
+
+          
+
+         </div>
+
+
+   </div>
+
+
+
+
+   </div>
+
+</div>
+
+<div class="col-sm-2"> 
+
+
+</div>
+
+
+<div class="col-sm-5"> 
+
+ <div class="row" id="bookingcol" class="bookingcol">
+
+   <div class="col-sm-12"> 
+  
+   <div class="row" id="toprow"> <div class="col-sm-12"> <h6>Your booking<h6> </div>  </div>
+
+   <div class="bkng" >  
+
+
+
+<table style="width:100%;">
+
+<tr>
+
+<td> Room </td> 
+
+<td> Occupancy</td> 
+
+<td> </td> 
+
+<td> </td> 
+
+<td> </td> 
+
+<td> </td> 
+
+</tr>
+<tr ng-repeat="chkroom in roomsArray" > <td> <p> {{chkroom.name}}</p></td> <td> <p> {{chkroom.occupancy}}</p></td> <td> <p> 
+
+
+<select  class="" name="adults" >
+
+
+<option value="1">1</option>
+<option value="2">2</option>
+
+</select> 
+
+
+</p></td> <td><p> 
+
+<select  class="" name="children" >
+
+<option value="0">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+
+
+</select> 
+
+
+</p>
+ </td> <td><p> 
+
+<select  class="" name="infants" >
+
+<option value="0">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+
+
+</select>  
+
+
+</p> </td> <td> <p class="bkngrmrmv" ng-click="removerm($index)">REMOVE </p>  </td>  </tr>
+
+</table>
+
+
+
+   </div> 
+
+   <div class="row" id="toprow"> <div class="col-sm-12"> <h6>Discounts<h6> </div>  </div>
+
+   <div class="bkngcpt" >  
+
+
+
+<div id="firstinnerrow" ng-repeat="chkoffer in offersArray" ><div class="row" >
+
+          <div class="col-sm-10">
+
+          <p> {{ chkoffer.name }} </p>
+
+          </div>
+
+          <div class="col-sm-2">
+
+          <p> </p>
+
+          </div>
+
+          </div>
+
+          <div class="row" >
+
+          <div class="col-sm-10">
+
+          <p> {{ chkoffer.description }}  </p>
+
+          </div>
+          <div class="col-sm-2">
+
+          <p class="bkngrmrmv" ng-click="removeoffer($index)" >REMOVE </p> 
+
+          </div>
+
+          </div></div>
+
+
+
+   </div>
+
+   <div class="row" id="toprow"> <div class="col-sm-12"> <h6>Amenities<h6> </div>  </div>
+
+   <div class="bkngaddons"> 
+
+   <div id="firstinnerrow" ng-repeat="amenity in amenityArray">
+
+   <div class="row" >
+
+   <div class="col-sm-6" >
+
+  Would you like {{ amenity.name }}
+
+   </div>
+  
+   <div class="col-sm-6" >
+
+  <p>  </p>
+
+   </div>
+
+
+   </div>
+  
+ 
+   <div class="row" >
+
+   <div class="col-sm-4" >
+   &nbsp;
+   <div class="row" >
+  
+   <div class="col-sm-12"> 
+
+   
+   <label class="radio-inline"><input type="radio" name="{{amenity.name}}" value="Yes" class="radioaddon" >Yes</label>
+
+   <label class="radio-inline"><input type="radio" name="{{amenity.name}}" value="no" class="radioaddon" >No</label>
+
+ 
   </div>
+  
+   
+
+   </div>
+
+   </div>
+  
+   <div class="col-sm-8">
+
+   <p>  </p>
+
+   </div>
+
+   </div>
+     &nbsp;
+   </div>
+
+
+
+
+
+
+   </div>
+
+  &nbsp;
+
+
+  
+
+   <div class="row"  > 
+
+   <div class="col-sm-6"> <p><p> </div> 
+
+   <div class="col-sm-3"> <p><p> </div>
+
+   <div class="col-sm-3"> <p><button class="btn btn-default input-sm outline" type="button"  id="chkrates" ng-click="bookingtotal()"> CONTINUE</button><p>     </div>  
+
+   </div>
+
+   </div>
+   
+   </div>
+
+
+  <div class="row" class="ratescol">
+
+   <div class="row"id="toprow" > <div class="col-sm-12"> <h6>Rates<h6> </div>  </div>
+
+   <div> </div>
+
+   <div class="row" id="toprow"> <div class="col-sm-12"> <h6>Rooms<h6> </div>  </div>
+
+   <div class="rtsrms"> 
+
+   <table style="width:100%;" >
+
+   <tr class="row"  ng-repeat="room in roomsArray">
+
+   <td class="col-sm-6"><p>
+
+   {{room.name}}
+ 
+   </p>
+  
+   </td>
+   
+   <td class="col-sm-3">
+
+   <p> USD </p>
+
+   </td>
+
+   <td class="col-sm-3" >
+
+   <p> {{tocurrency(room.price * numofdays) }} </p>
+
+   </td>
+
+   </tr>
+
+
+   </table>
+
+   <div class="row" id="toprow"> <div class="col-sm-12"> <h6>Amenities<h6> </div>  </div>
+
+   <div class="rtsaddons">  
+
+   <table style="width:100%;">
+
+   <tr class="row" ng-if="tripID">
+   
+   <td class="col-sm-6"><p>
+
+   Excursion
+ 
+   </p>
+  
+   </td>
+   
+   <td class="col-sm-3">
+
+   <p> USD </p>
+
+   </td>
+
+   <td class="col-sm-3" >
+{{tocurrency(tripTotal)}}
+   </td>
+
+    </tr>
+
+   </table>
+
+    <div>
+   
+   <table style="width:100%;">
+
+   <tr class="row"  ng-repeat="room in amenityArray | filter:room.checked='true'">
+
+   <td class="col-sm-6"><p>
+
+   {{room.name}}
+ 
+   </p>
+  
+   </td>
+   
+   <td class="col-sm-3">
+
+   <p> USD </p>
+
+   </td>
+
+   <td class="col-sm-3" >
+
+    <p ng-if="room.frequency === 'person' "> 
+
+    {{ 
+
+        
+
+               tocurrency(room.price * numofadults)
+
+
+
+    }} 
+
+   </p>
+
+   <p ng-if="room.frequency === 'room' "> 
+
+    {{ 
+
+        
+
+              tocurrency(room.price * roomsArray.length)
+
+
+
+    }} 
+
+   </p>
+
+<p ng-if="room.frequency === 'night' "> 
+
+    {{ 
+
+        
+
+            tocurrency(room.price * numofdays)  
+
+
+
+    }} 
+
+   </p>
+
+
+<p ng-if="room.frequency === 'distance' "> 
+
+    {{ 
+
+        
+
+            tocurrency(room.price * numofdays)  
+
+
+
+    }} 
+
+   </p>
+
+
+   </td>
+
+   </tr>
+
+</table>
+
+   </div>
+
+   <div class="row" id="toprow"> <div class="col-sm-12"> <h6>Offer<h6> </div>  </div>
+   <div class="rtsoffs"> 
+<table style="with:100%;">
+
+   <tr class="row"  ng-repeat="offer in offersArray">
+
+   <td class="col-sm-6"><p>
+
+   {{offer.name}}
+ 
+   </p>
+  
+   </td>
+   
+   <td class="col-sm-3">
+
+   <p> USD </p>
+
+   </td>
+
+   <td class="col-sm-3" >
+
+   <p>({{tocurrency(calculateoffertotal($index))}} )</p>
+
+   </td>
+
+   </tr>
+
+</table>
+
+
+   </div>
+
+<div class="row" id="firstinnerrow"> 
+
+   <div class="col-sm-6">  <h6>Tax<h6> </div> <div class="col-sm-3"> <p><p> </div><div class="col-sm-3"> <p><p> </div>  </div>
+
+   <div> </div>
+   
+   <div class="row" id="toprow"> 
+
+    <div class="col-sm-6"> <h6>Total<h6> </div> 
+
+    <div class="col-sm-3"> <p><p> </div>
+
+    <div class="col-sm-3"> 
+
+
+      <p class="rtstlt">
+
+        {{tocurrency(calculatetotals() - calculatediscounttotal())}}
+   
+        <p> 
+
+   </div>  </div>
+   
+   <div>
+
+<div class="row" > <div class="col-sm-6"> <p><p> </div> <div class="col-sm-3"> <p><p> </div>
+
+ <div class="col-sm-3"> <p><button class="btn btn-default input-sm outline" type="button" id ="totalid" ng-click="personaldetails()"> CONTINUE</button><p> </div>  
+
+</div>
+
+  </div>
+
+
+
+ 
+
+  <form action="booking-confirmation.html" method="post" id="detailsform" class="detailsform" name="detailsform">
+
+
+ <div class="row" id="detailscol" class="detailscol">
+
+
+<h2> You're ready to confirm your stay with us. </h2>
+   
+
+
+   <section class="device-compatiability-icon-section">
+
+
+<div class="row">
+  
+  <div class="col-sm-12"><h5> We're accepting the following payments  </h5>
+
+<div class="row">
+  
+  <div class="col-sm-2"> 
+
+ <img  src="/credit_card_&_payment_logos/large/amex-1-l.png"
+  style="width:100%">
+
+  </div>
+
+   <div class="col-sm-2">
+
+ <img src="/credit_card_&_payment_logos/large/visa-1-l.png"
+  style="width:100%">
+
+  </div>
+
+   <div class="col-sm-2"> 
+
+ <img  src="/credit_card_&_payment_logos/large/mastercard-1-l.png"
+  style="width:100%">
+
+  </div>
+
+   <div class="col-sm-2">
+
+ <img  src="/credit_card_&_payment_logos/large/maestro-1-l.png"
+  style="width:100%">
+
+  </div>
+
+  <div class="col-sm-2">
+
+ <img  src="/credit_card_&_payment_logos/large/jcb-1-l.png"
+  style="width:100%">
+
+  </div>
+
+ <div class="col-sm-2">
+
+ <img  src="/credit_card_&_payment_logos/large/paypal-1-l.png"
+  style="width:100%">
+
+  </div>
+
+ </div>
+
+  </div>
+
+  </div>
+
+
+
+
+</section>
+
+&nbsp;
+
+  
+   <div class="row" id="firstinnerrow"> 
+
+   <div class="col-sm-6"> <input type="text" class="form-control" id="resfirstname" placeholder="Enter first name" data-ng-model="fname">  </div> 
+
+
+   <div class="col-sm-6"> <input type="text" class="form-control" id="reslastname" placeholder="Enter last name" data-ng-model="lname" >  </div>  
+
+   
+   </div>
+
+&nbsp;
+
+<div class="row" id="firstinnerrow"> 
+
+   <div class="col-sm-6"> 
+<input type="tel" id="phone" class="form-control" data-ng-model="phone">
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="intl-tel-input-9.2.0/build/js/intlTelInput.js"></script>
+<script>
+  $("#phone").intlTelInput();
+</script>
+  </div> 
+
+
+   <div class="col-sm-6"> <input type="text" class="form-control" id="resemail" placeholder="Enter email" data-ng-model="email">  </div>  
+
+   
+   </div>
+&nbsp;
+
+   <span id="detailserror">  </span>
+
+ <div id="payment-form"></div>
+
+<div class="row" id="firstinnerrow"> 
+
+   <div class="col-sm-12"> 
+
+    <label><input type="checkbox" id="ckhterms" /> You must agree to the terms of OUR VILLA <a href=""> below</a> to stay with us </label> </div> </div>
+    
+  <div class="row"  > 
+
+   <div class="col-sm-6"> <p><p> </div> 
+
+   <div class="col-sm-3"> <p><p> </div>
+
+
+   <div class="col-sm-3">  <p><button class="btn btn-default input-sm outline " type="submit"  > Pay $ {{caldeposit(total)}}</button><p>  </div>  
+
+   </div>
+   <div class="row">
+
+<div class="col-sm-12">
+
+<p> Rates are per room per night, quoted in U.S. dollars, are based on double occupancy per room. Rates quoted are plus 26.5% Government tax and service charge. </p>
+
+
+&nbsp;
+
+
+<h4>DEPOSIT POLICY:</h4>
+
+&nbsp;
+<p style="text-align:left;"> {{caldeposit(total)}}deposit is required upon making a reservation. Final payment is due in full 14 days prior to arrival date, 30 days for Easter and 60 days for Christmas/New Year and is non-refundable.
+</p>  
+
+&nbsp;
+
+<h4>CANCELLATION, NO-SHOW AND REFUND POLICIES:</h4>
+&nbsp;
+<p>A full refund is due when cancelled 45 days prior to arrival, 60 days for Easter and 90 days during Christmas and New Year. The full amount of the stay is non-refundable when inside 45 days, 60 days for Easter and 90 days during Christmas and New Year.</p>  
+&nbsp;
+<p>No refund and full amount of stay is forfeited when there is a no-show.</p>    
+
+</div>
+
+   </div>
+
+
+
+</form>
+
+
+
+
+
+
+   </div>
+
+
+
+   </div>
+
+
+</div>
+
+</div>
+
+</div>
 
 </section>
 
 </div>
+
+</div>
+
+</section>
+
+
 
 <footer>
 <div class="row firstrow">

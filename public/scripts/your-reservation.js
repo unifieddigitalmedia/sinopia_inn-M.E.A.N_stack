@@ -8,6 +8,7 @@ $('#mc-embedded-subscribe-form').submit(function(ev) {
 
 
 });
+
 function showResponsivemenu() {
     document.getElementsByClassName("topnav")[0].classList.toggle("responsive");
 }
@@ -391,6 +392,7 @@ $scope.error = 'Checking availability';
 
 
 $scope.checkavailability = function() {
+
 
 
 $scope.error = 'Checking availability';
