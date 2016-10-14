@@ -550,7 +550,7 @@ border-color:black;
 
 /******** START OF SLIDER CONTAINER CSS ********/
 
-.slideshow-container { max-width:100%; margin: auto; box-sizing: border-box;  height:600px; position:relative;top:0;}
+.slideshow-container {padding:0px!important; margin:0px!important;width:auto;max-width:auto;  height:600px; top:0; }
 
 
 .slideshow-container-reservation-image { width:100%; height:auto;  }
@@ -558,7 +558,7 @@ border-color:black;
 
 .slideshow-container-reservation{ 
 
-position: relative; width:100%;  background:/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cb410b+0,cb410b+100,c96c4a+100,c9856c+100 */
+padding:0px!important; margin:0px!important;width:auto;max-width:auto;  height:auto;  background:/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cb410b+0,cb410b+100,c96c4a+100,c9856c+100 */
 background: #cb410b; /* Old browsers */
 background: -moz-linear-gradient(top,  #cb410b 0%, #cb410b 100%, #c96c4a 100%, #c9856c 100%); /* FF3.6-15 */
 background: -webkit-linear-gradient(top,  #cb410b 0%,#cb410b 100%,#c96c4a 100%,#c9856c 100%); /* Chrome10-25,Safari5.1-6 */
