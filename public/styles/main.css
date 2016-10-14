@@ -542,8 +542,7 @@ section h3{color: #cb410b!important; font-size:100%!important;}
   .menudivider{display:none;}
 
 
-  .bookingform-rewards{margin-left:10px!important;}
-
+.bookingform-rewards h2 {font-weight:300;font-size:150%!important;}
 
 }
 
@@ -563,8 +562,7 @@ section h3{color: #cb410b!important; font-size:100%!important;}
     text-align: left;
   }
 
-   .bookingform-rewards{margin-left:10px!important;}
-   
+.bookingform-rewards h2 {font-weight:300;font-size:150%!important;}
 }
 
 

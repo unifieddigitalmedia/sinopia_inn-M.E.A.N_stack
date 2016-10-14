@@ -651,6 +651,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb410b', end
   .topnav{ width:100%;list-style-type: none; color:white; margin: 0 auto; padding: 0; overflow: hidden; text-align:right; line-height: 100% !important; }
 
 .menudivider{display:none;}
+
+.bookingform-rewards h2 {font-weight:300;font-size:150%!important;}
+
 }
 
 @media screen and (max-width:1080px) {
@@ -668,6 +671,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb410b', end
     display: block;
     text-align: left;
   }
+
+.bookingform-rewards h2 {font-weight:300;font-size:150%!important;}
 }
 
 
