@@ -263,6 +263,7 @@
 </div>
 &nbsp;
 
+
 <form method="post" id="shortcodeform" class="shortcodeform" name="shortcodeform" ng-init="reservationinit()">
  
 <div class="row" >
@@ -333,9 +334,12 @@
 
 </div>
 
-</div>
+
 
 <div id='errormessage' class='checking'> <p id="error" class="error"> {{error}} </p> </div>
+
+</div>
+
 
 
 
@@ -349,6 +353,7 @@
 
 <section>
 
+
 <div class="row" style="margin:0px!important;">
   
 <div class="col-sm-12 booking-confirmation-row1">
@@ -359,14 +364,20 @@
 
 <div class="row" >
 
+
+
+
+
+
 <div class="col-sm-5"> 
 
 <div class="row" class="availablecol" id="availablecol"> 
 
-   <div class="row" id="toprow" style="border:thin solid #aa9d2e!important;"> <div class="col-sm-12"> <h6>Available rooms<h6> </div>  </div>
+ <div class="col-sm-12"> 
 
-   <div class="arooms" > 
+<div class="row" id="toprow" style="border:thin solid #aa9d2e!important;"> <div class="col-sm-12"> <h6>Available rooms<h6> </div>  </div>
 
+  <div class="arooms" > 
 
    <div  ng-repeat="room in roomlist" >
 
@@ -385,18 +396,19 @@
 
    </div>
 
-   </div>
+
+ </div>
+
+</div>
 
    <div class="row" id="offerscol">
+   <div class="col-sm-12"> 
 
    <div class="row" id="toprow"> <div class="col-sm-12"> <h6>Offers <h6> </div>  </div>
-   
-   <div class="acpns"> 
 
+ <div class="acpns"> 
 
-          <div id="firstinnerrow" ng-repeat="offer in offerlist">
-
-
+  <div id="firstinnerrow" ng-repeat="offer in offerlist">
 
           <div class="w3-container">
 
@@ -405,20 +417,12 @@
         <p>{{offer.name}} </br> {{offer.description}} <p id="cpnbtn" type="button" ng-click = "addoffer($index)"  >ADD</p> </p> 
          
          </div>
-
-
-
-          
-
          </div>
-
-
+ </div>
+ 
    </div>
-
-
-
-
    </div>
+   
 
 </div>
 
@@ -431,8 +435,8 @@
 <div class="col-sm-5"> 
 
  <div class="row" id="bookingcol" class="bookingcol">
-
-   <div class="col-sm-12"> 
+ <div class="col-sm-12"> 
+  
   
    <div class="row" id="toprow"> <div class="col-sm-12"> <h6>Your booking<h6> </div>  </div>
 
@@ -626,14 +630,10 @@
    </div>
 
 
-  <div class="row" class="ratescol">
-
+  <div class="row" class="ratescol" id="ratescol">
+   <div class="col-sm-12"> 
    <div class="row"id="toprow" > <div class="col-sm-12"> <h6>Rates<h6> </div>  </div>
-
-   <div> </div>
-
    <div class="row" id="toprow"> <div class="col-sm-12"> <h6>Rooms<h6> </div>  </div>
-
    <div class="rtsrms"> 
 
    <table style="width:100%;" >
@@ -665,8 +665,8 @@
 
    </table>
 
+</div>
    <div class="row" id="toprow"> <div class="col-sm-12"> <h6>Amenities<h6> </div>  </div>
-
    <div class="rtsaddons">  
 
    <table style="width:100%;">
@@ -695,7 +695,7 @@
 
    </table>
 
-    <div>
+    
    
    <table style="width:100%;">
 
@@ -782,8 +782,8 @@
 </table>
 
    </div>
-
-   <div class="row" id="toprow"> <div class="col-sm-12"> <h6>Offer<h6> </div>  </div>
+   <div class="row" id="toprow"> <div class="col-sm-12"> <h6>Offers<h6> </div>  </div>
+ 
    <div class="rtsoffs"> 
 <table style="with:100%;">
 
@@ -815,14 +815,13 @@
 
 
    </div>
-
 <div class="row" id="firstinnerrow"> 
 
-   <div class="col-sm-6">  <h6>Tax<h6> </div> <div class="col-sm-3"> <p><p> </div><div class="col-sm-3"> <p><p> </div>  </div>
+   <div class="col-sm-6">  <h6>Tax<h6> </div> <div class="col-sm-3"> <p><p> </div><div class="col-sm-3"> <p><p> </div>  
 
-   <div> </div>
-   
-   <div class="row" id="toprow"> 
+ </div>
+
+ <div class="row" id="toprow"> 
 
     <div class="col-sm-6"> <h6>Total<h6> </div> 
 
@@ -838,16 +837,30 @@
         <p> 
 
    </div>  </div>
-   
-   <div>
 
-<div class="row" > <div class="col-sm-6"> <p><p> </div> <div class="col-sm-3"> <p><p> </div>
+   <div class="row" > <div class="col-sm-6"> <p><p> </div> <div class="col-sm-3"> <p><p> </div>
 
  <div class="col-sm-3"> <p><button class="btn btn-default input-sm outline" type="button" id ="totalid" ng-click="personaldetails()"> CONTINUE</button><p> </div>  
 
 </div>
 
+
+   </div>
   </div>
+  
+
+ 
+
+   
+
+   
+
+
+   
+
+ 
+
+
 
 
 

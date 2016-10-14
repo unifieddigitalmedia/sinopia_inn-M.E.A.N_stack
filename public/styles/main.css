@@ -539,7 +539,11 @@ section h3{color: #cb410b!important; font-size:100%!important;}
     display: inline-block;
   }
   .topnav{ width:100%;list-style-type: none; color:white; margin: 0 auto; padding: 0; overflow: hidden; text-align:right; line-height: 100% !important; }
-.menudivider{display:none;}
+  .menudivider{display:none;}
+
+
+  .bookingform-rewards{margin-left:10px!important;}
+
 
 }
 
@@ -558,6 +562,9 @@ section h3{color: #cb410b!important; font-size:100%!important;}
     display: block;
     text-align: left;
   }
+
+   .bookingform-rewards{margin-left:10px!important;}
+   
 }
 
 
