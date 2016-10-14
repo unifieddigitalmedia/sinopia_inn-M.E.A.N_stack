@@ -467,7 +467,7 @@ footer ul {
 }
 
 
-#footer_column_1 , #footer_column_2 ,#footer_column_3 {  height:320px;}
+#footer_column_1 , #footer_column_2 ,#footer_column_3 {  height:auto;}
 
 #footer_column_2 p {
 color:black!important;font-weight:400!important;
@@ -584,7 +584,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb410b', end
 
 .bookingform-rewards{margin-top:100px;}
 
-.bookingform-rewards-heading{color:white;font-size:180%!important;}
+.bookingform-rewards-heading{color:white;font-size:150%!important;}
 
 .bookingform-rewards-heading1{font-size:180%;color:#3b0053;}
 
