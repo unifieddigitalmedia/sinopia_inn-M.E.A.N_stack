@@ -41,7 +41,7 @@ app.get('/*', function (req, res, next) {
   if (req.url.indexOf("/public/") === 0 ) {
     res.setHeader("Cache-Control", "public, max-age=2592000");
     res.setHeader("Expires", new Date(Date.now() + 2592000000).toUTCString());
- 
+ }
   next();
 });
 
