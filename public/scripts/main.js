@@ -11,6 +11,17 @@ function myFunction() {
 $(document).ready(function(){
    
 
+
+
+$( "#mc-embedded-subscribe" ).click(function() {
+
+
+$( "#mc-embedded-subscribe-form" ).submit();
+
+
+});
+
+
 $( "#subscribe_button" ).click(function() {
 
 

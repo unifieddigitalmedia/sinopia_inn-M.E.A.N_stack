@@ -13,6 +13,7 @@ var mandrill = require('mandrill-api/mandrill');
 var mandrill_client = new mandrill.Mandrill('fix_HqmjREpZnCAHR_Dhaw');
 var pdf = require('pdfcrowd');
 var assert = require('assert');
+var compression = require('compression')
 
 var mongoose = require('mongoose');
 
@@ -26,7 +27,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
-
+app.use(compression());
 app.use(express.static('public'));
 
 app.use(express.static('tools'));
