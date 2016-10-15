@@ -34,6 +34,18 @@ app.use(express.static('tools'));
 
 app.use(express.static(__dirname + '/'));
 
+
+
+app.get('/*', function (req, res, next) {
+
+  if (req.url.indexOf("/public/") === 0 ) {
+    res.setHeader("Cache-Control", "public, max-age=2592000");
+    res.setHeader("Expires", new Date(Date.now() + 2592000000).toUTCString());
+ 
+  next();
+});
+
+
 app.get('/', function (req, res) {
 
       res.sendFile(path.join(__dirname + "/index.html"));

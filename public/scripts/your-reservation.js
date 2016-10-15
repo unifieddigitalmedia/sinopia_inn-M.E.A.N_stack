@@ -172,7 +172,7 @@ $scope.bookingdetailsandconfirm = function() {
 
 
 
-$http.get("http://localhost:3000/api/checkout/").then(function(response) {
+$http.get("http://www.sinopiainn.com/api/checkout/").then(function(response) {
 
 
 braintree.setup(response.data, "dropin", {
@@ -203,7 +203,7 @@ braintree.setup(response.data, "dropin", {
 
 $scope.sendpaymentmethodnonce = function(para,para1) {
 
-var resource = $resource('http://localhost:3000/checkout/',{
+var resource = $resource('http://www.sinopiainn.com/checkout/',{
 
           payment_method_nonce:"@payment_method_nonce",
           fname:"@fname",
@@ -264,7 +264,7 @@ if(reserve.ERROR){ alert(reserve.ERROR); } else {
 
 
 
-                            window.location = "http://localhost:3000/booking-confirmation.html" ;
+                            window.location = "http://www.sinopiainn.com/booking-confirmation.html" ;
 
 
 }
@@ -318,7 +318,7 @@ if(getCookie("tripID"))
 
 $scope.tripID = getCookie("tripID"); 
 
-$http.get("http://localhost:3000/api/trip/?tripID="+getCookie("tripID")).then(function(response) {
+$http.get("http://www.sinopiainn.com/api/trip/?tripID="+getCookie("tripID")).then(function(response) {
 
 
 
@@ -435,7 +435,7 @@ $scope.error = 'Checking availability';
                                 
                                 {
                  
-                    $http.get("http://localhost:3000/api/checkhotelavailability/?hotelID="+getCookie('hotelID')+"&fromdate="+getCookie('fromdate')+"&todate="+getCookie('todate')+"&promo="+getCookie('promo')).then(function(response) {
+                    $http.get("http://www.sinopiainn.com/api/checkhotelavailability/?hotelID="+getCookie('hotelID')+"&fromdate="+getCookie('fromdate')+"&todate="+getCookie('todate')+"&promo="+getCookie('promo')).then(function(response) {
 
 
 
@@ -1170,7 +1170,7 @@ $scope.detailserror = "Please check you email.";
 
 else {
 
-var resource = $resource('http://localhost:3000/api/personaldetails/',{
+var resource = $resource('http://www.sinopiainn.com/api/personaldetails/',{
 
           id:"@id",
           tripID:"@tripID",
