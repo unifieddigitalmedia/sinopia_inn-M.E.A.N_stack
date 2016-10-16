@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node ./bin/www"
   },
+  "cacheDirectories": ["node_modules", "bower_components", "public" ],
   "engines": {
     "node": "6.2.0",
     "npm": "3.8.9"
