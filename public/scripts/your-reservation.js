@@ -177,7 +177,7 @@ $http.get("http://www.sinopiainn.com/api/checkout/").then(function(response) {
 
 braintree.setup(response.data, "dropin", {
 
-  container: "payment-form",
+  container: "dropin-container",
   paypal: {
     button: {
       type: 'checkout'

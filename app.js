@@ -1,4 +1,6 @@
+var compression = require('compression');
 var express = require('express');
+
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -13,7 +15,7 @@ var mandrill = require('mandrill-api/mandrill');
 var mandrill_client = new mandrill.Mandrill('fix_HqmjREpZnCAHR_Dhaw');
 var pdf = require('pdfcrowd');
 var assert = require('assert');
-var compression = require('compression')
+
 
 var mongoose = require('mongoose');
 
@@ -28,12 +30,14 @@ var users = require('./routes/users');
 
 var app = express();
 app.use(compression());
+
 app.use(express.static('public'));
 
 app.use(express.static('tools'));
 
 app.use(express.static(__dirname + '/'));
 
+process.env.NODE_ENV = 'development';
 
 
 app.get('/*', function (req, res, next) {
@@ -93,8 +97,6 @@ app.get('/api/businesses', function (req, res) {
    
 db.collection('placesofinterest').find( ).toArray(function(e, results){
 
-console.log(results[0]);
-
 
    res.json(results);
 
@@ -131,7 +133,7 @@ db.collection('itinerary').insert( [
 
 }], function(err, results) { 
 
-console.log(results);
+
 
          resID = results.insertedIds[0];
 
@@ -516,8 +518,6 @@ function(callback){
 
 db.collection("hotels").find({"_id":o_id}, {'rooms': true} ).toArray(function(e, results){
 
-console.log("rooms"+results);
-
 
     if (e) return next(e)
 
@@ -567,7 +567,6 @@ console.log("rooms"+results);
 
                                             availability.push(results);
     
-                                            console.log("rooms length" + availability);
 
                                             callback(null);
     
@@ -760,6 +759,8 @@ app.get("/api/mobile/checkout/", function (req, res) {
 app.get("/api/checkout/", function (req, res) {
 
  gateway.clientToken.generate({}, function (err, response) {
+
+
     res.send(response.clientToken);
   });
 
@@ -772,10 +773,6 @@ app.post("/checkout", function (req, res) {
   var nonce = req.query.payment_method_nonce;
 
   var total = req.query.total.replace(",","");
-
-    console.log(nonce);
-
-    console.log(total);
 
   gateway.transaction.sale({
   
@@ -812,8 +809,6 @@ if(!result.success)
 {
 
 
-   console.log("ERRORS"+result.errors.for('transaction').length);
-
    res.end();
 
 
@@ -828,7 +823,7 @@ else
         
                               res.json(response);
 
-                               console.log(result);
+                    
 
                                res.end();
 
@@ -880,7 +875,6 @@ transporter.sendMail(mailOptions, function(error, info){
     if(error){
         return console.log(error);
     }
-    console.log('Message sent: ' + info.response);
 });
 
 
@@ -915,7 +909,8 @@ transporter.sendMail(mailOptions, function(error, info){
     if(error){
         return console.log(error);
     }
-    console.log('Message sent: ' + info.response);
+
+
 });
 
 
@@ -928,8 +923,6 @@ app.get("/api/reservations/", function (req, res) {
 
 
 db.collection('reservation').find().toArray(function(e, results){
-
-console.log(results[0]);
 
 
    res.json(results);
@@ -1300,7 +1293,7 @@ var data = '';
 
 readableStream.on('data', function(chunk) {
 
-   console.log('downloading');
+ 
 
           chunks.push(chunk);
 
@@ -1329,13 +1322,9 @@ db.collection('reservation').findOne({ "_id": o_id  },function(e, results){
 
       response.on("end", function() {*/
 
-          console.log('downloaded');
-          
           var jsfile = new Buffer.concat(chunks).toString('base64');
         
-          console.log('converted to base64');
-        
-
+       
 var template_name = "Booking confirmation sent to business";
 
 var template_content = [{
@@ -1421,11 +1410,12 @@ var send_at = "2016-10-10 23:59:59";
 
 mandrill_client.messages.sendTemplate({"template_name": template_name, "template_content": template_content, "message": message, "async": async, "ip_pool": ip_pool, "send_at": send_at}, function(result) {
 
-    console.log(result);
+  
 
 }, function(e) {
 
-    console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
+if(e){return  console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message); }
+   
  
 });
 
@@ -1496,7 +1486,7 @@ var data = '';
 
 readableStream.on('data', function(chunk) {
 
-   console.log('downloading');
+ 
 
           chunks.push(chunk);
 
@@ -1504,7 +1494,6 @@ readableStream.on('data', function(chunk) {
 
 readableStream.on('end', function() {
 
-    console.log(data);
 
 
       /*response.on('data', function(chunk) {
@@ -1517,14 +1506,11 @@ readableStream.on('end', function() {
 
       response.on("end", function() {*/
 
-          console.log('downloaded');
+    
           
           var jsfile = new Buffer.concat(chunks).toString('base64');
         
-          console.log('converted to base64');
-        
 
- console.log(jsfile);
 var template_name = "Booking confirmation sent to business";
 
 var template_content = [{
