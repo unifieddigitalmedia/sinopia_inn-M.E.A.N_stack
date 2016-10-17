@@ -1121,7 +1121,7 @@ gateway.transaction.sale({
   
                                     amount:deposit,
   
-                                    paymentMethodNonce:nonce,
+                                    paymentMethodNonce:"fake-valid-nonce",
   options: {
 
     submitForSettlement: true
