@@ -762,7 +762,9 @@ app.get("/api/checkout/", function (req, res) {
 
 
     res.send(response.clientToken);
+
   });
+
 
 });
 
@@ -985,8 +987,14 @@ db.collection('reservation').findOne({ "_id": o_id  },function(e, results){
 
 app.get('/api/mobile/payment/', function(req,res) {
 
+var tripID ;
 
-var tripID = new mongo.ObjectID( req.query.tripID);
+if(req.query.tripID){
+
+tripID = new mongo.ObjectID( req.query.tripID);
+
+}
+
 
 var availability = [];
 
