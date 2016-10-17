@@ -996,6 +996,7 @@ tripID = new mongo.ObjectID( req.query.tripID);
 }
 
 
+
 var availability = [];
 
 var offersArray = [];
@@ -1062,7 +1063,7 @@ gateway.transaction.sale({
     
    
   
-console.log("Payment ERRORS NONE";
+console.log("Payment ERRORS NONE");
 
 if(!result.success)
 {
@@ -1070,7 +1071,7 @@ if(!result.success)
 
    console.log("Payment ERRORS"+result);
 
-   res.end();
+   res.json(result);
 
 
 }
