@@ -982,7 +982,7 @@ db.collection('reservation').findOne({ "_id": o_id  },function(e, results){
 
 });
 
-app.post('/api/mobile/checkavailability/', function(req,res) {
+app.get('/api/mobile/checkavailability/', function(req,res) {
 
 
 var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-")[1]+"-"+req.query.fromdate.split("-")[0];
@@ -1071,7 +1071,7 @@ if(roomsIdArray.indexOf(roomsArray._id) === -1 ){
 
 
     }
-    
+
 
 });
 
