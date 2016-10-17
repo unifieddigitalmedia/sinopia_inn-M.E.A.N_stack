@@ -982,6 +982,214 @@ db.collection('reservation').findOne({ "_id": o_id  },function(e, results){
 
 });
 
+
+app.get('/api/mobile/payment/', function(req,res) {
+
+
+var tripID = new mongo.ObjectID( req.query.tripID);
+
+var availability = [];
+
+var offersArray = [];
+
+var roomsIdArray = [];
+
+var resID ;
+
+var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-")[1]+"-"+req.query.fromdate.split("-")[0];
+
+var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
+
+var hotelID = new mongo.ObjectID( '57ffa3bd7d73f20010ef5c7e');
+
+var offerArray = [];
+
+var amentityArray = [];
+
+var roomsArray = [];
+
+if (typeof req.body['offerarray[]'] != 'undefined') { offerArray = req.body['offerarray[]'] ; } else { offerArray = null ; } ;
+
+
+if (typeof req.body['amenityarray[]'] != 'undefined')  { amentityArray = req.body['amenityarray[]'] ; } else { amentityArray = null  ; } ;
+
+
+if (typeof req.body['roomarray[]'] != 'undefined')  { roomsArray = req.body['roomarray[]'] ; } else { roomsArray = null  ; } ;
+
+
+waterfall([function(callback){
+
+
+var nonce = req.query.payment_method_nonce;
+
+var deposit = req.query.deposit.replace(",","");
+ 
+gateway.transaction.sale({
+  
+                                    amount:deposit,
+  
+                                    paymentMethodNonce:nonce,
+  options: {
+
+    submitForSettlement: true
+  
+  }
+
+}, function (err, result) {
+
+
+
+ if (err) {
+
+
+
+    console.log(err.type); // "notFoundError"
+    console.log(err.name); // "notFoundError"
+    console.log(err.message); // "Not Found"
+  
+
+
+  } else {
+
+    
+   
+  
+
+if(!result.success)
+{
+
+
+   console.log("Payment ERRORS"+result);
+
+   res.end();
+
+
+}
+
+else
+
+{
+
+
+
+
+
+
+db.collection('reservation').insert( [
+
+
+{
+
+
+
+
+
+          "fname":req.query.fname,
+          "lname":req.query.lname,
+          "phone":req.query.phone,
+          "email":req.query.email,
+          "numofdays":req.query.numofdays,
+          "numofadults":req.query.numofadults,
+          "numofchildren":req.query.numofchildren,
+          "numofinfants":req.query.numofinfants,
+          "fromdate":req.query.fromdate,
+          "todate":req.query.todate,
+          "subtotal":req.query.subtotal,
+          "amenityTotal":req.query.amenityTotal,
+          "discount":req.query.discount,
+          "deposit":req.query.deposit,
+          "total":req.query.total,
+          "tripID":req.query.tripID,
+          "offers":offerArray,
+          "amenities":amentityArray,
+          "rooms":roomsArray,
+   
+
+
+}], function(err, results) { 
+
+
+          resID = results.insertedIds[0];
+
+          callback(null,results.insertedIds[0]);
+
+
+});
+
+                      
+
+}
+  
+
+  }
+
+
+
+
+
+
+
+
+
+});
+
+
+
+
+   } ,function(arg1, callback){
+   
+
+
+  req.body['roomarray[]'].forEach(function(entry) {
+                              
+                            
+  db.collection('hotels').updateOne( {"rooms._id":entry._id}, { $push: {"rooms.$.booking": [{ 
+
+
+"RID" : arg1,
+"fromdate" : fromdate , 
+"enddate" : todate 
+
+} ] } } , function(err, results) { 
+
+
+ });
+
+
+                               });
+
+  callback(null,arg1);
+
+   
+  },function(arg1, callback){
+
+
+var balance = Number(req.query.total) - Number(req.query.deposit);
+
+var response = {"ERROR":"","ReservationID":arg1};
+        
+res.json(response);
+
+
+
+
+}], function (err, result) {
+
+
+if(err) return(err);
+
+res.json(result);
+
+
+
+
+
+});
+
+
+});
+
+
 app.get('/api/mobile/checkavailability/', function(req,res) {
 
 
