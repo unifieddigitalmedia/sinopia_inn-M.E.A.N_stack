@@ -1062,6 +1062,7 @@ gateway.transaction.sale({
     
    
   
+console.log("Payment ERRORS NONE";
 
 if(!result.success)
 {
