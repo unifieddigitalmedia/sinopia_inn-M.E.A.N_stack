@@ -982,7 +982,106 @@ db.collection('reservation').findOne({ "_id": o_id  },function(e, results){
 
 });
 
+app.post('/api/mobile/checkavailability/', function(req,res) {
 
+
+var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-")[1]+"-"+req.query.fromdate.split("-")[0];
+
+var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
+
+var hotelID = new mongo.ObjectID( '57ffa3bd7d73f20010ef5c7e');
+
+var roomsIdArray = [];
+
+console.log(req.query.roomarray);
+
+
+if (typeof req.body['roomarray[]'] != 'undefined')  { roomsArray = req.body['roomarray[]'] ; } else { roomsArray = null  ; } ;
+
+
+db.collection("hotels").find({"_id":hotelID}, {'rooms': true} ).toArray(function(err, results) {
+  
+    
+if (err) return next(err)
+
+for (x = 0; x < results[0].rooms.length; x++) { 
+
+if (results[0].rooms[x].booking.length != 0) {
+
+for (y = 0; y < results[0].rooms[x].booking.length; y++) { 
+
+for (z = 0; z < results[0].rooms[x].booking[y].length; z++) { 
+
+if ( (new Date(results[0].rooms[x].booking[y][z].fromdate) <= new Date(fromdate)  &&  new Date(results[0].rooms[x].booking[y][z].enddate) >= new Date(fromdate) ) || (new Date(results[0].rooms[x].booking[y][z].fromdate) <= new Date(todate)  &&  new Date(results[0].rooms[x].booking[y][z].enddate) >= new Date(todate) ) ) {
+
+
+            roomsIdArray.push(results[0].rooms[x]._id);
+
+
+      }
+
+}
+
+}
+
+}
+
+}
+
+
+
+ if(roomsIdArray.length > 0 )
+
+    {
+
+
+
+for (i = 0; i < roomsArray.length; i++) { 
+
+
+if(roomsIdArray.indexOf(roomsArray._id) === -1 ){
+
+
+     var response = {"ERROR":"One or more of your rooms has now been booked."};
+        
+      res.json(response);
+
+}
+
+
+
+}
+
+
+
+     
+
+    }
+
+    else
+    
+    {
+
+
+
+           var response = {"ERROR":""};
+        
+          res.json(response);
+
+
+
+    }
+    
+
+});
+
+
+
+
+
+
+
+});
 
 app.post('/api/personaldetails/', function(req,res) {
 
@@ -1002,6 +1101,24 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
 var hotelID = new mongo.ObjectID( '57ffa3bd7d73f20010ef5c7e');
+
+var offerArray = [];
+
+var amentityArray = [];
+
+var roomsArray = [];
+
+if (typeof req.body['offerarray[]'] != 'undefined') { offerArray = req.body['offerarray[]'] ; } else { offerArray = null ; } ;
+
+
+if (typeof req.body['amenityarray[]'] != 'undefined')  { amentityArray = req.body['amenityarray[]'] ; } else { amentityArray = null  ; } ;
+
+
+if (typeof req.body['roomarray[]'] != 'undefined')  { roomsArray = req.body['roomarray[]'] ; } else { roomsArray = null  ; } ;
+
+
+
+
 
 waterfall([function(callback){
 
@@ -1142,21 +1259,6 @@ else
 
 {
 
-
-
-var offerArray = [];
-
-var amentityArray = [];
-
-var roomsArray = [];
-
-if (typeof req.body['offerarray[]'] != 'undefined') { offerArray = req.body['offerarray[]'] ; } else { offerArray = null ; } ;
-
-
-if (typeof req.body['amenityarray[]'] != 'undefined')  { amentityArray = req.body['amenityarray[]'] ; } else { amentityArray = null  ; } ;
-
-
-if (typeof req.body['roomarray[]'] != 'undefined')  { roomsArray = req.body['roomarray[]'] ; } else { roomsArray = null  ; } ;
 
 
 
