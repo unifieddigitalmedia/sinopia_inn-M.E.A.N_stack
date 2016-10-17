@@ -106,6 +106,51 @@ db.collection('placesofinterest').find( ).toArray(function(e, results){
 });
 
 
+
+app.post('/api/mobile/booktrip/', function (req, res) {
+
+
+
+db.collection('itinerary').insert( [
+
+
+{
+
+
+          "name":req.query.name,
+          "email":req.query.email,
+          "phone":req.query.phone,
+          "numoftravellers":req.query.numoftravellers,
+          "numofadults":req.query.numofadults,
+          "numofchildren":req.query.numofchildren,
+          "numofinfants":req.query.numofinfants,
+          "subtotaladmission":req.query.subtotaladmission,
+          "subtotalavergae":req.query.subtotalavergae,
+          "carhire":req.query.carhire,
+          "tax":req.query.tax,
+          "total":req.query.total,
+          "places[]":req.body['places[]'],
+
+
+
+}], function(err, results) { 
+
+
+
+         resID = results.insertedIds[0];
+
+       var response = {"ERROR":"","tripID":resID};
+        
+         res.json(response);
+
+
+
+});
+
+
+});
+
+
 app.post('/api/booktrip/', function (req, res) {
 
 
@@ -987,13 +1032,52 @@ db.collection('reservation').findOne({ "_id": o_id  },function(e, results){
 
 app.get('/api/mobile/payment/', function(req,res) {
 
-var tripID ;
+var tripID;
 
 if(req.query.tripID){
 
-tripID = new mongo.ObjectID( req.query.tripID);
+
+db.collection('itinerary').insert( [
+
+
+{
+
+
+          "name":req.query.name,
+          "email":req.query.email,
+          "phone":req.query.phone,
+          "numoftravellers":req.query.numoftravellers,
+          "numofadults":req.query.numofadults,
+          "numofchildren":req.query.numofchildren,
+          "numofinfants":req.query.numofinfants,
+          "subtotaladmission":req.query.subtotaladmission,
+          "subtotalavergae":req.query.subtotalavergae,
+          "carhire":req.query.carhire,
+          "tax":req.query.tax,
+          "total":req.query.triptotal,
+          "places[]":req.body['places[]'],
+
+
+
+}], function(err, results) { 
+
+
+
+         tripID  = results.insertedIds[0];
+
+      
+
+});
+
+
+
+
+//= new mongo.ObjectID( req.query.tripID);
+
+
 
 }
+
 
 
 
@@ -1017,13 +1101,13 @@ var amentityArray = [];
 
 var roomsArray = [];
 
-if (typeof req.body['offerarray[]'] != 'undefined') { offerArray = req.body['offerarray[]'] ; } else { offerArray = null ; } ;
+if (typeof req.query.offerarray != 'undefined') { offerArray = req.query.offerarray ; } else { offerArray = null ; } ;
 
 
-if (typeof req.body['amenityarray[]'] != 'undefined')  { amentityArray = req.body['amenityarray[]'] ; } else { amentityArray = null  ; } ;
+if (typeof req.query.amenityarray != 'undefined')  { amentityArray = req.query.amenityarray ; } else { amentityArray = null  ; } ;
 
 
-if (typeof req.body['roomarray[]'] != 'undefined')  { roomsArray = req.body['roomarray[]'] ; } else { roomsArray = null  ; } ;
+if (typeof req.query.roomarray != 'undefined')  { roomsArray = req.query.roomarray; } else { roomsArray = null  ; } ;
 
 
 waterfall([function(callback){
@@ -1069,9 +1153,12 @@ if(!result.success)
 {
 
 
-   console.log("Payment ERRORS"+result);
 
-   res.json(result);
+var response = {"ERROR":result.message};
+        
+res.json(response);
+
+
 
 
 }
@@ -1079,10 +1166,6 @@ if(!result.success)
 else
 
 {
-
-
-
-
 
 
 db.collection('reservation').insert( [
@@ -1109,7 +1192,7 @@ db.collection('reservation').insert( [
           "discount":req.query.discount,
           "deposit":req.query.deposit,
           "total":req.query.total,
-          "tripID":req.query.tripID,
+          "tripID":tripID,
           "offers":offerArray,
           "amenities":amentityArray,
           "rooms":roomsArray,
@@ -1148,12 +1231,10 @@ db.collection('reservation').insert( [
 
    } ,function(arg1, callback){
    
+for (x = 0; x < req.query.roomarray.length; x++) { 
 
 
-  req.body['roomarray[]'].forEach(function(entry) {
-                              
-                            
-  db.collection('hotels').updateOne( {"rooms._id":entry._id}, { $push: {"rooms.$.booking": [{ 
+  db.collection('hotels').updateOne( {"rooms._id":req.query.roomarray[x]._id}, { $push: {"rooms.$.booking": [{ 
 
 
 "RID" : arg1,
@@ -1166,7 +1247,8 @@ db.collection('reservation').insert( [
  });
 
 
-                               });
+}
+
 
   callback(null,arg1);
 
@@ -1195,6 +1277,27 @@ res.json(result);
 
 
 });
+
+
+});
+
+
+app.get('/api/login/', function (req, res) {
+
+
+db.collection('reservation').find({}).toArray(function(e, results){
+
+
+    if (e) return next(e)
+
+
+   
+      res.json(results);
+
+
+
+});
+
 
 
 });
@@ -1546,11 +1649,10 @@ db.collection('reservation').insert( [
    } ,function(arg1, callback){
    
 
+for (x = 0; x < req.body['roomarray[]'].length; x++) { 
 
-  req.body['roomarray[]'].forEach(function(entry) {
-                              
-                            
-  db.collection('hotels').updateOne( {"rooms._id":entry._id}, { $push: {"rooms.$.booking": [{ 
+
+  db.collection('hotels').updateOne( {"rooms._id":req.body['roomarray[]'][x]._id}, { $push: {"rooms.$.booking": [{ 
 
 
 "RID" : arg1,
@@ -1563,7 +1665,10 @@ db.collection('reservation').insert( [
  });
 
 
-                               });
+}
+
+
+  //req.body['roomarray[]'].forEach(function(entry) {});
 
   callback(null,arg1);
 
