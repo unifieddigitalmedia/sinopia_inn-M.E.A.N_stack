@@ -1032,6 +1032,10 @@ db.collection('reservation').findOne({ "_id": o_id  },function(e, results){
 
 app.get('/api/mobile/payment/', function(req,res) {
 
+
+var rString = randomString(5, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+
+
 var tripID;
 
 if(req.query.tripID){
@@ -1176,7 +1180,7 @@ db.collection('reservation').insert( [
 
 
 
-
+          "token":rString,
           "fname":req.query.fname,
           "lname":req.query.lname,
           "phone":req.query.phone,
@@ -1204,7 +1208,7 @@ db.collection('reservation').insert( [
 
           resID = results.insertedIds[0];
 
-          callback(null,results.insertedIds[0]);
+          callback(null,results.insertedIds[0],results);
 
 
 });
@@ -1229,7 +1233,7 @@ db.collection('reservation').insert( [
 
 
 
-   } ,function(arg1, callback){
+   } ,function(arg1, arg2, callback){
    
 for (x = 0; x < req.query.roomarray.length; x++) { 
 
@@ -1250,15 +1254,15 @@ for (x = 0; x < req.query.roomarray.length; x++) {
 }
 
 
-  callback(null,arg1);
+  callback(null,arg1,arg2);
 
    
-  },function(arg1, callback){
+  },function(arg1,arg2, callback){
 
 
 var balance = Number(req.query.total) - Number(req.query.deposit);
 
-var response = {"ERROR":"","ReservationID":arg1};
+var response = {"ERROR":"","Reservation":arg2};
         
 res.json(response);
 
@@ -1407,7 +1411,9 @@ if(roomsIdArray.indexOf(roomsArray._id) === -1 ){
 app.post('/api/personaldetails/', function(req,res) {
 
 
-var tripID = new mongo.ObjectID( req.query.tripID);
+var rString = randomString(5, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+
+var tripID = new mongo.ObjectID(req.query.tripID);
 
 var availability = [];
 
@@ -1593,7 +1599,7 @@ db.collection('reservation').insert( [
 
 
 
-
+          "token":rString,
           "fname":req.query.fname,
           "lname":req.query.lname,
           "phone":req.query.phone,
