@@ -190,12 +190,7 @@ $scope.numoftravellers = Number($scope.numadults) + Number($scope.numchildren) +
 
 $scope.numofcars = Math.floor($scope.numoftravellers / 5 ) + 1 ;
 
-
-
 $scope.carhire = Number($scope.numofcars) * Number($scope.calcarhirecost);
-
-
-
 
 //return $scope.numoftravellers ;
 

@@ -1030,10 +1030,76 @@ db.collection('reservation').findOne({ "_id": o_id  },function(e, results){
 });
 
 
+app.get('/api/reviews/', function(req,res) {
+
+
+db.collection('reviews').find({}).toArray(function(e, results){
+
+
+    if (e) return next(e)
+
+
+   
+      res.json(results);
+
+
+
+});
+
+
+
+});
+
+
+app.post('/api/reviews/', function(req,res) {
+
+
+
+db.collection('reviews').insert( [
+
+
+{
+
+
+          "name":req.query.name,
+          "email":req.query.email,
+          "phone":req.query.phone,
+          "date":req.query.date,
+          "rating":req.query.rating,
+          "comment":req.query.comment,
+         
+
+
+}], function(err, results) { 
+
+
+          console.log(tripID);
+      
+
+});
+
+
+});
+
+
+
+
+
 app.get('/api/mobile/payment/', function(req,res) {
 
 
-var rString = randomString(5, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+//var rString = randomString(5, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+
+ var rString = "";
+
+ var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for( var i=0; i < 5; i++ ) {
+
+
+        rString += possible.charAt(Math.floor(Math.random() * possible.length));
+
+  }
 
 
 var tripID;
@@ -1057,14 +1123,16 @@ db.collection('itinerary').insert( [
           "subtotaladmission":req.query.subtotaladmission,
           "subtotalavergae":req.query.subtotalavergae,
           "carhire":req.query.carhire,
-          "tax":req.query.tax,
+          "tax":req.query.triptax,
           "total":req.query.triptotal,
-          "places[]":req.body['places[]'],
+          "places":req.query.places,
 
 
 
 }], function(err, results) { 
 
+
+console.log(tripID);
 
 
          tripID  = results.insertedIds[0];
