@@ -71,7 +71,7 @@ app.use(bodyParser.json());
 
 
 
-var hotelID = '57ffa3bd7d73f20010ef5c7e';
+var hotelID = '5808064296c6f8eabbb8c133';
 
 
 var braintree = require("braintree");
@@ -272,7 +272,7 @@ db.collection('hotels').find().toArray(function(e, results){
 
 app.get('/api/checkhotelavailability/', function (req, res) {
 
-var o_id = new mongo.ObjectID("57ffa3bd7d73f20010ef5c7e");
+var o_id = new mongo.ObjectID("5808064296c6f8eabbb8c133");
 
 var availability = [];
 
@@ -986,7 +986,7 @@ app.get("/api/reservation-details/", function (req, res) {
 
 
 
-var hotelID = new mongo.ObjectID( '57ffa3bd7d73f20010ef5c7e');
+var hotelID = new mongo.ObjectID( '5808064296c6f8eabbb8c133');
 
 var o_id = new mongo.ObjectID(req.query.reservationID);
 
@@ -1163,9 +1163,16 @@ var resID ;
 
 var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-")[1]+"-"+req.query.fromdate.split("-")[0];
 
+console.log(fromdate);
+
+
+
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '57ffa3bd7d73f20010ef5c7e');
+console.log(todate);
+
+
+var hotelID = new mongo.ObjectID( '5808064296c6f8eabbb8c133');
 
 var offerArray = [];
 
@@ -1305,13 +1312,16 @@ db.collection('reservation').insert( [
    
 for (x = 0; x < req.query.roomarray.length; x++) { 
 
+console.log(req.query.fromdate);
+
+console.log(req.query.todate);
 
   db.collection('hotels').updateOne( {"rooms._id":req.query.roomarray[x]._id}, { $push: {"rooms.$.booking": [{ 
 
 
 "RID" : arg1,
-"fromdate" : fromdate , 
-"enddate" : todate 
+"fromdate" : req.query.fromdate , 
+"enddate" : req.query.todate 
 
 } ] } } , function(err, results) { 
 
@@ -1382,7 +1392,7 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '57ffa3bd7d73f20010ef5c7e');
+var hotelID = new mongo.ObjectID( '5808064296c6f8eabbb8c133');
 
 var roomsIdArray = [];
 
@@ -1495,7 +1505,7 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '57ffa3bd7d73f20010ef5c7e');
+var hotelID = new mongo.ObjectID( '5808064296c6f8eabbb8c133');
 
 var offerArray = [];
 
