@@ -383,6 +383,30 @@ table {width:100%;}
 
 /******** START OF FOOTER CSS ********/
 
+
+
+
+.download_buttons_col_parent_row{     display: table;  }
+
+
+.download_buttons_col_parent_row div {
+    vertical-align:middle;
+    display: table-cell;
+}
+
+
+
+.download_buttons_col p { font-size:170%;font-weight:300!important;}
+
+
+.download_buttons{width: 130px; height: 40px;}
+
+.download_buttons_col-left {text-align:right!important;}
+
+.download_buttons_col-right {text-align:left!important;}
+
+.download_buttons_col-title {padding-left:100px;}
+
 .iconset img {width:30px ; height:30px;}
 .footer_column_1 p{
 

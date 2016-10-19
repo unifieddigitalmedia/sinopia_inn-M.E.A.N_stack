@@ -237,7 +237,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb410b', end
 
 /******** START OF BODY CSS ********/
 
+.bookingform {
 
+
+border:#d4d3d3 thin solid;padding:20px;border-radius:5px;
+
+}
 
 body{margin:0!important;padding:0!important;}
 

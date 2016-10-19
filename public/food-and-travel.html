@@ -160,7 +160,7 @@
 </ul></header>
 
 
-<div class="slideshow-container" style='background-image:url("images/leisure_travel.png"); background-repeat: no-repeat;background-size:cover;'>
+<div class="slideshow-container" style='background-image:url("images/food-and-travel-big.png"); background-repeat: no-repeat;background-size:cover;'>
 
 
 
@@ -251,6 +251,89 @@ Jamaica and the Caribbean is real foodie territory. Its where you'll find rare a
 
 </ul>
 
+<div class="row">
+  
+ <div class="col-sm-12" style="text-align:center;"> 
+
+</br>
+
+<form action="make-a-reservation" method="POST"  class="shortcodeform bookingform-homepage bookingform" name="shortcodeform">
+
+
+  <div class="row" >
+
+    <div class="col-sm-12" id='bookinglabel' ><h4 class="booking-header"> How long would you like to stay ? </h4> </div>
+
+    </div>
+
+
+    <div class="row" >
+
+    <div class="col-sm-6 booking-form--col" id='bookinglabel' >  </div><div class="col-sm-6 booking-form--col" > </div>
+
+    </div>
+
+    <div class="row" >
+
+     <div class="col-sm-6 booking-form--col" id='bookinglabel' >
+
+<p > Arrival Date </p>
+
+      <div class="form-group has-success has-feedback">
+
+      <input type="text" class="form-control input-sm"  id="fromdate" name="from" ng-model="fromdate" placeholder="DD-MM-YYYY"> 
+
+      <span class="glyphicon glyphicon-th form-control-feedback"></span> 
+
+      </input> 
+
+      </div>  </div>   <div class="col-sm-6 booking-form--col" >
+<p> Leaving Date </p>
+
+      <div class="form-group has-success has-feedback">
+
+<input type="text" class="form-control input-sm" id="todate"  name="to" ng-model="todate" placeholder="DD-MM-YYYY"> 
+
+<span class="glyphicon glyphicon-th form-control-feedback"></span>  
+
+</input> 
+
+</div> </div>
+
+    </div>
+
+    <div class="row" >
+
+    <div class="col-sm-6 booking-form--col" id='bookinglabel' ><p> Promo Code </p>  </div><div class="col-sm-6" ></div>
+
+    </div>
+
+    <div class="row" >
+
+    <div class="col-sm-6 booking-form--col" id='bookinglabel' ><div class="form-group has-success has-feedback">
+
+    <input id="promo" class="form-control input-sm" type="text" placeholder="PROMO CODE" name='promo' id="promo" ng-model="promo"/> 
+
+    <span class="glyphicon glyphicon-qrcode form-control-feedback"></span>
+
+    </div> </div><div class="col-sm-6" > <div id='errormessage' class='checking'>  <p> {{error}}  </div> </div>
+
+    </div>
+
+<div class="row" >
+ <div class="col-sm-6"> </div>
+    <div class="col-sm-6 booking-form--col" id='bookinglabel' > <button class="btn btn-default btn-block input-sm outline-res " type="button"  id="checkavailability" ng-click="checkavailability()">CHECK AVAILABILITY</button>  </div>
+
+    </div>
+
+
+  </form>
+
+</div> 
+
+ 
+
+</div>
 
     </div>
  <div class="col-sm-8" >
@@ -275,7 +358,7 @@ the open air deck and outdoor jerk pit is the perfect place to lounge away an af
  <div class="col-sm-6" >
 
 <div class="w3-card-12" style="width:100%">
-  <img src="../images/" alt="" style="width:100%">
+  <img src="../images/jerk.png" alt="" style="width:100%">
   <div class="w3-container w3-center">
     <p class="side_menu_title p_centering"> <a href="beaches.html" > CULINARY EXPERIENCES </a> </p> 
     <p>Discover your taste of Jamaica, with the help of our cooks who will be happy to share some of their secrets. You can learn about traditional Jamaican cuisine and even take home with you samples of our homemade sauces and juices. </p>
@@ -307,7 +390,7 @@ the open air deck and outdoor jerk pit is the perfect place to lounge away an af
  <div class="col-sm-6" >
 
 <div class="w3-card-12" style="width:100%">
-  <img src="../images/trek.png" alt="blue mountains view of rio grande" style="width:100%">
+  <img src="../images/bike.png" alt="blue mountains view of rio grande" style="width:100%">
   <div class="w3-container w3-center">
     <p class="side_menu_title p_centering"> <a href="treks.html" > MOUNTAIN AND BIKE TREKS </a> </p> 
     <p>The Blue Mountains peak is the highest on the island, rising to an altitude of 7,402 feet. Offering a chance to pit your stamina against the most beautiful backdrop in Jamaica and a stunning sunrise view. </p>
@@ -322,7 +405,7 @@ the open air deck and outdoor jerk pit is the perfect place to lounge away an af
   <div class="col-sm-6" >
 
  <div class="w3-card-12" style="width:100%">
-  <img src="../images/" alt="winifred beach portland jamaica" style="width:100%">
+  <img src="../images/yoga.png" alt="winifred beach portland jamaica" style="width:100%">
   <div class="w3-container w3-center">
     <p class="side_menu_title p_centering"><a href="yoga.html" > YOGA </a> </p> 
    <p>Mediation, prayer ,yoga and restful contemplation in silence</p> <a href=""></a>
@@ -384,7 +467,7 @@ the open air deck and outdoor jerk pit is the perfect place to lounge away an af
 
 
   <div class="w3-card-12" style="width:100%">
-  <img src="../images/" alt="winifred beach portland jamaica" style="width:100%">
+  <img src="../images/marlin.png" alt="winifred beach portland jamaica" style="width:100%">
   <div class="w3-container w3-center">
     <p class="side_menu_title p_centering"> <a href="family-sporting-trips.html" >  FAMILY AND SPORTING </a>  </p> 
    <p>Family activities are designed to bring every generation together. They line up loads you can enjoy as a family, like cheering loves in our annual weeklong sport-fishing event, seight seeing , bird watching and tracing your ancestry.  </p> <a href=""></a>
@@ -435,7 +518,7 @@ the open air deck and outdoor jerk pit is the perfect place to lounge away an af
   
   <div class="col-sm-12"> 
 
- <img  src="/images/social-media/facebook.png">  <img  src="/images/social-media/facebook.jpeg">   <img  src="/images/social-media/linkedin.jpeg">   <img  src="/images/social-media/twitter.png"> <img  src="/images/social-media/linkedIn.png"> <img  src="/images/social-media/instagram.png">
+ <img  src="/images/social-media/facebook.png">  <img  src="/images/social-media/pin.png">   <img  src="/images/social-media/tube.png">   <img  src="/images/social-media/twitter.png"> <img  src="/images/social-media/linkedIn.png"> <img  src="/images/social-media/instagram.png">
 
   </div>
 
