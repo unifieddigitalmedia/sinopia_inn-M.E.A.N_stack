@@ -277,6 +277,92 @@
 
 </ul>
 
+
+
+<div class="row">
+  
+ <div class="col-sm-12" style="text-align:center;"> 
+
+</br>
+
+<form action="make-a-reservation" method="POST"  class="shortcodeform bookingform-homepage bookingform" name="shortcodeform">
+
+
+  <div class="row" >
+
+    <div class="col-sm-12" id='bookinglabel' ><h4 class="booking-header"> How long would you like to stay ? </h4> </div>
+
+    </div>
+
+
+    <div class="row" >
+
+    <div class="col-sm-6 booking-form--col" id='bookinglabel' >  </div><div class="col-sm-6 booking-form--col" > </div>
+
+    </div>
+
+    <div class="row" >
+
+     <div class="col-sm-6 booking-form--col" id='bookinglabel' >
+
+<p > Arrival Date </p>
+
+      <div class="form-group has-success has-feedback">
+
+      <input type="text" class="form-control input-sm"  id="fromdate" name="from" ng-model="fromdate" placeholder="DD-MM-YYYY"> 
+
+      <span class="glyphicon glyphicon-th form-control-feedback"></span> 
+
+      </input> 
+
+      </div>  </div>   <div class="col-sm-6 booking-form--col" >
+<p> Leaving Date </p>
+
+      <div class="form-group has-success has-feedback">
+
+<input type="text" class="form-control input-sm" id="todate"  name="to" ng-model="todate" placeholder="DD-MM-YYYY"> 
+
+<span class="glyphicon glyphicon-th form-control-feedback"></span>  
+
+</input> 
+
+</div> </div>
+
+    </div>
+
+    <div class="row" >
+
+    <div class="col-sm-6 booking-form--col" id='bookinglabel' ><p> Promo Code </p>  </div><div class="col-sm-6" ></div>
+
+    </div>
+
+    <div class="row" >
+
+    <div class="col-sm-6 booking-form--col" id='bookinglabel' ><div class="form-group has-success has-feedback">
+
+    <input id="promo" class="form-control input-sm" type="text" placeholder="PROMO CODE" name='promo' id="promo" ng-model="promo"/> 
+
+    <span class="glyphicon glyphicon-qrcode form-control-feedback"></span>
+
+    </div> </div><div class="col-sm-6" > <div id='errormessage' class='checking'>  <p> {{error}}  </div> </div>
+
+    </div>
+
+<div class="row" >
+ <div class="col-sm-6"> </div>
+    <div class="col-sm-6 booking-form--col" id='bookinglabel' > <button class="btn btn-default btn-block input-sm outline-res " type="button"  id="checkavailability" ng-click="checkavailability()">CHECK AVAILABILITY</button>  </div>
+
+    </div>
+
+
+  </form>
+
+</div> 
+
+ 
+
+</div>
+
     </div>
  <div class="col-sm-8" >
 
