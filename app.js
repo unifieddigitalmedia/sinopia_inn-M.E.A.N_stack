@@ -71,7 +71,7 @@ app.use(bodyParser.json());
 
 
 
-var hotelID = '5808133c1e677113cde117ac';
+var hotelID = '580815ee769d1e14ea36ce70';
 
 
 var braintree = require("braintree");
@@ -272,7 +272,7 @@ db.collection('hotels').find().toArray(function(e, results){
 
 app.get('/api/checkhotelavailability/', function (req, res) {
 
-var o_id = new mongo.ObjectID("5808133c1e677113cde117ac");
+var o_id = new mongo.ObjectID("580815ee769d1e14ea36ce70");
 
 var availability = [];
 
@@ -538,245 +538,6 @@ if (e) return next(e)
 
 
 
-app.get('/api/checkavailability/', function (req, res) {
-
-var availability = [];
-
-var offersArray = [];
-
-var roomsIdArray = [];
-
-
-var o_id = new mongo.ObjectID(hotelID);
-
-
-
-
-var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-")[1]+"-"+req.query.fromdate.split("-")[0];
-
-var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-")[1]+"-"+req.query.fromdate.split("-")[0];
-var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
-
-async.waterfall([
-
-function(callback){
-
-db.collection("hotels").find({"_id":o_id}, {'rooms': true} ).toArray(function(e, results){
-
-
-    if (e) return next(e)
-
-
- async.eachSeries(results,function(item,callback) {
- 
-      
-      if ( new Date(item.booking.fromdate) <= new Date(fromdate)  &&  new Date(item.booking.enddate) >= new Date(todate)  ) {
-
-
-            roomsIdArray.push(item);
-
-
-      }
-
-
-               
-          
-               callback(e);
-
-
-                                                      });
-
-
-
-    callback(null,roomsIdArray);
-    
-
-});
-
-
-},function(arg,callback){
-
-
-
-                          if( arg.length === 0)
-                          
-
-                          {
-
-
-                                   db.collection("hotels").find({"_id":o_id}, {'rooms': true} ).toArray(function(e, results){
-
-
-                                            if (e) return next(e)
-
-
-                                            availability.push(results);
-    
-
-                                            callback(null);
-    
-                                 
-                                                                                                });
-
-                          }
-                            
-
-                            else
-                          
-
-                          {
-
-
-                                    var arrayofIDs = [];
-
-
-                                            arg.forEach(function(entry) {
-    
-
-                                            if(entry._id !== undefined)
-
-                                            
-                                            {
-
-                                           
-                                             arrayofIDs.push(entry._id);  
-
-
-                                            }
-  
-                                                                            });
-
-                                db.collection("hotels").find({"_id":o_id}, {'rooms': true} ).toArray(function(err, results) {
-
-                                
-
-res.json(results);
-                                            if (e) return next(e)
-
-
-                                            availability.push(results);
-
-
-                                            callback(null);
-    
-                                 
-                                                                             });
-
-                          
-
-                          }
-
-
-
-} , function(callback) {
-
-
-
-db.collection('offers').find().toArray(function(e, results){
-
-
-if (e) return next(e)
-
-
-      async.eachSeries(results,function(item,callback) {
-
-
-      if (new Date(item.validdate) <= new Date(fromdate)  && new Date(item.exdate) >= new Date(todate) ) {
-
-
-            offersArray.push(item);
-
-
-      }
-
-
-               
-          
-               callback(e);
-
-
-                                                      }, function done() {
-  //...
-
-
-   // availability.push(offersArray);
-
-    callback(null,offersArray);
-      
-
-
-});
-
-
-
-   
-    
-
-});
-
-
-} , function(arg1,callback) {
-
-
-db.collection('offers').find(  { "token":req.query.promo } ).toArray(function(e, results){
-
-
-if (e) return next(e)
-
-
-    
-      if (results.length > 0 ) {
-
-
-            arg1.push(results[0]);
-
-
-      }
-
-
-
-    availability.push(arg1);
-
-    callback(null);
-      
-    
-
-});
-
-} ,
-
-function(callback) {
-
-                              db.collection('amenities').find({}).toArray(function(e, results){
-
-
-                                            if (e) return next(e)
-
-
-                                            availability.push(results);
-    
-                                     
-                                            res.json(availability);
-                                 
-                                                                                                });
-
-}
-
-] , function (err, result) {
- 
-
-
-
-
-
-  });
-
-
-
-
-
-});
-
 
 
 // production error handler
@@ -898,37 +659,6 @@ else
 
 
 
-app.get("/api/testHTML/", function (req, res) {
-
- var transporter = nodemailer.createTransport({
-        service: 'hotmail',
-        auth: {
-            user: 'machelslack@hotmail.com', 
-            pass: '321123ETz@' 
-        }
-    });
-
-
-var mailOptions = {
-    from: '"Fred Foo ?" <machelslack@hotmail.com>',
-    to: 'machelslack@icloud.com', 
-    subject: 'Hello ✔', 
-    text: 'Hello world ?', 
-    html: "<b>Hello world ?</b>", 
-    attachments:[{ filename: 'Machel Slack Web CV.pdf', path: 'http://www.sinopiainn.com/public/pdfs/books/Machel Slack Web CV.pdf'}],
-};
-
-transporter.sendMail(mailOptions, function(error, info){
-    if(error){
-        return console.log(error);
-    }
-});
-
-
-});
-
-
-
 app.get("/api/booking-confirmation",function(req,res) {
 
 
@@ -986,7 +716,7 @@ app.get("/api/reservation-details/", function (req, res) {
 
 
 
-var hotelID = new mongo.ObjectID( '5808133c1e677113cde117ac');
+var hotelID = new mongo.ObjectID( '580815ee769d1e14ea36ce70');
 
 var o_id = new mongo.ObjectID(req.query.reservationID);
 
@@ -1132,7 +862,6 @@ db.collection('itinerary').insert( [
 }], function(err, results) { 
 
 
-console.log(tripID);
 
 
          tripID  = results.insertedIds[0];
@@ -1163,16 +892,12 @@ var resID ;
 
 var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-")[1]+"-"+req.query.fromdate.split("-")[0];
 
-console.log(fromdate);
-
-
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-console.log(todate);
 
 
-var hotelID = new mongo.ObjectID( '5808133c1e677113cde117ac');
+var hotelID = new mongo.ObjectID( '580815ee769d1e14ea36ce70');
 
 var offerArray = [];
 
@@ -1327,7 +1052,6 @@ for (x = 0; x < obj.length; x++) {
 
 
 
-console.log(fromdate);
   db.collection('hotels').updateOne( {"rooms._id":obj[x]._id}, { $push: {"rooms.$.booking": [{ 
 
 
@@ -1397,107 +1121,6 @@ db.collection('reservation').find({}).toArray(function(e, results){
 });
 
 
-app.get('/api/mobile/checkavailability/', function(req,res) {
-
-
-var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-")[1]+"-"+req.query.fromdate.split("-")[0];
-
-var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
-
-var hotelID = new mongo.ObjectID( '5808133c1e677113cde117ac');
-
-var roomsIdArray = [];
-
-
-db.collection("hotels").find({"_id":hotelID}, {'rooms': true} ).toArray(function(err, results) {
-  
-    
-if (err) return next(err)
-
-for (x = 0; x < results[0].rooms.length; x++) { 
-
-if (results[0].rooms[x].booking.length != 0) {
-
-for (y = 0; y < results[0].rooms[x].booking.length; y++) { 
-
-for (z = 0; z < results[0].rooms[x].booking[y].length; z++) { 
-
-//console.log(results[0].rooms[x].booking[y][z].fromdate);
-
-//console.log(fromdate);
-
-console.log(new Date(results[0].rooms[x].booking[y][z].fromdate) +'~'+ new Date(fromdate));
-
-if ( (new Date(results[0].rooms[x].booking[y][z].fromdate) <= new Date(fromdate)  &&  new Date(results[0].rooms[x].booking[y][z].enddate) >= new Date(fromdate) ) || (new Date(results[0].rooms[x].booking[y][z].fromdate) <= new Date(todate)  &&  new Date(results[0].rooms[x].booking[y][z].enddate) >= new Date(todate) ) ) {
-
-
-            roomsIdArray.push(results[0].rooms[x]._id);
-
-
-      }
-
-}
-
-}
-
-}
-
-}
-
-
-
- if(roomsIdArray.length > 0 )
-
-    {
-
-
-
-for (i = 0; i < roomsArray.length; i++) { 
-
-
-if(roomsIdArray.indexOf(roomsArray._id) === -1 ){
-
-
-     var response = {"ERROR":"One or more of your rooms has now been booked."};
-        
-      res.json(response);
-
-}
-
-
-
-}
-
-
-
-     
-
-    }
-
-    else
-    
-    {
-
-
-
-           var response = {"ERROR":""};
-        
-          res.json(response);
-
-
-
-    }
-
-
-});
-
-
-
-
-
-
-
-});
 
 app.post('/api/personaldetails/', function(req,res) {
 
@@ -1518,7 +1141,7 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '5808133c1e677113cde117ac');
+var hotelID = new mongo.ObjectID( '580815ee769d1e14ea36ce70');
 
 var offerArray = [];
 
