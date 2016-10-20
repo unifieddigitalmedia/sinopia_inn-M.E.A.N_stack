@@ -3,6 +3,7 @@
 $(document).ready(function(){
    
  
+$(".checking").hide();
 
 $("#subscribe_button").click(function() {
 
