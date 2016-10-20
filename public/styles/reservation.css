@@ -642,7 +642,27 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb410b', end
   text-align:center;
 }
 
-@media screen and (max-width:1080px) {
+
+@media screen and (max-width: 1118px) and (min-width: 1051px) {
+
+
+.topnav{ width:85%!important;}
+
+
+}
+
+@media screen and (max-width: 1050px) and (min-width: 891px) {
+
+
+.topnav{ width:100%!important;}
+
+
+}
+
+
+
+
+@media screen and (max-width:890) {
   ul.topnav li:not(:last-child) {display: none;}
   ul.topnav li.icon {
     float: right;
@@ -656,7 +676,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb410b', end
 
 }
 
-@media screen and (max-width:1080px) {
+@media screen and (max-width:890) {
   ul.topnav.responsive {position: relative;}
   ul.topnav.responsive li.icon {
     position: absolute;

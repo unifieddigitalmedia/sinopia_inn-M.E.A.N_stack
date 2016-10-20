@@ -38,7 +38,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb410b', end
 .dropbtn { display: inline-block; color: white!important;  font-family: 'PT Sans', sans-serif; font-weight:100; text-align: center; padding: 14px 16px; 
 text-decoration: none;cursor:pointer; }
 
-.topnav{ width:65%;list-style-type: none; color:white; margin: 0 auto; padding: 0; overflow: hidden; text-align:right; line-height: 100% !important; }
+.topnav{ width:80%;list-style-type: none; color:white; margin: 0 auto; padding: 0; overflow: hidden; text-align:right; line-height: 100% !important; }
 
 ul.topnav li.icon {display: none;}
 
@@ -562,7 +562,27 @@ section h3{color: #cb410b!important; font-size:100%!important;}
 }
 
 
-@media screen and (max-width:1080px) {
+
+
+
+@media screen and (max-width: 1118px) and (min-width: 1051px) {
+
+
+.topnav{ width:85%!important;}
+
+
+}
+
+@media screen and (max-width: 1050px) and (min-width: 891px) {
+
+
+.topnav{ width:100%!important;}
+
+
+}
+
+
+@media screen and (max-width:890px) {
   ul.topnav li:not(:last-child) {display: none;}
   ul.topnav li.icon {
     float: right;
@@ -576,7 +596,7 @@ section h3{color: #cb410b!important; font-size:100%!important;}
 
 }
 
-@media screen and (max-width:1080px) {
+@media screen and (max-width:890px) {
   ul.topnav.responsive {position: relative;}
   ul.topnav.responsive li.icon {
     position: absolute;

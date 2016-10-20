@@ -780,7 +780,26 @@ ul.topnav-top li { display: inline-block;  vertical-align:middle; }
 }
 
 
-@media screen and (max-width:1080px) {
+@media screen and (max-width: 1118px) and (min-width: 1051px) {
+
+
+.topnav{ width:85%!important;}
+
+
+}
+
+@media screen and (max-width: 1050px) and (min-width: 891px) {
+
+
+.topnav{ width:100%!important;}
+
+
+}
+
+
+
+
+@media screen and (max-width:890) {
   ul.topnav li:not(:last-child) {display: none;}
   ul.topnav li.icon {
     float: right;
@@ -789,9 +808,12 @@ ul.topnav-top li { display: inline-block;  vertical-align:middle; }
   .topnav{ width:100%;list-style-type: none; color:white; margin: 0 auto; padding: 0; overflow: hidden; text-align:right; line-height: 100% !important; }
 
 .menudivider{display:none;}
+
+.bookingform-rewards h2 {font-weight:300;font-size:150%!important;}
+
 }
 
-@media screen and (max-width:1080px) {
+@media screen and (max-width:890) {
   ul.topnav.responsive {position: relative;}
   ul.topnav.responsive li.icon {
     position: absolute;
@@ -806,7 +828,11 @@ ul.topnav-top li { display: inline-block;  vertical-align:middle; }
     display: block;
     text-align: left;
   }
+
+.bookingform-rewards h2 {font-weight:300;font-size:150%!important;}
 }
+
+
 
 
 
