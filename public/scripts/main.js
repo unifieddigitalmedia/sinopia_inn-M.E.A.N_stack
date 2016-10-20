@@ -1,232 +1,4 @@
 
-function myFunction() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-        x.className += " responsive";
-    } else {
-        x.className = "topnav";
-    }
-}
-
-
-
-   var headerHeight = $("header").height();
-
-   var sliderHeight = $(".slideshow-container").height();
-
-   $(".download_buttons_col_parent_row").css("height",$(".download_buttons_col_parent_row_left").height() );
-
-   var sliderHeight = $(".slideshow-container").height();
-
-   var sliderCaptionHeight = $(".home_text").height();
-
-   var FirstChildHeight = $(".logo").height();
-
-   var captionTop = sliderHeight - sliderCaptionHeight - 101;
-
-   $(".checking").hide();
-
-   $("#availablecol").hide();
-
-   $("#offerscol").hide();
-
-   $("#bookingcol").hide();
-
-   $("#ratescol").hide();
-
-   $("#detailscol").hide();
-
-   $(".side-panel-right").hide();
-
-   $("#leftdiv").css("top", headerHeight);
-
-   $(".home_text").css("top", captionTop);
-
-   $(".dropdown-link").css("top", FirstChildHeight);
-
-   $(".side-panel-left , .side-panel-right , #map , .filter-button-panel-right ").css("top", headerHeight);
-
-   //$(".main-container").css("height",$(".side-panel-left").height() + headerHeight);
-
-   $(".main-container").css("height", window.outerHeight  );
-   //- headerHeight
-   $("#map").css("height",$(".main-container").height() -  headerHeight );
-
-   $(".side-panel-left, .filter-button-panel-right , .side-panel-right").css("height",$(".main-container").height() -  headerHeight  );
-
-   $("#map").css("width", window.innerWidth -  $(".side-panel-left").width());
-
-   $("#map").css("left", $(".side-panel-left").width());
-
-   //$(".footer-map").css("top", headerHeight + $(".main-container").height());
-/*
-   $(".side-panel-right").css("height", $("#map").height());
-
-*/
-
-
-   $( window ).resize(function() {
-
-
-
-   //$(".slideshow-container , .slideshow-container-reservation, footer").css("width", window.outerWidth );
-
-   $("#map").css("width", window.innerWidth -  $(".side-panel-left").width());
-
-   $("#map").css("left", $(".side-panel-left").width());
-
-
-
-   });
-
-
-   var leftStatus = "closed";
-
-   $(".filter-button").click( 
-
-   function() { 
-
-                  if(leftStatus === "closed")
-
-                  {
-
-                   leftStatus = "open";
-
-                   $( ".side-panel-left" ).toggle( "slide" );
-
-                   $(".filter-button-panel").animate({width:40 + $(".side-panel-left").width()});
-
-                  }
-
-                  else
-                  
-                  {
-
-                   leftStatus = "closed";
-                   
-                   $( ".side-panel-left" ).toggle( "slide" );
-
-                   $(".filter-button-panel").animate({width:40});
-
-
-                  }
-                   // document.getElementsByClassName("w3-sidenav")[0].style.display = "block";
-                  
-
-                  //$(".side-panel-left").show( "slide", {direction: "left" }, 300 );
-
-                 
-                }
-
-
-
-   );
-
-
-var rightStatus = "closed";
-
-$(".filter-button-right").click( 
-
-     function() { 
-
-
-                  if(rightStatus === "closed")
-                  
-                  {
-
-                     rightStatus = "open";
-                  //document.getElementsByClassName("w3-sidenav")[0].style.display = "block";
-
-                  $(".side-panel-right").show( "slide", {direction: "right" }, 300 );
-
-
-                  $(".filter-button-panel-right").animate({width: 40 +  $(".side-panel-right").width()});
-
-                  
-                  //$( ".side-panel-right" ).toggle( "slide" );
-                 
-
-
-                  }
-                  else
-                  {
-
-                    rightStatus = "closed";
-                  
-                  $(".filter-button-panel-right").animate({width:40 });
-
-                  
-                   $(".side-panel-right").hide( "slide", {direction: "right" }, 300 );
-
-
-
-                  }
-                 
-
-                });
-   
-         //
-        //function(){ document.getElementsByClassName("w3-sidenav")[0].style.display = "none";}
-       
-   
-
-   /*var filterinnerheight = window.innerHeight - headerHeight - $(".filter-first-row").height() ;
-
-   $(".filter-section-1").css("height", filterinnerheight / 3);
-
-   $(".filter-section-2").css("height", filterinnerheight / 3);
-
-   $(".filter-section-3").css("height", filter-inner-height / 3);*/
-
-  
-
-
-
-
-   //$(".slideshow-container").css("top", headerHeight);
-   //$(".dropdown-content").css("top", headerHeight);
-  
-
-/*
-   $(window).scroll(function() {
-
-        if ($(this).scrollTop() > 1){  
-
-       
-       $('.logo').addClass("sticky_logo");
-       $('header').addClass("sticky");
-  
-   
-   }
-  
-  else{
-  
-     $('header').removeClass("sticky");
-     $('.logo').removeClass("sticky_logo");
-  
- 
-  }
-
-});
-*/
-
-
-    $(".dropdown").click(function(event){
-
-
-
-
-           $(this).children("div.dropdown-content").slideToggle("slow");
-
-       
-
-
-    });
-
-
-
-});
-
 
 $(document).ready(function(){
    
@@ -246,19 +18,22 @@ $("#subscribe_button").click(function() {
 });
 
 
+
+
+
 });
+
+
+
 
 var app = angular.module('sinopia', ['ngResource','typeofbusinessfilter','typeofservicefilter','businessnamefilter','itineraryFilter']);
 
 app.controller('reservationsystem', function($scope,$http,$resource,$compile) {
 
-$scope.asda = "ASDAD";
 
 $scope.numofdays = 0 ;
 
-$scope.connectemail = getCookie("connectemail");
 
-alert($scope.connectemail);
 var init = function () {
    
 

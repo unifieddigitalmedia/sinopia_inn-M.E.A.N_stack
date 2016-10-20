@@ -198,7 +198,32 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb410b', end
 }
 
 
-.home_text{ position:relative; border:black solid thin; padding:5px;background-color:black;opacity: 0.8;filter: alpha(opacity=80); 
+.home_text{ margin-top:200px; position:relative; border:black solid thin; padding:5px;background-color:black;opacity: 0.8;filter: alpha(opacity=80);
+
+}
+
+.home_text_innerdiv {color:black;padding:20px;text-align:center;border:#262626 thin solid;}
+
+.home_text_caption{color:#aa9d2e;font-size:25px;padding-bottom:10px;}
+
+.home_text_sub_caption{color:white;border-top:#aa9d2e thin dotted; padding-top:5px;font-size:100%!important;}
+
+.home_text_sub_sub_caption{color:white;font-size:100%!important;}
+
+
+.bookingform p {color:#cb410b !important; font-weight:200!important; font-size: 90%!important;}
+
+.bookingform-rewards{margin-top:100px;}
+
+.bookingform-rewards-heading{color:white;font-size:180%!important;}
+
+.bookingform-rewards-heading1{font-size:180%;color:#3b0053;}
+
+.bookingform-subtext {color:black;line-height:none;font-size:100%;}
+
+.booking-form-row {padding:0px 50px 0px 50px; }
+
+/*.home_text{ position:relative; border:black solid thin; padding:5px;background-color:black;opacity: 0.8;filter: alpha(opacity=80); 
 }
 
 .home_text_innerdiv {color:black;padding:20px;text-align:center;border:#262626 thin solid;}
@@ -220,7 +245,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb410b', end
 
 .bookingform-subtext {color:black;line-height:none;font-size:100%;}
 
-.booking-form-row {padding:0px 50px 0px 50px; margin:0px!important;}
+.booking-form-row {padding:0px 50px 0px 50px; margin:0px!important;}*/
 
 .service_icon-res {font-size:30px!important;color:#ffffff;}
 
