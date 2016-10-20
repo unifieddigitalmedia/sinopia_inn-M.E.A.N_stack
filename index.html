@@ -496,7 +496,7 @@ SINOPIA is an early twentieth century house refurbished with a modern interior d
 <input type="text" id="subscribers_email" class="form-control" placeholder="Please enter your email address" name="subscribers_email">
 
 <span class="input-group-btn">
-<button class="btn btn-secondary" type="button"  onclick="subscribe()" id="subscribe_button">
+<button class="btn btn-secondary" type="button"   id="subscribe_button">
 <span class="glyphicon glyphicon-triangle-right" aria-hidden="true">
 </button>
 </span>
@@ -540,7 +540,28 @@ function googleTranslateElementInit() {
   new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'de,en,es,fr,it,ja,la,nl,pa,pl,pt,ru,sv,th,zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
 }
 </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script>
+$(document).ready(function(){
+   
+ 
 
+$("#subscribe_button").click(function() {
+
+
+   document.cookie = "subscribers_email=" + document.getElementById("subscribers_email").value;
+
+
+   window.location = "connect.html" ;
+
+
+
+
+});
+
+
+});
+
+</script>
 </body>
 
 </html>

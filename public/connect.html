@@ -31,7 +31,7 @@
 
 </head>
 
-<body ng-app="sinopia">
+<body ng-app="sinopia" >
 
 
 <nav id="mySidenav" class="sidenav">
@@ -158,7 +158,7 @@
 
 
 
-<div class="slideshow-container-reservation">
+<div class="slideshow-container-reservation" >
 
 
 <div class="row booking-form-row" >
@@ -242,23 +242,23 @@
 </div>
 
 
-<div ng-controller = "reservationsystem" class="container-fluid maindiv">
+<div class="container-fluid maindiv" ng-controller="reservationsystem" >
 
 <section>
 
+
+</br>
 <p>Subscribe to our blog and be the first to know about our latest promotions and developments. From instant alerts on upcoming events and happenings to insider-only rates and special offers – it’s the news you will receive when you connect with our island.</p>
-&nbsp;
-&nbsp;
-&nbsp;
-GET SOCIAL WITH SINOPIA INN
-&nbsp;
-&nbsp;
-&nbsp;
+</br>
+
+<h6>GET SOCIAL WITH SINOPIA INN</h6>
+</br>
+
 <p>Mailing address </br> 
 Zion Hill, Fairy Hill P.O </br> 
 Portland, Jamaica</br> 
 Call +1 212 888 7000  </br> 
-Email  info@sinopiainn.com</p>
+Email info@sinopiainn.com</p>
 &nbsp;
 &nbsp;
 &nbsp;
@@ -774,6 +774,21 @@ function googleTranslateElementInit() {
 }
 </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
+<script>
+
+var app = angular.module('sinopia', []);
+
+app.controller('reservationsystem', function($scope,$http) {
+
+$scope.asda = "ASDAD";
+
+$scope.connectemail = getCookie("connectemail");
+
+alert($scope.connectemail);
+
+});
+
+</script>
 
 </body>
 

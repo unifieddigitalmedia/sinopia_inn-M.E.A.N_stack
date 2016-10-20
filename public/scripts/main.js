@@ -8,31 +8,6 @@ function myFunction() {
     }
 }
 
-$(document).ready(function(){
-   
-
-
-
-$( "#mc-embedded-subscribe" ).click(function() {
-
-
-$( "#mc-embedded-subscribe-form" ).submit();
-
-
-});
-
-
-$( "#subscribe_button" ).click(function() {
-
-
-
-   window.location = "connect.html" ;
-
-   document.cookie = "subscribers_email=" + document.getElementById("#subscribers_email").value;
-
-
-
-});
 
 
    var headerHeight = $("header").height();
@@ -253,15 +228,37 @@ $(".filter-button-right").click(
 });
 
 
+$(document).ready(function(){
+   
+ 
+
+$("#subscribe_button").click(function() {
+
+
+   document.cookie = "subscribers_email=" + document.getElementById("subscribers_email").value;
+
+
+   window.location = "connect.html" ;
+
+
+
+
+});
+
+
+});
 
 var app = angular.module('sinopia', ['ngResource','typeofbusinessfilter','typeofservicefilter','businessnamefilter','itineraryFilter']);
 
 app.controller('reservationsystem', function($scope,$http,$resource,$compile) {
 
+$scope.asda = "ASDAD";
 
 $scope.numofdays = 0 ;
 
+$scope.connectemail = getCookie("connectemail");
 
+alert($scope.connectemail);
 var init = function () {
    
 

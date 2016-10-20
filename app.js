@@ -269,6 +269,142 @@ db.collection('hotels').find().toArray(function(e, results){
 });
 
 
+app.get('/api/mobile/checkhotelavailability/', function (req, res) {
+
+var o_id = new mongo.ObjectID("580815ee769d1e14ea36ce70");
+
+var availability = [];
+
+var offersArray = [];
+
+var roomsIdArray = [];
+
+var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-")[1]+"-"+req.query.fromdate.split("-")[0];
+
+var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
+
+
+
+waterfall([
+  
+  function(callback){
+
+
+db.collection("hotels").find({"_id":o_id}, {'rooms': true} ).toArray(function(err, results) {
+  
+    
+ if (err) return next(err)
+
+for (x = 0; x < results[0].rooms.length; x++) { 
+
+
+
+
+if (results[0].rooms[x].booking.length != 0) {
+
+for (y = 0; y < results[0].rooms[x].booking.length; y++) { 
+
+for (z = 0; z < results[0].rooms[x].booking[y].length; z++) { 
+
+
+
+
+if ( (new Date(results[0].rooms[x].booking[y][z].fromdate) <= new Date(fromdate)  &&  new Date(results[0].rooms[x].booking[y][z].enddate) >= new Date(fromdate) ) || (new Date(results[0].rooms[x].booking[y][z].fromdate) <= new Date(todate)  &&  new Date(results[0].rooms[x].booking[y][z].enddate) >= new Date(todate) ) ) {
+
+
+            roomsIdArray.push(results[0].rooms[x]._id);
+
+
+      }
+
+
+}
+
+
+
+
+}
+
+
+
+}
+
+
+
+}
+
+
+
+ callback(null,roomsIdArray,results);
+
+
+
+});
+
+
+
+  },function(arg1,arg2,callback){
+
+
+
+
+if(arg1 > 0 ){
+
+
+
+var obj = [];
+
+obj = JSON.parse(req.query.roomarray[0]);
+
+
+for (i = 0; i < obj.length; i++) { 
+
+
+if(arg1.indexOf(obj._id) != -1 ){
+
+
+     var response = {"ERROR":"One or more of your rooms has now been booked."};
+        
+      res.json(response);
+
+}
+
+
+
+}
+
+
+
+}else{
+
+
+
+var response = {"ERROR":""};
+        
+res.json(response);
+
+}
+
+
+  }], function (err, result) {
+ 
+
+    if (err) return next(err)
+
+    res.send(results);
+
+
+});
+
+
+
+
+
+
+  });
+
+
+
 
 app.get('/api/checkhotelavailability/', function (req, res) {
 
@@ -1212,7 +1348,7 @@ if ( (new Date(results[0].rooms[x].booking[y][z].fromdate) <= new Date(fromdate)
 for (i = 0; i < roomsArray.length; i++) { 
 
 
-if(arg1.indexOf(roomsArray._id) === -1 ){
+if(arg1.indexOf(roomsArray._id) != -1 ){
 
 
      var response = {"ERROR":"One or more of your rooms has now been booked."};
