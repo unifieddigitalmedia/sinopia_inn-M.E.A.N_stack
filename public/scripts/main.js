@@ -417,10 +417,6 @@ $scope.error = 'Checking availability';
     $scope.checkavailability = function() {
 
 
-
-
-
-                     $("html,body").animate({scrollTop:$(".checking").offset().top }, "slow");
                      
                      $(".checking").slideDown("slow" , function() {
 
