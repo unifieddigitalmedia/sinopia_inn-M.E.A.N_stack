@@ -1214,7 +1214,103 @@ var balance = Number(req.query.total) - Number(req.query.deposit);
 
 var response = {"ERROR":"","Reservation":arg2};
         
-res.json(response);
+
+        var template_name = "Booking confirmation sent to business";
+
+var template_content = [{
+        "name": "",
+        "content": ""
+    }];
+
+var message = {
+
+    "subject": "Sinopia Inn Booking Confirmation",
+    "from_email": "info@sinopiainn.com",
+    "from_name": "Sinopia Inn",
+    "to": [{
+            "email": "machelslack@icloud.com",
+            "name": "Sinopia Inn",
+            "type": "to"
+        }],
+    "headers": {
+        "Reply-To": "info@sinopiainn.com"
+    },
+
+    "important": false,
+    "track_opens": null,
+    "track_clicks": null,
+    "auto_text": null,
+    "auto_html": null,
+    "inline_css": null,
+    "url_strip_qs": null,
+    "preserve_recipients": null,
+    "view_content_link": null,
+    "bcc_address": "machelslack@icloud.com",
+    "tracking_domain": null,
+    "signing_domain": null,
+    "return_path_domain": null,
+    "merge": true,
+    "merge_language": "handlebars",
+    "global_merge_vars": [{
+            "name": "name",
+            "content": results.fname
+        },{
+            "name": "dateofarrival",
+            "content": results.fromdate
+        }],
+    "merge_vars": [{
+            "rcpt": "recipient.email@example.com",
+            "vars": [{
+                    "name": "merge2",
+                    "content": "merge2 content"
+                }]
+        }],
+    /*"tags": [
+        "password-resets"
+    ],
+    "subaccount": "customer-123",
+    "google_analytics_domains": [
+        "example.com"
+    ],
+    "google_analytics_campaign": "message.from_email@example.com",*/
+    "metadata": {
+        "website": "www.sinopiainn.com"
+    },
+    /*"recipient_metadata": [{
+            "rcpt": "recipient.email@example.com",
+            "values": {
+                "user_id": 123456
+            }
+        }],*/
+    "attachments": [{
+            "type": "application/pdf",
+            "name": "sinopiainn_booking_confirmation.pdf",
+            "content": jsfile
+        }],
+    /*images": [{
+            "type": "image/png",
+            "name": "IMAGECID",
+            "content": "ZXhhbXBsZSBmaWxl"
+        }]*/
+};
+
+var async = false;
+var ip_pool = "Main Pool";
+var send_at = "2016-10-10 23:59:59";
+
+mandrill_client.messages.sendTemplate({"template_name": template_name, "template_content": template_content, "message": message, "async": async, "ip_pool": ip_pool, "send_at": send_at}, function(result) {
+
+  res.json(response);
+
+}, function(e) {
+
+if(e){return  console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message); }
+   
+ 
+});
+
+
+
 
 
 
@@ -1603,7 +1699,7 @@ db.collection('reservation').findOne({ "_id": o_id  },function(e, results){
 
       response.on("end", function() {*/
 
-          var jsfile = new Buffer.concat(chunks).toString('base64');
+var jsfile = new Buffer.concat(chunks).toString('base64');
         
        
 var template_name = "Booking confirmation sent to business";
