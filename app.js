@@ -1150,72 +1150,8 @@ db.collection('reservation').insert( [
 
           resID = results.insertedIds[0];
 
-          callback(null,results.insertedIds[0],results);
 
-
-});
-
-                      
-
-}
-  
-
-  }
-
-
-
-
-
-
-
-
-
-});
-
-
-
-
-   } ,function(arg1, arg2, callback){
-
-
-//JSON.stringify(req.query.roomarray[0]);
-
-var obj = [];
-
-obj = JSON.parse(req.query.roomarray[0]);
-
-for (x = 0; x < obj.length; x++) { 
-
-
-
-  db.collection('hotels').updateOne( {"rooms._id":obj[x]._id}, { $push: {"rooms.$.booking": [{ 
-
-
-"RID" : arg1,
-"fromdate" : fromdate , 
-"enddate" : todate 
-
-} ] } } , function(err, results) { 
-
-
- });
-
-
-}
-
-
-  callback(null,arg1,arg2);
-
-   
-  },function(arg1,arg2, callback){
-
-
-var balance = Number(req.query.total) - Number(req.query.deposit);
-
-var response = {"ERROR":"","Reservation":arg2};
-        
-
-        var template_name = "Booking confirmation sent to business";
+ var template_name = "Booking confirmation sent to business";
 
 var template_content = [{
         "name": "",
@@ -1300,7 +1236,10 @@ var send_at = "2016-10-10 23:59:59";
 
 mandrill_client.messages.sendTemplate({"template_name": template_name, "template_content": template_content, "message": message, "async": async, "ip_pool": ip_pool, "send_at": send_at}, function(result) {
 
-  res.json(response);
+
+
+  
+          callback(null,results.insertedIds[0],results);
 
 }, function(e) {
 
@@ -1311,6 +1250,74 @@ if(e){return  console.log('A mandrill error occurred: ' + e.name + ' - ' + e.mes
 
 
 
+
+
+
+
+
+});
+
+                      
+
+}
+  
+
+  }
+
+
+
+
+
+
+
+
+
+});
+
+
+
+
+   } ,function(arg1, arg2, callback){
+
+
+//JSON.stringify(req.query.roomarray[0]);
+
+var obj = [];
+
+obj = JSON.parse(req.query.roomarray[0]);
+
+for (x = 0; x < obj.length; x++) { 
+
+
+
+  db.collection('hotels').updateOne( {"rooms._id":obj[x]._id}, { $push: {"rooms.$.booking": [{ 
+
+
+"RID" : arg1,
+"fromdate" : fromdate , 
+"enddate" : todate 
+
+} ] } } , function(err, results) { 
+
+
+ });
+
+
+}
+
+
+  callback(null,arg1,arg2);
+
+   
+  },function(arg1,arg2, callback){
+
+
+var balance = Number(req.query.total) - Number(req.query.deposit);
+
+var response = {"ERROR":"","Reservation":arg2};
+        
+
+  res.json(response);
 
 
 
