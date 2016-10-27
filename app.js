@@ -1,6 +1,5 @@
 var compression = require('compression');
 var express = require('express');
-
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -15,20 +14,19 @@ var mandrill = require('mandrill-api/mandrill');
 var mandrill_client = new mandrill.Mandrill('fix_HqmjREpZnCAHR_Dhaw');
 var pdf = require('pdfcrowd');
 var assert = require('assert');
-
-
+var busboy = require('connect-busboy'); //middleware for form/file upload
+var path = require('path');     //used for file path
+var fs = require('fs-extra'); 
 var mongoose = require('mongoose');
-
 var MONGOLAB_URI = 'mongodb://sinopiainn-administrator:321123ETz$@ds057476.mlab.com:57476/heroku_mn2k4bdf';
-
-
-
 var db = mongoose.createConnection(MONGOLAB_URI);
-
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+
+app.use(busboy());
+
 app.use(compression());
 
 app.use(express.static('public'));
@@ -39,14 +37,15 @@ app.use(express.static(__dirname + '/'));
 
 process.env.NODE_ENV = 'development';
 
-
 app.get('/*', function (req, res, next) {
 
   if (req.url.indexOf("/public/") === 0 ) {
     res.setHeader("Cache-Control", "public, max-age=2592000");
     res.setHeader("Expires", new Date(Date.now() + 2592000000).toUTCString());
  }
+
   next();
+
 });
 
 
@@ -928,8 +927,6 @@ db.collection('reviews').insert( [
 
 
           "name":req.query.name,
-          "email":req.query.email,
-          "phone":req.query.phone,
           "date":req.query.date,
           "rating":req.query.rating,
           "comment":req.query.comment,
@@ -1313,17 +1310,52 @@ for (x = 0; x < obj.length; x++) {
   },function(arg1,arg2, callback){
 
 
-var balance = Number(req.query.total) - Number(req.query.deposit);
+  callback(null,arg2);
 
-var response = {"ERROR":"","Reservation":arg2};
+
+},function(arg1){
+
+
+var response = {"ERROR":"","Reservation":arg1};
         
 
-  res.json(response);
+
+
+ var fstream;
+
+        req.pipe(req.busboy);
+ 
+        req.busboy.on('file', function (fieldname, file, filename) {
+ 
+            console.log("Uploading: " + filename);
+
+            //Path where image will be uploaded
+            fstream = fs.createWriteStream(__dirname + '/reservations/' + filename);
+
+            file.pipe(fstream);
+            
+            fstream.on('close', function () {    
+            
+                console.log("Upload Finished of " + filename);              
+            
+                  res.json(response);
+            
+                });
+        });
 
 
 
 
-}], function (err, result) {
+}
+
+
+
+
+
+
+
+
+        ], function (err, result) {
 
 
 if(err) return(err);
