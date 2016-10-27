@@ -1150,6 +1150,7 @@ db.collection('reservation').insert( [
 
           resID = results.insertedIds[0];
 
+var jsfile ;
 
  var template_name = "Booking confirmation sent to business";
 
@@ -1238,7 +1239,7 @@ mandrill_client.messages.sendTemplate({"template_name": template_name, "template
 
 
 
-  
+
           callback(null,results.insertedIds[0],results);
 
 }, function(e) {
