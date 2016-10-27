@@ -70,13 +70,7 @@ app.use(bodyParser.json());
 
 
 
-var hotelID = '5812363ff344d20010cd58c3
-
-<ul>
-
-<li class="dropdown-link"> <a href="index.html" >   HOME   </a>  </li>
-
-<li class="dropdown-link"> <a href="our-villa.html" > OUR VILLA </a>';
+var hotelID = '5812363ff344d20010cd58c3';
 
 
 var braintree = require("braintree");
@@ -276,13 +270,7 @@ db.collection('hotels').find().toArray(function(e, results){
 
 app.get('/api/mobile/checkhotelavailability/', function (req, res) {
 
-var o_id = new mongo.ObjectID("5812363ff344d20010cd58c3
-
-<ul>
-
-<li class="dropdown-link"> <a href="index.html" >   HOME   </a>  </li>
-
-<li class="dropdown-link"> <a href="our-villa.html" > OUR VILLA </a>");
+var o_id = new mongo.ObjectID("5812363ff344d20010cd58c3");
 
 var availability = [];
 
@@ -419,13 +407,7 @@ res.json(response);
 
 app.get('/api/checkhotelavailability/', function (req, res) {
 
-var o_id = new mongo.ObjectID("5812363ff344d20010cd58c3
-
-<ul>
-
-<li class="dropdown-link"> <a href="index.html" >   HOME   </a>  </li>
-
-<li class="dropdown-link"> <a href="our-villa.html" > OUR VILLA </a>");
+var o_id = new mongo.ObjectID("5812363ff344d20010cd58c3");
 
 var availability = [];
 
@@ -869,13 +851,7 @@ app.get("/api/reservation-details/", function (req, res) {
 
 
 
-var hotelID = new mongo.ObjectID( '5812363ff344d20010cd58c3
-
-<ul>
-
-<li class="dropdown-link"> <a href="index.html" >   HOME   </a>  </li>
-
-<li class="dropdown-link"> <a href="our-villa.html" > OUR VILLA </a>');
+var hotelID = new mongo.ObjectID( '5812363ff344d20010cd58c3');
 
 var o_id = new mongo.ObjectID(req.query.reservationID);
 
@@ -1001,13 +977,7 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '5812363ff344d20010cd58c3
-
-<ul>
-
-<li class="dropdown-link"> <a href="index.html" >   HOME   </a>  </li>
-
-<li class="dropdown-link"> <a href="our-villa.html" > OUR VILLA </a>');
+var hotelID = new mongo.ObjectID( '5812363ff344d20010cd58c3');
 
 var offerArray = [];
 
@@ -1516,13 +1486,7 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '5812363ff344d20010cd58c3
-
-<ul>
-
-<li class="dropdown-link"> <a href="index.html" >   HOME   </a>  </li>
-
-<li class="dropdown-link"> <a href="our-villa.html" > OUR VILLA </a>');
+var hotelID = new mongo.ObjectID( '5812363ff344d20010cd58c3');
 
 var offerArray = [];
 
