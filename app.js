@@ -1392,7 +1392,7 @@ for (x = 0; x < obj.length; x++) {
 var response = {"ERROR":"","Reservation":arg1};
         
 
-
+console.log(response);      
 
  var fstream;
 
