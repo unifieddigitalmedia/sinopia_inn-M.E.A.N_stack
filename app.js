@@ -282,29 +282,21 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-
-
 waterfall([
   
-  function(callback){
+function(callback){
 
-
-db.collection("hotels").find({"_id":o_id}, {'rooms': true} ).toArray(function(err, results) {
-  
-    
- if (err) return next(err)
+db.collection("hotels").find({"_id":hotelID}, {'rooms': true} ).toArray(function(err, results) {
+      
+if (err) return next(err)
 
 for (x = 0; x < results[0].rooms.length; x++) { 
-
-
-
 
 if (results[0].rooms[x].booking.length != 0) {
 
 for (y = 0; y < results[0].rooms[x].booking.length; y++) { 
 
 for (z = 0; z < results[0].rooms[x].booking[y].length; z++) { 
-
 
 
 
@@ -341,25 +333,17 @@ if ( (new Date(results[0].rooms[x].booking[y][z].fromdate) <= new Date(fromdate)
 });
 
 
+},function(arg1,arg2,callback){
 
-  },function(arg1,arg2,callback){
-
-
-
-
-if(arg1 > 0 ){
-
-
+if(arg1.length > 0 ) {
 
 var obj = [];
 
 obj = JSON.parse(req.query.roomarray[0]);
 
-
 for (i = 0; i < obj.length; i++) { 
 
-
-if(arg1.indexOf(obj._id) != -1 ){
+if(arg1.indexOf(obj[i]._id) != -1 ){
 
 
      var response = {"ERROR":"One or more of your rooms has now been booked."};
@@ -374,13 +358,12 @@ if(arg1.indexOf(obj._id) != -1 ){
 
 
 
-}else{
+} else {
 
 
-
-var response = {"ERROR":""};
+ var response = {"ERROR":""};
         
-res.json(response);
+      res.json(response);
 
 }
 
