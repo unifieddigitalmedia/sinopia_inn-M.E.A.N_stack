@@ -948,7 +948,7 @@ db.collection('reviews').insert( [
 
 
 
-app.get('/api/mobile/payment/', function(req,res) {
+app.post('/api/mobile/payment/', function(req,res) {
 
 
 //var rString = randomString(5, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
@@ -965,56 +965,6 @@ app.get('/api/mobile/payment/', function(req,res) {
   }
 
 
-var tripID;
-
-if(req.query.tripID){
-
-
-db.collection('itinerary').insert( [
-
-
-{
-
-
-          "name":req.query.name,
-          "email":req.query.email,
-          "phone":req.query.phone,
-          "numoftravellers":req.query.numoftravellers,
-          "numofadults":req.query.numofadults,
-          "numofchildren":req.query.numofchildren,
-          "numofinfants":req.query.numofinfants,
-          "subtotaladmission":req.query.subtotaladmission,
-          "subtotalavergae":req.query.subtotalavergae,
-          "carhire":req.query.carhire,
-          "tax":req.query.triptax,
-          "total":req.query.triptotal,
-          "places":req.query.places,
-
-
-
-}], function(err, results) { 
-
-
-
-
-         tripID  = results.insertedIds[0];
-
-      
-
-});
-
-
-
-
-//= new mongo.ObjectID( req.query.tripID);
-
-
-
-}
-
-
-
-
 var availability = [];
 
 var offersArray = [];
@@ -1025,10 +975,7 @@ var resID ;
 
 var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-")[1]+"-"+req.query.fromdate.split("-")[0];
 
-
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
-
-
 
 var hotelID = new mongo.ObjectID( '580815ee769d1e14ea36ce70');
 
@@ -1053,7 +1000,91 @@ if (typeof req.query.roomarray != 'undefined')  { var obj = [];
 obj = JSON.parse(req.query.roomarray[0]); roomsArray = obj; } else { roomsArray = null  ; } ;
 
 
-waterfall([function(callback){
+waterfall([
+
+function(callback){
+
+db.collection("hotels").find({"_id":hotelID}, {'rooms': true} ).toArray(function(err, results) {
+      
+if (err) return next(err)
+
+for (x = 0; x < results[0].rooms.length; x++) { 
+
+if (results[0].rooms[x].booking.length != 0) {
+
+for (y = 0; y < results[0].rooms[x].booking.length; y++) { 
+
+for (z = 0; z < results[0].rooms[x].booking[y].length; z++) { 
+
+
+
+if ( (new Date(results[0].rooms[x].booking[y][z].fromdate) <= new Date(fromdate)  &&  new Date(results[0].rooms[x].booking[y][z].enddate) >= new Date(fromdate) ) || (new Date(results[0].rooms[x].booking[y][z].fromdate) <= new Date(todate)  &&  new Date(results[0].rooms[x].booking[y][z].enddate) >= new Date(todate) ) ) {
+
+
+            roomsIdArray.push(results[0].rooms[x]._id);
+
+
+      }
+
+
+}
+
+
+
+
+}
+
+
+
+}
+
+
+
+}
+
+
+
+ callback(null,roomsIdArray,results);
+
+
+
+});
+
+
+},function(arg1,arg2,callback){
+
+if(arg1.length > 0 ){
+
+var obj = [];
+
+obj = JSON.parse(req.query.roomarray[0]);
+
+for (i = 0; i < obj.length; i++) { 
+
+if(arg1.indexOf(obj[i]._id) != -1 ){
+
+
+     var response = {"ERROR":"One or more of your rooms has now been booked."};
+        
+      res.json(response);
+
+}
+
+
+
+}
+
+
+
+}else{
+
+
+callback(null);
+
+}
+
+
+  },function(callback){
 
 
 var nonce = req.query.payment_method_nonce;
@@ -1109,6 +1140,54 @@ res.json(response);
 else
 
 {
+
+
+var tripID;
+
+if(req.query.tripID){
+
+
+db.collection('itinerary').insert( [
+
+
+{
+
+
+          "name":req.query.name,
+          "email":req.query.email,
+          "phone":req.query.phone,
+          "numoftravellers":req.query.numoftravellers,
+          "numofadults":req.query.numofadults,
+          "numofchildren":req.query.numofchildren,
+          "numofinfants":req.query.numofinfants,
+          "subtotaladmission":req.query.subtotaladmission,
+          "subtotalavergae":req.query.subtotalavergae,
+          "carhire":req.query.carhire,
+          "tax":req.query.triptax,
+          "total":req.query.triptotal,
+          "places":req.query.places,
+
+
+
+}], function(err, results) { 
+
+
+
+
+         tripID  = results.insertedIds[0];
+
+      
+
+});
+
+
+
+
+//= new mongo.ObjectID( req.query.tripID);
+
+
+
+}
 
 
 db.collection('reservation').insert( [
@@ -1304,16 +1383,10 @@ for (x = 0; x < obj.length; x++) {
 }
 
 
-  callback(null,arg1,arg2);
-
-   
-  },function(arg1,arg2, callback){
-
-
   callback(null,arg2);
 
-
-},function(arg1){
+   
+  },function(arg1){
 
 
 var response = {"ERROR":"","Reservation":arg1};
