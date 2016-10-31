@@ -959,7 +959,7 @@ app.post('/upload-image', rawBody, function (req, res) {
 
 
 
-   fs.writeFile('/public/reservations/profile.jpg', req.rawBody,  function(err) {
+   fs.writeFile('profile.jpg', req.rawBody,  function(err) {
 
    if (err) {
    
@@ -970,7 +970,7 @@ app.post('/upload-image', rawBody, function (req, res) {
    console.log("Data written successfully!");
    console.log("Let's read newly written data");
    
-   fs.readFile('/public/reservations/profile.jpg', function (err, data) {
+   fs.readFile('profile.jpg', function (err, data) {
    
       if (err) {
    
