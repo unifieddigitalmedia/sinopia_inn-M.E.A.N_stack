@@ -959,9 +959,11 @@ app.post('/upload-image', rawBody, function (req, res) {
 
  var fstream;
 
+var file = req.rawBody;
+
         req.pipe(req.busboy);
  
-        req.busboy.on('file', function (fieldname, req.rawBody, filename) {
+        req.busboy.on('file', function (fieldname,file, filename) {
  
             console.log("Uploading: " + filename);
 
