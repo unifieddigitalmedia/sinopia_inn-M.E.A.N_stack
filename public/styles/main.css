@@ -565,14 +565,43 @@ section h3{color: #cb410b!important; font-size:100%!important;}
 
 
 
-@media screen and (max-width: 1118px) and (min-width: 1051px) {
+@media screen and (max-width: 1256px) and (min-width: 1155px) {
 
 
-.topnav{ width:85%!important;}
+.topnav{ width:90%!important;}
 
 
 }
 
+
+@media screen and (max-width:1154px) and (min-width: 1117px) {
+
+
+.topnav{ width:90%!important;}
+
+
+}
+
+@media screen and (max-width:1116px) and (min-width:1059px) {
+
+
+.topnav{ width:95%!important;}
+
+
+}
+
+
+@media screen and (max-width:1058px) and (min-width:1036px) {
+
+
+.topnav{ width:97%!important;}
+
+
+}
+
+
+
+/*
 @media screen and (max-width: 1050px) and (min-width: 891px) {
 
 
@@ -580,9 +609,9 @@ section h3{color: #cb410b!important; font-size:100%!important;}
 
 
 }
+*/
 
-
-@media screen and (max-width:890px) {
+@media screen and (max-width:1036px) {
   ul.topnav li:not(:last-child) {display: none;}
   ul.topnav li.icon {
     float: right;
