@@ -956,7 +956,7 @@ app.post('/upload-image', rawBody, function (req, res) {
 
     if (req.rawBody && req.bodyLength > 0) {
 
-       fs.writeFile('/reservations/profile.jpg', req.rawBody,  function(err) {
+       fs.writeFile('/public/reservations/profile.jpg', req.rawBody,  function(err) {
 
    if (err) {
    
