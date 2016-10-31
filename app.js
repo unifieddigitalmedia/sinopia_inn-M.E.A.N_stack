@@ -957,7 +957,9 @@ app.post('/upload-image', rawBody, function (req, res) {
     if (req.rawBody && req.bodyLength > 0) {
 
 
-fs.createWriteStream('/public/reservations/profile.jpg', req.rawBody,  function(err) {
+
+
+   fs.writeFile('/public/reservations/profile.jpg', req.rawBody,  function(err) {
 
    if (err) {
    
@@ -981,60 +983,6 @@ fs.createWriteStream('/public/reservations/profile.jpg', req.rawBody,  function(
    });
 
 });
-
-
-
-
-/*var fstream;
-
-var file = req.rawBody;
-
-        req.pipe(req.busboy);
- 
-        req.busboy.on('file', function (fieldname,file, filename) {
- 
-            console.log("Uploading: " + filename);
-
-            //Path where image will be uploaded
-            fstream = fs.createWriteStream(__dirname + '/reservations/' + filename);
-
-            file.pipe(fstream);
-            
-            fstream.on('close', function () {    
-            
-                console.log("Upload Finished of " + filename);              
-            
-                  res.json(response);
-            
-                });
-        });*/
-
-
-
-   /*fs.writeFile('/public/reservations/profile.jpg', req.rawBody,  function(err) {
-
-   if (err) {
-   
-      return console.error(err);
-   
-   }
-   
-   console.log("Data written successfully!");
-   console.log("Let's read newly written data");
-   
-   fs.readFile('/public/reservations/profile.jpg', function (err, data) {
-   
-      if (err) {
-   
-         return console.error(err);
-   
-      }
-   
-     
-   
-   });
-
-});*/
 
 
         res.send(200, {status: 'OK'});
