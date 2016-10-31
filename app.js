@@ -931,6 +931,67 @@ db.collection('reviews').insert( [
 
 
 
+function rawBody(req, res, next) {
+    var chunks = [];
+
+    req.on('data', function(chunk) {
+        chunks.push(chunk);
+    });
+
+    req.on('end', function() {
+        var buffer = Buffer.concat(chunks);
+
+        req.bodyLength = buffer.length;
+        req.rawBody = buffer;
+        next();
+    });
+
+    req.on('error', function (err) {
+        console.log(err);
+        res.status(500);
+    });
+}
+
+app.post('/upload-image', rawBody, function (req, res) {
+
+    if (req.rawBody && req.bodyLength > 0) {
+
+       fs.writeFile('/reservations/profile.jpg', req.rawBody,  function(err) {
+
+   if (err) {
+   
+      return console.error(err);
+   
+   }
+   
+   console.log("Data written successfully!");
+   console.log("Let's read newly written data");
+   
+   fs.readFile('input.txt', function (err, data) {
+   
+      if (err) {
+   
+         return console.error(err);
+   
+      }
+   
+      console.log("Asynchronous read: " + data.toString());
+   
+   });
+
+});
+
+
+        res.send(200, {status: 'OK'});
+    } else {
+        res.send(500);
+    }
+
+});
+
+
+
+
 app.post('/api/mobile/payment/', function(req,res) {
 
 
