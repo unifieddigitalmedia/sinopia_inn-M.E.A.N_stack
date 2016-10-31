@@ -286,7 +286,7 @@ waterfall([
   
 function(callback){
 
-db.collection("hotels").find({"_id":hotelID}, {'rooms': true} ).toArray(function(err, results) {
+db.collection("hotels").find({"_id":o_id}, {'rooms': true} ).toArray(function(err, results) {
       
 if (err) return next(err)
 
