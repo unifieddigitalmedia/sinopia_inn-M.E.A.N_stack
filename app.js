@@ -956,7 +956,32 @@ app.post('/upload-image', rawBody, function (req, res) {
 
     if (req.rawBody && req.bodyLength > 0) {
 
-       fs.writeFile('/public/reservations/profile.jpg', req.rawBody,  function(err) {
+
+ var fstream;
+
+        req.pipe(req.busboy);
+ 
+        req.busboy.on('file', function (fieldname, req.rawBody, filename) {
+ 
+            console.log("Uploading: " + filename);
+
+            //Path where image will be uploaded
+            fstream = fs.createWriteStream(__dirname + '/reservations/' + filename);
+
+            file.pipe(fstream);
+            
+            fstream.on('close', function () {    
+            
+                console.log("Upload Finished of " + filename);              
+            
+                  res.json(response);
+            
+                });
+        });
+
+
+
+   /*fs.writeFile('/public/reservations/profile.jpg', req.rawBody,  function(err) {
 
    if (err) {
    
@@ -979,7 +1004,7 @@ app.post('/upload-image', rawBody, function (req, res) {
    
    });
 
-});
+});*/
 
 
         res.send(200, {status: 'OK'});
@@ -992,7 +1017,7 @@ app.post('/upload-image', rawBody, function (req, res) {
 
 
 
-app.post('/api/mobile/payment/', function(req,res) {
+app.post('/api/mobile/payment/', rawBody, function(req,res) {
 
 
 //var rString = randomString(5, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
@@ -1461,7 +1486,38 @@ console.log(response);
         });
 
 
+/*    if (req.rawBody && req.bodyLength > 0) {
 
+       fs.writeFile('/public/reservations/profile.jpg', req.rawBody,  function(err) {
+
+   if (err) {
+   
+      return console.error(err);
+   
+   }
+   
+   console.log("Data written successfully!");
+   console.log("Let's read newly written data");
+   
+   fs.readFile('/public/reservations/profile.jpg', function (err, data) {
+   
+      if (err) {
+   
+         return console.error(err);
+   
+      }
+   
+     
+   
+   });
+
+});
+
+
+        res.send(200, {status: 'OK'});
+    } else {
+        res.send(500);
+    }*/
 
 }
 
