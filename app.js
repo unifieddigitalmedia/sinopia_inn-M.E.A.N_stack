@@ -957,23 +957,33 @@ app.post('/upload-image', rawBody, function (req, res) {
     if (req.rawBody && req.bodyLength > 0) {
 
 
-var chunks = [];
+fs.createReadStream('/public/reservations/profile.jpg', req.rawBody,  function(err) {
 
-var readableStream = fs.createReadStream('public/reservations/image.jpg');
-
-var data = '';
-
-readableStream.on('data', function(chunk) {
-
-  readableStream.write(chunk);
-          //chunks.push(chunk);
+   if (err) {
+   
+      return console.error(err);
+   
+   }
+   
+   console.log("Data written successfully!");
+   console.log("Let's read newly written data");
+   
+   fs.readFile('/public/reservations/profile.jpg', function (err, data) {
+   
+      if (err) {
+   
+         return console.error(err);
+   
+      }
+   
+     
+   
+   });
 
 });
 
-readableStream.on('end', function() {
 
- readableStream.end();
-});
+
 
 /*var fstream;
 
