@@ -957,7 +957,25 @@ app.post('/upload-image', rawBody, function (req, res) {
     if (req.rawBody && req.bodyLength > 0) {
 
 
- var fstream;
+var chunks = [];
+
+var readableStream = fs.createReadStream('public/reservations/image.jpg');
+
+var data = '';
+
+readableStream.on('data', function(chunk) {
+
+  readableStream.write(chunk);
+          //chunks.push(chunk);
+
+});
+
+readableStream.on('end', function() {
+
+ readableStream.end();
+});
+
+/*var fstream;
 
 var file = req.rawBody;
 
@@ -979,7 +997,7 @@ var file = req.rawBody;
                   res.json(response);
             
                 });
-        });
+        });*/
 
 
 
