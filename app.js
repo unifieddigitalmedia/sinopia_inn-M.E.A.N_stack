@@ -969,6 +969,17 @@ app.post('/upload-image', multipartMiddleware, function(req, resp) {
 
   console.log(req.body.displayImage);
 
+
+  fs.readFile(req.files.path, function (err, data) {
+            //here get the image name and other data parameters which you are sending like image name etc.
+           fs.writeFile('profile.jpg', data, function (err) {
+            
+          });
+   //dont forgot the delete the temp files.
+        });
+
+
+
 /*
 
 fs.writeFile('profile.jpg', req.body.displayImage, 'base64', function(err) {
