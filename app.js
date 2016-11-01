@@ -961,7 +961,7 @@ var multipartMiddleware = multipart();
 
 
 
-app.post('/upload-image', multipartMiddleware, function(req, resp) {
+app.post('/upload-image', multipartMiddleware, function(req, res) {
 
   
   console.log(req.files.displayImage);
@@ -977,7 +977,7 @@ console.log("Data written successfully!");
    console.log("Let's read newly written data");
    
  res.send(200, {status: 'OK'});
- 
+
    //dont forgot the delete the temp files.
         });
 
