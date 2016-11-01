@@ -964,26 +964,20 @@ var multipartMiddleware = multipart();
 app.post('/upload-image', multipartMiddleware, function(req, resp) {
 
   
-  console.log(req.files);
+  console.log(req.files.displayImage);
 
 
 
-  fs.readFile(req.files.urForm-data_name.path, function (err, data) {
+  fs.readFile(req.files.displayImage.path, function (err, data) {
             //here get the image name and other data parameters which you are sending like image name etc.
            fs.writeFile('profile.jpg', data, function (err) {
 
 console.log("Data written successfully!");
+
    console.log("Let's read newly written data");
    
-   fs.readFile('profile.jpg', function (err, data) {
-   
-      if (err) {
-   
-         return console.error(err);
-   
-      }
-
-          });
+ res.send(200, {status: 'OK'});
+ 
    //dont forgot the delete the temp files.
         });
 
