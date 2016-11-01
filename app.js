@@ -953,11 +953,27 @@ function rawBody(req, res, next) {
     });
 }
 
-app.post('/upload-image', rawBody, function (req, res) {
+var multipart = require('connect-multiparty');
+
+var multipartMiddleware = multipart();
+
+//app.post('/upload-image', rawBody, function (req, res) {
 
 
 
-console.log(req.body.displayImage);
+app.post('/upload-image', multipartMiddleware, function(req, resp) {
+
+  
+  console.log(req.body, req.files);
+
+
+  console.log(req.body.displayImage);
+
+/*
+
+fs.writeFile('profile.jpg', req.body.displayImage, 'base64', function(err) {
+    console.log(err);
+});
 
     if (req.rawBody && req.bodyLength > 0) {
 
@@ -992,6 +1008,8 @@ console.log(req.body.displayImage);
     } else {
         res.send(500);
     }
+*/
+
 
 });
 
