@@ -932,6 +932,7 @@ db.collection('reviews').insert( [
 
 
 function rawBody(req, res, next) {
+
     var chunks = [];
 
     req.on('data', function(chunk) {
@@ -954,9 +955,11 @@ function rawBody(req, res, next) {
 
 app.post('/upload-image', rawBody, function (req, res) {
 
+
+
+console.log(req.body.displayImage);
+
     if (req.rawBody && req.bodyLength > 0) {
-
-
 
 
    fs.writeFile('profile.jpg', req.rawBody,  function(err) {
