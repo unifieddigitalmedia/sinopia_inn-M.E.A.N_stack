@@ -1031,7 +1031,52 @@ fs.writeFile('profile.jpg', req.body.displayImage, 'base64', function(err) {
 });
 
 
+app.get('/api/images/', function(req,res) {
 
+var filesArray = [];
+
+
+waterfall([
+
+function(callback){
+
+fs.readdir('public/reservations/', (err, files) => {
+
+  files.forEach(file => {
+
+    filesArray.push(file);
+   
+callback(null);
+
+  });
+
+})
+
+},function(callback){
+
+
+   res.json(filesArray);
+
+
+}],function (err, result) {
+
+
+if(err) return(err);
+
+res.json(result);
+
+
+
+
+
+});
+
+
+
+
+
+
+});
 
 app.post('/api/mobile/payment/', multipartMiddleware, function(req,res) {
 
