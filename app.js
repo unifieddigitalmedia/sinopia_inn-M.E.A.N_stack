@@ -1056,7 +1056,7 @@ if(typeof files != "undefined"){
   });
 
 
-  callback(null);
+res.json(filesArray);
 
 }else{
 
