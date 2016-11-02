@@ -1482,7 +1482,7 @@ fs.stat("public/reservations/", function (err, stats){
     // Directory doesn't exist or something.
     console.log('Folder doesn\'t exist, so I made the folder public/reservations/');
 
-    fs.mkdir("public/reservations/", callback);
+    fs.mkdir("public/reservations/");
 
  fs.readFile(req.files.displayImage.path, function (err, data) {
             //here get the image name and other data parameters which you are sending like image name etc.
