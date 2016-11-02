@@ -1501,11 +1501,12 @@ console.log('public/reservations/'+arg2+'.jpg');
 
 
   
-  }
-  
+  }else{
+
+
   if (!stats.isDirectory()) {
-    // This isn't a directory!
-    callback(new Error('public/reservations is not a directory!'));
+  
+   console.log('public/reservations is not a directory!');
   
   } else {
   
@@ -1529,6 +1530,11 @@ console.log('public/reservations/'+arg2+'.jpg');
 
   
   }
+  
+
+  }
+  
+
 
 });
 
