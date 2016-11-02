@@ -1040,7 +1040,7 @@ waterfall([
 
 function(callback){
 
-fs.readdir('public/reservation/', (err, files) => {
+fs.readdir('public/reservations/', (err, files) => {
 
 
 if(typeof files != "undefined"){
