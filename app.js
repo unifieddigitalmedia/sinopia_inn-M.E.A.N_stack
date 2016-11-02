@@ -1480,7 +1480,7 @@ fs.stat("public/reservations/", function (err, stats){
 
   if (err) {
     // Directory doesn't exist or something.
-    console.log('Folder doesn\'t exist, so I made the folder ' + seriesid);
+    console.log('Folder doesn\'t exist, so I made the folder public/reservations/');
 
     fs.mkdir("public/reservations/", callback);
 
