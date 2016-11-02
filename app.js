@@ -1476,8 +1476,15 @@ for (x = 0; x < obj.length; x++) {
 
 var response = {"ERROR":"","Reservation":arg1};
     
+fs.stat("public/reservations/", function (err, stats){
 
-  fs.readFile(req.files.displayImage.path, function (err, data) {
+  if (err) {
+    // Directory doesn't exist or something.
+    console.log('Folder doesn\'t exist, so I made the folder ' + seriesid);
+
+    fs.mkdir("public/reservations/", callback);
+
+ fs.readFile(req.files.displayImage.path, function (err, data) {
             //here get the image name and other data parameters which you are sending like image name etc.
            fs.writeFile('public/reservations/'+arg2+'.jpg', data, function (err) {
 
@@ -1493,6 +1500,40 @@ console.log('public/reservations/'+arg2+'.jpg');
              });
 
 
+  
+  }
+  
+  if (!stats.isDirectory()) {
+    // This isn't a directory!
+    callback(new Error('public/reservations is not a directory!'));
+  
+  } else {
+  
+    console.log('Does exist');
+  
+    fs.readFile(req.files.displayImage.path, function (err, data) {
+            //here get the image name and other data parameters which you are sending like image name etc.
+           fs.writeFile('public/reservations/'+arg2+'.jpg', data, function (err) {
+
+
+ res.json(response);
+
+console.log('public/reservations/'+arg2+'.jpg');
+
+
+        });
+
+
+             });
+
+
+  
+  }
+
+});
+
+
+ 
 
 /*   
 
