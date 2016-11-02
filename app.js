@@ -70,7 +70,7 @@ app.use(bodyParser.json());
 
 
 
-var hotelID = '5819f6791f064b0010efeea8';
+var hotelID = '581a1ac259a4d0001071c732';
 
 
 var braintree = require("braintree");
@@ -270,7 +270,7 @@ db.collection('hotels').find().toArray(function(e, results){
 
 app.get('/api/mobile/checkhotelavailability/', function (req, res) {
 
-var o_id = new mongo.ObjectID("5819f6791f064b0010efeea8");
+var o_id = new mongo.ObjectID("581a1ac259a4d0001071c732");
 
 var availability = [];
 
@@ -390,7 +390,7 @@ if(arg1.indexOf(obj[i]._id) != -1 ){
 
 app.get('/api/checkhotelavailability/', function (req, res) {
 
-var o_id = new mongo.ObjectID("5819f6791f064b0010efeea8");
+var o_id = new mongo.ObjectID("581a1ac259a4d0001071c732");
 
 var availability = [];
 
@@ -834,7 +834,7 @@ app.get("/api/reservation-details/", function (req, res) {
 
 
 
-var hotelID = new mongo.ObjectID( '5819f6791f064b0010efeea8');
+var hotelID = new mongo.ObjectID( '581a1ac259a4d0001071c732');
 
 var o_id = new mongo.ObjectID(req.query.reservationID);
 
@@ -1062,7 +1062,7 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '5819f6791f064b0010efeea8');
+var hotelID = new mongo.ObjectID( '581a1ac259a4d0001071c732');
 
 var offerArray = [];
 
@@ -1482,104 +1482,7 @@ fs.stat("public/reservations/", function (err, stats){
 
     fs.mkdir("public/reservations/");
 
-    callback(null,arg1,arg2);
-
-
-  
-  }else{
-
-
-  if (!stats.isDirectory()) {
-  
-  
-  } else {
-  
-    console.log('Does exist');
-  
-     callback(null,arg1,arg2);
-
-
-  
-  }
-
-
-  }
-  
-
-
-});
-
-
- 
-
-/*   
-
-
-
-
-
-console.log(response);      
-
- var fstream;
-
-        req.pipe(req.busboy);
- 
-        req.busboy.on('file', function (fieldname, file, filename) {
- 
-            console.log("Uploading: " + filename);
-
-            //Path where image will be uploaded
-            fstream = fs.createWriteStream(__dirname + '/reservations/' + filename);
-
-            file.pipe(fstream);
-            
-            fstream.on('close', function () {    
-            
-                console.log("Upload Finished of " + filename);              
-            
-                  res.json(response);
-            
-                });
-        });
-
-
-
-         if (req.rawBody && req.bodyLength > 0) {
-
-       fs.writeFile('/public/reservations/profile.jpg', req.rawBody,  function(err) {
-
-   if (err) {
-   
-      return console.error(err);
-   
-   }
-   
-   console.log("Data written successfully!");
-   console.log("Let's read newly written data");
-   
-   fs.readFile('/public/reservations/profile.jpg', function (err, data) {
-   
-      if (err) {
-   
-         return console.error(err);
-   
-      }
-   
-     
-   
-   });
-
-});
-
-
-        res.send(200, {status: 'OK'});
-    } else {
-        res.send(500);
-    }*/
-
-},function(arg1,arg2){
-
-
+    
 var response = {"ERROR":"","Reservation":arg1};
 
  fs.readFile(req.files.displayImage.path, function (err, data) {
@@ -1597,8 +1500,48 @@ var response = {"ERROR":"","Reservation":arg1};
              });
 
 
-}
+  
+  }else{
 
+
+  if (!stats.isDirectory()) {
+  
+  
+  } else {
+  
+    console.log('Does exist');
+  
+     
+var response = {"ERROR":"","Reservation":arg1};
+
+ fs.readFile(req.files.displayImage.path, function (err, data) {
+          
+           fs.writeFile('public/reservations/'+arg2+'.jpg', data, function (err) {
+
+
+ res.json(response);
+
+
+
+        });
+
+
+             });
+
+
+  
+  }
+
+
+  }
+  
+
+
+});
+
+
+
+}
 
 
 
@@ -1664,7 +1607,7 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '5819f6791f064b0010efeea8');
+var hotelID = new mongo.ObjectID( '581a1ac259a4d0001071c732');
 
 var offerArray = [];
 
