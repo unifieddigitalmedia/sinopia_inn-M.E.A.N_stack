@@ -1479,12 +1479,12 @@ var response = {"ERROR":"","Reservation":arg1};
 
   fs.readFile(req.files.displayImage.path, function (err, data) {
             //here get the image name and other data parameters which you are sending like image name etc.
-           fs.writeFile('/reservations/'+arg2+'.jpg', data, function (err) {
+           fs.writeFile('public/reservations/'+arg2+'.jpg', data, function (err) {
 
 
  res.json(response);
 
-console.log('/reservations/'+arg2+'.jpg');
+console.log('public/reservations/'+arg2+'.jpg');
 
 
         });
