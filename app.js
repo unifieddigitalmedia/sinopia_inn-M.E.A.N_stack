@@ -70,7 +70,7 @@ app.use(bodyParser.json());
 
 
 
-var hotelID = '5817b76504c4320010bda76f';
+var hotelID = '5819f6791f064b0010efeea8';
 
 
 var braintree = require("braintree");
@@ -270,7 +270,7 @@ db.collection('hotels').find().toArray(function(e, results){
 
 app.get('/api/mobile/checkhotelavailability/', function (req, res) {
 
-var o_id = new mongo.ObjectID("5817b76504c4320010bda76f");
+var o_id = new mongo.ObjectID("5819f6791f064b0010efeea8");
 
 var availability = [];
 
@@ -390,7 +390,7 @@ if(arg1.indexOf(obj[i]._id) != -1 ){
 
 app.get('/api/checkhotelavailability/', function (req, res) {
 
-var o_id = new mongo.ObjectID("5817b76504c4320010bda76f");
+var o_id = new mongo.ObjectID("5819f6791f064b0010efeea8");
 
 var availability = [];
 
@@ -834,7 +834,7 @@ app.get("/api/reservation-details/", function (req, res) {
 
 
 
-var hotelID = new mongo.ObjectID( '5817b76504c4320010bda76f');
+var hotelID = new mongo.ObjectID( '5819f6791f064b0010efeea8');
 
 var o_id = new mongo.ObjectID(req.query.reservationID);
 
@@ -1062,7 +1062,7 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '5817b76504c4320010bda76f');
+var hotelID = new mongo.ObjectID( '5819f6791f064b0010efeea8');
 
 var offerArray = [];
 
@@ -1474,30 +1474,15 @@ for (x = 0; x < obj.length; x++) {
   },function(arg1,arg2){
 
 
-var response = {"ERROR":"","Reservation":arg1};
     
 fs.stat("public/reservations/", function (err, stats){
 
   if (err) {
-    // Directory doesn't exist or something.
-    console.log('Folder doesn\'t exist, so I made the folder public/reservations/');
+
 
     fs.mkdir("public/reservations/");
 
- fs.readFile(req.files.displayImage.path, function (err, data) {
-            //here get the image name and other data parameters which you are sending like image name etc.
-           fs.writeFile('public/reservations/'+arg2+'.jpg', data, function (err) {
-
-
- res.json(response);
-
-console.log('public/reservations/'+arg2+'.jpg');
-
-
-        });
-
-
-             });
+    callback(null,arg1,arg2);
 
 
   
@@ -1506,31 +1491,17 @@ console.log('public/reservations/'+arg2+'.jpg');
 
   if (!stats.isDirectory()) {
   
-   console.log('public/reservations is not a directory!');
   
   } else {
   
     console.log('Does exist');
   
-    fs.readFile(req.files.displayImage.path, function (err, data) {
-            //here get the image name and other data parameters which you are sending like image name etc.
-           fs.writeFile('public/reservations/'+arg2+'.jpg', data, function (err) {
-
-
- res.json(response);
-
-console.log('public/reservations/'+arg2+'.jpg');
-
-
-        });
-
-
-             });
+     callback(null,arg1,arg2);
 
 
   
   }
-  
+
 
   }
   
@@ -1606,6 +1577,26 @@ console.log(response);
         res.send(500);
     }*/
 
+},function(arg1,arg2){
+
+
+var response = {"ERROR":"","Reservation":arg1};
+
+ fs.readFile(req.files.displayImage.path, function (err, data) {
+          
+           fs.writeFile('public/reservations/'+arg2+'.jpg', data, function (err) {
+
+
+ res.json(response);
+
+
+
+        });
+
+
+             });
+
+
 }
 
 
@@ -1673,7 +1664,7 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '5817b76504c4320010bda76f');
+var hotelID = new mongo.ObjectID( '5819f6791f064b0010efeea8');
 
 var offerArray = [];
 
