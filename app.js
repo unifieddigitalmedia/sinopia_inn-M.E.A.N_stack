@@ -1040,17 +1040,33 @@ waterfall([
 
 function(callback){
 
-fs.readdir('public/reservations/', (err, files) => {
+fs.readdir('public/reservation/', (err, files) => {
+
+
+if(typeof files != "undefined"){
+
+
 
   files.forEach(file => {
 
     filesArray.push(file);
    
-callback(null);
+
 
   });
 
-})
+
+  callback(null);
+
+}else{
+
+
+res.json(filesArray);
+
+}
+
+
+});
 
 },function(callback){
 
