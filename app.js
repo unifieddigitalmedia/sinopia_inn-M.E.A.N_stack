@@ -1033,7 +1033,7 @@ fs.writeFile('profile.jpg', req.body.displayImage, 'base64', function(err) {
 
 
 
-app.post('/api/mobile/payment/', rawBody, function(req,res) {
+app.post('/api/mobile/payment/', multipartMiddleware, function(req,res) {
 
 
 //var rString = randomString(5, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
@@ -1468,14 +1468,37 @@ for (x = 0; x < obj.length; x++) {
 }
 
 
-  callback(null,arg2);
+  callback(null,arg2,arg1);
 
    
-  },function(arg1){
+  },function(arg1,arg2){
 
 
 var response = {"ERROR":"","Reservation":arg1};
     
+
+  fs.readFile(req.files.displayImage.path, function (err, data) {
+            //here get the image name and other data parameters which you are sending like image name etc.
+           fs.writeFile('/reservations/'+arg2+'.jpg', data, function (err) {
+
+
+ res.json(response);
+
+console.log('/reservations/'+arg2+'.jpg');
+
+
+        });
+
+
+             });
+
+
+
+/*   
+
+
+
+
 
 console.log(response);      
 
@@ -1502,7 +1525,8 @@ console.log(response);
         });
 
 
-/*    if (req.rawBody && req.bodyLength > 0) {
+
+         if (req.rawBody && req.bodyLength > 0) {
 
        fs.writeFile('/public/reservations/profile.jpg', req.rawBody,  function(err) {
 
