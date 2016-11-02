@@ -1040,6 +1040,20 @@ waterfall([
 
 function(callback){
 
+
+fs.stat("public/reservations/", function (err, stats){
+
+  if (err) {
+
+
+console.log("does not exist");
+res.json(filesArray);
+
+  
+  }else{
+
+
+
 fs.readdir('public/reservations/', (err, files) => {
 
 
@@ -1056,7 +1070,7 @@ if(typeof files != "undefined"){
   });
 
 
-res.json(filesArray);
+  callback(null);
 
 }else{
 
@@ -1067,6 +1081,14 @@ res.json(filesArray);
 
 
 });
+
+
+}
+
+});
+
+
+
 
 },function(callback){
 
