@@ -2407,6 +2407,7 @@ app.post('/api/newmessage/', function (req, res) {
 
 console.log(req.query.body);
 
+
 var message = new gcm.Message({
     collapseKey: 'demo',
     priority: 'high',
@@ -2422,8 +2423,9 @@ var message = new gcm.Message({
     notification: {
         title: "Sinopia Inn",
         icon: "ic_launcher",
-        body: req.query.body.substring(0, 11)+"...";
+        body: req.query.body.substring(0, 11) + "...",
     }
+
 });
 
 // Set up the sender with you API key, prepare your recipients' registration tokens. 
