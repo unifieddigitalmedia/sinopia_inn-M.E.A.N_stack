@@ -984,6 +984,97 @@ console.log("Data written successfully!");
 
              });
 
+/*
+var containerArray = [];
+
+waterfall([
+
+function(callback){
+
+db.collection('reservations').find({"name":req.query.name}).toArray(function(e, results){
+
+
+    if (e) return next(e)
+
+      res.json(results);
+
+
+fs.stat("public/reservations/"+results._id, function (err, stats){
+
+  if (err) {
+
+
+    //fs.mkdir("public/reservations/");
+
+  
+  } else {
+
+
+  if (!stats.isDirectory()) {
+  
+  
+  } else {
+  
+console.log('Does exist');
+       
+var filesArray = [];
+
+fs.readdir("public/reservations/"+results._id, (err, files) => {
+
+
+if ( typeof files != "undefined" ) {
+
+  files.forEach(file => {
+
+    filesArray.push(file);
+   
+  });
+
+
+} 
+
+
+});
+
+  }
+
+
+  }
+
+
+});
+
+
+var directory = '{ "images" : '+filesArray +',"name" :" ", "location" :" " ," from" : " ", " to ": " " }';
+
+var obj = JSON.parse(directory);
+
+containerArray.push(obj);
+
+});
+
+
+callback(containerArray);
+
+},function(arg){
+
+
+res.josn(containerArray);
+
+
+}],function (err, result) {
+
+
+if(err) return(err);
+
+res.json(result);
+
+
+
+});*/
+
+
+
 
 
 /*
@@ -1034,7 +1125,6 @@ fs.writeFile('profile.jpg', req.body.displayImage, 'base64', function(err) {
 app.get('/api/images/', function(req,res) {
 
 var filesArray = [];
-
 
 waterfall([
 
@@ -2307,6 +2397,51 @@ mandrill_client.messages.sendTemplate({"template_name": template_name, "template
 
 
 });
+
+
+
+var gcm = require('node-gcm');
+ 
+
+app.post('/api/newmessage/', function (req, res) {
+
+console.log(req.query.body);
+
+var message = new gcm.Message({
+    collapseKey: 'demo',
+    priority: 'high',
+    contentAvailable: true,
+    delayWhileIdle: true,
+    timeToLive: 3,
+    restrictedPackageName: "com.example.home.sinopiainntravelapp",
+    dryRun: false,
+    data: {
+        key1: req.query.body,
+        key2: 'message2'
+    },
+    notification: {
+        title: "Sinopia Inn",
+        icon: "ic_launcher",
+        body: req.query.body.substring(0, 11)+"...";
+    }
+});
+
+// Set up the sender with you API key, prepare your recipients' registration tokens. 
+var sender = new gcm.Sender('AIzaSyCQ-ngrwzhZ9JiCBXL-sVk_4pbdeD55Lek');
+
+var regTokens = [req.query.sender];
+ 
+sender.send(message, { registrationTokens: regTokens }, function (err, response) {
+    if(err) console.error(err);
+    else  res.json(response);
+});
+
+
+
+});
+
+
+
 
 module.exports = app;
 
