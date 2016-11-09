@@ -70,7 +70,7 @@ app.use(bodyParser.json());
 
 
 
-var hotelID = '581dd34837e39d0010d92241';
+var hotelID = '58234b3936cb8500114682d4';
 
 
 var braintree = require("braintree");
@@ -270,7 +270,7 @@ db.collection('hotels').find().toArray(function(e, results){
 
 app.get('/api/mobile/checkhotelavailability/', function (req, res) {
 
-var o_id = new mongo.ObjectID("581dd34837e39d0010d92241");
+var o_id = new mongo.ObjectID("58234b3936cb8500114682d4");
 
 var availability = [];
 
@@ -390,7 +390,7 @@ if(arg1.indexOf(obj[i]._id) != -1 ){
 
 app.get('/api/checkhotelavailability/', function (req, res) {
 
-var o_id = new mongo.ObjectID("581dd34837e39d0010d92241");
+var o_id = new mongo.ObjectID("58234b3936cb8500114682d4");
 
 var availability = [];
 
@@ -834,7 +834,7 @@ app.get("/api/reservation-details/", function (req, res) {
 
 
 
-var hotelID = new mongo.ObjectID( '581dd34837e39d0010d92241');
+var hotelID = new mongo.ObjectID( '58234b3936cb8500114682d4');
 
 var o_id = new mongo.ObjectID(req.query.reservationID);
 
@@ -956,9 +956,6 @@ function rawBody(req, res, next) {
 var multipart = require('connect-multiparty');
 
 var multipartMiddleware = multipart();
-
-
-
 
 
 app.post('/api/upload-reservation-photo', multipartMiddleware, function(req, res) {
@@ -1368,7 +1365,7 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '581dd34837e39d0010d92241');
+var hotelID = new mongo.ObjectID( '58234b3936cb8500114682d4');
 
 var offerArray = [];
 
@@ -1914,7 +1911,7 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '581dd34837e39d0010d92241');
+var hotelID = new mongo.ObjectID( '58234b3936cb8500114682d4');
 
 var offerArray = [];
 
