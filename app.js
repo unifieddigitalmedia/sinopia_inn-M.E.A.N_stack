@@ -961,8 +961,120 @@ var multipartMiddleware = multipart();
 
 
 
-app.post('/upload-image', multipartMiddleware, function(req, res) {
+app.post('/api/upload-reservation-photo', multipartMiddleware, function(req, res) {
 
+
+console.log(req.files.displayImage);
+
+var d = new Date();
+
+var reservationID = new mongo.ObjectID(req.query.resID);
+
+var date_created = d.toDateString();
+
+var time_created = d.toDateString();
+
+fs.readFile(req.files.displayImage.path, function (err, data) {
+
+fs.stat("public/reservations/"+req.query.resID, function (err, stats){
+
+  if (err) {
+
+
+ fs.mkdir("public/reservations/"+req.query.resID);
+
+
+fs.writeFile("public/reservations/"+req.query.resID+"/"+req.files.displayImage.originalFilename, data, function (err) {
+
+db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos": { 
+
+"image_url" : "public/reservations/"+req.query.resID+"/"+req.files.displayImage.originalFilename,
+"text" : req.query.message , 
+"date_created" : date_created,
+"time_created" : time_created,
+
+}  } } , function(err, results) { 
+
+
+ });
+
+ });
+  
+  res.send(200, {status: 'OK'});
+
+  } else {
+
+
+  if (!stats.isDirectory()) {
+  
+
+ fs.mkdir("public/reservations/"+req.query.resID);
+
+
+fs.writeFile("public/reservations/"+req.query.resID+"/"+req.files.displayImage.originalFilename, data, function (err) {
+
+db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos": { 
+
+"image_url" : "public/reservations/"+req.query.resID+"/"+req.files.displayImage.originalFilename,
+"text" : req.query.message , 
+"date_created" : date_created,
+"time_created" : time_created,
+}  } } , function(err, results) { 
+
+
+ });
+
+ });
+
+
+res.send(200, {status: 'OK'});
+
+
+  
+  } else {
+  
+console.log('Does exist');
+       
+
+fs.writeFile("public/reservations/"+req.query.resID+"/"+req.files.displayImage.originalFilename, data, function (err) {
+
+db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos": { 
+
+"image_url" : "public/reservations/"+req.query.resID+"/"+req.files.displayImage.originalFilename,
+"text" : req.query.message , 
+"date_created" : date_created,
+"time_created" : time_created,
+
+}  } } , function(err, results) { 
+
+
+ });
+
+ });
+
+res.send(200, {status: 'OK'});
+
+  }
+
+
+  }
+
+
+});
+
+
+
+
+
+
+             });
+
+
+
+});
+
+app.post('/upload-image', multipartMiddleware, function(req, res) {
+ console.log(req.files);
   
   console.log(req.files.displayImage);
 
@@ -1121,6 +1233,27 @@ fs.writeFile('profile.jpg', req.body.displayImage, 'base64', function(err) {
 
 });
 
+app.get('/api/timeline/', function(req, res) {
+
+var containerArray= [];
+
+var reservationID = new mongo.ObjectID(req.query.resID);
+
+db.collection('reservation').find({"_id":reservationID},{'photos': true}).toArray(function(e, results){
+
+ if (e) return next(e)
+
+var directory = '{ "images" : "'+results[0].photos +'","name" :"'+req.query.name+' ", "location" :" " ," from" : "", " to ": " " }';
+
+var obj = JSON.parse(directory);
+
+containerArray.push(obj);
+
+res.json(containerArray);
+
+});
+
+  });
 
 app.get('/api/images/', function(req,res) {
 
@@ -1476,6 +1609,7 @@ db.collection('reservation').insert( [
           "offers":offerArray,
           "amenities":amentityArray,
           "rooms":roomsArray,
+          "photos":[],
    
 
 
