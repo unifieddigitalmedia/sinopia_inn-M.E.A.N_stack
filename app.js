@@ -1607,6 +1607,7 @@ db.collection('reservation').insert( [
           "amenities":amentityArray,
           "rooms":roomsArray,
           "photos":[],
+          "name":req.query.fname,
    
 
 
@@ -2074,6 +2075,7 @@ else
 
 
 
+var name = req.query.fname.concat(" ").concat(lname);
 
 db.collection('reservation').insert( [
 
@@ -2103,6 +2105,9 @@ db.collection('reservation').insert( [
           "offers":offerArray,
           "amenities":amentityArray,
           "rooms":roomsArray,
+          "photos":[],
+          "name":name,
+   
    
 
 
