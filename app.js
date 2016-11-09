@@ -1252,7 +1252,8 @@ res.json(containerArray);
 
   });
 
-app.get('/api/images/', function(req,res) {
+
+/*app.get('/api/images/', function(req,res) {
 
 var filesArray = [];
 
@@ -1267,43 +1268,54 @@ fs.stat("public/reservations/", function (err, stats){
 
 
 console.log("does not exist");
+
 res.json(filesArray);
 
   
   }else{
 
 
-
 fs.readdir('public/reservations/', (err, files) => {
 
 
-if(typeof files != "undefined"){
+files.forEach(file => {
 
-
-
-  files.forEach(file => {
-
-    filesArray.push(file);
+    //
    
+  if (fs.lstatSync('public/reservations/'+file).isDirectory()) {
+  
+  
+fs.readdir('public/reservations/'+file, (err, files) => {
 
 
-  });
+
+files.forEach(file => {
 
 
-  callback(null);
+filesArray.push(file);
 
-}else{
+console.log(filesArray);
+
+    });
+
+});
 
 
-res.json(filesArray);
 
-}
+  }
+
+
+ });
+
 
 
 });
 
 
+  callback(null);
+
 }
+
 
 });
 
@@ -1325,6 +1337,55 @@ res.json(result);
 
 
 
+});
+
+
+
+
+});*/
+
+app.get('/api/images/', function(req,res) {
+
+var filesArray = [];
+
+var containerArray= [];
+waterfall([
+
+function(callback){
+
+db.collection('reservation').find({},{'photos': true}).toArray(function(e, results){
+
+if (e) return next(e)
+
+for (var x = 0 ; x < results.length ; x++) {
+
+for (var y = 0 ; y < results[x].photos.length ; y++) {
+
+
+containerArray.push(results[y]);
+
+
+}
+
+
+}
+
+callback(null,containerArray);
+
+
+});
+
+
+} , function(arg){
+
+res.json(arg);
+
+}],function (err, result) {
+
+
+if(err) return(err);
+
+res.json(result);
 
 
 });
@@ -1477,7 +1538,7 @@ callback(null);
 
 var nonce = req.query.payment_method_nonce;
 
-var deposit = req.query.deposit.replace(",","");
+var deposit = req.query.deposit;
  
 gateway.transaction.sale({
   
@@ -1516,7 +1577,7 @@ if(!result.success)
 
 
 
-var response = {"ERROR":result.message};
+var response = {"ERROR":result};
         
 res.json(response);
 
