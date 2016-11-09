@@ -992,11 +992,16 @@ db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos
 }  } } , function(err, results) { 
 
 
+res.json("1 - "+results);
+
+  //res.send(200, {status: '1-OK'} );
+
+
  });
 
  });
   
-  res.send(200, {status: '1-OK'});
+
 
   } else {
 
@@ -1017,13 +1022,14 @@ db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos
 "time_created" : time_created,
 }  } } , function(err, results) { 
 
+res.json("2 - "+results);
 
  });
 
  });
 
 
-res.send(200, {status: '2-OK'});
+//res.send(200, {status: '2-OK'});
 
 
   
@@ -1042,12 +1048,13 @@ db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos
 
 }  } } , function(err, results) { 
 
+res.json("3 - "+results);
 
  });
 
  });
 
-res.send(200, {status: '3-OK'});
+//res.send(200, {status: '3-OK'});
 
   }
 
