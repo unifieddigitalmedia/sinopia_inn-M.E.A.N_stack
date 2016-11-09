@@ -983,7 +983,7 @@ fs.mkdir("public/reservations/"+req.query.resID);
 fs.writeFile("public/reservations/"+req.query.resID+"/"+req.files.displayImage.originalFilename, data, function (err) {
 
  if (err) return next(err)
-  
+
 db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos": { 
 
 "image_url" : "public/reservations/"+req.query.resID+"/"+req.files.displayImage.originalFilename,
@@ -1379,14 +1379,19 @@ for (var x = 0 ; x < results.length ; x++) {
 
 for (var y = 0 ; y < results[x].photos.length ; y++) {
 
+//console.log(results[x].photos.length);
 
-containerArray.push(results[y]);
+containerArray.push(results[x].photos[y]);
+
+
+
 
 
 }
 
 
 }
+
 
 callback(null,containerArray);
 
