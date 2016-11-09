@@ -963,7 +963,8 @@ var multipartMiddleware = multipart();
 
 app.post('/api/upload-reservation-photo', multipartMiddleware, function(req, res) {
 
-
+console.log(req.query.resID);
+console.log(req.query.message);
 console.log(req.files.displayImage);
 
 var d = new Date();
