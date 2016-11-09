@@ -982,6 +982,8 @@ fs.mkdir("public/reservations/"+req.query.resID);
 
 fs.writeFile("public/reservations/"+req.query.resID+"/"+req.files.displayImage.originalFilename, data, function (err) {
 
+ if (err) return next(err)
+  
 db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos": { 
 
 "image_url" : "public/reservations/"+req.query.resID+"/"+req.files.displayImage.originalFilename,
@@ -991,6 +993,7 @@ db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos
 
 }  } } , function(err, results) { 
 
+ if (err) return next(err)
 
 res.json("1 - "+results);
 
@@ -1014,6 +1017,8 @@ res.json("1 - "+results);
 
 fs.writeFile("public/reservations/"+req.query.resID+"/"+req.files.displayImage.originalFilename, data, function (err) {
 
+ if (err) return next(err)
+
 db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos": { 
 
 "image_url" : "public/reservations/"+req.query.resID+"/"+req.files.displayImage.originalFilename,
@@ -1021,6 +1026,8 @@ db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos
 "date_created" : date_created,
 "time_created" : time_created,
 }  } } , function(err, results) { 
+
+ if (err) return next(err)
 
 res.json("2 - "+results);
 
@@ -1039,6 +1046,8 @@ console.log('Does exist');
        
 fs.writeFile("public/reservations/"+req.query.resID+"/"+req.files.displayImage.originalFilename, data, function (err) {
 
+ if (err) return next(err)
+
 db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos": { 
 
 "image_url" : "public/reservations/"+req.query.resID+"/"+req.files.displayImage.originalFilename,
@@ -1047,6 +1056,8 @@ db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos
 "time_created" : time_created,
 
 }  } } , function(err, results) { 
+
+ if (err) return next(err)
 
 res.json("3 - "+results);
 
