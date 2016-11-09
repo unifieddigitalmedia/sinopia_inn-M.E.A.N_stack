@@ -957,7 +957,7 @@ var multipart = require('connect-multiparty');
 
 var multipartMiddleware = multipart();
 
-//app.post('/upload-image', rawBody, function (req, res) {
+
 
 
 
@@ -978,11 +978,9 @@ fs.readFile(req.files.displayImage.path, function (err, data) {
 
 fs.stat("public/reservations/"+req.query.resID, function (err, stats){
 
-  if (err) {
+if (err) {
 
-
- fs.mkdir("public/reservations/"+req.query.resID);
-
+fs.mkdir("public/reservations/"+req.query.resID);
 
 fs.writeFile("public/reservations/"+req.query.resID+"/"+req.files.displayImage.originalFilename, data, function (err) {
 
@@ -1000,7 +998,7 @@ db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos
 
  });
   
-  res.send(200, {status: 'OK'});
+  res.send(200, {status: '1-OK'});
 
   } else {
 
@@ -1027,7 +1025,7 @@ db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos
  });
 
 
-res.send(200, {status: 'OK'});
+res.send(200, {status: '2-OK'});
 
 
   
@@ -1035,7 +1033,6 @@ res.send(200, {status: 'OK'});
   
 console.log('Does exist');
        
-
 fs.writeFile("public/reservations/"+req.query.resID+"/"+req.files.displayImage.originalFilename, data, function (err) {
 
 db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos": { 
@@ -1052,7 +1049,7 @@ db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos
 
  });
 
-res.send(200, {status: 'OK'});
+res.send(200, {status: '3-OK'});
 
   }
 
@@ -1073,7 +1070,9 @@ res.send(200, {status: 'OK'});
 
 });
 
+//app.post('/upload-image', rawBody, function (req, res) {
 app.post('/upload-image', multipartMiddleware, function(req, res) {
+
  console.log(req.files);
   
   console.log(req.files.displayImage);
