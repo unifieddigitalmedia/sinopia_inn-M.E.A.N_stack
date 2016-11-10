@@ -972,6 +972,8 @@ var date_created = d.toDateString();
 
 var time_created = d.toDateString();
 
+var filename =  req.files.displayImage.originalFilename.replace(" ", "");
+
 fs.readFile(req.files.displayImage.path, function (err, data) {
 
 fs.stat("public/reservations/"+req.query.resID, function (err, stats){
@@ -980,13 +982,13 @@ if (err) {
 
 fs.mkdir("public/reservations/"+req.query.resID);
 
-fs.writeFile("public/reservations/"+req.query.resID+"/"+req.files.displayImage.originalFilename, data, function (err) {
+fs.writeFile("public/reservations/"+req.query.resID+"/"+filename, data, function (err) {
 
  if (err) return next(err)
 
 db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos": { 
 
-"image_url" : "public/reservations/"+req.query.resID+"/"+req.files.displayImage.originalFilename,
+"image_url" : "public/reservations/"+req.query.resID+"/"+filename,
 "text" : req.query.message , 
 "date_created" : date_created,
 "time_created" : time_created,
@@ -1015,13 +1017,13 @@ res.json("1 - "+results);
  fs.mkdir("public/reservations/"+req.query.resID);
 
 
-fs.writeFile("public/reservations/"+req.query.resID+"/"+req.files.displayImage.originalFilename, data, function (err) {
+fs.writeFile("public/reservations/"+req.query.resID+"/"+filename, data, function (err) {
 
  if (err) return next(err)
 
 db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos": { 
 
-"image_url" : "public/reservations/"+req.query.resID+"/"+req.files.displayImage.originalFilename,
+"image_url" : "public/reservations/"+req.query.resID+"/"+filename,
 "text" : req.query.message , 
 "date_created" : date_created,
 "time_created" : time_created,
@@ -1044,13 +1046,13 @@ res.json("2 - "+results);
   
 console.log('Does exist');
        
-fs.writeFile("public/reservations/"+req.query.resID+"/"+req.files.displayImage.originalFilename, data, function (err) {
+fs.writeFile("public/reservations/"+req.query.resID+"/"+filename, data, function (err) {
 
  if (err) return next(err)
 
 db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos": { 
 
-"image_url" : "public/reservations/"+req.query.resID+"/"+req.files.displayImage.originalFilename,
+"image_url" : "public/reservations/"+req.query.resID+"/"+filename,
 "text" : req.query.message , 
 "date_created" : date_created,
 "time_created" : time_created,
