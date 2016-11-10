@@ -1252,6 +1252,8 @@ app.get('/api/timeline/', function(req, res) {
 
 var containerArray= [];
 
+
+
 var reservationID = new mongo.ObjectID(req.query.name);
 
 db.collection('reservation').find({"name":req.query.name},{}).toArray(function(e, results){
@@ -1262,11 +1264,7 @@ db.collection('reservation').find({"name":req.query.name},{}).toArray(function(e
 for (var x = 0 ; x < results.length ; x++){
 
 
-var directory = '{ "images" : "'+results[x].photos +'","name" :"'+req.query.name+' ", "location" :" " ," from" : "'+results[x].fromdate+'", " to ": "'+results[x].todate+' " }';
-
-var obj = JSON.parse(directory);
-
-containerArray.push(obj);
+containerArray.push({ images : results[x].photos , name : req.query.name ,  location : "" , from : results[x].fromdate ,  to : results[x].todate });
 
 
 }
