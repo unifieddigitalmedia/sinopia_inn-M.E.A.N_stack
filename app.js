@@ -91,31 +91,221 @@ var gateway = braintree.connect({
 
 
 
-app.get('/api/books', function (req, res) {
+app.get('/api/menu/', function (req, res) {
 
+  var container = [];
+  var items = [];
+
+waterfall([
+
+  function(callback){
+
+
+db.collection("menu").find( {}, {type:1, _id:0} ).toArray(function(e, results){
+
+  
+  if (e) return next(e)
+
+
+for (var i = 0; i < results.length; i++) { 
    
-db.collection('books').find( ).toArray(function(e, results){
 
 
-   res.json(results);
+
+   if(items.indexOf(results[i].type) === -1)
+
+                                            
+            {
+
+                    items.push(results[i].type);
+
+            }
+
+
+
+}
+
+    
+callback(null,items);
 
 
 });
 
+  
+  },
+
+  function(paraArray,callback){
+
+
+
+    async.eachSeries(paraArray,function(item,callback) {
+ 
+      
+      db.collection('menu').find( { "type": item } ).toArray(function(e, results){
+
+               
+          
+              container.push({"type":item,"items":results});
+
+callback(e)
+
+
+
+                                                                                       });
+
+
+ 
+    },function(err) {
+
+ 
+        if (err) throw err;
+
+     
+
+
+        callback(null,container);
+ 
+
+    });
+
+
+
+                                 
+ 
+
+
+  },
+
+  function(arg1,callback){
+
+ 
+       res.json(arg1);
+  
+
+  }
+
+], function (err, result) {
+  
+
+ res.json('done');
+
+
 });
 
-app.get('/api/menu', function (req, res) {
 
+
+
+});
+
+
+          
+
+          app.get('/api/books/', function (req, res) {
+
+  var container = [];
+  var items = [];
+
+waterfall([
+
+  function(callback){
+
+
+db.collection("books").find( {}, {type:1, _id:0} ).toArray(function(e, results){
+
+  
+  if (e) return next(e)
+
+
+for (var i = 0; i < results.length; i++) { 
    
-db.collection('menu').find( ).toArray(function(e, results){
 
 
-   res.json(results);
+
+   if(items.indexOf(results[i].type) === -1)
+
+                                            
+            {
+
+                    items.push(results[i].type);
+
+            }
+
+
+
+}
+
+    
+callback(null,items);
 
 
 });
 
+  
+  },
+
+  function(paraArray,callback){
+
+
+
+    async.eachSeries(paraArray,function(item,callback) {
+ 
+      
+      db.collection('books').find( { "type": item } ).toArray(function(e, results){
+
+               
+          
+              container.push({"type":item,"items":results});
+
+callback(e)
+
+
+
+                                                                                       });
+
+
+ 
+    },function(err) {
+
+ 
+        if (err) throw err;
+
+     
+
+
+        callback(null,container);
+ 
+
+    });
+
+
+
+                                 
+ 
+
+
+  },
+
+  function(arg1,callback){
+
+ 
+       res.json(arg1);
+  
+
+  }
+
+], function (err, result) {
+  
+
+ res.json('done');
+
+
 });
+
+
+
+
+});
+
 
 app.get('/api/businesses', function (req, res) {
 
