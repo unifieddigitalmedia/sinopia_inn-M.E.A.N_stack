@@ -91,6 +91,32 @@ var gateway = braintree.connect({
 
 
 
+app.get('/api/books', function (req, res) {
+
+   
+db.collection('books').find( ).toArray(function(e, results){
+
+
+   res.json(results);
+
+
+});
+
+});
+
+app.get('/api/menu', function (req, res) {
+
+   
+db.collection('menu').find( ).toArray(function(e, results){
+
+
+   res.json(results);
+
+
+});
+
+});
+
 app.get('/api/businesses', function (req, res) {
 
    
