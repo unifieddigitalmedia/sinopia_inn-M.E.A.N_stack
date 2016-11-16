@@ -1122,6 +1122,7 @@ app.post('/api/reviews/', function(req,res) {
 db.collection('reviews').insert( [
 
 
+
 {
 
 
@@ -1129,6 +1130,7 @@ db.collection('reviews').insert( [
           "date":req.query.date,
           "rating":req.query.rating,
           "comment":req.query.comment,
+          "rating_img":req.query.rating+"stars",
          
 
 

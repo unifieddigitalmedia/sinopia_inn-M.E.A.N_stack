@@ -3,23 +3,49 @@
     <channel>
         <title>Sinopia Inn Self Catering Holiday Villa in Portland Jamaica |  Blog</title>
         <description>Sinopia Inn Self Catering Holiday Villa in Portland Jamaica |  Blog</description>
-        <link>https://sinopia-inn.herokuapp.com/blog/index.html</link>
+        <link>http://www.sinopiainn.com/blog/index.html</link>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <lastBuildDate>Fri, 27 May 2016 17:04:34 +0100</lastBuildDate>
         <pubDate>Thu, 26 May 2016 17:51:02 +0100</pubDate>
         <generator>FeedForAll Mac v2.1 (2.1.0.1) unlicensed version; http://www.FeedForAll.com/</generator>
-      <item>
-            <title>Test 2</title>
-            <description>Test 2</description>
-            <link>http://www.yahoo.com</link>
+       
+       <item>
+            <title>Sustainable Vacationing</title>
+            <description>Stepping out of Sinopia Inn into its natural environment was great...</description>
+            <link>http://www.sinopiainn.com/blog/article_1/part5.html</link>
+           
             <guid isPermaLink="false">08E9F5D4-D516-4515-B339-1A7780FB6E5F-4220-00001D0794A56672-FFA</guid>
             <pubDate>Fri, 27 May 2016 20:08:38 +0100</pubDate>
         </item>
 
         <item>
-            <title>Test</title>
-            <description>Test Description</description>
-            <link>https://sinopia-inn.herokuapp.com/blog/article_1/index.html</link>
+            <title>The Weekender</title>
+            <description>A country home first built in the early 20th century...</description>
+            <link>http://www.sinopiainn.com/blog/article_1/part4.html</link>
+            <guid isPermaLink="false">51083758-9A75-43FD-B569-80A047FB0C8B-1976-0000097348B164E6-FFA</guid>
+            <pubDate>Thu, 26 May 2016 17:50:24 +0100</pubDate>
+        </item>
+
+        <item>
+            <title>A Road Less Travelled With The Stars</title>
+            <description>I love Kingston, not only to see family and friends...</description>
+            <link>http://www.sinopiainn.com/blog/article_1/part3.html</link>
+            <guid isPermaLink="false">51083758-9A75-43FD-B569-80A047FB0C8B-1976-0000097348B164E6-FFA</guid>
+            <pubDate>Thu, 26 May 2016 17:50:24 +0100</pubDate>
+        </item>
+
+          <item>
+            <title>Dubbing In The City With Kabaka Pyramid And The Band</title>
+            <description>Soon after arriving on the direct British Airways flight from London...</description>
+            <link>http://www.sinopiainn.com/blog/article_1/part2.html</link>
+            <guid isPermaLink="false">51083758-9A75-43FD-B569-80A047FB0C8B-1976-0000097348B164E6-FFA</guid>
+            <pubDate>Thu, 26 May 2016 17:50:24 +0100</pubDate>
+        </item>
+
+          <item>
+            <title>Traveller</title>
+            <description>Being the son of a Jamaican lecturer and Facilities Manager...</description>
+            <link>http://www.sinopiainn.com/blog/article_1/part1.html</link>
             <guid isPermaLink="false">51083758-9A75-43FD-B569-80A047FB0C8B-1976-0000097348B164E6-FFA</guid>
             <pubDate>Thu, 26 May 2016 17:50:24 +0100</pubDate>
         </item>
