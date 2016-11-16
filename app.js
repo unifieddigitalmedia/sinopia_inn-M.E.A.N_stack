@@ -1114,6 +1114,17 @@ db.collection('reviews').find({}).toArray(function(e, results){
 
 });
 
+app.delete('/api/reviews/', function(req,res) {
+
+
+db.collection('reviews').deleteMany( {}, function(err, results) {
+     
+     
+   });
+
+
+
+});
 
 app.post('/api/reviews/', function(req,res) {
 
