@@ -1119,6 +1119,17 @@ app.post('/api/reviews/', function(req,res) {
 
 
 
+var idArray ;
+
+db.collection('reservation').find({"name":req.query.name},{ _id:1 }).toArray(function(e, results){
+
+//idArray = results;
+
+
+var photofile = "http://www.sinopiainn.com/public/reservations/"+results[results.length-1]+".jpg";
+
+
+
 db.collection('reviews').insert( [
 
 
@@ -1131,6 +1142,7 @@ db.collection('reviews').insert( [
           "rating":req.query.rating,
           "comment":req.query.comment,
           "rating_img":req.query.rating+"stars",
+          "photofile":photofile,
          
 
 
@@ -1144,6 +1156,13 @@ if(err){ res.json({"ERROR": "There was an error on our saerver'" });}else{
       
 
 });
+
+
+});
+
+
+
+
 
 
 });
