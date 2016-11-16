@@ -1126,7 +1126,8 @@ db.collection('reservation').find({"name":req.query.name},{ _id:1 }).toArray(fun
 //idArray = results;
 
 
-var photofile = "http://www.sinopiainn.com/public/reservations/"+results[results.length-1]+".jpg";
+
+var photofile = "http://www.sinopiainn.com/public/reservations/"+results[results.length-1]._id+".jpg";
 
 
 
