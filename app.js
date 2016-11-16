@@ -1136,8 +1136,11 @@ db.collection('reviews').insert( [
 
 }], function(err, results) { 
 
+if(err){ res.json({"ERROR": "There was an error on our saerver'" });}else{
 
-          console.log(tripID);
+  res.json({"ERROR": "Your comment has been posted" });
+}
+       
       
 
 });
