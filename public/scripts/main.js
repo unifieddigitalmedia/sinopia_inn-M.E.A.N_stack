@@ -53,7 +53,7 @@ xhttp.onreadystatechange = function() {
 
 };
 
-xhttp.open("GET", "public/blog/Feed/article1.xml", true);
+xhttp.open("GET", "public/blog/Feed/index.xml", true);
 
 xhttp.send();
 
@@ -81,7 +81,7 @@ xhttp.onreadystatechange = function() {
 
 };
 
-xhttp.open("GET", "Feed/article1.xml", true);
+xhttp.open("GET", "Feed/index.xml", true);
 
 xhttp.send();
 

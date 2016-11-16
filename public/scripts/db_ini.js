@@ -47,24 +47,24 @@ db.placesofinterest.insert([{"businessname":"San San Beach","businessaddress":"S
 
 
 
-db.menu.insert([{"type":"appetizers","name":"appetizers 1","description":"appetizers 1 description","method":"appetizers 1 method ","ingridients":["appetizers 1 ingridient 1","appetizers 1 ingridient 2","appetizers 1 ingridient 3","appetizers 1 ingridient 4 "],"price":"","pdf":"","image_url":""}]);
+db.menu.insert([{"type":"breakfast","name":"appetizers 1","description":"appetizers 1 description","method":"appetizers 1 method ","ingridients":["appetizers 1 ingridient 1","appetizers 1 ingridient 2","appetizers 1 ingridient 3","appetizers 1 ingridient 4 "],"price":"","pdf":"http:/www.sinopiainn.com/public/menu/breakfast/appetizers 1.pdf","image_url":"http:/www.sinopiainn.com/public/menu/breakfast/appetizers 1.jpg"}]);
 
-db.menu.insert([{"type":"appetizers","name":"appetizers 2","description":"appetizers 2 description","method":"appetizers 2 method ","ingridients":[ "appetizers 2 ingridient 1","appetizers 2 ingridient 2","appetizers 2 ingridient 3","appetizers 2 ingridient 4 "],"price":"","pdf":"","image_url":""}]);
+db.menu.insert([{"type":"breakfast","name":"appetizers 2","description":"appetizers 2 description","method":"appetizers 2 method ","ingridients":[ "appetizers 2 ingridient 1","appetizers 2 ingridient 2","appetizers 2 ingridient 3","appetizers 2 ingridient 4 "],"price":"","pdf":"http:/www.sinopiainn.com/public/menu/breakfast/appetizers 1.pdf","image_url":"http:/www.sinopiainn.com/public/menu/breakfast/appetizers 1.jpg"}]);
 
-db.menu.insert([{"type":"appetizers","name":"appetizers 3","description":"appetizers 1 description","method":"appetizers 1 method ","ingridients":["appetizers 3 ingridient 1","appetizers 3 ingridient 2","appetizers 3 ingridient 3","appetizers 3 ingridient 4 "],"price":"","pdf":"","image_url":""}]);
-
-
-db.menu.insert([{"type":"entrée", "name":"entrée 1","description":"entrée 1 description","method":"entrée 1 method ","ingridients":["entrée 1 ingridient 1","entrée 1 ingridient 2","entrée 1 ingridient 3","entrée 1 ingridient 4 "],"price":"","pdf":"","image_url":""}]);
-
-db.menu.insert([{"type":"entrée", "name":"entrée 2","description":"entrée 2 description","method":"entrée 2 method ","ingridients":["entrée 2 ingridient 1","entrée 2 ingridient 2","entrée 2 ingridient 3","entrée 2 ingridient 4 "],"price":"","pdf":"","image_url":""}]);
-
-db.menu.insert([{"type":"entrée","name":"entrée 3","description":"entrée 1 description","method":"entrée 1 method ","ingridients":["entrée 3 ingridient 1","entrée 3 ingridient 2","entrée 3 ingridient 3","entrée 3 ingridient 4 "],"price":"","pdf":"","image_url":""}]);
+db.menu.insert([{"type":"breakfast","name":"appetizers 3","description":"appetizers 1 description","method":"appetizers 1 method ","ingridients":["appetizers 3 ingridient 1","appetizers 3 ingridient 2","appetizers 3 ingridient 3","appetizers 3 ingridient 4 "],"price":"","pdf":"http:/www.sinopiainn.com/public/menu/breakfast/appetizers 1.pdf","image_url":"http:/www.sinopiainn.com/public/menu/breakfast/appetizers 1.jpg"}]);
 
 
+db.menu.insert([{"type":"entrée", "name":"entrée 1","description":"entrée 1 description","method":"entrée 1 method ","ingridients":["entrée 1 ingridient 1","entrée 1 ingridient 2","entrée 1 ingridient 3","entrée 1 ingridient 4 "],"price":"","pdf":"http:/www.sinopiainn.com/public/menu/breakfast/appetizers 1.pdf","image_url":"http:/www.sinopiainn.com/public/menu/breakfast/appetizers 1.jpg"}]);
 
-db.books.insert([{"type":"author 1", "name":"title of book","descripton":"book 1 description","method":"","ingridients":["book page 1","book page 2","book page 3","book page 4 "],"price":"","pdf":"","image_url":""}]);
+db.menu.insert([{"type":"entrée", "name":"entrée 2","description":"entrée 2 description","method":"entrée 2 method ","ingridients":["entrée 2 ingridient 1","entrée 2 ingridient 2","entrée 2 ingridient 3","entrée 2 ingridient 4 "],"price":"","pdf":"http:/www.sinopiainn.com/public/menu/breakfast/appetizers 1.pdf","image_url":"http:/www.sinopiainn.com/public/menu/breakfast/appetizers 1.jpg"}]);
 
-db.books.insert([{"type":"author 1", "name":"title of book 2","descripton":"book 2 description","method":"","ingridients":["book 2 page 1","book 2 page 2","book 2 page 3","book 2 page 4 "],"price":"","pdf":"","image_url":""}]);
+db.menu.insert([{"type":"entrée","name":"entrée 3","description":"entrée 1 description","method":"entrée 1 method ","ingridients":["entrée 3 ingridient 1","entrée 3 ingridient 2","entrée 3 ingridient 3","entrée 3 ingridient 4 "],"price":"","pdf":"http:/www.sinopiainn.com/public/menu/breakfast/appetizers 1.pdf","image_url":"http:/www.sinopiainn.com/public/menu/breakfast/appetizers 1.jpg"}]);
 
-db.books.insert([{"type":"author 2", "name":"title of book 1","descripton":"book 1 description","method":"","ingridients":["book 1 page 1","book 1 page 2","book 1 page 3","book 1 page 4 "],"price":"","pdf":"","image_url":""}]);
+
+
+db.books.insert([{"type":"author 1", "name":"title of book","descripton":"book 1 description","method":"","ingridients":["book page 1","book page 2","book page 3","book page 4 "],"price":"","pdf":"http:/www.sinopiainn.com/public/books/author 1/title of book.pdf","image_url":"http:/www.sinopiainn.com/public/books/author 1/title of book.jpg"}]);
+
+db.books.insert([{"type":"author 1", "name":"title of book 2","descripton":"book 2 description","method":"","ingridients":["book 2 page 1","book 2 page 2","book 2 page 3","book 2 page 4 "],"price":"","pdf":"http:/www.sinopiainn.com/public/books/author 1/title of book.pdf","image_url":"http:/www.sinopiainn.com/public/books/author 1/title of book.jpg"}]);
+
+db.books.insert([{"type":"author 2", "name":"title of book 1","descripton":"book 1 description","method":"","ingridients":["book 1 page 1","book 1 page 2","book 1 page 3","book 1 page 4 "],"price":"","pdf":"http:/www.sinopiainn.com/public/books/author 1/title of book.pdf","image_url":"http:/www.sinopiainn.com/public/books/author 1/title of book.jpg"}]);
 
