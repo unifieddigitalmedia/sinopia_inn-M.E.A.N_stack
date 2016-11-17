@@ -1153,7 +1153,7 @@ db.collection('reviews').insert( [
           "date":req.query.date,
           "rating":req.query.rating,
           "comment":req.query.comment,
-          "rating_img":req.query.rating+"stars",
+          "rating_img":req.query.rating+"star",
           "photofile":photofile,
          
 
