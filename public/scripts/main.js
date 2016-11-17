@@ -96,26 +96,14 @@ xmlDoc = xml.responseXML;
 
 x = xmlDoc.getElementsByTagName('channel');
 
-artcileTitle = document.createElement("p");
-
-artcileTitle.setAttribute("style","cursor: pointer;text-align:left!important;");
-
-artcileTitle.setAttribute("data-toggle","collapse");
-
-artcileTitle.setAttribute("data-target","#article1");
-
-artcileTitle.appendChild(document.createTextNode(x[0].childNodes[1].innerHTML));
-
-artcileTitle.className = "side_menu_title p_centering";
-
-document.getElementById("blog-section").appendChild(artcileTitle);
-
 
 
 
 itemList = xmlDoc.getElementsByTagName('item');
 
-var numofRows = itemList.length / 3 ;
+var numofRows = itemList.length / 2 ;
+
+var counter = 0;
 
 for (x = 0; x < numofRows ; x++) {
 
@@ -126,12 +114,12 @@ articleDiv.className = "row";
 document.getElementById("blog-section").appendChild(articleDiv);
 
 
-for (y = 0; y < 3 ; y++) {
+for (y = 0; y < 2 ; y++) {
 
 
 var rowColumn = document.createElement("div");
 
-rowColumn.className = "col-sm-4";
+rowColumn.className = "col-sm-6";
 
 articleDiv.appendChild(rowColumn);
 
@@ -141,28 +129,34 @@ articleDiv.appendChild(rowColumn);
 
 var articleItem = document.createElement("div");
 
-articleItem.setAttribute("style","width:100%");
+articleItem.setAttribute("style","width:100%;");
 
-articleItem.className = "w3-card-4";
+articleItem.className = "w3-card-6";
+
+articleItem.appendChild(document.createElement("br"));
+
+articleItem.appendChild(document.createElement("br"));
+
+var articleItemTitle = document.createElement("p");
+
+articleItemTitle.className = "side_menu_title";
 
 
 
-var articleItemTitle = document.createElement("h4");
-
-articleItemTitle.appendChild(document.createTextNode(itemList[y].childNodes[1].innerHTML));
+articleItemTitle.appendChild(document.createTextNode(itemList[counter].childNodes[1].innerHTML));
 
 articleItemTitle.setAttribute("style","padding:20px;");
 
 articleItem.appendChild(articleItemTitle);
 
 
-
+articleItem.appendChild(document.createElement("br"));
 
 var articleImage = document.createElement("img");
 
 articleImage.setAttribute("src","../images/beach.png");
 
-articleImage.setAttribute("style","width:100%");
+articleImage.setAttribute("style","width:100%;height:450px;");
 
 
 articleItem.appendChild(articleImage);
@@ -175,20 +169,16 @@ var articleItemContainer = document.createElement("div");
 
 articleItemContainer.className = "w3-container";
 
-
-articleItemContainer.setAttribute("style","height:220px;");
-
-
-
-
-
+articleItemContainer.setAttribute("style","height:0px;");
 
 
 articleItemContainer.appendChild(document.createElement("br"));
 
+
+
 var articleItemDescription = document.createElement("p");
 
-articleItemDescription.appendChild(document.createTextNode(itemList[y].childNodes[3].innerHTML));
+articleItemDescription.appendChild(document.createTextNode(itemList[counter].childNodes[3].innerHTML));
 
 articleItemContainer.appendChild(articleItemDescription);
 
@@ -205,6 +195,7 @@ rowColumn.appendChild(articleItem);
 
 rowColumn.appendChild(document.createElement("br"));
 
+counter ++;
 
 }
 
