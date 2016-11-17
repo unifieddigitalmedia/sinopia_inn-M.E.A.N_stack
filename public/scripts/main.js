@@ -55,7 +55,7 @@ xhttp.onreadystatechange = function() {
 
 xhttp.open("GET", "public/blog/Feed/index.xml", true);
 
-xhttp.send();
+//xhttp.send();
 
 
 
@@ -137,6 +137,16 @@ articleItem.appendChild(document.createElement("br"));
 
 articleItem.appendChild(document.createElement("br"));
 
+
+
+var articleLink = document.createElement("a");
+
+articleLink.className = "blog-link";
+
+articleLink.setAttribute("style","text-decoration:none;");
+
+articleLink.setAttribute("href",itemList[counter].childNodes[5].innerHTML);
+
 var articleItemTitle = document.createElement("p");
 
 articleItemTitle.className = "side_menu_title";
@@ -147,7 +157,12 @@ articleItemTitle.appendChild(document.createTextNode(itemList[counter].childNode
 
 articleItemTitle.setAttribute("style","padding:20px;");
 
-articleItem.appendChild(articleItemTitle);
+articleLink.appendChild(articleItemTitle);
+
+
+
+articleItem.appendChild(articleLink);
+
 
 
 articleItem.appendChild(document.createElement("br"));
