@@ -199,8 +199,6 @@ cursor:pointer; font-size:90%;
 /******** START OF HEADER MENU CSS ********/
 
 
-.w3-card-6 a:hover {color:#cb410b;}
-
 .logo{width:208px; height:30px!important;}
 
 
@@ -226,7 +224,7 @@ background: #EE632C;  header.sticky { height: 100px; background: #efc47D; paddin
 
 header.sticky { height:auto; font-size: 9px;background: #cc9999; padding-left: 20px; z-index:99;  transition: all 0.4s ease;}
 
-.topnav-header{  
+.topnav-header{ 
  box-shadow: 10px 10px 5px #888888;
   background:/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cb410b+0,cb410b+100,c96c4a+100,c9856c+100 */
 background: #cb410b; /* Old browsers */
@@ -238,7 +236,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb410b', end
 .dropbtn { display: inline-block; color: white!important;  font-family: 'PT Sans', sans-serif; font-weight:100; text-align: center; padding: 14px 16px; 
 text-decoration: none;cursor:pointer; }
 
-.topnav{ width:80%;list-style-type: none; color:white; margin: 0 auto; padding: 0; overflow: hidden; text-align:right; line-height: 100% !important; }
+.topnav{ width:65%;list-style-type: none; color:white; margin: 0 auto; padding: 0; overflow: hidden; text-align:right; line-height: 100% !important; }
 
 ul.topnav li.icon {display: none;}
 
@@ -249,7 +247,7 @@ ul.topnav li { display: inline-block;  vertical-align:middle; padding:0px; }
 .topnav li a { padding:16px 10px!important; display: block; color:white; font-family: 'PT Sans', sans-serif; font-weight:100!important; font-size:15px;text-align: center;  text-decoration: none;cursor:pointer; }
 
 
-.topnav li a span { padding: 12px   }
+.topnav li a span { padding: 12px ;color:white;  }
 
 .dropdown-content a { color:black !important; padding: 12px 16px !important;text-decoration: none !important; display:block !important; 
   text-align: left !important; 
@@ -354,15 +352,25 @@ font-weight:600!important;
 
 }
 
-.top_menu_logo_link{ text-align: left !important; }
+.top_menu_logo_link{
+
+width:80%;text-align: left !important;
+
+
+}
 
 .top_menu_topnav{ list-style-type: none; color:white; margin: 0; padding: 0; overflow: hidden; text-align:right; line-height: 100% !important;}
 
 .top_menu_topnav li a { display: inline-block; color:#666666;  font-weight:50; text-align: center; padding: 14px 16px; text-decoration: none;cursor:pointer; }
 
+
+
+
+
 .topnav-top{ width:100%;list-style-type: none; color:white; margin: 0; padding: 0; overflow: hidden; text-align:left; line-height: 100% !important;}
 
-.topnav-top ul { }
+.topnav-top ul {border:red thin solid; }
+
 
 ul.topnav-bottoptom li.icon {display: none;}
 
@@ -374,7 +382,12 @@ ul.topnav-top li { display: inline-block;  vertical-align:middle; }
 
 .topnav-top li.dropdown-link {display: inline-block; }
 
-.topnav-top li:first-child a:hover { background-color: none !important; }
+.topnav-top li:first-child a:hover {
+
+    background-color: none !important;
+
+}
+
 
 /******** END OF HEADER MENU CSS ********/
 
