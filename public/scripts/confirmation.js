@@ -9,7 +9,7 @@ var d = new Date();
 
 document.getElementById("date").innerHTML = d.toDateString();
 
-$http.get("http://localhost:3000/api/reservation-details/?reservationID="+getCookie('reservationID')).then(function(response) {
+$http.get("http://www.sinopiainn.com/api/reservation-details/?reservationID="+getCookie('reservationID')).then(function(response) {
 
 
                                     $scope.bookingID = response.data._id;
@@ -54,7 +54,7 @@ $http.get("http://localhost:3000/api/reservation-details/?reservationID="+getCoo
 
 
 
-$http.get("http://localhost:3000/api/booking-confirmation/?reservationID="+getCookie('reservationID')).then(function(response) {
+$http.get("http://www.sinopiainn.com/api/booking-confirmation/?reservationID="+getCookie('reservationID')).then(function(response) {
 
 
 

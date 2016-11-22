@@ -1181,6 +1181,7 @@ else {
 $scope.detailserror = "";
 
 
+
 var resource = $resource('http://localhost:3000/api/personaldetails/',{
 
         
@@ -1210,7 +1211,7 @@ var resource = $resource('http://localhost:3000/api/personaldetails/',{
 
 $scope.amenityArray = jQuery.grep($scope.amenityArray, function( a,i ) {return (a.checked === true);});
 
-alert('going to save');
+alert("Please wait while we process your reservation");
 
 var reserveBooking = resource.save(
 
@@ -1245,7 +1246,7 @@ var reserveBooking = resource.save(
 if(reserveBooking.ERROR){ alert(reserveBooking.ERROR); } else {   
 
 
-alert(reserveBooking);
+
 
 $scope.offersArray = [];
 

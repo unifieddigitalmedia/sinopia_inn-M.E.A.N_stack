@@ -22,6 +22,8 @@ var MONGOLAB_URI = 'mongodb://sinopiainn-administrator:321123ETz$@ds057476.mlab.
 var db = mongoose.createConnection(MONGOLAB_URI);
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var nodemailer = require('nodemailer');
+var client = new pdf.Pdfcrowd('sinopiainn', 'fcfaaea5b060744db668d1bee67ccaae');
 
 var app = express();
 
@@ -1017,7 +1019,9 @@ var mailOptions = {
 };
 
 transporter.sendMail(mailOptions, function(error, info){
+
     if(error){
+  
         return console.log(error);
     }
 
@@ -2148,7 +2152,7 @@ var response = {"ERROR":"","Reservation":arg1};
 
 
   
-  }else{
+  } else{
 
 
   if (!stats.isDirectory()) {
@@ -2427,7 +2431,7 @@ else
 
 
 
-var name = req.query.fname.concat(" ").concat(lname);
+var name = req.query.fname.concat(" ").concat(req.query.lname);
 
 db.collection('reservation').insert( [
 
@@ -2526,8 +2530,44 @@ for (x = 0; x < req.body['roomarray[]'].length; x++) {
 var balance = Number(req.query.total) - Number(req.query.deposit);
 
 var response = {"ERROR":"","ReservationID":arg1};
-        
-res.json(response);
+
+fs.stat("public/reservations/", function (err, stats){
+
+  if (err) {
+
+
+    fs.mkdir("public/reservations/");
+
+    client.convertURI('http://www.sinopiainn.com/booking-confirmation.html', pdf.saveToFile("public/reservations/"+req.query.reservationID+".pdf"));
+
+    res.json(response);
+
+
+  
+  } else{
+
+
+  if (!stats.isDirectory()) {
+  
+  
+  } else {
+  
+    console.log('Does exist');
+  
+     
+    client.convertURI('http://www.sinopiainn.com/booking-confirmation.html', pdf.saveToFile("public/reservations/"+req.query.reservationID+".pdf"));
+
+    res.json(response);
+
+  
+  }
+
+
+  }
+  
+
+
+});
 
 
 
@@ -2551,7 +2591,6 @@ res.json(result);
 
 
 
-var client = new pdf.Pdfcrowd('sinopiainn', 'fcfaaea5b060744db668d1bee67ccaae');
 
 app.get('/api/booking-confirmation/', function(req,res) {
 
