@@ -2238,7 +2238,17 @@ db.collection('reservation').find({}).toArray(function(e, results){
 app.post('/api/personaldetails/', function(req,res) {
 
 
-var rString = randomString(5, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+ var rString = "";
+
+ var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for( var i=0; i < 5; i++ ) {
+
+
+        rString += possible.charAt(Math.floor(Math.random() * possible.length));
+
+  }
+
 
 var tripID = new mongo.ObjectID(req.query.tripID);
 

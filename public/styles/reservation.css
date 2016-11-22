@@ -651,14 +651,43 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb410b', end
 }
 
 
-@media screen and (max-width: 1118px) and (min-width: 1051px) {
+@media screen and (max-width: 1256px) and (min-width: 1155px) {
 
 
-.topnav{ width:85%!important;}
+.topnav{ width:90%!important;}
 
 
 }
 
+
+@media screen and (max-width:1154px) and (min-width: 1117px) {
+
+
+.topnav{ width:90%!important;}
+
+
+}
+
+@media screen and (max-width:1116px) and (min-width:1059px) {
+
+
+.topnav{ width:95%!important;}
+
+
+}
+
+
+@media screen and (max-width:1058px) and (min-width:1036px) {
+
+
+.topnav{ width:97%!important;}
+
+
+}
+
+
+
+/*
 @media screen and (max-width: 1050px) and (min-width: 891px) {
 
 
@@ -666,25 +695,31 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb410b', end
 
 
 }
+*/
 
 
 
+ @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) { 
 
-@media screen and (max-width:890) {
+  background-image: url("intl-tel-input-9.2.0/build/img/flags@2x.png");
+
+  }
+
+@media screen and (max-width:1036px) {
   ul.topnav li:not(:last-child) {display: none;}
   ul.topnav li.icon {
     float: right;
     display: inline-block;
   }
   .topnav{ width:100%;list-style-type: none; color:white; margin: 0 auto; padding: 0; overflow: hidden; text-align:right; line-height: 100% !important; }
+  .menudivider{display:none;}
 
-.menudivider{display:none;}
 
 .bookingform-rewards h2 {font-weight:300;font-size:150%!important;}
 
 }
 
-@media screen and (max-width:890) {
+@media screen and (max-width:890px) {
   ul.topnav.responsive {position: relative;}
   ul.topnav.responsive li.icon {
     position: absolute;

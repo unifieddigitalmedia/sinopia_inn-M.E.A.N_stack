@@ -172,12 +172,13 @@ $scope.bookingdetailsandconfirm = function() {
 
 
 
-$http.get("http://www.sinopiainn.com/api/checkout/").then(function(response) {
+$http.get("http://localhost:3000/api/checkout/").then(function(response) {
 
 
 braintree.setup(response.data, "dropin", {
 
   container: "dropin-container",
+   form: 'checkout-form',
   paypal: {
     button: {
       type: 'checkout'
@@ -185,6 +186,7 @@ braintree.setup(response.data, "dropin", {
   },
 
   onPaymentMethodReceived: function (obj) {
+
 
     $scope.reserve(obj.nonce);
     
@@ -203,7 +205,7 @@ braintree.setup(response.data, "dropin", {
 
 $scope.sendpaymentmethodnonce = function(para,para1) {
 
-var resource = $resource('http://www.sinopiainn.com/checkout/',{
+var resource = $resource('http://localhost:3000/checkout/',{
 
           payment_method_nonce:"@payment_method_nonce",
           fname:"@fname",
@@ -264,7 +266,7 @@ if(reserve.ERROR){ alert(reserve.ERROR); } else {
 
 
 
-                            window.location = "http://www.sinopiainn.com/booking-confirmation.html" ;
+                            window.location = "http://localhost:3000/booking-confirmation.html" ;
 
 
 }
@@ -318,7 +320,7 @@ if(getCookie("tripID"))
 
 $scope.tripID = getCookie("tripID"); 
 
-$http.get("http://www.sinopiainn.com/api/trip/?tripID="+getCookie("tripID")).then(function(response) {
+$http.get("http://localhost:3000/api/trip/?tripID="+getCookie("tripID")).then(function(response) {
 
 
 
@@ -435,7 +437,7 @@ $scope.error = 'Checking availability';
                                 
                                 {
                  
-                    $http.get("http://www.sinopiainn.com/api/checkhotelavailability/?hotelID="+getCookie('hotelID')+"&fromdate="+getCookie('fromdate')+"&todate="+getCookie('todate')+"&promo="+getCookie('promo')).then(function(response) {
+                    $http.get("http://localhost:3000/api/checkhotelavailability/?hotelID="+getCookie('hotelID')+"&fromdate="+getCookie('fromdate')+"&todate="+getCookie('todate')+"&promo="+getCookie('promo')).then(function(response) {
 
 
 
@@ -1148,6 +1150,7 @@ $scope.amenityArray = [];
 
 $scope.reserve = function(para) {
 
+var email = document.getElementById("resemail").value;
 
 
 if( ( $scope.fname.length == 0 || typeof $scope.fname === 'undefined' ) || ( $scope.lname.length == 0 || typeof $scope.lname === 'undefined' ) || ( $scope.phone.length == 0 || typeof $scope.phone === 'undefined' ) || ( $scope.email.length == 0 || typeof $scope.email === 'undefined' ) || ( $scope.email.length == 0 || typeof $scope.email === 'undefined' )  )
@@ -1155,24 +1158,32 @@ if( ( $scope.fname.length == 0 || typeof $scope.fname === 'undefined' ) || ( $sc
 {
 
 
-$scope.detailserror = "All details forms are required ";
 
+$scope.detailserror = "All details forms are required ";
+$scope.$apply();
 
 }
-  else if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($scope.email)) 
+else if (/(.+)@(.+){2,}\.(.+){2,}/.test(email) != true) 
  
 
     {
 
+
+
 $scope.detailserror = "Please check you email.";
+
+$scope.$apply();
 
     }
 
 else {
 
-var resource = $resource('http://www.sinopiainn.com/api/personaldetails/',{
+$scope.detailserror = "";
 
-          id:"@id",
+
+var resource = $resource('http://localhost:3000/api/personaldetails/',{
+
+        
           tripID:"@tripID",
           deposit:"@deposit",
           payment_method_nonce:"@payment_method_nonce",
@@ -1180,9 +1191,6 @@ var resource = $resource('http://www.sinopiainn.com/api/personaldetails/',{
           lname:"@lname",
           phone:"@phone",
           email:"@email",
-          expiry:"@expiry",
-          idtype:"@idtype",
-          idnumber:"@idnumber",
           numofdays:"@numofdays",
           numofadults:"@numofadults",
           numofchildren:"@numofchildren",
@@ -1202,8 +1210,9 @@ var resource = $resource('http://www.sinopiainn.com/api/personaldetails/',{
 
 $scope.amenityArray = jQuery.grep($scope.amenityArray, function( a,i ) {return (a.checked === true);});
 
+alert('going to save');
 
-var reserve = resource.save(
+var reserveBooking = resource.save(
 
 {
 
@@ -1213,7 +1222,7 @@ var reserve = resource.save(
           fname:$scope.fname,
           lname:$scope.lname,
           phone:$scope.phone,
-          email:$scope.email,
+          email:email,
           numofdays:$scope.numofdays,
           numofadults:$scope.numofadults,
           numofchildren:$scope.numofchildren,
@@ -1233,8 +1242,10 @@ var reserve = resource.save(
 }, function() {
 
 
-if(reserve.ERROR){ alert(reserve.ERROR); } else {   
+if(reserveBooking.ERROR){ alert(reserveBooking.ERROR); } else {   
 
+
+alert(reserveBooking);
 
 $scope.offersArray = [];
 
@@ -1244,7 +1255,7 @@ $scope.roomsArray = [];
 
 
 
-                            document.cookie = "reservationID=" + reserve.ReservationID; 
+                            document.cookie = "reservationID=" + reserveBooking.ReservationID; 
 
                             document.cookie = "fromdate=" ;
 

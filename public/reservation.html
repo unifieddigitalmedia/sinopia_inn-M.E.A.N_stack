@@ -877,7 +877,6 @@
 
  
 
-  <form action="booking-confirmation.html" method="post" id="detailsform" class="detailsform" name="detailsform">
 
  <div class="row" id="detailscol" class="detailscol">
 
@@ -981,9 +980,9 @@
    
    </div>
 &nbsp;
-
-   <span id="detailserror">  </span>
-
+</br>
+   <span id="detailserror" style="color:red;font-weight:bold;"> {{detailserror}} </span>
+</br>
 <div class="row" id="firstinnerrow"> 
 
    <div class="col-sm-12"> 
@@ -1012,13 +1011,14 @@
    <div class="col-sm-3"> <p><p> </div>
 
 
-   <div class="col-sm-3">  <p><button class="btn btn-default input-sm outline " type="submit"  > Pay $ {{caldeposit(total)}}</button><p>  </div>  
+   <div class="col-sm-3">  <p>
+  <form action="booking-confirmation.html" method="post" id="checkout-form" class="checkout-form" name="checkout-form"><button class="btn btn-default input-sm outline " type="submit"  > Pay $ {{caldeposit(total)}}</button>  </form> <p>  </div>  
 
 
 
    </div>
 
-  </form>
+
 
 
    <div class="row">
