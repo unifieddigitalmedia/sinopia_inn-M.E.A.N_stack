@@ -1281,6 +1281,7 @@ db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos
 
 "image_url" : "public/reservations/"+req.query.resID+"/"+filename,
 "text" : req.query.message , 
+"text" : req.query.address , 
 "date_created" : date_created,
 "time_created" : time_created,
 }  } } , function(err, results) { 
