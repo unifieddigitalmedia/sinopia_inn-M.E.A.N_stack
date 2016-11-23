@@ -1879,7 +1879,9 @@ else
 
 var tripID;
 
-if(req.query.tripID){
+console.log(req.query.tripID);
+
+if(req.query.tripID == 1){
 
 
 db.collection('itinerary').insert( [
