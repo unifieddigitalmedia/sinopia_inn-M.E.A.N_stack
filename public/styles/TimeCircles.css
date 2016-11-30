@@ -4,7 +4,7 @@
  **/
 .time_circles {
     position: relative;
-    width: 100%;
+    
     height: 100%;
 }
 
@@ -26,6 +26,8 @@
     text-align: center;
     text-transform: uppercase;
     font-family: 'Century Gothic', Arial;
+      color:#cb410b;
+
 }
 
 /**
@@ -39,4 +41,5 @@
     font-size: 300%;
     margin-top: 0.4em;
     font-weight: bold;
+    color:#cb410b;
 }

@@ -13,6 +13,12 @@
 
 <link rel="stylesheet" type="text/css" href="/styles/main.css">
 
+<link rel="stylesheet" type="text/css" href="/styles/style.css">
+
+<link rel="stylesheet" type="text/css" href="/styles/responsive.css">
+
+<link rel="stylesheet" type="text/css" href="/styles/TimeCircles.css">
+
 <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
 
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -279,25 +285,46 @@ Every interaction is an opportunity to lay back relax and enjoy a showcase of wh
 </div>
 
 
+
+<div class="col-sm-6 " style="text-align:center;">
+
+   <h3><span> </span> We are almost ready to 
+               launch our mobile app </h3> 
+
+               
+                  <div class="timing">
+                   
+                    <div id="count-down" data-date="2017-01-01 00:00:00">
+                      
+                    </div>
+
+
+
+                  </div>
+
+  
+
+
+              
+<!--
+
 <div class="col-sm-6 download_buttons_col_parent_row" style="text-align:center;">
-
-
-
 
 <div class="row">
 
-  <div class="col-sm-12 download_buttons_col"  > 
+<div class="col-sm-12 download_buttons_col"  > 
 </br>
 </br>
 <p> <i class="fa fa-mobile" style="font-size:30px;color:black"></i><i class="fa fa-mobile" style="font-size:36px;color:black"></i> &nbsp;GET THE MOBILE APP </p>
   
-  <input class="download_buttons" src="/images/google_button.png" type="image" /> <input class="download_buttons"  src="/images/apple_button.png" type="image" />
+<input class="download_buttons" src="/images/google_button.png" type="image" /> <input class="download_buttons"  src="/images/apple_button.png" type="image" />
+
 </br>
-  </div>
 
-
- 
 </div>
+
+</div>-->
+
 
 </div>
 
@@ -446,12 +473,39 @@ Every interaction is an opportunity to lay back relax and enjoy a showcase of wh
 
 <script src="/scripts/main.js" ></script>
 
+<script src="/scripts/TimeCircles.js"></script>
+
+<script src="/scripts/script.js"></script>
+
+<script src="/scripts/jquery.placeholder.js"></script>
+
+
   <script type="text/javascript">
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'de,en,es,fr,it,ja,la,nl,pa,pl,pt,ru,sv,th,zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
 }
 </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
+<script>
+
+
+  $("#count-down").TimeCircles(
+       {   
+           circle_bg_color: "#8a7f71",
+           use_background: false,
+  
+           time: {
+                Days: { color: "#fefeee" },
+                Hours: { color: "#fefeee" },
+                Minutes: { color: "#fefeee" },
+                Seconds: { color: "#fefeee" }
+            }
+       }
+    );
+  
+
+
+  </script>
 
 </body>
 
