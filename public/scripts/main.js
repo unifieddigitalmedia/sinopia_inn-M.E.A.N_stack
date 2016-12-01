@@ -201,9 +201,11 @@ articleItem.appendChild(document.createElement("br"));
 
 var articleImage = document.createElement("img");
 
-articleImage.setAttribute("src","../images/beach.png");
 
-articleImage.setAttribute("style","width:100%;height:450px;");
+
+articleImage.setAttribute("src","../"+itemList[counter].childNodes[7].innerHTML);
+
+articleImage.setAttribute("style","width:100%;");
 
 
 articleItem.appendChild(articleImage);
