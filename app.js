@@ -22,7 +22,7 @@ var MONGOLAB_URI = 'mongodb://sinopiainn-administrator:321123ETz$@ds057476.mlab.
 var db = mongoose.createConnection(MONGOLAB_URI);
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var nodemailer = require('nodemailer');
+//var nodemailer = require('nodemailer');
 var client = new pdf.Pdfcrowd('sinopiainn', 'fcfaaea5b060744db668d1bee67ccaae');
 var gcm = require('node-gcm');
 
@@ -106,6 +106,12 @@ app.get('/', function (req, res) {
 
       })
 
+
+app.get('/booking-confirmation/', function (req, res) {
+
+      res.sendFile(path.join(__dirname + "/public/booking-confirmation.html"));
+
+      })
 
 app.get('connect', function (req, res) {
 
@@ -1748,7 +1754,7 @@ app.get("/api/checkout/", function (req, res) {
 
 });
 
-
+/*
 app.get("/api/booking-confirmation",function(req,res) {
 
 
@@ -1783,7 +1789,7 @@ transporter.sendMail(mailOptions, function(error, info){
 });
 
 
-});
+});*/
 
 
 app.get("/api/reservation-details/", function (req, res) {
@@ -2169,11 +2175,20 @@ res.json(result);
 
 app.get('/api/booking-confirmation/', function(req,res) {
 
-client.convertURI('http://www.sinopiainn.com/booking-confirmation.html', pdf.saveToFile("public/reservations/"+req.query.reservationID+".pdf"));
+
+console.log(req.query.reservationID);
+
+var o_id = new mongo.ObjectID(req.query.reservationID);
+
+client.convertURI('http://www.sinopiainn.com/booking-confirmation/', pdf.saveToFile("public/reservations/"+req.query.reservationID+".pdf"));
 
 var chunks = [];
 
 var readableStream = fs.createReadStream('public/reservations/'+req.query.reservationID+'.pdf');
+
+//var readableStream = fs.createReadStream('public/books/author 1/title of book.pdf');
+
+//public/pdfs/books/Machel Slack Web CV.pdf
 
 var data = '';
 
@@ -2183,11 +2198,12 @@ readableStream.on('data', function(chunk) {
 
           chunks.push(chunk);
 
+
+
 });
 
 readableStream.on('end', function() {
 
-var o_id = new mongo.ObjectID(req.query.reservationID);
 
 
 db.collection('reservation').findOne({ "_id": o_id  },function(e, results){
@@ -2198,7 +2214,9 @@ db.collection('reservation').findOne({ "_id": o_id  },function(e, results){
 
 
 
-var jsfile = new Buffer.concat(chunks).toString('base64');
+
+
+        var jsfile = new Buffer.concat(chunks).toString('base64');
         
 var template_name = "Booking confirmation sent to business";
 
@@ -2302,14 +2320,19 @@ if(e){return  console.log('A mandrill error occurred: ' + e.name + ' - ' + e.mes
 
 
 
-
                                                
 
   
                                                                             });
 
 
-      });
+
+  });
+
+
+
+});
+  
 
 
 
@@ -2346,7 +2369,7 @@ pdf.create(html, options).toFile('businesscard.pdf', function(err, res) {
 });
 */
 
-});
+
 
 /********* END OF WEB API'S *********/
 
