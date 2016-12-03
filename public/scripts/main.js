@@ -30,7 +30,7 @@ function showSlides() {
     }
     slides[slideIndex-1].style.display = "block";  
     dots[slideIndex-1].className += " active";
-    setTimeout(showSlides, 4000); // Change image every 2 seconds
+    setTimeout(showSlides, 3000); // Change image every 2 seconds
 }
 
 
@@ -1243,6 +1243,7 @@ var resource = $resource('http://www.sinopiainn.com/api/personaldetails/',{
 
 $scope.amenityArray = jQuery.grep($scope.amenityArray, function( a,i ) {return (a.checked === true);});
 
+alert($scope.reservationID);
 
 if($scope.reservationID){
 
@@ -1280,6 +1281,7 @@ var reserve = resource.update(
 if(reserve.ERROR){ alert(reserve.ERROR); } else {   
 
 
+alert(reserve.ReservationID);
 
                             document.cookie = "reservationID=" + reserve.ReservationID; 
 
@@ -1339,6 +1341,7 @@ var reserve = resource.save(
 if(reserve.ERROR){ alert(reserve.ERROR); } else {   
 
 
+alert(reserve.ReservationID);
 
                             document.cookie = "reservationID=" + reserve.ReservationID; 
 
