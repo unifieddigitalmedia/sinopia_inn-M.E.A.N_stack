@@ -41,7 +41,7 @@ app.use(express.static(__dirname + '/'));
 process.env.NODE_ENV = 'development';
 
 
-var hotelID = '584462502b3921001112e3bf';
+var hotelID = '58446632692ee10011e18045';
 
 
 var braintree = require("braintree");
@@ -394,7 +394,7 @@ db.collection('itinerary').insert( [
 
 app.get('/api/mobile/checkhotelavailability/', function (req, res) {
 
-var o_id = new mongo.ObjectID("584462502b3921001112e3bf");
+var o_id = new mongo.ObjectID("58446632692ee10011e18045");
 
 var availability = [];
 
@@ -838,7 +838,7 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '584462502b3921001112e3bf');
+var hotelID = new mongo.ObjectID( '58446632692ee10011e18045');
 
 var offerArray = [];
 
@@ -1601,7 +1601,7 @@ db.collection('itinerary').insert( [
 
 app.get('/api/checkhotelavailability/', function (req, res) {
 
-var o_id = new mongo.ObjectID("584462502b3921001112e3bf");
+var o_id = new mongo.ObjectID("58446632692ee10011e18045");
 
 var availability = [];
 
@@ -1941,7 +1941,7 @@ app.get("/api/reservation-details/", function (req, res) {
 
 
 
-var hotelID = new mongo.ObjectID( '584462502b3921001112e3bf');
+var hotelID = new mongo.ObjectID( '58446632692ee10011e18045');
 
 var o_id = new mongo.ObjectID(req.query.reservationID);
 
@@ -1991,7 +1991,7 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '584462502b3921001112e3bf');
+var hotelID = new mongo.ObjectID( '58446632692ee10011e18045');
 
 var offerArray = [];
 
