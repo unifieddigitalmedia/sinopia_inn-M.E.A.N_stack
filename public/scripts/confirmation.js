@@ -13,6 +13,8 @@ $http.get("http://www.sinopiainn.com/api/reservation-details/?reservationID="+ge
 
                                     $scope.fullname = response.data.fname+' '+response.data.lname;
 
+$scope.fullname = $scope.fullname.toUpperCase();
+
                                     $scope.bookingID = response.data._id;
  
                                     $scope.roomlist = response.data.rooms;
