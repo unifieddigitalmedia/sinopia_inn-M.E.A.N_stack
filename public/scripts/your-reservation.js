@@ -894,7 +894,7 @@ $scope.roomsArray = jQuery.grep($scope.roomsArray, function( a,i ) {
                                         //$scope.calculatetotals (para,para1,para2);
 
 
-   $("#ratescol").slideDown("slow");
+  $("#ratescol").slideDown("slow");
 
   $("html,body").animate({scrollTop:$("#ratescol").offset().top }, "slow");
 
@@ -904,7 +904,7 @@ $scope.roomsArray = jQuery.grep($scope.roomsArray, function( a,i ) {
 
 
 $scope.discountedtotal = 0;
-
+$scope.total = 0;
 
 
 $scope.calculatediscounttotal = function () {
