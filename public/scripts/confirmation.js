@@ -11,6 +11,7 @@ document.getElementById("date").innerHTML = d.toDateString();
 
 $http.get("http://www.sinopiainn.com/api/reservation-details/?reservationID="+getCookie('reservationID')).then(function(response) {
 
+                                    $scope.fullname = response.data.fname+' '+response.data.lname;
 
                                     $scope.bookingID = response.data._id;
  

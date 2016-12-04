@@ -41,7 +41,7 @@ app.use(express.static(__dirname + '/'));
 process.env.NODE_ENV = 'development';
 
 
-var hotelID = '582cefa77f366f3c89069001';
+var hotelID = '58432b5238b43961c182cdff';
 
 
 var braintree = require("braintree");
@@ -394,7 +394,7 @@ db.collection('itinerary').insert( [
 
 app.get('/api/mobile/checkhotelavailability/', function (req, res) {
 
-var o_id = new mongo.ObjectID("582cefa77f366f3c89069001");
+var o_id = new mongo.ObjectID("58432b5238b43961c182cdff");
 
 var availability = [];
 
@@ -838,7 +838,7 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '582cefa77f366f3c89069001');
+var hotelID = new mongo.ObjectID( '58432b5238b43961c182cdff');
 
 var offerArray = [];
 
@@ -1089,16 +1089,74 @@ db.collection('reservation').insert( [
 }], function(err, results) { 
 
 
-          resID = results.insertedIds[0];
+          
 
-var jsfile ;
+
+var o_id = new mongo.ObjectID(results.insertedIds[0]);
+
+db.collection('reservation').findOne({ "_id": o_id  },function(e, results){
+
+
+                                                           if (e) return next(e)
+
+var costofrooms = 0 ;
+
+var costofbreakfast = 0 ;
+
+var costofairportpickup = 0 ;
+
+var tax = 0;
+
+var total = 0 ;
+
+
+
+for(var a = 0 ; a < results.rooms.length ; a++ ){
+
+
+costofrooms = costofrooms + (results.rooms[a].price * results.numofdays);
+
+
+
+}
+
+costofrooms = costofrooms.toFixed(2);
+
+
+for(var b = 0 ; b < results.amenities.length ; b++ ){
+
+
+if(results.amenities[b].name == 'Breakfast'){
+
+
+  costofbreakfast = Number(results.amenities[b].price) * (results.numofadults + results.numofchildren);
+
+  costofbreakfast = costofbreakfast.toFixed(2);
+}
+else if(results.amenities[b].name == 'Airport Pickup'){
+
+ costofairportpickup = Number(results.amenities[b].price) * results.rooms.length;
+
+costofairportpickup = costofairportpickup.toFixed(2);
+
+}
+
+
+}
+
+
+total = (Number(results.total) * 150 ) / 100 ;
+
+total = total.toFixed(2);
+//var jsfile = new Buffer.concat(chunks).toString('base64');
+var fullname = results.fname +' '+results.lname;  
 
 var template_name = "Booking confirmation sent to business";
 
 var template_content = [{
         "name": "",
         "content": ""
-    }];
+    }]; 
 
 var message = {
 
@@ -1109,7 +1167,16 @@ var message = {
             "email": "machelslack@icloud.com",
             "name": "Sinopia Inn",
             "type": "to"
-        }],
+        },
+        {
+            "email": results.email,
+            "name": fullname,
+            "type": "to"
+        }
+
+        ],
+
+
     "headers": {
         "Reply-To": "info@sinopiainn.com"
     },
@@ -1129,13 +1196,63 @@ var message = {
     "return_path_domain": null,
     "merge": true,
     "merge_language": "handlebars",
-    "global_merge_vars": [{
+    "global_merge_vars":[{
             "name": "name",
             "content": results.fname
         },{
             "name": "dateofarrival",
             "content": results.fromdate
-        }],
+        },{
+            "name": "bookingID",
+            "content": results._id
+        },{
+            "name": "dateofleave",
+            "content": results.todate
+        },{
+            "name": "numofrooms",
+            "content": results.rooms.length
+        },{
+            "name": "numofdays",
+            "content": results.numofdays
+        },{
+            "name": "costofrooms",
+            "content": costofrooms
+        },{
+            "name": "costofbreakfast",
+            "content": costofbreakfast
+        },{
+            "name": "costofairportpickup",
+            "content": costofairportpickup
+        },{
+            "name": "discount",
+            "content": results.fname
+        },{
+            "name": "phone",
+            "content": results.phone
+        },{
+            "name": "email",
+            "content": results.email
+        },{
+            "name": "adults",
+            "content": results.numofadults
+        },{
+            "name": "children",
+            "content": results.numofchildren
+        },{
+            "name": "infants",
+            "content": results.numofinfants
+        },{
+            "name": "tax",
+            "content": tax
+        },{
+            "name": "total",
+            "content": total
+        },,{
+            "name": "deposit",
+            "content": results.deposit
+        }
+
+        ],
     "merge_vars": [{
             "rcpt": "recipient.email@example.com",
             "vars": [{
@@ -1160,11 +1277,11 @@ var message = {
                 "user_id": 123456
             }
         }],*/
-    "attachments": [{
+   /* "attachments": [{
             "type": "application/pdf",
             "name": "sinopiainn_booking_confirmation.pdf",
             "content": jsfile
-        }],
+        }],*/
     /*images": [{
             "type": "image/png",
             "name": "IMAGECID",
@@ -1178,10 +1295,7 @@ var send_at = "2016-10-10 23:59:59";
 
 mandrill_client.messages.sendTemplate({"template_name": template_name, "template_content": template_content, "message": message, "async": async, "ip_pool": ip_pool, "send_at": send_at}, function(result) {
 
-
-
-
-          callback(null,results.insertedIds[0],results);
+           callback(null,results.insertedIds[0],results);
 
 }, function(e) {
 
@@ -1189,6 +1303,14 @@ if(e){return  console.log('A mandrill error occurred: ' + e.name + ' - ' + e.mes
    
  
 });
+
+
+
+ });
+
+
+        
+
 
 
 
@@ -1479,7 +1601,7 @@ db.collection('itinerary').insert( [
 
 app.get('/api/checkhotelavailability/', function (req, res) {
 
-var o_id = new mongo.ObjectID("582cefa77f366f3c89069001");
+var o_id = new mongo.ObjectID("58432b5238b43961c182cdff");
 
 var availability = [];
 
@@ -1491,14 +1613,12 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-
-
 waterfall([
   
   function(callback){
 
 
-db.collection("hotels").find({"_id":o_id}, {'rooms': true} ).toArray(function(err, results) {
+db.collection("hotels").find({"_id":o_id}, {'rooms': true } ).toArray(function(err, results) {
   
     
  if (err) return next(err)
@@ -1668,15 +1788,22 @@ if ( (new Date(results[0].offers[x].validdate) <= new Date(fromdate)  &&  new Da
 
 
   
-  },function(arg1,callback){
+  },function(arg1,arg2,callback){
 
-
+//db.temp.find({b: {$elemMatch: {$gte: 4, $lt: 5}}})
 
 if(req.query.promo){
 
 
 
+
+
+
 db.collection("hotels").find({"_id":o_id }, { "offers": { $elemMatch: { "token": req.query.promo } } }  ).toArray(function(e, results){
+
+//db.collection("hotels").find({"_id":o_id }, { "offers": { "$elemMatch": { "$or": [{ "token": req.query.promo  },{ "nights": "3"  } ] }}}  ).toArray(function(e, results){
+
+//db.collection("hotels").find({"_id":o_id }, { "offers": { "$elemMatch": {  "nights": { $gte:3 } } } } ).toArray(function(e, results){
 
 
 
@@ -1692,15 +1819,8 @@ if (e) return next(e)
       }
 
 
+    //availability.push(arg1);
 
-    
-
-    availability.push(arg1);
-
-
-    
-      
-    
 
 });
 
@@ -1708,6 +1828,32 @@ if (e) return next(e)
 
 
  } 
+
+console.log(req.query.nights );
+
+var nights = '"'+req.query.nights+'"';
+db.collection("hotels").find({"_id":o_id }, { "offers": { $elemMatch: { "nights":{ $gte : nights }  } } }  ).toArray(function(e, results){
+
+
+
+
+if (e) return next(e)
+
+
+      if (results.length > 0 ) {
+
+
+            arg1.push(results[0].offers[0]);
+
+
+      }
+
+
+    availability.push(arg1);
+
+
+});
+
 
 
  db.collection("hotels").find({"_id":o_id}, {'amenities': true} ).toArray(function(e, results){
@@ -1796,7 +1942,7 @@ app.get("/api/reservation-details/", function (req, res) {
 
 
 
-var hotelID = new mongo.ObjectID( '582cefa77f366f3c89069001');
+var hotelID = new mongo.ObjectID( '58432b5238b43961c182cdff');
 
 var o_id = new mongo.ObjectID(req.query.reservationID);
 
@@ -1846,7 +1992,7 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '582cefa77f366f3c89069001');
+var hotelID = new mongo.ObjectID( '58432b5238b43961c182cdff');
 
 var offerArray = [];
 
@@ -2176,54 +2322,72 @@ res.json(result);
 app.get('/api/booking-confirmation/', function(req,res) {
 
 
-console.log(req.query.reservationID);
 
 var o_id = new mongo.ObjectID(req.query.reservationID);
-
-client.convertURI('http://www.sinopiainn.com/booking-confirmation/', pdf.saveToFile("public/reservations/"+req.query.reservationID+".pdf"));
-
-var chunks = [];
-
-var readableStream = fs.createReadStream('public/reservations/'+req.query.reservationID+'.pdf');
-
-//var readableStream = fs.createReadStream('public/books/author 1/title of book.pdf');
-
-//public/pdfs/books/Machel Slack Web CV.pdf
-
-var data = '';
-
-readableStream.on('data', function(chunk) {
-
- 
-
-          chunks.push(chunk);
-
-
-
-});
-
-readableStream.on('end', function() {
-
-
 
 db.collection('reservation').findOne({ "_id": o_id  },function(e, results){
 
 
                                                            if (e) return next(e)
 
+var costofrooms = 0 ;
+
+var costofbreakfast = 0 ;
+
+var costofairportpickup = 0 ;
+
+var tax = 0;
+
+var total = 0 ;
 
 
 
+for(var a = 0 ; a < results.rooms.length ; a++ ){
 
 
-        var jsfile = new Buffer.concat(chunks).toString('base64');
-        
+costofrooms = costofrooms + (results.rooms[a].price * results.numofdays);
+
+
+
+}
+
+costofrooms = costofrooms.toFixed(2);
+
+
+for(var b = 0 ; b < results.amenities.length ; b++ ){
+
+
+if(results.amenities[b].name == 'Breakfast'){
+
+
+  costofbreakfast = Number(results.amenities[b].price) * (results.numofadults + results.numofchildren);
+
+  costofbreakfast = costofbreakfast.toFixed(2);
+}
+else if(results.amenities[b].name == 'Airport Pickup'){
+
+ costofairportpickup = Number(results.amenities[b].price) * results.rooms.length;
+
+costofairportpickup = costofairportpickup.toFixed(2);
+
+}
+
+
+}
+
+
+total = (Number(results.total) * 150 ) / 100 ;
+
+total = total.toFixed(2);
+
+var fullname = results.fname +' '+results.lname;  
+
 var template_name = "Booking confirmation sent to business";
 
 var template_content = [{
         "name": "",
         "content": ""
-    }];
+    }]; 
 
 var message = {
 
@@ -2234,7 +2398,16 @@ var message = {
             "email": "machelslack@icloud.com",
             "name": "Sinopia Inn",
             "type": "to"
-        }],
+        },
+        {
+            "email": results.email,
+            "name": fullname,
+            "type": "to"
+        }
+
+        ],
+
+
     "headers": {
         "Reply-To": "info@sinopiainn.com"
     },
@@ -2254,13 +2427,63 @@ var message = {
     "return_path_domain": null,
     "merge": true,
     "merge_language": "handlebars",
-    "global_merge_vars": [{
+    "global_merge_vars":[{
             "name": "name",
             "content": results.fname
         },{
             "name": "dateofarrival",
             "content": results.fromdate
-        }],
+        },{
+            "name": "bookingID",
+            "content": results._id
+        },{
+            "name": "dateofleave",
+            "content": results.todate
+        },{
+            "name": "numofrooms",
+            "content": results.rooms.length
+        },{
+            "name": "numofdays",
+            "content": results.numofdays
+        },{
+            "name": "costofrooms",
+            "content": costofrooms
+        },{
+            "name": "costofbreakfast",
+            "content": costofbreakfast
+        },{
+            "name": "costofairportpickup",
+            "content": costofairportpickup
+        },{
+            "name": "discount",
+            "content": results.fname
+        },{
+            "name": "phone",
+            "content": results.phone
+        },{
+            "name": "email",
+            "content": results.email
+        },{
+            "name": "adults",
+            "content": results.numofadults
+        },{
+            "name": "children",
+            "content": results.numofchildren
+        },{
+            "name": "infants",
+            "content": results.numofinfants
+        },{
+            "name": "tax",
+            "content": tax
+        },{
+            "name": "total",
+            "content": total
+        },,{
+            "name": "deposit",
+            "content": results.deposit
+        }
+
+        ],
     "merge_vars": [{
             "rcpt": "recipient.email@example.com",
             "vars": [{
@@ -2285,11 +2508,11 @@ var message = {
                 "user_id": 123456
             }
         }],*/
-    "attachments": [{
+   /* "attachments": [{
             "type": "application/pdf",
             "name": "sinopiainn_booking_confirmation.pdf",
             "content": jsfile
-        }],
+        }],*/
     /*images": [{
             "type": "image/png",
             "name": "IMAGECID",
@@ -2303,7 +2526,7 @@ var send_at = "2016-10-10 23:59:59";
 
 mandrill_client.messages.sendTemplate({"template_name": template_name, "template_content": template_content, "message": message, "async": async, "ip_pool": ip_pool, "send_at": send_at}, function(result) {
 
-            res.send('done');
+           callback(null,results.insertedIds[0],results);
 
 }, function(e) {
 
@@ -2314,20 +2537,8 @@ if(e){return  console.log('A mandrill error occurred: ' + e.name + ' - ' + e.mes
 
 
 
+ });
 
-
-
-
-
-
-                                               
-
-  
-                                                                            });
-
-
-
-  });
 
 
 
@@ -2418,7 +2629,7 @@ db.collection('hotels').deleteMany( {}, function(err, results) {
    });
 
 
-db.collection('hotels').insertOne( {"rooms":[{"_id":"1","name":"Camel", "description":"Air conditioned double occupancy bedroom with ensuite bathroom","occupancy":"2","icon":"/images/parrot_thumb.png","price":"160.00","booking":[]},{"_id":"2","name":"Puce", "description":"Double occupancy bedroom with ensuite bathroom","occupancy":"2","price":"135.00","icon":"/images/parrot_thumb.png","booking":[]},{"_id":"3","name":"Spring Bud","description":"Double occupancy bedroom with ensuite bathroom","occupancy":"2","price":"135.00","icon":"/images/parrot_thumb.png","booking":[]},{"_id":"4","name":"Coquelicot","description":"Quadruple occupancy bedroom with ensuite bathroom and lounge","occupancy":"4","price":"180.00","icon":"/images/parrot_thumb.png","booking":[]}],"offers":[{"_id":"1","name":"Summer & Autumn Discount 10%","description":"Validity period from 20th June to 14th December","amount":".10","validdate":"20-04-2016","exdate":"14-12-2016","token":""},{"_id":"2","name":"Friends and family discount 15%","description":"All year","amount":".15","validdate":"","exdate":"","token":"marshmellows"}],"amenities":[{"_id":"1","name":"Breakfast","description":"Traditional Jamaican breakfast","price":"10.00","frequency":"person",},{"_id":"2","name":"Airport Pickup","description":"Transportation to and from airport","price":"30.00","frequency":"room",},{"_id":"3","name":"Private Car Hire","description":"On and Off road SUV - seating capacity 5 plus baggage","price":"60.00","frequency":"night",}],"businessname":"Sinopia Inn","businessaddress":"Matthews Ave Port Antonio, Jamaica","businessphone":"+1 876-993-7267","businesswebsite":"http://www.hotelmockingbirdhill.com/","businessemail":"","businessdescription":"","country":"Jamaica","coordinates":{"Latitude":"18.1763329","Longitude":"-76.44973749999997"},"nameofevent":"","timeofevent":"","dateofevent":"","activity":[{"typeofbusiness":"Accomodation","typeofservice":"Villa"}],"typeofactivity":[],"contactname":"","location":"","logourl":"","showcaseurl":[],"comments":[],"averagerating":"","avergaeprice":"","date":"","enabled":""}, function(err, result) {
+db.collection('hotels').insertOne( {"rooms":[{"_id":"1","name":"Camel", "description":"Air conditioned double occupancy bedroom with ensuite bathroom","occupancy":"2","icon":"/images/parrot_thumb.png","price":"160.00","booking":[]},{"_id":"2","name":"Puce", "description":"Double occupancy bedroom with ensuite bathroom","occupancy":"2","price":"135.00","icon":"/images/parrot_thumb.png","booking":[]},{"_id":"3","name":"Spring Bud","description":"Double occupancy bedroom with ensuite bathroom","occupancy":"2","price":"135.00","icon":"/images/parrot_thumb.png","booking":[]},{"_id":"4","name":"Coquelicot","description":"Quadruple occupancy bedroom with ensuite bathroom and lounge","occupancy":"4","price":"180.00","icon":"/images/parrot_thumb.png","booking":[]}],"offers":[{"name":"Summer & Autumn Discount 10%","description":"Validity period from 20th June to 14th December","amount":".10","validdate":"20-04-2016","exdate":"14-12-2016","token":"","nights":""},{"name":"Friends and family discount 15%","description":"All year","amount":".15","validdate":"","exdate":"","token":"marshmellows","nights":""},{"name":"Breakfast","description":"Traditional Jamaican Break - Mackrel Run Down with Chicken or Calloo alternatives","amount":".00","validdate":"","exdate":"","token":"","nights":"3"}],"amenities":[{"_id":"1","name":"Breakfast","description":"Traditional Jamaican breakfast","price":"10.00","frequency":"person",},{"_id":"2","name":"Airport Pickup","description":"Transportation to and from airport","price":"30.00","frequency":"room",},{"_id":"3","name":"Private Car Hire","description":"On and Off road SUV - seating capacity 5 plus baggage","price":"60.00","frequency":"night",}],"businessname":"Sinopia Inn","businessaddress":"Matthews Ave Port Antonio, Jamaica","businessphone":"+1 876-993-7267","businesswebsite":"http://www.hotelmockingbirdhill.com/","businessemail":"","businessdescription":"","country":"Jamaica","coordinates":{"Latitude":"18.1763329","Longitude":"-76.44973749999997"},"nameofevent":"","timeofevent":"","dateofevent":"","activity":[{"typeofbusiness":"Accomodation","typeofservice":"Villa"}],"typeofactivity":[],"contactname":"","location":"","logourl":"","showcaseurl":[],"comments":[],"averagerating":"","avergaeprice":"","date":"","enabled":""}, function(err, result) {
  
     res.send("Inserted a document into the hotel collection.");
    

@@ -245,18 +245,18 @@ padding:0px!important; margin:0px!important;width:auto;max-width:auto;  height:8
 /* Fading animation */
 .fade {
   -webkit-animation-name: fade;
-  -webkit-animation-duration: 4.5s;
+  -webkit-animation-duration: 6.5s;
   animation-name: fade;
-  animation-duration: 4.5s;
+  animation-duration: 6.5s;
 }
 
 @-webkit-keyframes fade {
-  from {opacity: .7} 
+  from {opacity: .8} 
   to {opacity: 1}
 }
 
 @keyframes fade {
-  from {opacity: .7} 
+  from {opacity: .8} 
   to {opacity: 1}
 }
 
