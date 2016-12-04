@@ -194,7 +194,7 @@
 
     <span class="bookingform-rewards-heading1" > Amazing Value </span>  </br> <span class="bookingform-rewards-heading" > at affordable rates. </span> </h2>
 &nbsp;
-    <p class="bookingform-subtext" >You will have access to the entire villa and all of it's amenities.</p>
+    <p class="bookingform-subtext" >You can have access to the entire villa and all of it's amenities.</p>
 </div>
     </div>
 
@@ -214,7 +214,7 @@
  
    <i class="fa fa-coffee service_icon-res" ></i>
 
-   <p class="service_icon-res-heading"> Jamaican Breakfast & Local Rates</p>
+   <p class="service_icon-res-heading"> Jamaican Breakfast </p>
    
    <p class="service_icon-res-text"> when you spend three nights or more </p></div></div>
 
@@ -423,9 +423,9 @@
 
           <div class="w3-container">
 
-         <img src="" alt="room_tumbnail" class="w3-left w3-circle w3-margin-right" style="width:60px">
+         <!--<img src="" alt="room_tumbnail" class="w3-left w3-circle w3-margin-right" style="width:60px">-->
 
-        <p>{{offer.name}} </br> {{offer.description}} <p id="cpnbtn" type="button" ng-click = "addoffer($index)"  >ADD</p> </p> 
+        <p>{{offer.name}} </br> {{offer.description}} <p id="cpnbtn" type="button" ng-click = "addoffer($index)"  > ADD</p> </p> 
          
          </div>
          </div>
@@ -457,7 +457,7 @@
 
 <table style="width:100%;">
 
-<tr>
+<tr style="padding:5px;">
 
 <td> Room </td> 
 
@@ -472,6 +472,9 @@
 <td> </td> 
 
 </tr>
+
+&nbsp;
+
 <tr ng-repeat="chkroom in roomsArray" > <td> <p> {{chkroom.name}}</p></td> <td> <p> {{chkroom.occupancy}}</p></td> <td> <p> 
 
 

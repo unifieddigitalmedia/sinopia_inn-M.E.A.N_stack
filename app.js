@@ -41,7 +41,7 @@ app.use(express.static(__dirname + '/'));
 process.env.NODE_ENV = 'development';
 
 
-var hotelID = '58432b5238b43961c182cdff';
+var hotelID = '584462502b3921001112e3bf';
 
 
 var braintree = require("braintree");
@@ -394,7 +394,7 @@ db.collection('itinerary').insert( [
 
 app.get('/api/mobile/checkhotelavailability/', function (req, res) {
 
-var o_id = new mongo.ObjectID("58432b5238b43961c182cdff");
+var o_id = new mongo.ObjectID("584462502b3921001112e3bf");
 
 var availability = [];
 
@@ -838,7 +838,7 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '58432b5238b43961c182cdff');
+var hotelID = new mongo.ObjectID( '584462502b3921001112e3bf');
 
 var offerArray = [];
 
@@ -1601,7 +1601,7 @@ db.collection('itinerary').insert( [
 
 app.get('/api/checkhotelavailability/', function (req, res) {
 
-var o_id = new mongo.ObjectID("58432b5238b43961c182cdff");
+var o_id = new mongo.ObjectID("584462502b3921001112e3bf");
 
 var availability = [];
 
@@ -1829,9 +1829,8 @@ if (e) return next(e)
 
  } 
 
-console.log(req.query.nights );
-
 var nights = '"'+req.query.nights+'"';
+
 db.collection("hotels").find({"_id":o_id }, { "offers": { $elemMatch: { "nights":{ $gte : nights }  } } }  ).toArray(function(e, results){
 
 
@@ -1942,7 +1941,7 @@ app.get("/api/reservation-details/", function (req, res) {
 
 
 
-var hotelID = new mongo.ObjectID( '58432b5238b43961c182cdff');
+var hotelID = new mongo.ObjectID( '584462502b3921001112e3bf');
 
 var o_id = new mongo.ObjectID(req.query.reservationID);
 
@@ -1992,7 +1991,7 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '58432b5238b43961c182cdff');
+var hotelID = new mongo.ObjectID( '584462502b3921001112e3bf');
 
 var offerArray = [];
 

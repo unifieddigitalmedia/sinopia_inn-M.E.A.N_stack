@@ -686,9 +686,6 @@ $scope.addroom = function(para) {
 
                                         $("#bookingcol").slideDown("slow");
 
-
-
-
                                     
                                   }
 
@@ -698,9 +695,6 @@ $scope.addroom = function(para) {
 
 $scope.addoffer = function(para) {
 
-
-
-                              
                                     if(!$scope.rmad($scope.offerlist[para]._id,$scope.offersArray))
 
                                   {
@@ -767,6 +761,8 @@ $scope.removeoffer = function (para) {
 
 $scope.rmad = function(para,para1) {
 
+
+alert(para);
 
                                     for (i = 0; i < para1.length; i++  )
 
