@@ -437,7 +437,7 @@ $scope.error = 'Checking availability';
                                 
                                 {
                  
-                    $http.get("http://www.sinopiainn.com/api/checkhotelavailability/?hotelID="+getCookie('hotelID')+"&fromdate="+getCookie('fromdate')+"&todate="+getCookie('todate')+"&promo="+getCookie('promo')).then(function(response) {
+                    $http.get("http://www.sinopiainn.com/api/checkhotelavailability/?nights="+$scope.lengthofstay(getCookie('fromdate'),getCookie('todate'))+"&hotelID="+getCookie('hotelID')+"&fromdate="+getCookie('fromdate')+"&todate="+getCookie('todate')+"&promo="+getCookie('promo')).then(function(response) {
 
 
 
