@@ -1098,7 +1098,6 @@ db.collection('reservation').findOne({ "_id": o_id  },function(e, results){
 
 
                                                            if (e) return next(e)
-
 var costofrooms = 0 ;
 
 var costofbreakfast = 0 ;
@@ -1109,6 +1108,7 @@ var tax = 0;
 
 var total = 0 ;
 
+var discount = 0;
 
 
 for(var a = 0 ; a < results.rooms.length ; a++ ){
@@ -1148,7 +1148,15 @@ costofairportpickup = costofairportpickup.toFixed(2);
 total = (Number(results.total) * 150 ) / 100 ;
 
 total = total.toFixed(2);
-//var jsfile = new Buffer.concat(chunks).toString('base64');
+
+
+for(var c = 0 ; c < results.offers.length ; c++ ){
+
+
+discount = discount + (results.offers[c].amount * total) ;
+
+}
+
 var fullname = results.fname +' '+results.lname;  
 
 var template_name = "Booking confirmation sent to business";
@@ -1163,11 +1171,7 @@ var message = {
     "subject": "Sinopia Inn Booking Confirmation",
     "from_email": "info@sinopiainn.com",
     "from_name": "Sinopia Inn",
-    "to": [{
-            "email": "machelslack@icloud.com",
-            "name": "Sinopia Inn",
-            "type": "to"
-        },
+    "to": [
         {
             "email": results.email,
             "name": fullname,
@@ -1225,7 +1229,7 @@ var message = {
             "content": costofairportpickup
         },{
             "name": "discount",
-            "content": results.fname
+            "content": discount
         },{
             "name": "phone",
             "content": results.phone
@@ -2339,6 +2343,7 @@ var tax = 0;
 
 var total = 0 ;
 
+var discount = 0;
 
 
 for(var a = 0 ; a < results.rooms.length ; a++ ){
@@ -2379,6 +2384,14 @@ total = (Number(results.total) * 150 ) / 100 ;
 
 total = total.toFixed(2);
 
+
+for(var c = 0 ; c < results.offers.length ; c++ ){
+
+
+discount = discount + (results.offers[c].amount * total) ;
+
+}
+
 var fullname = results.fname +' '+results.lname;  
 
 var template_name = "Booking confirmation sent to business";
@@ -2393,11 +2406,7 @@ var message = {
     "subject": "Sinopia Inn Booking Confirmation",
     "from_email": "info@sinopiainn.com",
     "from_name": "Sinopia Inn",
-    "to": [{
-            "email": "machelslack@icloud.com",
-            "name": "Sinopia Inn",
-            "type": "to"
-        },
+    "to": [
         {
             "email": results.email,
             "name": fullname,
@@ -2455,7 +2464,7 @@ var message = {
             "content": costofairportpickup
         },{
             "name": "discount",
-            "content": results.fname
+            "content": discount
         },{
             "name": "phone",
             "content": results.phone
@@ -2525,7 +2534,8 @@ var send_at = "2016-10-10 23:59:59";
 
 mandrill_client.messages.sendTemplate({"template_name": template_name, "template_content": template_content, "message": message, "async": async, "ip_pool": ip_pool, "send_at": send_at}, function(result) {
 
-           callback(null,results.insertedIds[0],results);
+res.send("done");
+           //callback(null,results.insertedIds[0],results);
 
 }, function(e) {
 
