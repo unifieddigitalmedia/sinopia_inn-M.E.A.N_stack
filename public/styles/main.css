@@ -197,10 +197,14 @@ padding:0px!important; margin:0px!important;width:auto;max-width:auto;  height:8
   */
 
 
+.mySlides {height:auto;}
+
+
 .slideshow-container {
  width:auto;max-width:auto; 
   position: relative;
   margin: auto;
+  height:auto;
 }
 /* Caption text */
 .text {
@@ -333,6 +337,7 @@ z-index: 99;
 .side_menu_title_para-res { text-align:center;   border-bottom:#cb410b thin solid;padding-top:30px; }
 
 .service_icon-res-heading{color:#eedc00;font-weight:400!important;}
+
 /******** END OF SLIDER CONTAINER CSS ********/
 
 
