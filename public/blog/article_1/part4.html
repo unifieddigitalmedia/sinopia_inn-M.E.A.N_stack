@@ -248,7 +248,7 @@ A country home first built in the early 20th century and rebuilt in the same spi
 
 </p>
 
-<img src="../../images/our-villa-1.png" class="w3-round" alt="Villa driveway" style="width:50%;float:right;padding:20px;">
+<img src="../../images/our-villa-1.png" class="w3-round" alt="Villa driveway" style="width:50%;float:right;padding:20px;" onclick="displayModal(this)">
 
 </br>
 <h6> BEHIND THE SCENES </h6> 
@@ -276,7 +276,7 @@ Three of the four beautifully rebuilt bedrooms feature ensuite bathrooms with do
 
 </p>
 
-<img src="../../images/our-villa-1.png" class="w3-round" alt="Villa driveway" style="width:50%;float:right;padding:20px;">
+<img src="../../images/our-villa-1.png" class="w3-round" alt="Villa driveway" style="width:50%;float:right;padding:20px;" onclick="displayModal(this)">
 
 
  
@@ -312,7 +312,7 @@ On entry you’ll find a range of spots for solitude. A red-ochre main villa who
 
 </p>
 
-<img src="../../images/our-villa-1.png" class="w3-round" alt="Villa driveway" style="width:50%;float:right;padding:20px;">
+<img src="../../images/our-villa-1.png" class="w3-round" alt="Villa driveway" style="width:50%;float:right;padding:20px;" onclick="displayModal(this)">
 
 
 <p> 
@@ -325,7 +325,7 @@ But let’s back track our steps for a minute and find another one of the many s
 
 </p>
 
-<img src="../../images/our-villa-1.png" class="w3-round" alt="Villa driveway" style="width:50%;float:right;padding:20px;">
+<img src="../../images/our-villa-1.png" class="w3-round" alt="Villa driveway" style="width:50%;float:right;padding:20px;" onclick="displayModal(this)">
 
 
 
@@ -347,6 +347,18 @@ In a more secluded part of the grounds you’ll see another country house where 
 
 
 
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- The Close Button -->
+  <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+
+  <!-- Modal Content (The Image) -->
+  <img class="modal-content" id="img01">
+
+  <!-- Modal Caption (Image Text) -->
+  <div id="caption"></div>
+</div>
 </div>
 
 <footer>

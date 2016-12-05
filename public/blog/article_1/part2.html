@@ -259,7 +259,7 @@ During my visit through the months of October and November Jamaica’s rich hist
 
 </p>
 
-<img src="../../images/our-villa-1.png" class="w3-round" alt="Villa driveway" style="width:50%;float:left;padding:20px;">
+<img src="../../images/our-villa-1.png" class="w3-round" alt="Villa driveway" style="width:50%;float:left;padding:20px;" onclick="displayModal(this)">
 
 
 
@@ -277,7 +277,7 @@ But what to expect? Definitely rum, roots and reggae - all of the things Jamaica
  <div class="col-sm-6" >
 
 
-<img src="../../images/our-villa-1.png" class="w3-round" alt="Villa driveway" style="width:50%;float:right;padding:20px;">
+<img src="../../images/our-villa-1.png" class="w3-round" alt="Villa driveway" style="width:50%;float:right;padding:20px;" onclick="displayModal(this)">
 
 <p> 
 
@@ -291,7 +291,7 @@ A great place to go is Dub Club, an amazing cultural platform for emerging artis
 
 
 
-<img src="../../images/our-villa-1.png" class="w3-round" alt="Villa driveway" style="width:50%;float:right;padding:20px;">
+<img src="../../images/our-villa-1.png" class="w3-round" alt="Villa driveway" style="width:50%;float:right;padding:20px;" onclick="displayModal(this)">
 
 
 <p> 
@@ -314,6 +314,18 @@ Entrance is free throughout the week from 12:00 to 10:00pm except on Sunday when
 
 
 
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- The Close Button -->
+  <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+
+  <!-- Modal Content (The Image) -->
+  <img class="modal-content" id="img01">
+
+  <!-- Modal Caption (Image Text) -->
+  <div id="caption"></div>
+</div>
 
 </div>
 

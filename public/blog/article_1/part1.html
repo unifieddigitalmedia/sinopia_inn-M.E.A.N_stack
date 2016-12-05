@@ -263,7 +263,7 @@ When I arrived during the month of October, I immediately checked into a small h
 </p>
 
 
-<img src="../../images/our-villa-1.png" class="w3-round" alt="Villa driveway" style="width:50%;float:left;padding:20px;">
+<img src="../../images/our-villa-1.png" class="w3-round myImg" alt="Villa driveway" style="width:50%;float:left;padding:20px;" onclick="displayModal(this)">
 
 
 
@@ -291,7 +291,7 @@ During this trip I spent a lot of time in Kingston City working on this project 
 
 </p>
 
-<img src="../../images/our-villa-1.png" class="w3-round" alt="Villa driveway" style="width:50%;float:right;padding:20px;">
+<img src="../../images/our-villa-1.png" class="w3-round myImg" alt="Villa driveway" style="width:50%;float:right;padding:20px;" onclick="displayModal(this)">
 
 
 <p> 
@@ -302,7 +302,7 @@ Bumping into these two genuine people while shopping in Devon House  seemed like
 
 </p>
 
-<img src="../../images/our-villa-1.png" class="w3-round" alt="Villa driveway" style="width:50%;float:right;padding:20px;">
+<img src="../../images/our-villa-1.png" class="w3-round myImg" alt="Villa driveway" style="width:50%;float:right;padding:20px;" onclick="displayModal(this)">
 
 <p> 
 
@@ -325,6 +325,18 @@ On August 8th, the pair host an annual wellness festival that showcases their pi
 </section>
 
 
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- The Close Button -->
+  <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+
+  <!-- Modal Content (The Image) -->
+  <img class="modal-content" id="img01">
+
+  <!-- Modal Caption (Image Text) -->
+  <div id="caption"></div>
+</div>
 
 
 </div>

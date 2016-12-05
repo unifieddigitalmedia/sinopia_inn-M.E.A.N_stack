@@ -2405,6 +2405,8 @@ $(function() {
 
 function displayModal(para) {
 
+
+
 var modal = document.getElementById('myModal');
 
 var modalImg = document.getElementById("img01");
