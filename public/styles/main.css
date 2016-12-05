@@ -280,7 +280,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb410b', end
 
 
 .home_text{  top:50px; position:absolute; border:black solid thin; padding:5px;background-color:black;opacity: 0.8;filter: alpha(opacity=80);
-z-index: 99;
+z-index: 99;margin-bottom:200px!important;
 }
 
 .home_text_innerdiv {color:black;padding:20px;text-align:center;border:#262626 thin solid;}
@@ -807,7 +807,7 @@ section h3{color: #cb410b!important; font-size:100%!important;}
     position: absolute;
     top: 15px;
     right: 35px;
-    color: #f1f1f1;
+    color: white;
     font-size: 40px;
     font-weight: bold;
     transition: 0.3s;
@@ -815,7 +815,7 @@ section h3{color: #cb410b!important; font-size:100%!important;}
 
 .close:hover,
 .close:focus {
-    color: #bbb;
+      color: white;
     text-decoration: none;
     cursor: pointer;
 }
