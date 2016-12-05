@@ -1145,9 +1145,9 @@ costofairportpickup = costofairportpickup.toFixed(2);
 }
 
 
-total = (Number(results.total) * 150 ) / 100 ;
 
-total = total.toFixed(2);
+
+total = results.total;
 
 
 for(var c = 0 ; c < results.offers.length ; c++ ){
@@ -2349,7 +2349,7 @@ var discount = 0;
 for(var a = 0 ; a < results.rooms.length ; a++ ){
 
 
-costofrooms = costofrooms + (results.rooms[a].price * results.numofdays);
+costofrooms = costofrooms + (Number(results.rooms[a].price) * Number(results.numofdays));
 
 
 
@@ -2364,13 +2364,14 @@ for(var b = 0 ; b < results.amenities.length ; b++ ){
 if(results.amenities[b].name == 'Breakfast'){
 
 
-  costofbreakfast = Number(results.amenities[b].price) * (results.numofadults + results.numofchildren);
+  costofbreakfast = Number(results.amenities[b].price) * (Number(results.numofadults) + Number(results.numofchildren));
+
 
   costofbreakfast = costofbreakfast.toFixed(2);
 }
 else if(results.amenities[b].name == 'Airport Pickup'){
 
- costofairportpickup = Number(results.amenities[b].price) * results.rooms.length;
+ costofairportpickup = Number(results.amenities[b].price) * Number(results.rooms.length);
 
 costofairportpickup = costofairportpickup.toFixed(2);
 
@@ -2380,15 +2381,14 @@ costofairportpickup = costofairportpickup.toFixed(2);
 }
 
 
-total = (Number(results.total) * 150 ) / 100 ;
 
-total = total.toFixed(2);
+total = results.total;
 
 
 for(var c = 0 ; c < results.offers.length ; c++ ){
 
 
-discount = discount + (results.offers[c].amount * total) ;
+discount = discount + (Number(results.offers[c].amount) * Number(total)) ;
 
 }
 
