@@ -3,6 +3,50 @@
 $(document).ready(function(){
 
 
+$(".checking").hide();
+
+
+$(function() {
+    $( "#fromdate" ).datepicker({
+
+      minDate: -0 ,
+      dateFormat: "dd-mm-yy",
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 3,
+      onClose: function( selectedDate ) {
+        $( "#todate" ).datepicker( "option", "minDate", selectedDate );
+      }
+    });
+    $( "#todate" ).datepicker({
+       minDate: -0 ,
+       dateFormat: "dd-mm-yy",
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 3,
+      onClose: function( selectedDate ) {
+        $( "#fromdate" ).datepicker( "option", "maxDate", selectedDate );
+      }
+    });
+  });
+
+
+
+$("#subscribe_button").click(function() {
+
+
+   document.cookie = "subscribers_email=" + document.getElementById("subscribers_email").value;
+
+
+   window.location = "connect.html" ;
+
+
+
+
+});
+
+
+
 function plusSlides(n) {
   showSlides(slideIndex += n);
 }
@@ -14,6 +58,7 @@ function currentSlide(n) {
 
 
 var slideIndex = 0;
+
 showSlides();
 
 function showSlides() {
@@ -32,24 +77,6 @@ function showSlides() {
     dots[slideIndex-1].className += " active";
     setTimeout(showSlides, 10000); // Change image every 2 seconds
 }
-
-
-
-$(".checking").hide();
-
-$("#subscribe_button").click(function() {
-
-
-   document.cookie = "subscribers_email=" + document.getElementById("subscribers_email").value;
-
-
-   window.location = "connect.html" ;
-
-
-
-
-});
-
 
 
 
@@ -2369,38 +2396,7 @@ return businessnames;
 });
 
 
-$(function() {
 
-    $( "#resexpiry" ).datepicker({ minDate: -0 ,dateFormat: "dd-mm-yy"});
-
-   
-  
-  });
-
-
-$(function() {
-    $( "#fromdate" ).datepicker({
-
-      minDate: -0 ,
-      dateFormat: "dd-mm-yy",
-      defaultDate: "+1w",
-      changeMonth: true,
-      numberOfMonths: 3,
-      onClose: function( selectedDate ) {
-        $( "#todate" ).datepicker( "option", "minDate", selectedDate );
-      }
-    });
-    $( "#todate" ).datepicker({
-       minDate: -0 ,
-       dateFormat: "dd-mm-yy",
-      defaultDate: "+1w",
-      changeMonth: true,
-      numberOfMonths: 3,
-      onClose: function( selectedDate ) {
-        $( "#fromdate" ).datepicker( "option", "maxDate", selectedDate );
-      }
-    });
-  });
 
 
 function displayModal(para) {
@@ -2429,6 +2425,7 @@ var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() { 
+
 var modal = document.getElementById('myModal');
 
     modal.style.display = "none";
