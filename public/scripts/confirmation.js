@@ -53,13 +53,13 @@ $scope.fullname = $scope.fullname.toUpperCase();
 
                                      $scope.amenityTotal = response.data.amenityTotal;
 
-                                    if(location.pathname === '/booking-confirmation.html') {   document.cookie = "reservationID=";  }
-
+                                
 
 
 $http.get("http://www.sinopiainn.com/api/booking-confirmation/?reservationID="+getCookie('reservationID')).then(function(response) {
 
 
+    if(location.pathname === '/booking-confirmation.html') {   document.cookie = "reservationID=";  }
 
 
   });
