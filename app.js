@@ -2396,6 +2396,12 @@ var fullname = results.fname +' '+results.lname;
 
 var template_name = "Booking confirmation sent to business";
 
+
+
+var fname =  results.fname.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+
+
+
 var template_content = [{
         "name": "",
         "content": ""
@@ -2437,7 +2443,7 @@ var message = {
     "merge_language": "handlebars",
     "global_merge_vars":[{
             "name": "name",
-            "content": results.fname
+            "content": fname
         },{
             "name": "dateofarrival",
             "content": results.fromdate
