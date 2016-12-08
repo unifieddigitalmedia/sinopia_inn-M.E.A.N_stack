@@ -41,7 +41,7 @@ app.use(express.static(__dirname + '/'));
 process.env.NODE_ENV = 'development';
 
 
-var hotelID = '58446632692ee10011e18045';
+var hotelID = '58499b2a3f7f3b0d70b11653';
 
 
 var braintree = require("braintree");
@@ -379,7 +379,7 @@ db.collection('itinerary').insert( [
 
          resID = results.insertedIds[0];
 
-       var response = {"ERROR":"","tripID":resID};
+         var response = {"ERROR":"","tripID":resID};
         
          res.json(response);
 
@@ -394,7 +394,7 @@ db.collection('itinerary').insert( [
 
 app.get('/api/mobile/checkhotelavailability/', function (req, res) {
 
-var o_id = new mongo.ObjectID("58446632692ee10011e18045");
+var o_id = new mongo.ObjectID("58499b2a3f7f3b0d70b11653");
 
 var availability = [];
 
@@ -552,7 +552,7 @@ db.collection('reservation').find({"name":req.query.name},{ _id:1 }).toArray(fun
 
 
 
-var photofile = "http://www.sinopiainn.com/public/reservations/"+results[results.length-1]._id+".jpg";
+var photofile = "http://www.sinopiainn.com/public/reservations/"+req.query.name+"/"+results[results.length-1]._id+".jpg";
 
 
 
@@ -598,10 +598,6 @@ if(err){ res.json({"ERROR": "There was an error on our saerver'" });}else{
 
 app.post('/api/upload-reservation-photo', multipartMiddleware, function(req, res) {
 
-console.log(req.query.resID);
-console.log(req.query.message);
-console.log(req.files.displayImage);
-
 var d = new Date();
 
 var reservationID = new mongo.ObjectID(req.query.resID);
@@ -612,120 +608,66 @@ var time_created = d.toDateString();
 
 var filename =  req.files.displayImage.originalFilename.replace(" ", "");
 
+
+var directory = "public/reservations/"+req.query.name+"/"; 
+
+
+
+if (fs.existsSync(directory)) {
+
+
 fs.readFile(req.files.displayImage.path, function (err, data) {
 
-fs.stat("public/reservations/"+req.query.resID, function (err, stats){
 
-if (err) {
+   if (err) {
 
-fs.mkdir("public/reservations/"+req.query.resID);
 
-fs.writeFile("public/reservations/"+req.query.resID+"/"+filename, data, function (err) {
+      return console.error(err);
+   
+      var response = {"ERROR":"There was an system error. Please contact the web administrator."};
+
+      res.json(response);
+
+
+
+   }
+
+fs.writeFile(directory+filename, data, function (err) {
 
  if (err) return next(err)
 
 db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos": { 
 
-"image_url" : "public/reservations/"+req.query.resID+"/"+filename,
+"image_url" : directory+filename,
 "text" : req.query.message , 
 "date_created" : date_created,
 "time_created" : time_created,
 
 }  } } , function(err, results) { 
 
- if (err) return next(err)
+  if (err) return next(err)
 
-res.json("1 - "+results);
+  var response = {"ERROR":""};
 
-  //res.send(200, {status: '1-OK'} );
-
-
- });
-
- });
-  
+    res.json(response);
 
 
-  } else {
-
-
-  if (!stats.isDirectory()) {
-  
-
- fs.mkdir("public/reservations/"+req.query.resID);
-
-
-fs.writeFile("public/reservations/"+req.query.resID+"/"+filename, data, function (err) {
-
- if (err) return next(err)
-
-db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos": { 
-
-"image_url" : "public/reservations/"+req.query.resID+"/"+filename,
-"text" : req.query.message , 
-"text" : req.query.address , 
-"date_created" : date_created,
-"time_created" : time_created,
-}  } } , function(err, results) { 
-
- if (err) return next(err)
-
-res.json("2 - "+results);
 
  });
 
  });
 
 
-//res.send(200, {status: '2-OK'});
-
-
-  
-  } else {
-  
-console.log('Does exist');
-       
-fs.writeFile("public/reservations/"+req.query.resID+"/"+filename, data, function (err) {
-
- if (err) return next(err)
-
-db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos": { 
-
-"image_url" : "public/reservations/"+req.query.resID+"/"+filename,
-"text" : req.query.message , 
-"date_created" : date_created,
-"time_created" : time_created,
-
-}  } } , function(err, results) { 
-
- if (err) return next(err)
-
-res.json("3 - "+results);
-
- });
-
- });
-
-//res.send(200, {status: '3-OK'});
-
-  }
-
-
-  }
 
 
 });
 
 
-
-
-
-
-             });
-
+}
 
 
 });
+
 
 
 app.get('/api/timeline/', function(req, res) {
@@ -736,7 +678,7 @@ var reservationID = new mongo.ObjectID(req.query.name);
 
 db.collection('reservation').find({"name":req.query.name},{}).toArray(function(e, results){
 
- if (e) return next(e)
+if (e) return next(e)
 
 
 for (var x = 0 ; x < results.length ; x++){
@@ -753,6 +695,7 @@ res.json(containerArray);
 
 });
 
+
   });
 
 
@@ -763,6 +706,7 @@ app.get('/api/images/', function(req,res) {
 var filesArray = [];
 
 var containerArray= [];
+
 waterfall([
 
 function(callback){
@@ -838,7 +782,7 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '58446632692ee10011e18045');
+var hotelID = new mongo.ObjectID( '58499b2a3f7f3b0d70b11653');
 
 var offerArray = [];
 
@@ -1082,7 +1026,7 @@ db.collection('reservation').insert( [
           "amenities":amentityArray,
           "rooms":roomsArray,
           "photos":[],
-          "name":req.query.fname,
+          "name":req.query.fname.concat(" ").concat(req.query.lname),
    
 
 
@@ -1090,6 +1034,7 @@ db.collection('reservation').insert( [
 
 
           
+
 
 
 var o_id = new mongo.ObjectID(results.insertedIds[0]);
@@ -1145,10 +1090,9 @@ costofairportpickup = costofairportpickup.toFixed(2);
 }
 
 
-
-
 total = results.total;
 
+var balance = Number(total) - Number(result.deposit);
 
 for(var c = 0 ; c < results.offers.length ; c++ ){
 
@@ -1251,9 +1195,12 @@ var message = {
         },{
             "name": "total",
             "content": total
-        },,{
+        },{
             "name": "deposit",
             "content": results.deposit
+        },{
+            "name": "deposit",
+            "content": results.balance
         }
 
         ],
@@ -1299,7 +1246,7 @@ var send_at = "2016-10-10 23:59:59";
 
 mandrill_client.messages.sendTemplate({"template_name": template_name, "template_content": template_content, "message": message, "async": async, "ip_pool": ip_pool, "send_at": send_at}, function(result) {
 
-           callback(null,results.insertedIds[0],results);
+           callback(null,o_id,results);
 
 }, function(e) {
 
@@ -1381,69 +1328,73 @@ for (x = 0; x < obj.length; x++) {
 
 
     
-fs.stat("public/reservations/", function (err, stats){
-
-  if (err) {
+    var directory = "public/reservations/"+req.query.name+"/"; 
 
 
-    fs.mkdir("public/reservations/");
 
-    
-var response = {"ERROR":"","Reservation":arg1};
-
- fs.readFile(req.files.displayImage.path, function (err, data) {
-          
-           fs.writeFile('public/reservations/'+arg2+'.jpg', data, function (err) {
+if (!fs.existsSync(directory)) {
 
 
- res.json(response);
+fs.mkdir(directory,function(err){
+
+   if (err) {
+      return console.error(err);
+   }
+
+
+
+fs.readFile(req.files.displayImage.path, function (err, data) {
+
+
+   if (err) {
+
+
+      return console.error(err);
+   
+      var response = {"ERROR":"There was an system error. Please contact the web administrator."};
+
+      res.json(response);
+
+
+
+   }
+
+
+
+ fs.writeFile(directory+arg2+'.jpg', data, function (err) {
+
+
+   var balance = Number(req.query.total) - Number(req.query.deposit);
+
+   var response = {"ERROR":"","Reservation":arg1};
+
+   res.json(response);
+  
+   console.log("Directory created successfully!");
 
 
 
         });
 
 
-             });
-
-
-  
-  } else{
-
-
-  if (!stats.isDirectory()) {
-  
-  
-  } else {
-  
-    console.log('Does exist');
-  
-     
-var response = {"ERROR":"","Reservation":arg1};
-
- fs.readFile(req.files.displayImage.path, function (err, data) {
-          
-           fs.writeFile('public/reservations/'+arg2+'.jpg', data, function (err) {
-
-
- res.json(response);
 
 
 
-        });
+ });
 
 
-             });
 
-
-  
-  }
-
-
-  }
-  
+   
 
 
 });
+
+
+
+}
+
+
+
 
 
 
@@ -1587,11 +1538,23 @@ db.collection('itinerary').insert( [
 
 
 
-         resID = results.insertedIds[0];
+db.collection('hotels').updateOne( {"token":req.query.token}, { $set: { "token": tripID } } , function(err, results) { 
+
+
+
+
+       resID = results.insertedIds[0];
 
        var response = {"ERROR":"","tripID":resID};
         
-         res.json(response);
+       res.json(response);
+
+
+
+
+ });
+
+      
 
 
 
@@ -1605,7 +1568,7 @@ db.collection('itinerary').insert( [
 
 app.get('/api/checkhotelavailability/', function (req, res) {
 
-var o_id = new mongo.ObjectID("58446632692ee10011e18045");
+var o_id = new mongo.ObjectID("58499b2a3f7f3b0d70b11653");
 
 var availability = [];
 
@@ -1945,7 +1908,7 @@ app.get("/api/reservation-details/", function (req, res) {
 
 
 
-var hotelID = new mongo.ObjectID( '58446632692ee10011e18045');
+var hotelID = new mongo.ObjectID( '58499b2a3f7f3b0d70b11653');
 
 var o_id = new mongo.ObjectID(req.query.reservationID);
 
@@ -1995,7 +1958,7 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '58446632692ee10011e18045');
+var hotelID = new mongo.ObjectID( '58499b2a3f7f3b0d70b11653');
 
 var offerArray = [];
 
@@ -2230,7 +2193,7 @@ db.collection('reservation').insert( [
 for (x = 0; x < req.body['roomarray[]'].length; x++) { 
 
 
-  db.collection('hotels').updateOne( {"rooms._id":req.body['roomarray[]'][x]._id}, { $push: {"rooms.$.booking": [{ 
+db.collection('hotels').updateOne( {"rooms._id":req.body['roomarray[]'][x]._id}, { $push: {"rooms.$.booking": [{ 
 
 
 "RID" : arg1,
@@ -2254,11 +2217,44 @@ for (x = 0; x < req.body['roomarray[]'].length; x++) {
   },function(arg1, callback){
 
 
-var balance = Number(req.query.total) - Number(req.query.deposit);
 
-var response = {"ERROR":"","ReservationID":arg1};
 
-res.json(response);
+
+var directory = "public/reservations/"+req.query.fname+" "+req.query.lname+"/"; 
+
+
+
+if (!fs.existsSync(directory)) {
+
+
+fs.mkdir(directory,function(err){
+
+   if (err) {
+      return console.error(err);
+   }
+
+
+    var balance = Number(req.query.total) - Number(req.query.deposit);
+
+    var response = {"ERROR":"","ReservationID":arg1};
+
+    res.json(response);
+  
+    console.log("Directory created successfully!");
+
+
+});
+
+
+
+
+}
+
+
+
+
+
+
 
 
 /*fs.stat("public/reservations/", function (err, stats){
@@ -2397,10 +2393,9 @@ var fullname = results.fname +' '+results.lname;
 var template_name = "Booking confirmation sent to business";
 
 
-
 var fname =  results.fname.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 
-
+var balance = Number(total) - Number(result.deposit);
 
 var template_content = [{
         "name": "",
@@ -2492,11 +2487,13 @@ var message = {
         },{
             "name": "total",
             "content": total
-        },,{
+        },{
             "name": "deposit",
             "content": results.deposit
+        },{
+            "name": "balance",
+            "content": balance
         }
-
         ],
     "merge_vars": [{
             "rcpt": "recipient.email@example.com",
