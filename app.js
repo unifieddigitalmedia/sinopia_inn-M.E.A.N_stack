@@ -1536,14 +1536,14 @@ db.collection('itinerary').insert( [
 
 }], function(err, results) { 
 
+resID = results.insertedIds[0];
+
+db.collection('hotels').updateOne( {"token":req.query.token}, { $set: { "tripID": resID } } , function(err, results) { 
 
 
-db.collection('hotels').updateOne( {"token":req.query.token}, { $set: { "token": tripID } } , function(err, results) { 
 
 
-
-
-       resID = results.insertedIds[0];
+       
 
        var response = {"ERROR":"","tripID":resID};
         
