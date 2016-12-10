@@ -1092,7 +1092,7 @@ costofairportpickup = costofairportpickup.toFixed(2);
 
 total = results.total;
 
-var balance = Number(total) - Number(result.deposit);
+var balance = Number(total) - Number(req.query.deposit);
 
 for(var c = 0 ; c < results.offers.length ; c++ ){
 
@@ -1197,10 +1197,10 @@ var message = {
             "content": total
         },{
             "name": "deposit",
-            "content": results.deposit
+            "content": req.query.deposit
         },{
-            "name": "deposit",
-            "content": results.balance
+            "name": "balance",
+            "content": balance
         }
 
         ],
@@ -2489,7 +2489,7 @@ var message = {
             "content": total
         },{
             "name": "deposit",
-            "content": results.deposit
+            "content": req.query.deposit
         },{
             "name": "balance",
             "content": balance
