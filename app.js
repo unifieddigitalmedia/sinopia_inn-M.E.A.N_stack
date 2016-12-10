@@ -2324,10 +2324,14 @@ app.get('/api/booking-confirmation/', function(req,res) {
 
 var o_id = new mongo.ObjectID(req.query.reservationID);
 
+
+
 db.collection('reservation').findOne({ "_id": o_id  },function(e, results){
 
 
                                                            if (e) return next(e)
+
+
 
 var costofrooms = 0 ;
 
@@ -2386,16 +2390,20 @@ for(var c = 0 ; c < results.offers.length ; c++ ){
 
 discount = discount + (Number(results.offers[c].amount) * Number(total)) ;
 
+
 }
 
 var fullname = results.fname +' '+results.lname;  
 
 var template_name = "Booking confirmation sent to business";
 
-
 var fname =  results.fname.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 
-var balance = Number(total) - Number(result.deposit);
+var balance = Number(total) - Number(results.deposit);
+
+var deposit = results.deposit.toFixed(2);
+
+balance = balance.toFixed(2);
 
 var template_content = [{
         "name": "",
@@ -2489,7 +2497,7 @@ var message = {
             "content": total
         },{
             "name": "deposit",
-            "content": req.query.deposit
+            "content": deposit
         },{
             "name": "balance",
             "content": balance
@@ -2538,7 +2546,10 @@ var send_at = "2016-10-10 23:59:59";
 mandrill_client.messages.sendTemplate({"template_name": template_name, "template_content": template_content, "message": message, "async": async, "ip_pool": ip_pool, "send_at": send_at}, function(result) {
 
 res.send("done");
-           //callback(null,results.insertedIds[0],results);
+
+
+//callback(null,results.insertedIds[0],results);
+
 
 }, function(e) {
 

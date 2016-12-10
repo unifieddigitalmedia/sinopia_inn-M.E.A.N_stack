@@ -53,11 +53,18 @@ $scope.fullname = $scope.fullname.toUpperCase();
 
                                      $scope.amenityTotal = response.data.amenityTotal;
 
+
+ var balance = Number(response.data.total) - Number(response.data.deposit);
+
+ $scope.deposit = response.data.deposit;
+
+ $scope.balance = balance;
                                 
 
 
 $http.get("http://www.sinopiainn.com/api/booking-confirmation/?reservationID="+getCookie('reservationID')).then(function(response) {
 
+alert('s');
 
     if(location.pathname === '/booking-confirmation.html') {   document.cookie = "reservationID=";  }
 
