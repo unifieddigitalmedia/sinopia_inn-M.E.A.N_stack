@@ -185,10 +185,10 @@ ul.topnav-top li { display: inline-block;  vertical-align:middle; }
 
 
 
-/* Slideshow container 
+
 .mySlides {display:none}
 
-
+/* 
 
 .slideshow-container {  
 padding:0px!important; margin:0px!important;width:auto;max-width:auto;  height:800px; top:0; 
@@ -624,7 +624,7 @@ section h3{color: #cb410b!important; font-size:100%!important;}
 
 .download_buttons_col-title {padding-left:100px;}
 
-.outline-res {  background-color:none!important; color:#3b0053!important;border:thin solid #3b0053!important}
+.outline-res {  background-color:none!important; color:#cb410b!important;border:thin solid #cb410b!important;}
 
 
 .outline-res:hover, .outline-res:focus, .outline-res:active, .outline.active,  {
