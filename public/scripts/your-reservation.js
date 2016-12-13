@@ -1134,9 +1134,9 @@ return total;
 
 $scope.caldeposit = function(para) {
 
-$scope.total = (para * 50)/100;
+$scope.deposit = (para * 50) / 100;
 
-return $scope.total;
+return $scope.deposit;
 
 }
 
@@ -1226,6 +1226,7 @@ var reserveBooking = resource.save(
           numofinfants:$scope.numofinfants,
           fromdate:getCookie('fromdate'),
           todate:getCookie('todate'),
+          deposit:$scope.deposit,
           subtotal:$scope.tocurrency($scope.calculatetotals()), 
           discount:$scope.tocurrency($scope.discountedamounttotal),
           amenityTotal : $scope.tocurrency($scope.calTotalAmentities()),
