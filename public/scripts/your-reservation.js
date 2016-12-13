@@ -1136,6 +1136,8 @@ $scope.caldeposit = function(para) {
 
 $scope.deposit = (para * 50) / 100;
 
+$scope.deposit = $scope.deposit.toFixed(2);
+
 return $scope.deposit;
 
 }
