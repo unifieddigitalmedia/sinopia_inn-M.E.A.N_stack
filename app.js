@@ -42,7 +42,7 @@ app.use(express.static(__dirname + '/'));
 process.env.NODE_ENV = 'development';
 
 
-var hotelID = process.env.hotelID; //'58499b2a3f7f3b0d70b11653';
+var mainHotelID = process.env.hotelID; //'58499b2a3f7f3b0d70b11653';
 
 
 var braintree = require("braintree");
@@ -52,11 +52,11 @@ var gateway = braintree.connect({
 
   environment: braintree.Environment.Sandbox,
 
-  merchantId:process.env.braintree-merchantId, //"srhrsqv4gy3hq4ph",
+  merchantId:"srhrsqv4gy3hq4ph",
 
-  publicKey: process.env.braintree-publicKey,//"43rvqc54k6f95qvq",
+  publicKey: "43rvqc54k6f95qvq",
 
-  privateKey: process.env.braintree-privateKey, //"501e4b051264b96427f0ceddf2383920"
+  privateKey: "501e4b051264b96427f0ceddf2383920"
 
 
 });
@@ -395,7 +395,7 @@ db.collection('itinerary').insert( [
 
 app.get('/api/mobile/checkhotelavailability/', function (req, res) {
 
-var o_id = new mongo.ObjectID(hotelID);
+var o_id = new mongo.ObjectID(mainHotelID);
 
 var availability = [];
 
@@ -783,7 +783,7 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( hotelID);
+var hotelID = new mongo.ObjectID(mainHotelID);
 
 var offerArray = [];
 
@@ -1569,7 +1569,7 @@ db.collection('hotels').updateOne( {"token":req.query.token}, { $set: { "tripID"
 
 app.get('/api/checkhotelavailability/', function (req, res) {
 
-var o_id = new mongo.ObjectID(hotelID);
+var o_id = new mongo.ObjectID(mainHotelID);
 
 var availability = [];
 
@@ -1909,7 +1909,7 @@ app.get("/api/reservation-details/", function (req, res) {
 
 
 
-var hotelID = new mongo.ObjectID( hotelID);
+var hotelID = new mongo.ObjectID(mainHotelID);
 
 var o_id = new mongo.ObjectID(req.query.reservationID);
 
@@ -1959,7 +1959,7 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( hotelID);
+var hotelID = new mongo.ObjectID(mainHotelID);
 
 var offerArray = [];
 
