@@ -45,26 +45,25 @@ $scope.fullname = $scope.fullname.toUpperCase();
 
                                     $scope.subtotal = response.data.subtotal;
 
-                                     $scope.discount = response.data.discount;
+                                    $scope.discount = response.data.discount;
 
-                                     $scope.fromdate = response.data.fromdate;
+                                    $scope.fromdate = response.data.fromdate;
 
-                                     $scope.todate = response.data.todate;
+                                    $scope.todate = response.data.todate;
 
-                                     $scope.amenityTotal = response.data.amenityTotal;
+                                    $scope.amenityTotal = response.data.amenityTotal;
 
 
- var balance = Number(response.data.total) - Number(response.data.deposit);
+var balance = Number(response.data.total) - Number(response.data.deposit);
 
- $scope.deposit = response.data.deposit;
+$scope.deposit = response.data.deposit;
 
- $scope.balance = balance;
-                                
-
+$scope.balance = balance.toFixed(2);
+             
 
 $http.get("http://www.sinopiainn.com/api/booking-confirmation/?reservationID="+getCookie('reservationID')).then(function(response) {
 
-alert('s');
+
 
     if(location.pathname === '/booking-confirmation.html') {   document.cookie = "reservationID=";  }
 
