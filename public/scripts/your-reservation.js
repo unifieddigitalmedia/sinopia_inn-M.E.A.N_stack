@@ -674,6 +674,7 @@ $scope.addroom = function(para) {
 
 
 
+
                               
                                     if(!$scope.rmad($scope.roomlist[para]._id,$scope.roomsArray))
 
@@ -684,10 +685,13 @@ $scope.addroom = function(para) {
 
                                         $scope.roomsArray.push($scope.roomlist[para]);
 
+ $scope.roomsArray[$scope.roomsArray.length - 1 ].numofguest = 0;
+
                                         $("#bookingcol").slideDown("slow");
 
                                     
                                   }
+
 
 
                                   }
@@ -789,6 +793,14 @@ $scope.rmad = function(para,para1) {
                                     }
 
 
+ var adltIn = document.getElementsByName("adults");
+
+
+                                      var cldIn  = document.getElementsByName("children");
+
+
+                                      var iftIn  = document.getElementsByName("infants");
+
 $scope.bookingtotal = function() {
 
 
@@ -851,13 +863,7 @@ return a;
 
                                       
 
-                                      var adltIn = document.getElementsByName("adults");
-
-
-                                      var cldIn  = document.getElementsByName("children");
-
-
-                                      var iftIn  = document.getElementsByName("infants");
+                                     
 
 
 $scope.numofadults = 0;
@@ -882,6 +888,8 @@ $scope.roomsArray = jQuery.grep($scope.roomsArray, function( a,i ) {
                                       a.children = cldIn[i].value;
 
                                       a.infants = iftIn[i].value;
+
+                                      a.numofguest = parseInt(adltIn[i].value) + parseInt(cldIn[i].value);
 
 
                                                                         return a; 
@@ -966,13 +974,150 @@ return $scope.discountedamount;
 }
 
 
+var childrenOptions = {};
+
+childrenOptions2= ['0', '1', '2'];
+
+childrenOptions1 = ['0', '1'];
+
+childrenOptions0 = ['0'];
+
+
+$scope.populateOption =function(para,para1,para2){
+
+
+for (i = 0; i < para.length; i++) {
+
+     
+     var childOption = new Option(para[i], i);
+
+     para1.options.add(childOption);
+
+
+ }
+
+ para1.options[para2].selected = true ;
+
+
+}
+
+$scope.addAdult = function (para) {
+
+$scope.roomsArray[para].adults = adltIn[para].value;
+
+var cldOptions = cldIn[para];
+
+cldOptions.options.length = 0;
+
+if($scope.roomsArray[para].adults == 0) {
+
+$scope.populateOption(childrenOptions2,cldOptions,$scope.roomsArray[para].children);
+
+}
+
+else if($scope.roomsArray[para].adults == 1) {
+
+ $scope.populateOption(childrenOptions1,cldOptions,$scope.roomsArray[para].children);
+
+
+} else if($scope.roomsArray[para].adults == 2){
+
+$scope.populateOption(childrenOptions0,cldOptions,$scope.roomsArray[para].children);
+
+
+}
+
+
+$scope.roomsArray[para].numofguest = parseInt($scope.roomsArray[para].adults) +  parseInt($scope.roomsArray[para].children);
+
+$scope.calculatetotals();
+
+$scope.$apply();
+
+
+}
+
+
+$scope.addChildren = function (para) {
+
+
+$scope.roomsArray[para].children = cldIn[para].value;
+
+var cldOptions = adltIn[para];
+
+cldOptions.options.length = 0;
+
+if($scope.roomsArray[para].children == 0) {
+
+$scope.populateOption(childrenOptions2,cldOptions,$scope.roomsArray[para].adults);
+
+}
+
+else if($scope.roomsArray[para].children == 1) {
+
+ $scope.populateOption(childrenOptions1,cldOptions,$scope.roomsArray[para].adults);
+
+
+} else if($scope.roomsArray[para].children == 2){
+
+$scope.populateOption(childrenOptions0,cldOptions,$scope.roomsArray[para].adults);
+
+
+}
+
+$scope.roomsArray[para].numofguest = parseInt($scope.roomsArray[para].adults) + parseInt($scope.roomsArray[para].children);
+
+$scope.calculatetotals();
+
+$scope.$apply();
+
+
+
+}
+
+
+$scope.addInfant = function (para) {
+
+
+$scope.roomsArray[para].infants = iftIn[para].value;
+
+$scope.calculatetotals();
+
+$scope.$apply();
+
+}
+
+
+
+$scope.calRoom = function (para) {
+
+
+
+var amt = (parseInt($scope.roomsArray[para].price) * parseInt($scope.numofdays)) * parseInt($scope.roomsArray[para].numofguest) ;
+
+
+return amt; 
+}
+
+
 $scope.calculatetotals = function () {
 
 $scope.total = 0 ; 
 
+
+/* a.adults = adltIn[i].value;
+
+                                      a.children = cldIn[i].value;
+
+                                      a.infants = iftIn[i].value;*/
+
+
 $scope.roomsArray = jQuery.grep($scope.roomsArray, function( a,i ) { 
 
-                                      $scope.total += parseInt(a.price) * parseInt($scope.numofdays) ;
+
+//parseInt(a.adults) *  parseInt(a.children)
+
+                                      $scope.total += (parseInt(a.price) * parseInt($scope.numofdays) ) *  parseInt(a.numofguest)  ;
 
                                 
                                                                         return a; 

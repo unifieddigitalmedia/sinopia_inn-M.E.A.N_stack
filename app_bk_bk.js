@@ -11,14 +11,14 @@ var async = require('async');
 var waterfall = require('async-waterfall');
 var MongoClient = require('mongodb').MongoClient;
 var mandrill = require('mandrill-api/mandrill');
-var mandrill_client = new mandrill.Mandrill('fix_HqmjREpZnCAHR_Dhaw');
+var mandrill_client = new mandrill.Mandrill(process.env.mandrill_client);
 var pdf = require('pdfcrowd');
 var assert = require('assert');
 var busboy = require('connect-busboy'); //middleware for form/file upload
 var path = require('path');     //used for file path
 var fs = require('fs-extra'); 
 var mongoose = require('mongoose');
-var MONGOLAB_URI = 'mongodb://sinopiainn-administrator:321123ETz$@ds057476.mlab.com:57476/heroku_mn2k4bdf';
+var MONGOLAB_URI = process.env.MONGOLAB_URI; //'mongodb://sinopiainn-administrator:321123ETz$@ds057476.mlab.com:57476/heroku_mn2k4bdf';
 var db = mongoose.createConnection(MONGOLAB_URI);
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -42,7 +42,7 @@ app.use(express.static(__dirname + '/'));
 process.env.NODE_ENV = 'development';
 
 
-var hotelID = '5853edd65500cb195b2c280c';
+var mainHotelID = process.env.hotelID; //'58499b2a3f7f3b0d70b11653';
 
 
 var braintree = require("braintree");
@@ -52,7 +52,7 @@ var gateway = braintree.connect({
 
   environment: braintree.Environment.Sandbox,
 
-  merchantId: "srhrsqv4gy3hq4ph",
+  merchantId:"srhrsqv4gy3hq4ph",
 
   publicKey: "43rvqc54k6f95qvq",
 
@@ -395,7 +395,7 @@ db.collection('itinerary').insert( [
 
 app.get('/api/mobile/checkhotelavailability/', function (req, res) {
 
-var o_id = new mongo.ObjectID("5853edd65500cb195b2c280c");
+var o_id = new mongo.ObjectID(mainHotelID);
 
 var availability = [];
 
@@ -783,7 +783,7 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '5853edd65500cb195b2c280c');
+var hotelID = new mongo.ObjectID(mainHotelID);
 
 var offerArray = [];
 
@@ -1474,7 +1474,7 @@ var message = new gcm.Message({
 });
 
 // Set up the sender with you API key, prepare your recipients' registration tokens. 
-var sender = new gcm.Sender('AIzaSyCQ-ngrwzhZ9JiCBXL-sVk_4pbdeD55Lek');
+var sender = new gcm.Sender(process.env.gcm.Sender);
 
 var regTokens = [req.query.sender];
  
@@ -1569,7 +1569,7 @@ db.collection('hotels').updateOne( {"token":req.query.token}, { $set: { "tripID"
 
 app.get('/api/checkhotelavailability/', function (req, res) {
 
-var o_id = new mongo.ObjectID("5853edd65500cb195b2c280c");
+var o_id = new mongo.ObjectID(mainHotelID);
 
 var availability = [];
 
@@ -1802,8 +1802,6 @@ if (e) return next(e)
 db.collection("hotels").find({"_id":o_id }, { "offers": { $elemMatch: { "nights":{ $lte : Number(req.query.nights) }  } } }  ).toArray(function(e, results){
 
 
-console.log(results[0].offers);
-
 if (e) return next(e)
 
 
@@ -1820,7 +1818,7 @@ if(  typeof results[0].offers != 'undefined'  ){
 
 
 }
-    
+
 
     availability.push(arg1);
 
@@ -1915,7 +1913,7 @@ app.get("/api/reservation-details/", function (req, res) {
 
 
 
-var hotelID = new mongo.ObjectID( '5853edd65500cb195b2c280c');
+var hotelID = new mongo.ObjectID(mainHotelID);
 
 var o_id = new mongo.ObjectID(req.query.reservationID);
 
@@ -1965,7 +1963,7 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '5853edd65500cb195b2c280c');
+var hotelID = new mongo.ObjectID(mainHotelID);
 
 var offerArray = [];
 
@@ -2408,7 +2406,7 @@ var fname =  results.fname.replace(/\w\S*/g, function(txt){return txt.charAt(0).
 
 var balance = Number(total) - Number(results.deposit);
 
-var deposit = results.deposit.toFixed(2);
+var deposit = results.deposit;
 
 balance = balance.toFixed(2);
 
@@ -2659,7 +2657,7 @@ db.collection('hotels').deleteMany( {}, function(err, results) {
    });
 
 
-db.collection('hotels').insertOne( {"rooms":[{"_id":"1","name":"Camel", "description":"Air conditioned double occupancy bedroom with ensuite bathroom","occupancy":"2","icon":"/images/parrot_thumb.png","price":"70.00","booking":[],"adults":"0","children":"0","infants":"0"},{"_id":"2","name":"Puce", "description":"Double occupancy bedroom with ensuite bathroom","occupancy":"2","price":"73.00","icon":"/images/parrot_thumb.png","booking":[],"adults":"0","children":"0","infants":"0"},{"_id":"3","name":"Spring Bud","description":"Double occupancy bedroom with ensuite bathroom","occupancy":"2","price":"73.00","icon":"/images/parrot_thumb.png","booking":[],"adults":"0","children":"0","infants":"0"},{"_id":"4","name":"Coquelicot","description":"Quadruple occupancy bedroom with ensuite bathroom and lounge","occupancy":"4","price":"90.00","icon":"/images/parrot_thumb.png","booking":[],"adults":"0","children":"0","infants":"0"}],"offers":[{"_id":"1","name":"Summer & Autumn Discount 10%","description":"Validity period from 20th June to 14th December","amount":".10","validdate":"20-04-2016","exdate":"14-12-2016","token":"","nights":""},{"_id":"2","name":"Friends and family discount 15%","description":"All year","amount":".15","validdate":"","exdate":"","token":"marshmellows","nights":""},{"_id":"3","name":"Breakfast","description":"Traditional Jamaican Break - Mackrel Run Down with Chicken or Calloo alternatives","amount":"0","validdate":"","exdate":"","token":"","nights":3}],"amenities":[{"name":"Breakfast","description":"Traditional Jamaican breakfast","price":"10.00","frequency":"person",},{"name":"Airport Pickup","description":"Transportation to and from airport","price":"30.00","frequency":"room",},{"name":"Private Car Hire","description":"On and Off road SUV - seating capacity 5 plus baggage","price":"60.00","frequency":"night",}],"businessname":"Sinopia Inn","businessaddress":"Matthews Ave Port Antonio, Jamaica","businessphone":"+1 876-993-7267","businesswebsite":"http://www.hotelmockingbirdhill.com/","businessemail":"info@sinopiainn.com","businessdescription":"","country":"","coordinates":{"Latitude":"18.1763329","Longitude":"-76.44973749999997"},"nameofevent":"","timeofevent":"","dateofevent":"","activity":[{"typeofbusiness":"Accomodation","typeofservice":"Villa"}],"typeofactivity":[],"contactname":"","location":"","logourl":"","showcaseurl":[],"comments":[],"averagerating":"","avergaeprice":"","date":"","enabled":""}, function(err, result) {
+db.collection('hotels').insertOne( {"rooms":[{"_id":"1","name":"Camel", "description":"Air conditioned double occupancy bedroom with ensuite bathroom","occupancy":"2","icon":"/images/parrot_thumb.png","price":"125.00","booking":[]},{"_id":"2","name":"Puce", "description":"Double occupancy bedroom with ensuite bathroom","occupancy":"2","price":"120.00","icon":"/images/parrot_thumb.png","booking":[]},{"_id":"3","name":"Spring Bud","description":"Double occupancy bedroom with ensuite bathroom","occupancy":"2","price":"120.00","icon":"/images/parrot_thumb.png","booking":[]},{"_id":"4","name":"Coquelicot","description":"Air conditioned Quadruple occupancy bedroom with ensuite bathroom and lounge","occupancy":"4","price":"135.00","icon":"/images/parrot_thumb.png","booking":[]}],"offers":[{"_id":"1","name":"Summer & Autumn Discount 10%","description":"Validity period from 20th June to 14th December","amount":".10","validdate":"20-04-2016","exdate":"14-12-2016","token":"","nights":""},{"_id":"2","name":"Friends and family discount 15%","description":"All year","amount":".15","validdate":"","exdate":"","token":"marshmellows","nights":""},{"_id":"3","name":"Breakfast","description":"Traditional Jamaican Break - Mackrel Run Down with Chicken or Calloo alternatives","amount":"0","validdate":"","exdate":"","token":"","nights":"3"}],"amenities":[{"name":"Breakfast","description":"Traditional Jamaican breakfast","price":"10.00","frequency":"person",},{"name":"Airport Pickup","description":"Transportation to and from airport","price":"30.00","frequency":"room",},{"name":"Private Car Hire","description":"On and Off road SUV - seating capacity 5 plus baggage","price":"60.00","frequency":"night",}],"businessname":"Sinopia Inn","businessaddress":"Matthews Ave Port Antonio, Jamaica","businessphone":"+1 876-993-7267","businesswebsite":"http://www.hotelmockingbirdhill.com/","businessemail":"info@sinopiainn.com","businessdescription":"","country":"","coordinates":{"Latitude":"18.1763329","Longitude":"-76.44973749999997"},"nameofevent":"","timeofevent":"","dateofevent":"","activity":[{"typeofbusiness":"Accomodation","typeofservice":"Villa"}],"typeofactivity":[],"contactname":"","location":"","logourl":"","showcaseurl":[],"comments":[],"averagerating":"","avergaeprice":"","date":"","enabled":""}, function(err, result) {
  
     res.send("Inserted a document into the hotel collection.");
    

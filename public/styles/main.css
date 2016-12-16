@@ -810,7 +810,7 @@ section h3{color: #cb410b!important; font-size:100%!important;}
     position: absolute;
     top: 15px;
     right: 35px;
-    color: white;
+    color:#cb410b!important; 
     font-size: 40px;
     font-weight: bold;
     transition: 0.3s;

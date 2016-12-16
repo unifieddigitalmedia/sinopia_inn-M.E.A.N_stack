@@ -478,9 +478,9 @@
 <tr ng-repeat="chkroom in roomsArray" > <td> <p> {{chkroom.name}}</p></td> <td> <p> {{chkroom.occupancy}}</p></td> <td> <p> 
 
 
-<select  class="" name="adults" >
+<select  class="" name="adults" ng-click="addAdult($index)">
 
-
+<option value="0">0</option>
 <option value="1">1</option>
 <option value="2">2</option>
 
@@ -489,11 +489,11 @@
 
 </p></td> <td><p> 
 
-<select  class="" name="children" >
+<select  class="" name="children" ng-click="addChildren($index)" >
 
 <option value="0">0</option>
 <option value="1">1</option>
-<option value="2">2</option>
+
 
 
 </select> 
@@ -502,11 +502,11 @@
 </p>
  </td> <td><p> 
 
-<select  class="" name="infants" >
+<select  class="" name="infants" ng-click="addInfant($index)">
 
 <option value="0">0</option>
 <option value="1">1</option>
-<option value="2">2</option>
+
 
 
 </select>  
@@ -670,7 +670,10 @@
 
    <td class="col-sm-3" >
 
-   <p> {{tocurrency(room.price * numofdays) }} </p>
+   <!--<p> {{tocurrency(room.price * numofdays * room.adults ) }} </p> -->
+
+   <p> {{tocurrency(calRoom($index))}} </p>
+
 
    </td>
 
