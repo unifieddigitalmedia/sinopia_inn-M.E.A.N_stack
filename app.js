@@ -42,7 +42,7 @@ app.use(express.static(__dirname + '/'));
 process.env.NODE_ENV = 'development';
 
 
-var hotelID = '5853edd65500cb195b2c280c';
+var hotelID = '5855a1f3523d3f70c7dd48ac';
 
 
 var braintree = require("braintree");
@@ -395,7 +395,7 @@ db.collection('itinerary').insert( [
 
 app.get('/api/mobile/checkhotelavailability/', function (req, res) {
 
-var o_id = new mongo.ObjectID("5853edd65500cb195b2c280c");
+var o_id = new mongo.ObjectID("5855a1f3523d3f70c7dd48ac");
 
 var availability = [];
 
@@ -845,7 +845,7 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '5853edd65500cb195b2c280c');
+var hotelID = new mongo.ObjectID( '5855a1f3523d3f70c7dd48ac');
 
 var offerArray = [];
 
@@ -1010,12 +1010,15 @@ else
 {
 
 
-var tripID = 0 ;
+
+
+var tripID ;
 
 console.log(req.query.tripID);
 
 if(req.query.tripID){
 
+console.log("trip"+req.query.tripID);
 
 db.collection('itinerary').insert( [
 
@@ -1038,24 +1041,53 @@ db.collection('itinerary').insert( [
           "places":req.query.places,
 
 
-
 }], function(err, results) { 
 
 
-
-
          tripID  = results.insertedIds[0];
-
+console.log("trip"+results.insertedIds[0]);
       
+      console.log("trip"+tripID);
+
+
+      callback(null,tripID);
 
 });
 
-
 //= new mongo.ObjectID( req.query.tripID);
+
+}else{
+
+
+callback(null,tripID);
 
 
 
 }
+                      
+
+}
+  
+
+  }
+
+
+
+
+
+
+
+
+
+});
+
+
+
+
+   },function(arg1,callback){
+
+
+tripID = arg1; 
 
 var name = req.query.fname.concat(" ").concat(req.query.lname);
 
@@ -1095,11 +1127,6 @@ db.collection('reservation').insert( [
 
 
 }], function(err, results) { 
-
-
-          
-
-
 
 var o_id = new mongo.ObjectID(results.insertedIds[0]);
 
@@ -1335,26 +1362,6 @@ if(e){return  console.log('A mandrill error occurred: ' + e.name + ' - ' + e.mes
 
 
 });
-
-                      
-
-}
-  
-
-  }
-
-
-
-
-
-
-
-
-
-});
-
-
-
 
    } ,function(arg1, arg2, callback){
 
@@ -1679,7 +1686,7 @@ db.collection('hotels').updateOne( {"token":req.query.token}, { $set: { "tripID"
 
 app.get('/api/checkhotelavailability/', function (req, res) {
 
-var o_id = new mongo.ObjectID("5853edd65500cb195b2c280c");
+var o_id = new mongo.ObjectID("5855a1f3523d3f70c7dd48ac");
 
 var availability = [];
 
@@ -2025,7 +2032,7 @@ app.get("/api/reservation-details/", function (req, res) {
 
 
 
-var hotelID = new mongo.ObjectID( '5853edd65500cb195b2c280c');
+var hotelID = new mongo.ObjectID( '5855a1f3523d3f70c7dd48ac');
 
 var o_id = new mongo.ObjectID(req.query.reservationID);
 
@@ -2075,7 +2082,7 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '5853edd65500cb195b2c280c');
+var hotelID = new mongo.ObjectID( '5855a1f3523d3f70c7dd48ac');
 
 var offerArray = [];
 
@@ -2727,6 +2734,20 @@ pdf.create(html, options).toFile('businesscard.pdf', function(err, res) {
 
 
 /********* START OF ADMIN API'S *********/
+
+
+app.post('/api/trips/', function (req, res) {
+
+
+
+db.collection('itinerary').deleteMany( {}, function(err, results) {
+     
+     
+   });
+
+
+   });
+
 
 app.get('/api/trips/', function (req, res) {
 
