@@ -997,6 +997,9 @@ db.collection('itinerary').insert( [
 
 }
 
+var name = req.query.fname.concat(" ").concat(req.query.lname);
+
+name = name.trim();
 
 db.collection('reservation').insert( [
 
@@ -1027,7 +1030,7 @@ db.collection('reservation').insert( [
           "amenities":amentityArray,
           "rooms":roomsArray,
           "photos":[],
-          "name":req.query.fname.concat(" ").concat(req.query.lname),
+          "name":name,
    
 
 
@@ -1328,8 +1331,12 @@ for (x = 0; x < obj.length; x++) {
   },function(arg1,arg2){
 
 
+var name = req.query.fname.concat(" ").concat(req.query.lname);
+
+name = name.trim();
+
     
-    var directory = "public/reservations/"+req.query.name+"/"; 
+    var directory = "public/reservations/"+name+"/"; 
 
 
 
@@ -1371,6 +1378,8 @@ fs.readFile(req.files.displayImage.path, function (err, data) {
 
    res.json(response);
   
+  console.log(directory+arg2+'.jpg');
+
    console.log("Directory created successfully!");
 
 
