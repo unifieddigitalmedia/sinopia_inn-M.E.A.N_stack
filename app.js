@@ -599,6 +599,8 @@ if(err){ res.json({"ERROR": "There was an error on our saerver'" });}else{
 
 app.post('/api/upload-reservation-photo', multipartMiddleware, function(req, res) {
 
+console.log("got");
+
 var d = new Date();
 
 var reservationID = new mongo.ObjectID(req.query.resID);
@@ -607,7 +609,8 @@ var date_created = d.toDateString();
 
 var time_created = d.toDateString();
 
-var filename =  req.files.displayImage.originalFilename.replace(" ", "");
+var filename =  req.files.displayImage.originalFilename;
+
 
 
 var directory = "public/reservations/"+req.query.name+"/"; 
@@ -615,6 +618,7 @@ var directory = "public/reservations/"+req.query.name+"/";
 
 
 if (fs.existsSync(directory)) {
+
 
 
 fs.readFile(req.files.displayImage.path, function (err, data) {
@@ -663,6 +667,64 @@ db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos
 
 });
 
+
+}else{
+
+  fs.mkdir(directory,function(err){
+
+   if (err) {
+      return console.error(err);
+   }
+
+
+fs.readFile(req.files.displayImage.path, function (err, data) {
+
+
+   if (err) {
+
+
+      return console.error(err);
+   
+      var response = {"ERROR":"There was an system error. Please contact the web administrator."};
+
+      res.json(response);
+
+
+
+   }
+
+fs.writeFile(directory+filename, data, function (err) {
+
+ if (err) return next(err)
+
+db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos": { 
+
+"image_url" : directory+filename,
+"text" : req.query.message , 
+"date_created" : date_created,
+"time_created" : time_created,
+
+}  } } , function(err, results) { 
+
+  if (err) return next(err)
+
+  var response = {"ERROR":""};
+
+    res.json(response);
+
+
+
+ });
+
+ });
+
+
+
+
+});
+
+
+});
 
 }
 
@@ -948,11 +1010,11 @@ else
 {
 
 
-var tripID;
+var tripID = 0 ;
 
 console.log(req.query.tripID);
 
-if(req.query.tripID == 1){
+if(req.query.tripID){
 
 
 db.collection('itinerary').insert( [
@@ -987,8 +1049,6 @@ db.collection('itinerary').insert( [
       
 
 });
-
-
 
 
 //= new mongo.ObjectID( req.query.tripID);
@@ -1400,6 +1460,47 @@ fs.readFile(req.files.displayImage.path, function (err, data) {
 });
 
 
+
+}else {
+
+
+
+  fs.readFile(req.files.displayImage.path, function (err, data) {
+
+
+   if (err) {
+
+
+      return console.error(err);
+   
+      var response = {"ERROR":"There was an system error. Please contact the web administrator."};
+
+      res.json(response);
+
+
+
+   }
+
+
+
+ fs.writeFile(directory+arg2+'.jpg', data, function (err) {
+
+
+   var balance = Number(req.query.total) - Number(req.query.deposit);
+
+   var response = {"ERROR":"","Reservation":arg1};
+
+   res.json(response);
+  
+  console.log(directory+arg2+'.jpg');
+
+   console.log("Directory created successfully!");
+
+
+
+        });
+
+ });
 
 }
 
@@ -2627,11 +2728,25 @@ pdf.create(html, options).toFile('businesscard.pdf', function(err, res) {
 
 /********* START OF ADMIN API'S *********/
 
+app.get('/api/trips/', function (req, res) {
+
+
+db.collection('itinerary').find().toArray(function(e, results){
+
+
+    if (e) return next(e);
+
+res.json(results);
+
+});
+
+});
+
 
 app.get('/api/trip/', function (req, res) {
 
 
-var o_id = new mongo.ObjectID(req.query.tripID );
+var o_id = new mongo.ObjectID(req.query.tripID);
 
 
 db.collection('itinerary').find({ "_id":o_id}).toArray(function(e, results){
