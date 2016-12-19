@@ -17,6 +17,7 @@
   "dependencies": {
     "async": "^2.1.1",
     "async-waterfall": "^0.1.5",
+    "aws-sdk": "^2.7.15",
     "body-parser": "~1.15.1",
     "braintree": "^1.42.0",
     "braintree-web": "^3.4.0",
@@ -40,6 +41,7 @@
     "nodemailer": "^2.6.4",
     "npm": "^3.10.9",
     "pdfcrowd": "^1.1.1",
+    "s3": "^4.4.0",
     "serve-favicon": "~2.3.0"
   }
 }

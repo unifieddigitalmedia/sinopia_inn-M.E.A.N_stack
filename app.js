@@ -27,6 +27,20 @@ var client = new pdf.Pdfcrowd('sinopiainn', 'fcfaaea5b060744db668d1bee67ccaae');
 
 var gcm = require('node-gcm');
 
+var s3 = require('s3');
+
+var AWS = require('aws-sdk');
+
+AWS.config.loadFromPath('config.json');
+
+var s3 = new AWS.S3();
+
+var bucket = 'sinopiainn.reservations';
+
+
+
+
+
 var app = express();
 
 app.use(busboy());
@@ -613,6 +627,78 @@ var filename =  req.files.displayImage.originalFilename;
 
 
 
+
+fs.readFile(req.files.displayImage.path, function (err, data) {
+
+
+   if (err) {
+
+
+      return console.error(err);
+   
+      var response = {"ERROR":"There was an system error. Please contact the web administrator."};
+
+      res.json(response);
+
+
+
+   }else{
+
+var name = req.query.name.trim();
+
+ var directory =  name+"/"+filename; 
+
+       var params = {Key: directory, Body: data};
+
+        s3Bucket.putObject(params, function(err, data) {
+  
+        if (err) {
+            
+
+            var response = {"ERROR":"Error uploading your picture:"};
+
+            res.json(response);
+
+            console.log("Error uploading data: ", err);
+
+        } else {
+           
+         
+
+          db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos": { 
+
+"image_url" : "https://s3-us-west-2.amazonaws.com/"+bucket+"/"+directory,
+"text" : req.query.message , 
+"date_created" : date_created,
+"time_created" : time_created,
+
+}  } } , function(err, results) { 
+
+  if (err) return next(err)
+
+  var response = {"ERROR":""};
+
+    res.json(response);
+
+
+
+ });
+
+
+           
+        }
+    });
+
+
+
+
+
+   }
+
+});
+      
+
+/*
 var directory = "public/reservations/"+req.query.name+"/"; 
 
 
@@ -726,7 +812,7 @@ db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos
 
 });
 
-}
+}*/
 
 
 });
@@ -818,7 +904,11 @@ res.json(result);
 
 app.post('/api/mobile/payment/', multipartMiddleware, function(req,res) {
 
+console.log("request : ",req);
 
+console.log("request body: ",req.body);
+
+console.log("request query: ",req.query);
 //var rString = randomString(5, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
 
  var rString = "";
@@ -859,6 +949,8 @@ obj = JSON.parse(req.query.offerarray[0]); offerArray = obj ; } else { offerArra
 
 
 if (typeof req.query.amenityarray != 'undefined')  { var obj = [];
+
+console.log(req.query.amenityarray[0]);
 
 obj = JSON.parse(req.query.amenityarray[0]); amentityArray = obj ; } else { amentityArray = null  ; } ;
 
@@ -958,7 +1050,10 @@ callback(null);
 var nonce = req.query.payment_method_nonce;
 
 var deposit = req.query.deposit;
- 
+
+console.log(deposit);
+
+
 gateway.transaction.sale({
   
                                     amount:deposit,
@@ -1010,7 +1105,7 @@ else
 {
 
 
-
+console.log("Payment ERRORS NONE");
 
 var tripID ;
 
@@ -1044,13 +1139,14 @@ db.collection('itinerary').insert( [
 }], function(err, results) { 
 
 
-         tripID  = results.insertedIds[0];
+tripID  = results.insertedIds[0];
+
 console.log("trip"+results.insertedIds[0]);
       
-      console.log("trip"+tripID);
+console.log("trip"+tripID);
 
+callback(null,tripID);
 
-      callback(null,tripID);
 
 });
 
@@ -1402,10 +1498,86 @@ var name = req.query.fname.concat(" ").concat(req.query.lname);
 
 name = name.trim();
 
+var directory =  name+"/"+arg2+".jpg"; 
+
+var s3Bucket = new AWS.S3( { params: {Bucket: bucket} } );
+
+fs.readFile(req.files.displayImage.path, function (err, data) {
+
+
+   if (err) {
+
+
+      return console.error(err);
+   
+      var response = {"ERROR":"There was an system error. Please contact the web administrator."};
+
+      res.json(response);
+
+   }else{
+
+
+var params = {Key: directory, Body: data};
+
+    s3Bucket.putObject(params, function(err, data) {
+  
+        if (err) {
+            
+
+            var response = {"ERROR":"Error creating your booking:"};
+
+            res.json(response);
+
+            console.log("Error uploading data: ", err);
+
+        } else {
+           
+
+           var directory =  name+"/"+arg2; 
+
+           var params = {Key: directory, Body: arg1};
+
+           s3Bucket.putObject(params, function(err, data) {
+  
+        if (err) {
+            
+
+            var response = {"ERROR":"Error creating your booking:"};
+
+            res.json(response);
+
+            console.log("Error uploading data: ", err);
+
+        } else {
+           
+         
+
+            var response = {"ERROR":"","ReservationID":arg1};
+
+            res.json(response);
+
+
+           
+        }
+    });
+
+
+           
+        }
+    });
+
+
+   }
+
+
+ });
+
     
-    var directory = "public/reservations/"+name+"/"; 
+
+/*
 
 
+var directory = "public/reservations/"+name+"/"; 
 
 if (!fs.existsSync(directory)) {
 
@@ -1445,6 +1617,8 @@ fs.readFile(req.files.displayImage.path, function (err, data) {
 
    res.json(response);
   
+  console.log(response);
+
   console.log(directory+arg2+'.jpg');
 
    console.log("Directory created successfully!");
@@ -1511,7 +1685,7 @@ fs.readFile(req.files.displayImage.path, function (err, data) {
 
 }
 
-
+*/
 
 
 
@@ -2286,7 +2460,7 @@ db.collection('reservation').insert( [
 
           resID = results.insertedIds[0];
 
-          callback(null,results.insertedIds[0]);
+          callback(null,results.insertedIds[0],results);
 
 
 });
@@ -2311,7 +2485,7 @@ db.collection('reservation').insert( [
 
 
 
-   } ,function(arg1, callback){
+   } ,function(arg1, arg2, callback){
    
 
 for (x = 0; x < req.body['roomarray[]'].length; x++) { 
@@ -2335,16 +2509,49 @@ db.collection('hotels').updateOne( {"rooms._id":req.body['roomarray[]'][x]._id},
 
   //req.body['roomarray[]'].forEach(function(entry) {});
 
-  callback(null,arg1);
+  callback(null,arg1,arg2);
 
    
-  },function(arg1, callback){
+  },function(arg1,arg2, callback){
 
 
 
+var directory = req.query.fname+" "+req.query.lname+"/"+arg1; 
+
+var params = {Key: directory, Body: data};
+
+var s3Bucket = new AWS.S3( { params: {Bucket: bucket} } );
+
+s3Bucket.createBucket(function() {
+
+    var params = {Key: directory, Body: arg2};
+
+    s3Bucket.putObject(params, function(err, data) {
+  
+        if (err) {
+            
+
+            var response = {"ERROR":"Error creating your booking:"};
+
+            res.json(response);
+
+            console.log("Error uploading data: ", err);
+
+        } else {
+           
+            var balance = Number(req.query.total) - Number(req.query.deposit);
+
+            var response = {"ERROR":"","ReservationID":arg1};
+
+            res.json(response);
+           
+        }
+    });
+});
 
 
-var directory = "public/reservations/"+req.query.fname+" "+req.query.lname+"/"; 
+/*
+
 
 
 
@@ -2381,7 +2588,9 @@ fs.mkdir(directory,function(err){
 
 
 
-/*fs.stat("public/reservations/", function (err, stats){
+
+
+fs.stat("public/reservations/", function (err, stats){
 
   if (err) {
 
@@ -2525,7 +2734,7 @@ var fname =  results.fname.replace(/\w\S*/g, function(txt){return txt.charAt(0).
 
 var balance = Number(total) - Number(results.deposit);
 
-var deposit = results.deposit.toFixed(2);
+var deposit = results.deposit;
 
 balance = balance.toFixed(2);
 
@@ -3029,7 +3238,7 @@ console.log("Data written successfully!");
 
    console.log("Let's read newly written data");
    
- res.send(200, {status: 'OK'});
+ res.status(200, {status: 'OK'});
 
    //dont forgot the delete the temp files.
         });

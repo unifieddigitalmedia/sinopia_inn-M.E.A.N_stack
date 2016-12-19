@@ -902,9 +902,19 @@ $scope.roomsArray = jQuery.grep($scope.roomsArray, function( a,i ) {
                                         //$scope.calculatetotals (para,para1,para2);
 
 
+if($scope.numofadults == 0 ){
+
+
+$scope.bookingerror = "An adult is need to stay here to continue a booking.";
+
+}else{
+
   $("#ratescol").slideDown("slow");
 
   $("html,body").animate({scrollTop:$("#ratescol").offset().top }, "slow");
+
+}
+
 
                               }
 
