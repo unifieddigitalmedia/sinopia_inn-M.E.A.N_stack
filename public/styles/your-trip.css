@@ -593,12 +593,11 @@ background: #EE632C;  header.sticky { height: 100px; background: #efc47D; paddin
   text-align: left;
   padding-left: 20px;
 */
-
 .sticky_logo {  height: 25px; }
 
 header.sticky { height:auto; font-size: 9px;background: #cc9999; padding-left: 20px; z-index:99;  transition: all 0.4s ease;}
 
-.topnav-header{ 
+.topnav-header{  
  box-shadow: 10px 10px 5px #888888;
   background:/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cb410b+0,cb410b+100,c96c4a+100,c9856c+100 */
 background: #cb410b; /* Old browsers */
@@ -610,7 +609,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb410b', end
 .dropbtn { display: inline-block; color: white!important;  font-family: 'PT Sans', sans-serif; font-weight:100; text-align: center; padding: 14px 16px; 
 text-decoration: none;cursor:pointer; }
 
-.topnav{ width:65%;list-style-type: none; color:white; margin: 0 auto; padding: 0; overflow: hidden; text-align:right; line-height: 100% !important; }
+.topnav{ width:80%;list-style-type: none; color:white; margin: 0 auto; padding: 0; overflow: hidden; text-align:right; line-height: 100% !important; }
 
 ul.topnav li.icon {display: none;}
 
@@ -726,25 +725,15 @@ font-weight:600!important;
 
 }
 
-.top_menu_logo_link{
-
-width:80%;text-align: left !important;
-
-
-}
+.top_menu_logo_link{ text-align: left !important; }
 
 .top_menu_topnav{ list-style-type: none; color:white; margin: 0; padding: 0; overflow: hidden; text-align:right; line-height: 100% !important;}
 
 .top_menu_topnav li a { display: inline-block; color:#666666;  font-weight:50; text-align: center; padding: 14px 16px; text-decoration: none;cursor:pointer; }
 
-
-
-
-
 .topnav-top{ width:100%;list-style-type: none; color:white; margin: 0; padding: 0; overflow: hidden; text-align:left; line-height: 100% !important;}
 
-.topnav-top ul {border:red thin solid; }
-
+.topnav-top ul { }
 
 ul.topnav-bottoptom li.icon {display: none;}
 
@@ -756,11 +745,7 @@ ul.topnav-top li { display: inline-block;  vertical-align:middle; }
 
 .topnav-top li.dropdown-link {display: inline-block; }
 
-.topnav-top li:first-child a:hover {
-
-    background-color: none !important;
-
-}
+.topnav-top li:first-child a:hover { background-color: none !important; }
 
 
 /******** END OF HEADER MENU CSS ********/
@@ -779,15 +764,43 @@ ul.topnav-top li { display: inline-block;  vertical-align:middle; }
     margin-left: 50px;
 }
 
+@media screen and (max-width: 1256px) and (min-width: 1155px) {
 
-@media screen and (max-width: 1118px) and (min-width: 1051px) {
 
-
-.topnav{ width:85%!important;}
+.topnav{ width:90%!important;}
 
 
 }
 
+
+@media screen and (max-width:1154px) and (min-width: 1117px) {
+
+
+.topnav{ width:90%!important;}
+
+
+}
+
+@media screen and (max-width:1116px) and (min-width:1059px) {
+
+
+.topnav{ width:95%!important;}
+
+
+}
+
+
+@media screen and (max-width:1058px) and (min-width:1036px) {
+
+
+.topnav{ width:97%!important;}
+
+
+}
+
+
+
+/*
 @media screen and (max-width: 1050px) and (min-width: 891px) {
 
 
@@ -795,25 +808,25 @@ ul.topnav-top li { display: inline-block;  vertical-align:middle; }
 
 
 }
+*/
 
-
-
-
-@media screen and (max-width:890) {
+@media screen and (max-width:1036px) {
   ul.topnav li:not(:last-child) {display: none;}
   ul.topnav li.icon {
     float: right;
     display: inline-block;
   }
   .topnav{ width:100%;list-style-type: none; color:white; margin: 0 auto; padding: 0; overflow: hidden; text-align:right; line-height: 100% !important; }
+  .menudivider{display:none;}
 
-.menudivider{display:none;}
 
 .bookingform-rewards h2 {font-weight:300;font-size:150%!important;}
 
 }
 
-@media screen and (max-width:890) {
+@media screen and (max-width:890px) {
+
+  .home_text{top:25px!important;}
   ul.topnav.responsive {position: relative;}
   ul.topnav.responsive li.icon {
     position: absolute;
@@ -830,9 +843,17 @@ ul.topnav-top li { display: inline-block;  vertical-align:middle; }
   }
 
 .bookingform-rewards h2 {font-weight:300;font-size:150%!important;}
+
+
+.container-fluid{width:95%!important;margin:100px auto!important;  background-color:white!important;}
 }
 
 
+ @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) { 
+
+  background-image: url("intl-tel-input-9.2.0/build/img/flags@2x.png");
+
+  }
 
 
 

@@ -31,6 +31,13 @@ $(function() {
   });
 
 
+$(".trip").click(function() {
+
+
+document.cookie = "location=" + $(this).data("id");
+
+});
+
 
 $("#subscribe_button").click(function() {
 
@@ -185,17 +192,18 @@ articleDiv.appendChild(rowColumn);
 
 
 
-
 var articleItem = document.createElement("div");
 
 articleItem.setAttribute("style","width:100%;");
 
-articleItem.className = "w3-card-6";
+articleItem.className = "w3-display-container";
 
-articleItem.appendChild(document.createElement("br"));
 
-articleItem.appendChild(document.createElement("br"));
+var articleImage = document.createElement("img");
 
+articleImage.setAttribute("src","../"+itemList[counter].childNodes[7].innerHTML);
+
+articleImage.setAttribute("style","width:100%;");
 
 
 var articleLink = document.createElement("a");
@@ -206,78 +214,59 @@ articleLink.setAttribute("style","text-decoration:none;");
 
 articleLink.setAttribute("href",itemList[counter].childNodes[5].innerHTML);
 
-var articleItemTitle = document.createElement("p");
 
-articleItemTitle.className = "side_menu_title";
-
-
-
-articleItemTitle.appendChild(document.createTextNode(itemList[counter].childNodes[1].innerHTML));
-
-articleItemTitle.setAttribute("style","padding:20px;");
-
-articleLink.appendChild(articleItemTitle);
-
-
-
-articleItem.appendChild(articleLink);
-
-
-
-articleItem.appendChild(document.createElement("br"));
-
-var articleImage = document.createElement("img");
-
-
-
-articleImage.setAttribute("src","../"+itemList[counter].childNodes[7].innerHTML);
-
-articleImage.setAttribute("style","width:100%;");
-
-
-articleItem.appendChild(articleImage);
-
-
-articleItem.appendChild(document.createElement("br"));
 
 
 var articleItemContainer = document.createElement("div");
 
-articleItemContainer.className = "w3-container";
+articleItemContainer.className = "w3-display-bottomleft w3-container";
 
-articleItemContainer.setAttribute("style","height:0px;");
+articleItemContainer.setAttribute("style","background-color:black;padding:10px;");
 
+articleItemContainer.innerHTML = itemList[counter].childNodes[1].innerHTML;
 
-articleItemContainer.appendChild(document.createElement("br"));
+articleLink.appendChild(articleItemContainer);
 
+articleItem.appendChild(articleLink);
 
-
-var articleItemDescription = document.createElement("p");
-
-articleItemDescription.appendChild(document.createTextNode(itemList[counter].childNodes[3].innerHTML));
-
-articleItemContainer.appendChild(articleItemDescription);
-
-
-
-
-
-
-
-articleItem.appendChild(articleItemContainer);
+articleItem.appendChild(articleImage);
 
 rowColumn.appendChild(articleItem);
 
 
+var articleLink = document.createElement("a");
+
+articleLink.className = "blog-link";
+
+articleLink.setAttribute("style","text-decoration:none;");
+
+articleLink.setAttribute("href",itemList[counter].childNodes[5].innerHTML);
+
+
+var articleItemContainer = document.createElement("div");
+
+articleItemContainer.className = "w3-panel w3-card-8";
+
+var articleItemTitle = document.createElement("p");
+
+articleItemTitle.className = "panel-paragraph";
+
+articleItemTitle.appendChild(document.createTextNode(itemList[counter].childNodes[3].innerHTML));
+
+
+articleLink.appendChild(articleItemTitle);
+
+articleItemContainer.appendChild(articleLink);
+
+rowColumn.appendChild(articleItemContainer);
+
 rowColumn.appendChild(document.createElement("br"));
+
+
 
 counter ++;
 
 }
-
-
-
-
 
 
 }

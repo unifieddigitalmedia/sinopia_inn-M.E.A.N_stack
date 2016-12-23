@@ -67,13 +67,39 @@ jQuery( "#subscribe_button" ).click(function() {
 
 
 
-
 var app = angular.module('travellight', ['ngResource','typeofbusinessfilter','typeofservicefilter','businessnamefilter','itineraryFilter']);
 
 app.controller('travelplanner', function($scope,$http,$resource,$compile) {
 
-
 var latlng;
+
+$scope.filterBylocation = function( para ) {
+
+$scope.log = [];
+
+
+
+angular.forEach(para, function(value, key) {
+
+
+                                        
+
+                                                      if ( value.location == getCookie('location'))  
+
+                                                         { $scope.log.push(value); }
+
+
+
+});
+
+ 
+
+   return $scope.log;
+  
+
+
+};
+
 
 $scope.filter_ini = function () {
 
@@ -95,7 +121,10 @@ $scope.temppassword = "";
 
 $http.get("http://www.sinopiainn.com/api/businesses").then(function(response) {
 
-$scope.businesses = response.data;
+$scope.businesses = $scope.filterBylocation(response.data);
+
+
+
 
 var element = document.getElementById('country');
 
@@ -403,6 +432,7 @@ return $scope.ItinComps.indexOf(para);
 
 
 }
+
 
 
 $scope.addtoItin = function (para,para1) {
@@ -842,6 +872,8 @@ div.appendChild(newItem);
 
 }
 
+
+
 $scope.removeplacesOfinterest =function(){
 
 
@@ -891,92 +923,51 @@ logo.setAttribute("class","img-responsive");
 
 
 tableCell2 = tableRow.appendChild(document.createElement('td'));
-
 title = tableCell2.appendChild(document.createElement('h3'));
-
 title.innerHTML = para.businessname;
-
-
-
-
-
 tableCell3 = tableRow.appendChild(document.createElement('td'));
 
 
-
-
 tableRow2 = place.appendChild(document.createElement('tr'));
-
 tableRow2tabelCell1 = tableRow2.appendChild(document.createElement('td'));
-
 address = tableRow2tabelCell1.appendChild(document.createElement('h4'));
-
 address.innerHTML = para.businessaddress;
 
 
-
-
-
-
 tableRow2tabelCell2 = tableRow2.appendChild(document.createElement('td'));
-
 phone = tableRow2tabelCell2.appendChild(document.createElement('h4'));
-
 tableRow2tabelCell2.setAttribute("rowspan","3");
 
 
-
-
 tableRow3 = place.appendChild(document.createElement('tr'));
-
 tableRow3tabelCell1 = tableRow3.appendChild(document.createElement('td'));
-
 phone = tableRow3tabelCell1.appendChild(document.createElement('h4'));
-
 phone.innerHTML = para.businessphone;
 
 
-
-
 tableRow4 = place.appendChild(document.createElement('tr'));
-
 tableRow4tabelCell1 = tableRow4.appendChild(document.createElement('td'));
-
 email = tableRow4tabelCell1.appendChild(document.createElement('h4'));
-
 email.innerHTML = para.businessemail;
 
 
-
-
-
 tableRow5 = place.appendChild(document.createElement('tr'));
-
 tableRow5tabelCell1 = tableRow5.appendChild(document.createElement('td'));
-
 url = tableRow5tabelCell1.appendChild(document.createElement('h4'));
-
 url.innerHTML = para.businesswebsite;
 
 
 
 tableRow5tabelCell2 = tableRow5.appendChild(document.createElement('td'));
-
 iTinbutton = tableRow5tabelCell2.appendChild(document.createElement('button'));
-    
 iTinbutton.appendChild(document.createTextNode("Remove from Itinerary"));           
-
 iTinbutton.setAttribute("class","btn btn-link addTobtn  destination-room");
-
 iTinbutton.setAttribute("value",para1);
 
 
 
-
 newItem.appendChild(place);
-
 var list = document.getElementById("side-panel-right-list");  
-
 list.appendChild(newItem);
 
 
@@ -992,6 +983,7 @@ jQuery(document).on("click",".booktrip",function(event){
 
 
 var array_string  = JSON.stringify($scope.ItinComps);
+
 
 document.cookie = "itinerary=" + array_string;
 
@@ -1085,7 +1077,6 @@ return $scope.filteredBusinesses;
 });
 
 
-
 angular.module('typeofbusinessfilter', []).filter('businesstypefilter', function() {
 
 return function(input) {
@@ -1122,6 +1113,8 @@ return tob;
 
 
 });
+
+
 
 
 angular.module('typeofservicefilter', []).filter('servicetypefilter', function() {
@@ -1226,6 +1219,7 @@ return businessnames;
 
 });
 
+
 angular.module('itineraryFilter', []).filter('itineraryFilterMain', function() {
 
 return function(input,para) {
@@ -1270,5 +1264,4 @@ return businessnames;
 
 
 });
-
 

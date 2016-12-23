@@ -1229,7 +1229,8 @@ var o_id = new mongo.ObjectID(results.insertedIds[0]);
 db.collection('reservation').findOne({ "_id": o_id  },function(e, results){
 
 
-                                                           if (e) return next(e)
+if (e) return next(e)
+
 var costofrooms = 0 ;
 
 var costofbreakfast = 0 ;
@@ -1388,6 +1389,11 @@ var message = {
         },{
             "name": "balance",
             "content": balance
+        },{
+
+            "name":"token",
+            "content":rString
+
         }
 
         ],
@@ -1445,16 +1451,6 @@ if(e){return  console.log('A mandrill error occurred: ' + e.name + ' - ' + e.mes
 
 
  });
-
-
-        
-
-
-
-
-
-
-
 
 
 });
@@ -1532,12 +1528,11 @@ var params = {Key: directory, Body: data};
 
         } else {
            
+var directory =  name+"/"+arg2; 
 
-           var directory =  name+"/"+arg2; 
+var params = {Key: directory, Body: arg1};
 
-           var params = {Key: directory, Body: arg1};
-
-           s3Bucket.putObject(params, function(err, data) {
+  s3Bucket.putObject(params, function(err, data) {
   
         if (err) {
             
@@ -1559,6 +1554,8 @@ var params = {Key: directory, Body: data};
 
            
         }
+
+
     });
 
 
@@ -1809,7 +1806,7 @@ db.collection('itinerary').insert( [
 
 {
 
-
+          "token":req.query.token,
           "name":req.query.name,
           "email":req.query.email,
           "phone":req.query.phone,
@@ -1820,6 +1817,9 @@ db.collection('itinerary').insert( [
           "subtotaladmission":req.query.subtotaladmission,
           "subtotalavergae":req.query.subtotalavergae,
           "carhire":req.query.carhire,
+          "mileFare":req.query.milesFare,
+          "minuteFare":req.query.minuteFare,
+          "dist":req.query.dist,
           "tax":req.query.tax,
           "total":req.query.total,
           "places[]":req.body['places[]'],
@@ -1832,10 +1832,6 @@ resID = results.insertedIds[0];
 
 db.collection('hotels').updateOne( {"token":req.query.token}, { $set: { "tripID": resID } } , function(err, results) { 
 
-
-
-
-       
 
        var response = {"ERROR":"","tripID":resID};
         
@@ -2244,6 +2240,8 @@ app.post('/api/personaldetails/', function(req,res) {
 
 var tripID = new mongo.ObjectID(req.query.tripID);
 
+console.log(tripID);
+
 var availability = [];
 
 var offersArray = [];
@@ -2278,7 +2276,7 @@ if (typeof req.body['roomarray[]'] != 'undefined')  { roomsArray = req.body['roo
 
 waterfall([function(callback){
 
-
+console.log("block 1");
 
 db.collection("hotels").find({"_id":hotelID}, {'rooms': true} ).toArray(function(err, results) {
   
@@ -2316,29 +2314,49 @@ if ( (new Date(results[0].rooms[x].booking[y][z].fromdate) <= new Date(fromdate)
 
 
 }, function(arg1,arg2,callback){
-    
+   
+   var booked = false ;
 
+console.log("block 2");
 
      if(arg1.length > 0 )
     {
 
 
+console.log("rooms array length" + roomsArray.length);
 
 for (i = 0; i < roomsArray.length; i++) { 
 
+console.log(arg1);
 
-if(arg1.indexOf(roomsArray._id) != -1 ){
+console.log(roomsArray[i]._id);
+
+if(arg1.indexOf(roomsArray[i]._id) != -1 ){
+
+booked = true; 
+    
+
+}
 
 
-     var response = {"ERROR":"One or more of your rooms has now been booked."};
+
+}
+
+
+
+if(booked) {
+
+ var response = {"ERROR":"One or more of your rooms has now been booked."};
         
       res.json(response);
 
+
+}else{
+
+  callback(null);
+
 }
 
-
-
-}
 
 
 
@@ -2350,7 +2368,7 @@ if(arg1.indexOf(roomsArray._id) != -1 ){
     
     {
 
-
+console.log("block 2 going to next");
 
           callback(null);
 
@@ -2363,7 +2381,7 @@ if(arg1.indexOf(roomsArray._id) != -1 ){
 
   },  function(callback){
    
-
+console.log("block 3");
     
 var nonce = req.query.payment_method_nonce;
 
@@ -2518,11 +2536,7 @@ db.collection('hotels').updateOne( {"rooms._id":req.body['roomarray[]'][x]._id},
 
 var directory = req.query.fname+" "+req.query.lname+"/"+arg1; 
 
-var params = {Key: directory, Body: data};
-
 var s3Bucket = new AWS.S3( { params: {Bucket: bucket} } );
-
-s3Bucket.createBucket(function() {
 
     var params = {Key: directory, Body: arg2};
 
@@ -2547,7 +2561,6 @@ s3Bucket.createBucket(function() {
            
         }
     });
-});
 
 
 /*
@@ -2834,6 +2847,11 @@ var message = {
         },{
             "name": "balance",
             "content": balance
+        },{
+
+            "name":"token",
+            "content":rString
+
         }
         ],
     "merge_vars": [{

@@ -34,33 +34,36 @@ $( "#subscribe_button" ).click(function() {
 
 var app = angular.module('travellight', ['ngResource']);
 
+
+
+
 app.filter('itineraryFilter', function() {
 
-  return function(input,para) {
+return function(input,para) {
       
-
-
-
 var businessnames = [];
 
 angular.forEach(input, function(value, key) {
 
- 
+for (i = 0; i < para.length; i++) {
 
- for (i = 0; i < para.length; i++) {
+if ( value._id === para[i] )  { 
 
 
+this.push(value); 
 
- if ( value._id === para[i] )  { this.push(value); }
 
 
 
  }
-                         
 
-                                                     
+
+
+ }
 
                                              }, businessnames);
+
+
 
 
 
@@ -70,10 +73,12 @@ angular.forEach(input, function(value, key) {
     };
 
 
+
 });
 
 
 app.controller('travelplanner', function($scope,$http,$resource,$compile) {
+
 
 $scope.itinerary_array = [];
 
@@ -84,7 +89,13 @@ $scope.filteredbusinesses = [];
 $scope.businesses = [];
 
 
+$scope.miles = 0 ;
+
+$scope.hours = 0;
+
+
 var init = function () {
+
 
 
 $scope.itinerary_array = JSON.parse(getCookie('itinerary'));
@@ -94,9 +105,17 @@ $http.get("http://www.sinopiainn.com/api/businesses").then(function(response) {
 $scope.businesses = response.data;
 
 $scope.subTotal();
+
+$scope.miles = $scope.filterBylocation($scope.businesses,$scope.itinerary_array);
                                                                           
                                                                           });
 
+
+$http.get("http://www.sinopiainn.com/api/hotels").then(function(response) {
+
+$scope.accomodations = response.data;
+
+   });
 
 
 
@@ -105,9 +124,102 @@ $scope.subTotal();
 init();
 
 
+$scope.filterBylocation = function( para , para1 ) {
+
+var lastLong = Number(18.1763329);
+
+var lastLat = Number(-76.44973749999997);
+
+var miles = 0;
+
+angular.forEach(para, function(value, key) {
+
+for (i = 0; i < para.length; i++) {
+
+if ( value._id === para1[i] )  { 
+
+var radlat1 = Math.PI * lastLat/180;
+  
+var radlat2 = Math.PI *  value.coordinates["Latitude"]/180;
+  
+var theta = lastLong-value.coordinates["Longitude"];
+  
+var radtheta = Math.PI * theta/180;
+  
+var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+  
+dist = Math.acos(dist);
+  
+dist = dist * 180/Math.PI;
+  
+dist = dist * 60 * 1.1515;
+
+miles += dist;
+
+lastLong = value.coordinates["Longitude"];
+
+lastLat = value.coordinates["Latitude"];
 
 
+ }
+
+ }
+
+});
+
+ 
+   return miles;
+  
+};
+
+$scope.calculatebasefare = function(){
+
+$scope.baseFare = 3.50 ;
+
+
+return $scope.tocurrency($scope.baseFare);
+}
+
+$scope.calculatemilefare = function(){
+
+$scope.mileFare = 0 ;
+
+$scope.mileFare = $scope.miles * Number(2.10);
+
+return $scope.tocurrency($scope.mileFare);
+
+}
+
+
+$scope.calculateminutefare = function(){
+
+$scope.minuteFare = 0 ;
+
+var hrs = Number($scope.miles)  / 30 ; 
+
+var mins = hrs * 30 ; 
+
+$scope.minuteFare = Number(mins) * Number(0.15);
+
+return $scope.tocurrency($scope.minuteFare);
+
+  
+}
+
+$scope.setHotelid = function(para){
+
+
+
+$scope.hotelID = $scope.accomodations[para]._id;
+
+document.cookie = "hotelID=" + $scope.accomodations[para]._id;
+
+}
 $scope.bookTrip = function(){
+
+
+
+
 
 
 var resource = $resource('http://www.sinopiainn.com/api/booktrip/',{
@@ -122,8 +234,12 @@ var resource = $resource('http://www.sinopiainn.com/api/booktrip/',{
           numofinfants:"@numofinfants",
           subtotaladmission:"@subtotaladmission",
           subtotalavergae:"@subtotalavergae",
+          milesFare:"@scope.mileFare",
+          minuteFare:"@scope.minuteFare",
           carhire:"@carhire",
+          dist:"@dist",
           tax:"@tax",
+          token:"@token",
           total:"@total",
           "places[]":"@places",
         
@@ -144,8 +260,12 @@ var reserve = resource.save(
           numofinfants:$scope.numinfants,
           subtotaladmission:$scope.subtotal,
           subtotalavergae:$scope.subavgtotal,
+          milesFare:$scope.mileFare,
+          minuteFare:$scope.minuteFare,
           carhire:$scope.carhire,
+          dist:$scope.miles,
           tax:$scope.tax,
+          token:$scope.token,
           total:$scope.itinerarytotal,
           "places[]":$scope.filteredbusinesses,
          
@@ -160,6 +280,8 @@ if(reserve.ERROR){ alert(reserve.ERROR); } else {
 
 
                             document.cookie = "tripID=" + reserve.tripID; 
+
+                            //document.cookie = "hotelID=" + $scope.hotelID; 
 
                             window.location = "reservation.html" ;
 
@@ -179,6 +301,7 @@ $scope.numinfants = 0;
 
 $scope.tax = 20;
 $scope.calcarhirecost = 60;
+$scope.calbushirecost = 100;
 
 
 $scope.calcarhire = function(){
@@ -190,7 +313,19 @@ $scope.numoftravellers = Number($scope.numadults) + Number($scope.numchildren) +
 
 $scope.numofcars = Math.floor($scope.numoftravellers / 5 ) + 1 ;
 
+if($scope.numofcars > 1 ){
+
+
+$scope.carhire = Number($scope.calbushirecost);
+
+
+}else {
+
+
 $scope.carhire = Number($scope.numofcars) * Number($scope.calcarhirecost);
+
+}
+
 
 //return $scope.numoftravellers ;
 
@@ -201,11 +336,13 @@ $scope.itineraryTotal = function(){
 
 
 $scope.calcarhire();
+$scope.calculatebasefare();
+$scope.calculatemilefare();
+$scope.calculateminutefare();
 
+$scope.itinerarytotal = $scope.subtotal + $scope.subavgtotal + $scope.tax + $scope.carhire + $scope.baseFare + $scope.mileFare + $scope.minuteFare;
 
-$scope.itinerarytotal = $scope.subtotal + $scope.subavgtotal + $scope.tax + $scope.carhire;
-
-return $scope.tocurrency($scope.subtotal + $scope.subavgtotal + $scope.tax + $scope.carhire);
+return $scope.tocurrency($scope.itinerarytotal);
 
 }
 

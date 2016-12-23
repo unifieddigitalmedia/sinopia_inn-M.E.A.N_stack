@@ -5,8 +5,9 @@
 
 .logo{width:208px; height:30px!important;}
 
+.panel-paragraph {background-color:#aa9d2e!important; padding:20px!important; color:white; font-weight:400;}
 
-
+.w3-display-bottomleft {color:white;}
 /*
 
 header{ position:relative; width: 100%; padding-left:40px; height: auto; background: #FFFFFF; color: #fff; font-family: 'PT Sans', sans-serif; 

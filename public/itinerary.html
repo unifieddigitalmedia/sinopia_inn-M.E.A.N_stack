@@ -62,7 +62,7 @@
 
 <div class="dropdown-content">
 
-   <a href="plan-a-trip.html" > Plan a trip </a>
+   <a href="day-passes.html" > Plan a trip </a>
  <a href="culinary-experiences.html"> Culinary Experiences </a>
 <a href="beaches.html" > Beaches </a>
 
@@ -140,7 +140,7 @@
 
 <div class="dropdown-content">
 
-      <a href="plan-a-trip.html" > Plan a trip </a>
+      <a href="day-passes.html" > Plan a trip </a>
  <a href="culinary-experiences.html"> Culinary Experiences </a>
 <a href="beaches.html" > Beaches </a>
 
@@ -180,17 +180,17 @@
 <div class="row">
 
 
-<div class="col-sm-6 itinerary-main-section-left" id="abc"  style="text-align:left;display: table;"> 
+<div class="col-sm-6 " id="abc"  >  <!-- class="itinerary-main-section-left" style="text-align:left;display: table;"-->
 
 
 
 
 
 
-     <span style = "vertical-align:middle; display: table-cell;">
+<!--<span style = "vertical-align:middle; display: table-cell;"> -->
 
-
-
+</br>
+<span >
 
 <form class="form-horizontal" role="form" name="contactForm" novalidate data-ng-model="contactForm" style="background-color: #f0f0f1;padding:10px; border-radius:5px;">
 
@@ -215,45 +215,29 @@
 
 
   </div>
-    <div class="form-group">
-   
-    <div class="col-sm-12"> 
 
-         <div class="col-sm-6"> 
-<input type="tel" id="phone" class="form-control" placeholder="phone" data-ng-model="phone">
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="intl-tel-input-9.2.0/build/js/intlTelInput.js"></script>
-<script>
-  $("#phone").intlTelInput();
-</script>
-  </div> 
-
-
-
-    </div>
-  </div>
 
   
 <div class="form-group">
    
     <div class="col-sm-12"> 
   
-  <div class="row"  >
 
-  
-<div class="col-sm-6">
+  <table>
+<tr>
 
- <h4> Number of guest travelling </h4> 
+<td> <input type="tel" id="phone" class="form-control" placeholder="phone" data-ng-model="phone">
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="intl-tel-input-9.2.0/build/js/intlTelInput.js"></script>
+<script>
+  $("#phone").intlTelInput();
+</script>
+</td> 
 
-</div>
+<td><p> 
 
-<div class="col-sm-2">
-
-<p> 
-
-Adults
+Adults</br>
 <select  class="" name="adults" ng-model="numadults">
 
 
@@ -273,11 +257,11 @@ Adults
 
 </p>
 
-</div>
-<div class="col-sm-2">
+</td>
 
-<p> 
-Children
+
+<td><p> 
+Children</br>
 <select  class="" name="children"  ng-model="numchildren">
 
 <option value="0">0</option>
@@ -296,12 +280,11 @@ Children
 
 
 </p>
+</td>
 
-</div>
-<div class="col-sm-2">
 
-<p> 
-Infants
+<td><p> 
+Infants</br>
 <select  class="" name="infants"  ng-model="numinfants">
 
 <option value="0">0</option>
@@ -322,9 +305,12 @@ Infants
 
 </p>
 
-</div>
+</td>
 
-</div>
+
+</tr>
+
+  </table>
 
 
     </div>
@@ -345,33 +331,42 @@ Infants
 
 </form>
 
-
-
-
 </span>
 
+<table style="position:relative; width: 100%;border-bottom:thin solid #f6f6f6;padding:20px;"  ng-repeat="accomodation in accomodations">
 
+<tr> <td rowspan ='5' >  <img src="accomodation.logourl" style="width:25%;padding:10px;height:50%" class="img-responsive" /> </td> <td> <h3> {{accomodation.businessname}}</h3> </td> <td> </td>  </tr>
 
+<tr> <td > {{accomodation.businessaddress}} </td>  <td rowspan ='3'>  
 
+<div class="radio" >
 
+<label><input type="radio" ng-model="hotelID" value="accomodation._id" ng-change="setHotelid($index)"> </label>
+  
+</div> 
 
+</td> </tr>
+
+<tr> <td> {{accomodation.businessphone}} </td>   </tr>
+
+<tr> <td> {{accomodation.businessemail}} </td>   </tr>
+
+<tr> <td> {{accomodation.businesswebsite}} </td>  <td> </td> </tr>
+
+</table>
 
 </div>
 
+<h1> Your Itinerary  </h1> 
 
-<h1> Your Itinerary </h1> 
 
 <div class="col-sm-6  "  style="display: table;"> 
 
-
 <div style = "vertical-align:middle; display: table-cell;" >
-
-
 
 <div class="row"  >
 
-<div class="col-sm-6"> </div>
-
+<div class="col-sm-6"> &nbsp;</div>
 
 <div class="col-sm-3"> <p> General Admission </p> </div>
 
@@ -408,18 +403,47 @@ Infants
 
 </div>
 
+<div class="row sub-total-row" style="padding:5px;">
+
+<div class="col-sm-6 " > <p> Base Fare  - {{}}</p> </div>
+
+<div class="col-sm-3"> <p> </p> </div>
+
+<div class="col-sm-3" style="text-align:right;"> <p> £ {{calculatebasefare()}} </p> </div>
+
+</div>
 
 <div class="row sub-total-row" style="padding:5px;">
 
+<div class="col-sm-6 " > <p> Per Mile  - {{}}</p> </div>
 
-<div class="col-sm-6 " > <p> Car Hire  - {{}}</p> </div>
+<div class="col-sm-3"> <p> </p> </div>
 
+<div class="col-sm-3" style="text-align:right;"> <p> £ {{calculatemilefare()}} </p> </div>
+
+</div>
+
+<div class="row sub-total-row" style="padding:5px;">
+
+<div class="col-sm-6 " > <p> Per Minute  - {{}}</p> </div>
+
+<div class="col-sm-3"> <p> </p> </div>
+
+<div class="col-sm-3" style="text-align:right;"> <p> £ {{calculateminutefare()}} </p> </div>
+
+</div>
+<div class="row sub-total-row" style="padding:5px;">
+
+<div class="col-sm-6 " > <p> Minimum Fare (*includes car or bus hire) - {{}}</p> </div>
 
 <div class="col-sm-3"> <p> </p> </div>
 
 <div class="col-sm-3" style="text-align:right;"> <p> £ {{carhire}} </p> </div>
 
 </div>
+
+
+
 
 <div class="row tax-total-row" style="padding:5px;">
 
@@ -437,7 +461,7 @@ Infants
 <div class="row total-total-row" style="padding:5px;">
 
 
-<div class="col-sm-6 "> <p> Total </p> </div>
+<div class="col-sm-6 "> <p> Fare Estimate </p> </div>
 
 
 <div class="col-sm-3" > <p>  </p> </div>
