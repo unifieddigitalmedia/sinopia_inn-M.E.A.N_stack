@@ -625,8 +625,7 @@ var time_created = d.toDateString();
 
 var filename =  req.files.displayImage.originalFilename;
 
-
-
+var s3Bucket = new AWS.S3( { params: {Bucket: bucket} } );
 
 fs.readFile(req.files.displayImage.path, function (err, data) {
 

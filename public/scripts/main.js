@@ -1,4 +1,4 @@
-
+3
 
 $(document).ready(function(){
 
@@ -132,6 +132,7 @@ init();
 $scope.loadArticles = function() {
 
 
+
 var xhttp = new XMLHttpRequest();
 
 xhttp.onreadystatechange = function() {
@@ -142,7 +143,8 @@ xhttp.onreadystatechange = function() {
 
 
         BlogArticle1(xhttp);
-
+        loadArchive(xhttp);
+    
     }
 
 };
@@ -154,7 +156,38 @@ xhttp.send();
 
 }
 
-function BlogArticle1(xml) {
+
+$scope.loadArticlesIndex = function() {
+
+
+
+var xhttp = new XMLHttpRequest();
+
+xhttp.onreadystatechange = function() {
+
+
+
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+
+
+        BlogArticle(xhttp);
+     
+    
+    }
+
+};
+
+xhttp.open("GET", "../Feed/index.xml", true);
+
+xhttp.send();
+
+
+}
+
+
+function BlogArticle(xml) {
+
+
 
 var x, xmlDoc, artcileTitle , articleDiv,itemList,listItemLink;
 
@@ -162,14 +195,11 @@ xmlDoc = xml.responseXML;
 
 x = xmlDoc.getElementsByTagName('channel');
 
-
-
-
 itemList = xmlDoc.getElementsByTagName('item');
 
-var numofRows = itemList.length / 2 ;
+var numofRows = itemList.length ;
 
-var counter = 0;
+var counter = numofRows - 1;
 
 for (x = 0; x < numofRows ; x++) {
 
@@ -178,6 +208,9 @@ articleDiv = document.createElement("div");
 articleDiv.className = "row";
 
 document.getElementById("blog-section").appendChild(articleDiv);
+
+articleDiv.appendChild(document.createElement("br"));
+
 
 
 for (y = 0; y < 2 ; y++) {
@@ -191,6 +224,169 @@ articleDiv.appendChild(rowColumn);
 
 
 
+var articleItem = document.createElement("div");
+
+articleItem.setAttribute("style","width:100%;");
+
+articleItem.className = "w3-display-container divbox";
+
+rowColumn.appendChild(articleItem);
+
+
+var articleImage = document.createElement("img");
+
+articleImage.setAttribute("src","../../"+itemList[counter].childNodes[7].innerHTML);
+
+articleImage.setAttribute("style","width:95%;");
+
+articleItem.appendChild(articleImage);
+
+
+
+var row1 = document.createElement("div");
+row1.className = "row";
+articleItem.appendChild(row1);
+
+
+var row1col1 = document.createElement("div");
+row1col1.className = "col-sm-12";
+row1.appendChild(row1col1);
+
+
+
+var articleItemTitle = document.createElement("p");
+articleItemTitle.className = "side_menu_title_blog";
+articleItemTitle.setAttribute("style","text-align:center!important;");
+articleItemTitle.appendChild(document.createTextNode(itemList[counter].childNodes[1].innerHTML));
+row1col1.appendChild(articleItemTitle);
+
+
+
+var row2 = document.createElement("div");
+row2.className = "row";
+row1.appendChild(row2);
+
+
+var row2col1 = document.createElement("div");
+row2col1.className = "col-sm-12";
+row2.appendChild(row2col1);
+
+
+
+
+var articleItemTitle = document.createElement("p");
+articleItemTitle.className = "side_menu_title_blog_summary";
+articleItemTitle.setAttribute("style","text-align:center!important;");
+articleItemTitle.appendChild(document.createTextNode(itemList[counter].childNodes[3].innerHTML));
+row2col1.appendChild(articleItemTitle);
+
+
+
+
+var row3 = document.createElement("div");
+row3.className = "row";
+row2.appendChild(row3);
+
+
+
+
+var row3col1 = document.createElement("div");
+row3col1.className = "col-sm-12";
+row3.appendChild(row3col1);
+
+
+
+
+var articleItemTitle = document.createElement("a");
+
+articleItemTitle.className = "side_menu_title_blog_link";
+
+articleItemTitle.setAttribute("href",itemList[counter].childNodes[5].innerHTML);
+
+articleItemTitle.appendChild(document.createTextNode("READ THE FULL STORY"));
+
+row3col1.appendChild(articleItemTitle);
+
+
+counter = counter - 1;
+
+
+}
+
+
+
+
+
+}
+
+}
+
+
+
+function BlogArticle1(xml) {
+
+
+
+var x, xmlDoc, artcileTitle , articleDiv,itemList,listItemLink;
+
+xmlDoc = xml.responseXML;
+
+x = xmlDoc.getElementsByTagName('channel');
+
+
+
+
+itemList = xmlDoc.getElementsByTagName('item');
+
+var numofRows = itemList.length ;
+
+var counter = numofRows - 1;
+
+for (x = 0; x < 1 ; x++) {
+
+
+
+var z = x % 2;
+
+
+var mainRowDiv = document.createElement("div");
+
+mainRowDiv.className = "row";
+
+if(z == 0 ){
+
+  mainRowDiv.setAttribute("style","width:100%; background-color:#f8f6f6;padding:100px;border:thin solid #d2d2d2;");
+
+}else{
+
+
+  mainRowDiv.setAttribute("style","width:100%; background-color:white;padding:100px;");
+
+
+}
+
+
+
+document.getElementById("blog-section").appendChild(mainRowDiv);
+
+
+
+articleDiv = document.createElement("div");
+
+articleDiv.className = "row";
+
+articleDiv.setAttribute("style","width:80%;margin:0 auto!important;background-color:white;");
+
+mainRowDiv.appendChild(articleDiv);
+
+
+
+
+var rowColumn = document.createElement("div");
+
+rowColumn.className = "col-sm-6";
+
+mainRowDiv.appendChild(rowColumn);
 
 var articleItem = document.createElement("div");
 
@@ -203,79 +399,220 @@ var articleImage = document.createElement("img");
 
 articleImage.setAttribute("src","../"+itemList[counter].childNodes[7].innerHTML);
 
-articleImage.setAttribute("style","width:100%;");
+articleImage.setAttribute("style","width:95%;");
 
 
-var articleLink = document.createElement("a");
-
-articleLink.className = "blog-link";
-
-articleLink.setAttribute("style","text-decoration:none;");
-
-articleLink.setAttribute("href",itemList[counter].childNodes[5].innerHTML);
-
-
-
-
-var articleItemContainer = document.createElement("div");
-
-articleItemContainer.className = "w3-display-bottomleft w3-container";
-
-articleItemContainer.setAttribute("style","background-color:black;padding:10px;");
-
-articleItemContainer.innerHTML = itemList[counter].childNodes[1].innerHTML;
-
-articleLink.appendChild(articleItemContainer);
-
-articleItem.appendChild(articleLink);
 
 articleItem.appendChild(articleImage);
 
 rowColumn.appendChild(articleItem);
 
 
-var articleLink = document.createElement("a");
 
-articleLink.className = "blog-link";
+var rowColumn2 = document.createElement("div");
 
-articleLink.setAttribute("style","text-decoration:none;");
+rowColumn2.className = "col-sm-6";
 
-articleLink.setAttribute("href",itemList[counter].childNodes[5].innerHTML);
+rowColumn2.setAttribute("style","text-aligb:center");
+
+mainRowDiv.appendChild(rowColumn2);
 
 
-var articleItemContainer = document.createElement("div");
 
-articleItemContainer.className = "w3-panel w3-card-8";
+var row1 = document.createElement("div");
+
+row1.className = "row";
+
+rowColumn2.appendChild(row1);
+
+
+
+var row1col1 = document.createElement("div");
+
+row1col1.className = "col-sm-12";
+
+row1.appendChild(row1col1);
+
+
 
 var articleItemTitle = document.createElement("p");
 
-articleItemTitle.className = "panel-paragraph";
+articleItemTitle.className = "side_menu_title_blog";
+
+articleItem.setAttribute("style","text-align:center!important;");
+
+articleItemTitle.appendChild(document.createTextNode(itemList[counter].childNodes[1].innerHTML));
+
+row1col1.appendChild(articleItemTitle);
+
+
+
+var row2 = document.createElement("div");
+row2.className = "row";
+row1.appendChild(row2);
+
+
+
+
+var row2col1 = document.createElement("div");
+row2col1.className = "col-sm-12";
+row2.appendChild(row2col1);
+
+
+
+
+var articleItemTitle = document.createElement("p");
+
+articleItemTitle.className = "side_menu_title_blog_summary";
+
+articleItem.setAttribute("style","text-align:center!important;");
 
 articleItemTitle.appendChild(document.createTextNode(itemList[counter].childNodes[3].innerHTML));
 
-
-articleLink.appendChild(articleItemTitle);
-
-articleItemContainer.appendChild(articleLink);
-
-rowColumn.appendChild(articleItemContainer);
-
-rowColumn.appendChild(document.createElement("br"));
+row2col1.appendChild(articleItemTitle);
 
 
 
-counter ++;
+
+
+var row3 = document.createElement("div");
+row3.className = "row";
+row2.appendChild(row3);
+
+
+
+
+var row3col1 = document.createElement("div");
+row3col1.className = "col-sm-12";
+row3.appendChild(row3col1);
+
+
+
+
+var articleItemTitle = document.createElement("a");
+
+articleItemTitle.className = "side_menu_title_blog_link";
+
+articleItemTitle.setAttribute("href",itemList[counter].childNodes[5].innerHTML);
+
+articleItemTitle.appendChild(document.createTextNode("READ THE FULL STORY"));
+
+row3col1.appendChild(articleItemTitle);
+
+
+
+
+
+
+counter = counter - 1;
+
+
+
+
+
 
 }
 
 
+
+
+
+}
+
+
+function loadArchive(xml) {
+
+var x, xmlDoc, itemList ;
+
+xmlDoc = xml.responseXML;
+
+x = xmlDoc.getElementsByTagName('channel');
+
+itemList = xmlDoc.getElementsByTagName('item');
+
+var numofRows = itemList.length ;
+
+
+var counter = numofRows - 1;
+
+for (x = 0; x < 1 ; x++) {
+
+
+document.getElementById("blog-archive-section").appendChild(document.createElement("br"));
+
+if(destinationArchive(itemList[numofRows-1].childNodes[9].innerHTML)){
+
+
+var mainRowDiv = document.createElement("i");
+
+mainRowDiv.className = "fa fa-plane";
+
+mainRowDiv.setAttribute("style","font-size:30px;color:#cb410b;");
+
+//mainRowDiv.innerHTML =  "&nbsp;&nbsp;" + itemList[numofRows-1].childNodes[9].innerHTML;
+
+
+var articleItemTitle = document.createElement("a");
+
+articleItemTitle.className = "side_menu_title_blog_link";
+
+articleItemTitle.setAttribute("style","text-decoration:none;");
+
+articleItemTitle.setAttribute("href",itemList[counter].childNodes[11].innerHTML);
+
+
+var spanElem = document.createElement("span");
+
+spanElem.setAttribute("style","font-size:30px;color:#000000;font-weight:200;");
+
+spanElem.innerHTML = "&nbsp;&nbsp;" + itemList[numofRows-1].childNodes[9].innerHTML;
+
+
+articleItemTitle.appendChild(spanElem);
+
+mainRowDiv.appendChild(articleItemTitle);
+
+
+document.getElementById("blog-archive-section").appendChild(mainRowDiv);
+
+
+
+}
+
+
+counter = counter  - 1;
+
 }
 
 
 
-
-
 }
+
+var destinations = [];
+
+
+function destinationArchive(para) {
+
+
+if(destinations.indexOf(para) == -1 )
+
+{
+
+
+destinations.push(para);
+
+return true;
+
+
+}else{
+
+
+  return false;
+}
+
+
+
+  }
 
 
 function recentBlogPost(xml) {

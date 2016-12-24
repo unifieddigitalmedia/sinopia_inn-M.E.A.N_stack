@@ -17,7 +17,8 @@
 
 <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css">
 
-<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   
@@ -252,19 +253,21 @@
 
 </div> 
 
+<!--style="margin:0px!important;height:auto!important;"-->
 
+<div ng-controller = "reservationsystem" >
 
-<div ng-controller = "reservationsystem" class="container-fluid" >
-         <section ng-init="loadArticles()" style="margin:0px!important;height:auto!important;">
+         <section ng-init="loadArticles()" >
+
          <div class="row">
-         <div class="col-sm-8" >
-          </br>
+         <div class="col-sm-12" >
+     
          <section id="blog-section">
          </section>
 
          </div>
 
-           <div class="col-sm-1" style="margin:0px!important;" >
+          <!-- <div class="col-sm-1" style="margin:0px!important;" >
 
           </div>
           
@@ -287,9 +290,55 @@
 
 </div>
 
-        </div>  
+        </div>  -->
       
          </div>
+
+          <div class="row bloglocations">
+
+          <div class="col-sm-4 divbox" >
+
+<i class="fa fa-cloud" style="font-size:80px;color:#cb410b;text-shadow:2px 2px 4px #000000;"> 1 </i>
+
+<p> <i> Continents Visited </i> </p>
+          </div>
+          <div class="col-sm-4" ></div>
+          <div class="col-sm-4 divbox" >
+
+
+<i class="fa fa-plane" style="font-size:80px;color:#cb410b;text-shadow:2px 2px 4px #000000;"> 1 </i>
+<p> <i> Countries Visited </i> </p>
+
+
+          </div>
+          </div>
+
+          <div class="row bloglocations">
+
+          <div class="col-sm-4 " >
+
+<div class="divboxdiv" >
+
+    <h1><span>Destination Archive &nbsp;</span></h1>
+
+</div>
+</br>
+          <section id="blog-archive-section">
+
+
+          </section>
+
+
+
+          </div>
+
+          <div class="col-sm-8" ></div>
+         
+          </div>
+          
+
+          </div>
+
 
         </section>
     

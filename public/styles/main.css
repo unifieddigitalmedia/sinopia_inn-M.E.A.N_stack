@@ -362,6 +362,46 @@ body{margin:0!important;padding:0!important;}
 
 .side_menu_title{  border-bottom:#cb410b thin dotted;padding-bottom:10px;padding-top:10px; font-size:250%;font-weight:100!important; }
 
+
+.side_menu_title_blog { text-align:center!important; color:#cb410b; border-bottom:#d2d2d2 thin dotted;padding:25px;font-size:250%;font-weight:200!important; }
+
+.side_menu_title_blog_summary {text-align:center!important;  color:#979696; border-bottom:#d2d2d2 thin dotted;padding:25px;font-size:150%;font-weight:400!important; }
+
+.side_menu_title_blog_link { text-decoration:none; text-align:center!important;  color:#000000; padding:35px; font-size:100%;font-weight:400!important; }
+
+.side_menu_title_blog_link:hover {  color:#cb410b; text-decoration:none; }
+
+
+.bloglocations {width:80%;margin:0 auto!important;background-color:white;padding-top: 50px; padding-bottom: 50px; }
+
+.divbox{border:#d2d2d2 thin dotted;text-align:center;}
+
+.divbox i {padding:25px;}
+
+.divboxdiv{
+
+    border: 1px solid #d2d2d2;
+    width: 100%;height:1px;
+
+}
+
+.divboxdiv h1{
+    text-align: left;
+    margin-top: -10px;
+    height: 20px;
+    line-height: 20px;
+
+    z-index:99;
+
+    color:#cb410b; font-size:250%; font-weight:100!important; 
+
+}
+.divboxdiv span{
+    background-color: white;
+}
+
+
+
 .side_menu_title a { color:#9e9e9e!important;  }
 
 .side_menu_title a:hover{ text-decoration: none!important; color:#cb410b!important;font-weight:200; }

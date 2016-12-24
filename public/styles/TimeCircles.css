@@ -18,7 +18,7 @@
 }
 
 /**
- *	Titles (Days, Hours, etc)
+ *	Titles (Days, Hours, etc) color:#cb410b;
  **/
 .time_circles > div > h4 {
     margin: 0px;
@@ -31,7 +31,7 @@
 }
 
 /**
- *	Time numbers, ie: 12
+ *	Time numbers, ie: 12 color:#cb410b;
  **/
 .time_circles > div > span {
     display: block;
