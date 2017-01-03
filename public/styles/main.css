@@ -1,6 +1,16 @@
 /******** START OF HEADER MENU CSS ********/
 
+.panel-body {
 
+font-size:150%;font-weight:400;
+
+}
+
+.panel-heading a {
+
+font-size:150%;font-weight:300;
+
+}
 .w3-card-6 a:hover {color:#cb410b;}
 
 .logo{width:208px; height:30px!important;}
