@@ -47,6 +47,58 @@ map = new google.maps.Map(document.getElementById('map'), {
 
 jQuery(document).ready(function(){
 
+
+
+if( getCookie("privacy").length == 0 ){
+
+
+var modal = document.getElementById('myModal');
+
+
+modal.style.display = "block";
+
+
+}
+
+jQuery("input[name='optradio']").change(function(){
+
+
+ if(jQuery(this).val() == 'yes' ){
+
+document.cookie = "privacy=yes";
+
+ }else{
+
+document.cookie = "privacy=";
+
+
+ }
+
+
+});
+
+
+function getCookie(cname) {
+
+    var name = cname + "=";
+  
+    var ca = document.cookie.split(';');
+  
+    for(var i=0; i<ca.length; i++) {
+  
+        var c = ca[i];
+  
+        while (c.charAt(0)==' ') c = c.substring(1);
+  
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+  
+    }
+  
+    return "";
+
+}
+
+
 jQuery( "#subscribe_button" ).click(function() {
 
 
@@ -119,7 +171,7 @@ $scope.temppassword = "";
 
 
 
-$http.get("http://www.sinopiainn.com/api/businesses").then(function(response) {
+$http.get("http://localhost:3000/api/businesses").then(function(response) {
 
 $scope.businesses = $scope.filterBylocation(response.data);
 
@@ -981,6 +1033,18 @@ list.appendChild(newItem);
 
 jQuery(document).on("click",".booktrip",function(event){
 
+if( getCookie("privacy").length == 0 ){
+
+
+var modal = document.getElementById('myModal');
+
+
+modal.style.display = "block";
+
+
+}else{
+
+
 
 var array_string  = JSON.stringify($scope.ItinComps);
 
@@ -988,6 +1052,11 @@ var array_string  = JSON.stringify($scope.ItinComps);
 document.cookie = "itinerary=" + array_string;
 
   window.location = "itinerary.html" ;
+
+
+  
+}
+
 
 
 });
@@ -1005,7 +1074,7 @@ $scope.booktrip = function (para,content)
 
 
 /*
-var resource = $resource('http://www.sinopiainn.com/api/booktrip/',{
+var resource = $resource('http://localhost:3000/api/booktrip/',{
 
           triptoken:"@triptoken", 
           distance:"@distance",   
@@ -1043,7 +1112,7 @@ var reserve = resource.save(
 
 
 
-                            window.location = "http://www.sinopiainn.com/make-a-reservation.html" ;
+                            window.location = "http://localhost:3000/make-a-reservation.html" ;
 
 
         }

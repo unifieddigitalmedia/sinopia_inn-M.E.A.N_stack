@@ -11,6 +11,56 @@ function myFunction() {
 $(document).ready(function(){
 
 
+if( getCookie("privacy").length == 0 ){
+
+
+var modal = document.getElementById('myModal');
+
+
+modal.style.display = "block";
+
+
+}
+
+$("input[name='optradio']").change(function(){
+
+
+ if($(this).val() == 'yes' ){
+
+document.cookie = "privacy=yes";
+
+ }else{
+
+document.cookie = "privacy=";
+
+
+ }
+
+
+});
+
+
+function getCookie(cname) {
+
+    var name = cname + "=";
+  
+    var ca = document.cookie.split(';');
+  
+    for(var i=0; i<ca.length; i++) {
+  
+        var c = ca[i];
+  
+        while (c.charAt(0)==' ') c = c.substring(1);
+  
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+  
+    }
+  
+    return "";
+
+}
+
+
 $( "#subscribe_button" ).click(function() {
 
 
@@ -100,7 +150,7 @@ var init = function () {
 
 $scope.itinerary_array = JSON.parse(getCookie('itinerary'));
 
-$http.get("http://www.sinopiainn.com/api/businesses").then(function(response) {
+$http.get("http://localhost:3000/api/businesses").then(function(response) {
 
 $scope.businesses = response.data;
 
@@ -111,7 +161,7 @@ $scope.miles = $scope.filterBylocation($scope.businesses,$scope.itinerary_array)
                                                                           });
 
 
-$http.get("http://www.sinopiainn.com/api/hotels").then(function(response) {
+$http.get("http://localhost:3000/api/hotels").then(function(response) {
 
 $scope.accomodations = response.data;
 
@@ -222,7 +272,7 @@ $scope.bookTrip = function(){
 
 
 
-var resource = $resource('http://www.sinopiainn.com/api/booktrip/',{
+var resource = $resource('http://localhost:3000/api/booktrip/',{
 
           id:"@id",
           name:"@name",

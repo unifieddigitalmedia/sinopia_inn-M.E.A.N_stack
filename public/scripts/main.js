@@ -1,7 +1,56 @@
-3
 
 $(document).ready(function(){
 
+
+
+if( getCookie("privacy").length == 0 ){
+
+
+var modal = document.getElementById('myModal');
+
+
+modal.style.display = "block";
+
+
+}
+
+$("input[name='optradio']").change(function(){
+
+
+ if($(this).val() == 'yes' ){
+
+document.cookie = "privacy=yes";
+
+ }else{
+
+document.cookie = "privacy=";
+
+
+ }
+
+
+});
+
+
+function getCookie(cname) {
+
+    var name = cname + "=";
+  
+    var ca = document.cookie.split(';');
+  
+    for(var i=0; i<ca.length; i++) {
+  
+        var c = ca[i];
+  
+        while (c.charAt(0)==' ') c = c.substring(1);
+  
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+  
+    }
+  
+    return "";
+
+}
 
 $(".checking").hide();
 
@@ -698,7 +747,7 @@ alert("You must be staying with us to book this trip. Please specify the dates y
 
 
 
-$http.get("http://www.sinopiainn.com/api/checkavailability/?fromdate="+$scope.fromdate+"&todate="+$scope.todate+"&promo="+$scope.promo).then(function(response) {
+$http.get("http://localhost:3000/api/checkavailability/?fromdate="+$scope.fromdate+"&todate="+$scope.todate+"&promo="+$scope.promo).then(function(response) {
 
 
                                                           $scope.roomlist = response.data[0];
@@ -854,7 +903,7 @@ $scope.error = 'Checking availability';
 
 
 
-$http.get("http://www.sinopiainn.com/api/checkavailability/?fromdate="+getCookie('fromdate')+"&todate="+getCookie('todate')+"&promo="+getCookie('promo')).then(function(response) {
+$http.get("http://localhost:3000/api/checkavailability/?fromdate="+getCookie('fromdate')+"&todate="+getCookie('todate')+"&promo="+getCookie('promo')).then(function(response) {
 
 
 
@@ -1567,7 +1616,7 @@ return total;
 
 $scope.reserve = function() {
 
-var resource = $resource('http://www.sinopiainn.com/api/personaldetails/',{
+var resource = $resource('http://localhost:3000/api/personaldetails/',{
 
           id:"@id",
           fname:"@fname",
@@ -1644,7 +1693,7 @@ alert(reserve.ReservationID);
 
                             document.cookie = "promo=" ;
 
-                            window.location = "http://www.sinopiainn.com/booking-details.html" ;
+                            window.location = "http://localhost:3000/booking-details.html" ;
 
 }
   
@@ -1704,7 +1753,7 @@ alert(reserve.ReservationID);
 
                             document.cookie = "promo=" ;
 
-                            window.location = "http://www.sinopiainn.com/booking-details.html" ;
+                            window.location = "http://localhost:3000/booking-details.html" ;
 
 }
   
@@ -1738,7 +1787,7 @@ alert(getCookie('reservationID'));
 
 $scope.sendpaymentmethodnonce = function(para,para1) {
 
-var resource = $resource('http://www.sinopiainn.com/checkout/',{
+var resource = $resource('http://localhost:3000/checkout/',{
 
           payment_method_nonce:"@payment_method_nonce",
           total:"@total",
@@ -1768,7 +1817,7 @@ if(reserve.ERROR){ alert(reserve.ERROR); } else {
                            
 
 
-                            window.location = "http://www.sinopiainn.com/booking-confirmation.html" ;
+                            window.location = "http://localhost:3000/booking-confirmation.html" ;
 
 }
   
@@ -1813,7 +1862,7 @@ if (y.document)y = y.document;*/
 
 
 
-$http.get("http://www.sinopiainn.com/api/businesses").then(function(response) {
+$http.get("http://localhost:3000/api/businesses").then(function(response) {
 
 
 $scope.businesses = response.data;
@@ -2443,7 +2492,7 @@ $scope.booktrip = function (para,content)
 
 
 
-var resource = $resource('http://www.sinopiainn.com/api/booktrip/',{
+var resource = $resource('http://localhost:3000/api/booktrip/',{
 
           triptoken:"@triptoken", 
           distance:"@distance",   
@@ -2481,7 +2530,7 @@ var reserve = resource.save(
 
 
 
-                            window.location = "http://www.sinopiainn.com/make-a-reservation.html" ;
+                            window.location = "http://localhost:3000/make-a-reservation.html" ;
 
 
         }

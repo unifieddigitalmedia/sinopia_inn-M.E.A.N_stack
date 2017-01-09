@@ -34,6 +34,58 @@ function myFunction() {
 
 $(document).ready(function(){
 
+
+
+if( getCookie("privacy").length == 0 ){
+
+
+var modal = document.getElementById('myModal');
+
+
+modal.style.display = "block";
+
+
+}
+
+$("input[name='optradio']").change(function(){
+
+
+ if($(this).val() == 'yes' ){
+
+document.cookie = "privacy=yes";
+
+ }else{
+
+document.cookie = "privacy=";
+
+
+ }
+
+
+});
+
+
+function getCookie(cname) {
+
+    var name = cname + "=";
+  
+    var ca = document.cookie.split(';');
+  
+    for(var i=0; i<ca.length; i++) {
+  
+        var c = ca[i];
+  
+        while (c.charAt(0)==' ') c = c.substring(1);
+  
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+  
+    }
+  
+    return "";
+
+}
+
+
 $( "#subscribe_button" ).click(function() {
 
 
@@ -172,7 +224,7 @@ $scope.bookingdetailsandconfirm = function() {
 
 
 
-$http.get("http://www.sinopiainn.com/api/checkout/").then(function(response) {
+$http.get("http://localhost:3000/api/checkout/").then(function(response) {
 
 
 braintree.setup(response.data, "dropin", {
@@ -205,7 +257,7 @@ braintree.setup(response.data, "dropin", {
 
 $scope.sendpaymentmethodnonce = function(para,para1) {
 
-var resource = $resource('http://www.sinopiainn.com/checkout/',{
+var resource = $resource('http://localhost:3000/checkout/',{
 
           payment_method_nonce:"@payment_method_nonce",
           fname:"@fname",
@@ -266,7 +318,7 @@ if(reserve.ERROR){ alert(reserve.ERROR); } else {
 
 
 
-                            window.location = "http://www.sinopiainn.com/booking-confirmation.html" ;
+                            window.location = "http://localhost:3000/booking-confirmation.html" ;
 
 
 }
@@ -320,7 +372,7 @@ if(getCookie("tripID"))
 
 $scope.tripID = getCookie("tripID"); 
 
-$http.get("http://www.sinopiainn.com/api/trip/?tripID="+getCookie("tripID")).then(function(response) {
+$http.get("http://localhost:3000/api/trip/?tripID="+getCookie("tripID")).then(function(response) {
 
 $scope.tripTotal = response.data[0].total ; 
 
@@ -390,6 +442,16 @@ $scope.error = 'Checking availability';
 
 $scope.checkavailability = function() {
 
+if( getCookie("privacy").length == 0 ){
+
+
+var modal = document.getElementById('myModal');
+
+
+modal.style.display = "block";
+
+
+}else{
 
 
 $scope.error = 'Checking availability';
@@ -432,7 +494,7 @@ $scope.error = 'Checking availability';
                                 
                                 {
                  
-                    $http.get("http://www.sinopiainn.com/api/checkhotelavailability/?nights="+$scope.lengthofstay(getCookie('fromdate'),getCookie('todate'))+"&hotelID="+getCookie('hotelID')+"&fromdate="+getCookie('fromdate')+"&todate="+getCookie('todate')+"&promo="+getCookie('promo')).then(function(response) {
+                    $http.get("http://localhost:3000/api/checkhotelavailability/?nights="+$scope.lengthofstay(getCookie('fromdate'),getCookie('todate'))+"&hotelID="+getCookie('hotelID')+"&fromdate="+getCookie('fromdate')+"&todate="+getCookie('todate')+"&promo="+getCookie('promo')).then(function(response) {
 
 
 
@@ -582,7 +644,9 @@ $scope.$apply();
               
 
 
-                  
+         
+}
+           
 
     }
 
@@ -1300,7 +1364,6 @@ $scope.reserve = function(para) {
 
 var email = document.getElementById("resemail").value;
 
-
 if( ( $scope.fname.length == 0 || typeof $scope.fname === 'undefined' ) || ( $scope.lname.length == 0 || typeof $scope.lname === 'undefined' ) || ( $scope.phone.length == 0 || typeof $scope.phone === 'undefined' ) || ( $scope.email.length == 0 || typeof $scope.email === 'undefined' ) || ( $scope.email.length == 0 || typeof $scope.email === 'undefined' )  )
   
 {
@@ -1326,11 +1389,15 @@ $scope.$apply();
 
 else {
 
+
+
+if( $('input[name="terms"]:checked').length > 0 ){
+
 $scope.detailserror = "";
 
 
 
-var resource = $resource('http://www.sinopiainn.com/api/personaldetails/',{
+var resource = $resource('http://localhost:3000/api/personaldetails/',{
 
         
           tripID:"@tripID",
@@ -1422,6 +1489,12 @@ $scope.roomsArray = [];
 
 
   });
+
+}else{
+
+$scope.detailserror = "Please agree to our terms before you continue";
+
+}
 
 
 } 
