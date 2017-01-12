@@ -1560,6 +1560,8 @@ var params = {Key: directory, Body: data};
            
 var directory =  name+"/"+arg2; 
 
+var arg1 = arg1.toString();
+
 var params = {Key: directory, Body: arg1};
 
   s3Bucket.putObject(params, function(err, data) {
