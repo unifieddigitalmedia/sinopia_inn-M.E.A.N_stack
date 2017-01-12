@@ -409,6 +409,8 @@ db.collection('itinerary').insert( [
 
 app.get('/api/mobile/checkhotelavailability/', function (req, res) {
 
+
+
 var o_id = new mongo.ObjectID("5855a1f3523d3f70c7dd48ac");
 
 var availability = [];
@@ -474,6 +476,8 @@ if ( (new Date(results[0].rooms[x].booking[y][z].fromdate) <= new Date(fromdate)
 
 },function(arg1,arg2,callback){
 
+var booked = false ;
+
 if(arg1.length > 0 ) {
 
 var obj = [];
@@ -484,17 +488,30 @@ for (i = 0; i < obj.length; i++) {
 
 if(arg1.indexOf(obj[i]._id) != -1 ){
 
+var booked = true ;
+    
 
-     var response = {"ERROR":"One or more of your rooms has now been booked."};
+}
+
+
+
+}
+
+
+
+if(booked){
+
+   var response = {"ERROR":"One or more of your rooms has now been booked."};
+        
+      res.json(response);
+
+}else{
+
+ var response = {"ERROR":""};
         
       res.json(response);
 
 }
-
-
-
-}
-
 
 
 } else {
@@ -908,6 +925,7 @@ console.log("request : ",req);
 console.log("request body: ",req.body);
 
 console.log("request query: ",req.query);
+
 //var rString = randomString(5, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
 
  var rString = "";
@@ -1012,6 +1030,8 @@ if ( (new Date(results[0].rooms[x].booking[y][z].fromdate) <= new Date(fromdate)
 
 },function(arg1,arg2,callback){
 
+var booked = false;
+
 if(arg1.length > 0 ){
 
 var obj = [];
@@ -1023,16 +1043,27 @@ for (i = 0; i < obj.length; i++) {
 if(arg1.indexOf(obj[i]._id) != -1 ){
 
 
-     var response = {"ERROR":"One or more of your rooms has now been booked."};
+    booked = true;
+
+}
+
+
+
+}
+
+if(booked){
+
+var response = {"ERROR":"One or more of your rooms has now been booked."};
         
       res.json(response);
 
+
+} else {
+
+callback(null);
+
+
 }
-
-
-
-}
-
 
 
 }else{

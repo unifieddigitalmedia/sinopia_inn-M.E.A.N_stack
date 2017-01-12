@@ -914,6 +914,10 @@ ul.topnav-top li { display: inline-block;  vertical-align:middle; }
 
 .modal-body {padding: 2px 16px;}
 
+.modal-body a {color:#cb410b; }
+
+.modal-body a:visited {color:#aa9d2e; }
+
 .modal-footer {
     padding: 2px 16px;
     background-color: #cb410b;

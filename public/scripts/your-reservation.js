@@ -36,6 +36,7 @@ $(document).ready(function(){
 
 
 
+
 if( getCookie("privacy").length == 0 ){
 
 
@@ -44,20 +45,39 @@ var modal = document.getElementById('myModal');
 
 modal.style.display = "block";
 
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
 
 }
 
 $("input[name='optradio']").change(function(){
+
+var modal = document.getElementById('myModal');
 
 
  if($(this).val() == 'yes' ){
 
 document.cookie = "privacy=yes";
 
+ modal.style.display = "none";
+
  }else{
 
 document.cookie = "privacy=";
 
+ modal.style.display = "none";
 
  }
 
@@ -442,6 +462,7 @@ $scope.error = 'Checking availability';
 
 $scope.checkavailability = function() {
 
+
 if( getCookie("privacy").length == 0 ){
 
 
@@ -450,8 +471,23 @@ var modal = document.getElementById('myModal');
 
 modal.style.display = "block";
 
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
 
-}else{
+
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+}
+else{
 
 
 $scope.error = 'Checking availability';
