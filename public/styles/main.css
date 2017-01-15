@@ -40,18 +40,26 @@ background: #EE632C;  header.sticky { height: 100px; background: #efc47D; paddin
 header.sticky { height:auto; font-size: 9px;background: #cc9999; padding-left: 20px; z-index:99;  transition: all 0.4s ease;}
 
 .topnav-header{  
- box-shadow: 10px 10px 5px #888888;
-  background:/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cb410b+0,cb410b+100,c96c4a+100,c9856c+100 */
-background: #cb410b; /* Old browsers */
-background: -moz-linear-gradient(top,  #cb410b 0%, #cb410b 100%, #c96c4a 100%, #c9856c 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top,  #cb410b 0%,#cb410b 100%,#c96c4a 100%,#c9856c 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom,  #cb410b 0%,#cb410b 100%,#c96c4a 100%,#c9856c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb410b', endColorstr='#c9856c',GradientType=0 ); /* IE6-9 */}
+/* box-shadow: 10px 10px 5px #888888;
 
-.dropbtn { display: inline-block; color: white!important;  font-family: 'PT Sans', sans-serif; font-weight:100; text-align: center; padding: 14px 16px; 
+
+
+background: #cb410b; 
+background: -moz-linear-gradient(top,  #cb410b 0%, #cb410b 100%, #c96c4a 100%, #c9856c 100%); 
+background: -webkit-linear-gradient(top,  #cb410b 0%,#cb410b 100%,#c96c4a 100%,#c9856c 100%); 
+background: linear-gradient(to bottom,  #cb410b 0%,#cb410b 100%,#c96c4a 100%,#c9856c 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb410b', endColorstr='#c9856c',GradientType=0 ); 
+
+
+*/
+background-color:white;
+
+  }
+
+.dropbtn { display: inline-block; color:  #cb410b!important;  font-family: 'PT Sans', sans-serif; font-weight:100; text-align: center; padding: 14px 16px; 
 text-decoration: none;cursor:pointer; }
 
-.topnav{ width:80%;list-style-type: none; color:white; margin: 0 auto; padding: 0; overflow: hidden; text-align:right; line-height: 100% !important; }
+.topnav{ width:78%;list-style-type: none; color: #cb410b; margin: 0 auto; padding: 0; overflow: hidden; text-align:right; line-height: 100% !important; }
 
 ul.topnav li.icon {display: none;}
 
@@ -59,7 +67,7 @@ ul.topnav li { display: inline-block;  vertical-align:middle; padding:0px; }
 
 .topnav li.dropdown-link {display: inline-block; }
 
-.topnav li a { padding:16px 10px!important; display: block; color:white; font-family: 'PT Sans', sans-serif; font-weight:100!important; font-size:15px;text-align: center;  text-decoration: none;cursor:pointer; }
+.topnav li a { padding:16px 10px!important; display: block; color: #cb410b; font-family: 'PT Sans', sans-serif; font-weight:50!important; font-size:12px;text-align: center;  text-decoration: none;cursor:pointer; }
 
 
 .topnav li a span { padding: 12px   }
@@ -173,6 +181,8 @@ font-weight:600!important;
 
 .top_menu_topnav li a { display: inline-block; color:#666666;  font-weight:50; text-align: center; padding: 14px 16px; text-decoration: none;cursor:pointer; }
 
+.topnav-top-header{ text-align:center;padding:30px; background-color:#f9f8f8;}
+
 .topnav-top{ width:100%;list-style-type: none; color:white; margin: 0; padding: 0; overflow: hidden; text-align:left; line-height: 100% !important;}
 
 .topnav-top ul { }
@@ -196,9 +206,18 @@ ul.topnav-top li { display: inline-block;  vertical-align:middle; }
 
 
 
+.mySlides-main {height:auto;width:98%;margin:0 auto;}
 
-.mySlides {display:none}
+.mySlides {height:auto;width:98%;margin:0 auto;}
 
+.slideshow-container-main {
+
+   width:auto;max-width:auto; 
+  position: relative;
+  margin: auto;
+  height:auto;
+  margin-top:10px;
+}
 /* 
 
 .slideshow-container {  
@@ -208,14 +227,16 @@ padding:0px!important; margin:0px!important;width:auto;max-width:auto;  height:8
   */
 
 
-.mySlides {height:auto;}
+
 
 
 .slideshow-container {
- width:auto;max-width:auto; 
+ width:auto;
+ max-width:auto; 
   position: relative;
   margin: auto;
   height:auto;
+  margin-top:10px;
 }
 /* Caption text */
 .text {
@@ -442,7 +463,7 @@ position:absolute;
 
   padding:30px;
   color:#e8e5e5;
-  background-color:#f1f1f1;
+  background-color:#f9f8f8;
   
   border-bottom:black solid thin;
 }
@@ -930,11 +951,17 @@ section h3{color: #cb410b!important; font-size:100%!important;}
 }
 
 .modal-header {
+  color:#cb410b!important;font-weight:200;
     padding: 2px 16px;
-    background-color: #cb410b;
-    color: white;
+    background-color: #f9f8f8;
+   
 }
 
+.modal-header p{
+  color:#cb410b!important;font-weight:200;font-size:200%;
+   
+   
+}
 .modal-body {padding: 2px 16px;}
 
 .modal-body a {color:#cb410b; }
@@ -943,8 +970,8 @@ section h3{color: #cb410b!important; font-size:100%!important;}
 
 .modal-footer {
     padding: 2px 16px;
-    background-color: #cb410b;
-    color: white;
+    background-color: #f9f8f8;
+    color: #cb410b;
 }
 
 /* Add Animation */
