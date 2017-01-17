@@ -121,6 +121,18 @@ app.get('/', function (req, res) {
 
       })
 
+var http = require('http');
+
+
+var server = http.createServer(function (req, res) {
+
+
+console.log(req);
+
+});
+
+//server.listen(3000);
+console.log("Server is listening");
 
 app.get('/booking-confirmation/', function (req, res) {
 

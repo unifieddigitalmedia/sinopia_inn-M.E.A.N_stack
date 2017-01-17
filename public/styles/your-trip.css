@@ -572,11 +572,24 @@ border-color:black;
 
 /******** START OF HEADER MENU CSS ********/
 
+.panel-body {
+
+font-size:150%;font-weight:400;
+
+}
+
+.panel-heading a {
+
+font-size:150%;font-weight:300;
+
+}
+.w3-card-6 a:hover {color:#cb410b;}
 
 .logo{width:208px; height:30px!important;}
 
+.panel-paragraph {background-color:#aa9d2e!important; padding:20px!important; color:white; font-weight:400;}
 
-
+.w3-display-bottomleft {color:white;}
 /*
 
 header{ position:relative; width: 100%; padding-left:40px; height: auto; background: #FFFFFF; color: #fff; font-family: 'PT Sans', sans-serif; 
@@ -593,23 +606,32 @@ background: #EE632C;  header.sticky { height: 100px; background: #efc47D; paddin
   text-align: left;
   padding-left: 20px;
 */
+
 .sticky_logo {  height: 25px; }
 
 header.sticky { height:auto; font-size: 9px;background: #cc9999; padding-left: 20px; z-index:99;  transition: all 0.4s ease;}
 
 .topnav-header{  
- box-shadow: 10px 10px 5px #888888;
-  background:/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cb410b+0,cb410b+100,c96c4a+100,c9856c+100 */
-background: #cb410b; /* Old browsers */
-background: -moz-linear-gradient(top,  #cb410b 0%, #cb410b 100%, #c96c4a 100%, #c9856c 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top,  #cb410b 0%,#cb410b 100%,#c96c4a 100%,#c9856c 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom,  #cb410b 0%,#cb410b 100%,#c96c4a 100%,#c9856c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb410b', endColorstr='#c9856c',GradientType=0 ); /* IE6-9 */}
+/* box-shadow: 10px 10px 5px #888888;
 
-.dropbtn { display: inline-block; color: white!important;  font-family: 'PT Sans', sans-serif; font-weight:100; text-align: center; padding: 14px 16px; 
+
+
+background: #cb410b; 
+background: -moz-linear-gradient(top,  #cb410b 0%, #cb410b 100%, #c96c4a 100%, #c9856c 100%); 
+background: -webkit-linear-gradient(top,  #cb410b 0%,#cb410b 100%,#c96c4a 100%,#c9856c 100%); 
+background: linear-gradient(to bottom,  #cb410b 0%,#cb410b 100%,#c96c4a 100%,#c9856c 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb410b', endColorstr='#c9856c',GradientType=0 ); 
+
+
+*/
+background-color:white;
+
+  }
+
+.dropbtn { display: inline-block; color:  #cb410b!important;  font-family: 'PT Sans', sans-serif; font-weight:100; text-align: center; padding: 14px 16px; 
 text-decoration: none;cursor:pointer; }
 
-.topnav{ width:80%;list-style-type: none; color:white; margin: 0 auto; padding: 0; overflow: hidden; text-align:right; line-height: 100% !important; }
+.topnav{ width:70%;list-style-type: none; color: #cb410b; margin: 0 auto; padding: 0; overflow: hidden; text-align:right; line-height: 100% !important; }
 
 ul.topnav li.icon {display: none;}
 
@@ -617,7 +639,7 @@ ul.topnav li { display: inline-block;  vertical-align:middle; padding:0px; }
 
 .topnav li.dropdown-link {display: inline-block; }
 
-.topnav li a { padding:16px 10px!important; display: block; color:white; font-family: 'PT Sans', sans-serif; font-weight:100!important; font-size:15px;text-align: center;  text-decoration: none;cursor:pointer; }
+.topnav li a { padding:16px 10px!important; display: block; color: #cb410b; font-family: 'PT Sans', sans-serif; font-weight:50!important; font-size:12px;text-align: center;  text-decoration: none;cursor:pointer; }
 
 
 .topnav li a span { padding: 12px   }
@@ -731,6 +753,8 @@ font-weight:600!important;
 
 .top_menu_topnav li a { display: inline-block; color:#666666;  font-weight:50; text-align: center; padding: 14px 16px; text-decoration: none;cursor:pointer; }
 
+.topnav-top-header{ text-align:center;padding:30px; background-color:#f9f8f8;}
+
 .topnav-top{ width:100%;list-style-type: none; color:white; margin: 0; padding: 0; overflow: hidden; text-align:left; line-height: 100% !important;}
 
 .topnav-top ul { }
@@ -746,7 +770,6 @@ ul.topnav-top li { display: inline-block;  vertical-align:middle; }
 .topnav-top li.dropdown-link {display: inline-block; }
 
 .topnav-top li:first-child a:hover { background-color: none !important; }
-
 
 /******** END OF HEADER MENU CSS ********/
 

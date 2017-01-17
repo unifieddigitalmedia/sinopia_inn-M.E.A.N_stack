@@ -1,3 +1,21 @@
+/*********START OF RESERVATION FORM *******/
+
+.bookinglabel, .shortcodeform{
+
+ background-color:#f0f0f1!important;
+
+ padding:10px;
+
+}
+
+.bookinglabel label{
+
+font-weight:100!important;font-size:200%!important; 
+
+}
+
+/*********END OF RESERVATION FORM *******/
+
 /******** START OF HEADER MENU CSS ********/
 
 .panel-body {
@@ -59,7 +77,7 @@ background-color:white;
 .dropbtn { display: inline-block; color:  #cb410b!important;  font-family: 'PT Sans', sans-serif; font-weight:100; text-align: center; padding: 14px 16px; 
 text-decoration: none;cursor:pointer; }
 
-.topnav{ width:78%;list-style-type: none; color: #cb410b; margin: 0 auto; padding: 0; overflow: hidden; text-align:right; line-height: 100% !important; }
+.topnav{ width:70%;list-style-type: none; color: #cb410b; margin: 0 auto; padding: 0; overflow: hidden; text-align:right; line-height: 100% !important; }
 
 ul.topnav li.icon {display: none;}
 
@@ -206,16 +224,16 @@ ul.topnav-top li { display: inline-block;  vertical-align:middle; }
 
 
 
-.mySlides-main {height:auto;width:98%;margin:0 auto;}
+.mySlides-main {height:auto;width:100%;margin:0 auto;}
 
-.mySlides {height:auto;width:98%;margin:0 auto;}
+.mySlides {height:auto;width:100%;margin:0 auto;}
 
 .slideshow-container-main {
 
    width:auto;max-width:auto; 
   position: relative;
   margin: auto;
-  height:auto;
+  height:40%;
   margin-top:10px;
 }
 /* 
@@ -235,7 +253,7 @@ padding:0px!important; margin:0px!important;width:auto;max-width:auto;  height:8
  max-width:auto; 
   position: relative;
   margin: auto;
-  height:auto;
+  height:40%;
   margin-top:10px;
 }
 /* Caption text */
@@ -915,24 +933,41 @@ section h3{color: #cb410b!important; font-size:100%!important;}
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    -webkit-animation-name: fadeIn; /* Fade in the background */
+ 
+
+
+    /*background-color: rgb(255,255,255); 
+    background-color: rgba(255,255,255,0.4); */
+
+
+    -webkit-animation-name: fadeIn; 
     -webkit-animation-duration: 0.4s;
     animation-name: fadeIn;
     animation-duration: 0.4s
+  
 }
+
+
+.modal-header {
+
+text-align:center;
+}
+
+
 
 /* Modal Content */
 .modal-content-footer {
     position: fixed;
     bottom: 0;
-    background-color: #fefefe;
+   
     width: 100%;
     -webkit-animation-name: slideIn;
     -webkit-animation-duration: 0.4s;
     animation-name: slideIn;
-    animation-duration: 0.4s
+    animation-duration: 0.4s;
+
+
+     background-color:black;opacity: 0.8;filter: alpha(opacity=80);
 }
 
 /* The Close Button */
@@ -951,18 +986,22 @@ section h3{color: #cb410b!important; font-size:100%!important;}
 }
 
 .modal-header {
-  color:#cb410b!important;font-weight:200;
+  color:#ffffff!important;font-weight:200;
     padding: 2px 16px;
-    background-color: #f9f8f8;
+   /*background-color: #f9f8f8;*/
+
+   background-color:black;opacity: 0.8;filter: alpha(opacity=80);
    
 }
 
 .modal-header p{
-  color:#cb410b!important;font-weight:200;font-size:200%;
+  color:#ffffff!important;font-weight:200;font-size:200%;
    
    
 }
-.modal-body {padding: 2px 16px;}
+.modal-body {padding: 2px 16px; text-align:center;border:mone!important;}
+
+.modal-body p {color:#ffffff!important;}
 
 .modal-body a {color:#cb410b; }
 
@@ -970,7 +1009,9 @@ section h3{color: #cb410b!important; font-size:100%!important;}
 
 .modal-footer {
     padding: 2px 16px;
-    background-color: #f9f8f8;
+
+
+       background-color:black;
     color: #cb410b;
 }
 

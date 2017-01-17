@@ -172,48 +172,71 @@
 </header>
 
 
-<div class="slideshow-container-main">
+<div class="slideshow-container">
 
-<div class="mySlides-main">
+<div class=""  >
 
 
 <div class="row" style="margin:0px!important;">
 
-    <div class="col-sm-4" style="padding:0px!important;">
+    <div class="col-sm-4 " >
          
 
 
-<img src="images/homepage4.jpg" style="width:98%"/>
+<div class='home_text'>
 
-<p class="side_menu_title">  Sleep in any of our ensuite bedrooms </p>
+<div class="home_text_innerdiv"  > 
 
-<p>
-  
- where the refurbished wooden flooring and antique furniture creates a rustic environment and our super comfortable mattresses provide absolute comfort for a sound sleep. 
 
+<p class="home_text_caption" >
+
+WELCOME
 
 </p>
-<p>
+
+
+<p class="home_text_sub_caption" >
+
+Sinopia Inn would like to welcome you to its rustic hideaway. Here you can experience rustic views with lush green hills and skies streaked with colour - not to mention amazing sunsets that will have you feeling the vibes to just chill.
+
+
+</p> 
+
+
+
+
+<p class="home_text_sub_sub_caption" > 
+
+
+
+
+</p> 
+
+</div>
+
+
+</div>
+
 
     </div>
 
-     <div class="col-sm-4 " style="padding:0px!important;"><img src="images/homepage5.jpg" style="width:98%"/> 
+     <div class="col-sm-8 " > </div>
 
-<p class="side_menu_title ">  Eat rare and flavoursome West Indian dishes </p>
-
-<p> with a fusion of flavours from around the globe. Try our breakfast platter, filled with a stunning array of some of our island's beloved fruits and our traditional Jamaica breakfast. </p>
-<p>
-     </div>
-
-      <div class="col-sm-4" style="padding:0px!important;"> <img src="images/homepage6.jpg" style="width:98%"/>
-
-<p class="side_menu_title ">  Share the experience of your stay  </p>
-
-<p>with us, with friends , family and loved ones as our leisure activities offer positive vibrations, energy and spirit. This is where you truly live the moments, feel the experience and enjoy the lifestyle of Jamaica.</p>
-<p>
-      </div>
+</div>
 
 
+<img src="images/homepage1a.jpg" style="width:100%"/>
+
+
+</div>
+
+
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span> 
 
 </div>
 
@@ -221,12 +244,90 @@
 
 
 
-</div>
 
 </div>
+
 
 <div  class="container-fluid maindiv">
 
+
+<form method="post" id="shortcodeform" class="" name="shortcodeform" ng-init="reservationinit()">
+ 
+<div class="row " >
+
+<div class="col-sm-3 bookinglabel" id='bookinglabel' > <label> Reserve online </label> </div><div class="col-sm-9" > </div>
+
+</div>
+
+<div class="row checkavaiabiltyrow shortcodeform" ng-hide='availabilty'>
+
+
+<div class="col-sm-3 " id='checkavaiabiltyrow' >
+
+<div class="form-group has-success has-feedback">
+
+<label> CHECK IN DATE </label>
+
+<input type="text" class="form-control"  id="fromdate" name="from" ng-model="fromdate"  placeholder="DD-MM-YYYY"> 
+
+<span class="glyphicon glyphicon-th form-control-feedback"></span> 
+
+</input> 
+
+</div>
+
+</div>
+
+<div class="col-sm-3" id='checkavaiabiltyrow' >
+
+<div class="form-group has-success has-feedback">
+
+<label> CHECK OUT DATE </label>
+
+<input type="text" class="form-control" id="todate"  name="to" ng-model="todate" placeholder="DD-MM-YYYY"> 
+
+<span class="glyphicon glyphicon-th form-control-feedback"></span>  
+
+</input> 
+
+</div>
+
+</div>
+
+
+<div class="col-sm-3" id='checkavaiabiltyrow' >
+
+<div class="form-group has-success has-feedback">
+<label> PROMO CODE  </label>
+<input id="promo" class="form-control" type="text" name='promo' ng-model="promo" /> 
+
+<span class="glyphicon glyphicon-qrcode form-control-feedback"></span>
+
+</div>
+
+</div> 
+
+
+<div class="col-sm-3" id='checkavaiabiltyrow' >
+
+<label> </label>
+
+<button class="btn btn-default btn-block" type="button"  id="checkavailability"  ng-click="checkavailability()">CHECK AVAILABILITY</button> 
+
+</div>
+
+</div>
+
+
+
+<div id='errormessage' class='checking'> <p id="error" class="error"> {{error}} </p> </div>
+
+
+
+
+
+
+</form>
 
 <div class="row">
 
@@ -234,7 +335,6 @@
 
 <p class="side_menu_title ">  SINOPIA INN </p>
 
-<p>Sinopia Inn would like to welcome you to its rustic hideaway. Here you can experience rustic views with lush green hills and skies streaked with colour - not to mention amazing sunsets that will have you feeling the vibes to just chill.</p>
 <p>
 SINOPIA is an early twentieth century house refurbished with modern interior decor which is set on two acres of lush green gardens, filled with palm trees - making it a stunning hideaway. The relaxed environment with rustic views is complemented by personalised services and accommodation.</p>
 
@@ -532,17 +632,18 @@ Where an old world meets the new as the refurbished wooden flooring and antique 
       <p>This website uses cookies</p>
     </div>
     <div class="modal-body">
-      <p>To find out how we use cookies click <a href="privacy-and-cookies-statement.html"> here </a> to read our cookies and privacy notice</p>
-      <p>Would you like to contiue <div class="radio">
-  <label><input type="radio" name="optradio" class="cookies-yes" value="yes">Yes</label>
+
+
+      <p>We use cookies to help make this website better, to improve our services and for advertising purposes. </p> <p> You can learn more about our use of cookies and change your browser settings in order to avoid cookies by clicking <a href="privacy-and-cookies-statement.html"> here. </a> </p>
+
+      <p> Would you like to continue ? <div class="radio">
+  <label><input type="radio" name="optradio" class="cookies-yes" value="yes">&nbsp;Yes</label>
 </div>
 <div class="radio">
-  <label><input type="radio" name="optradio" class="cookies-no" value="no">No</label>
+  <label><input type="radio" name="optradio" class="cookies-no" value="no">&nbsp;No</label>
 </div> </p>
     </div>
-    <div class="modal-footer">
-      <h3></h3>
-    </div>
+ 
   </div>
 
   </div>
