@@ -60,7 +60,7 @@
 
 <div class="dropdown-content">
 
-<a href="../../plan-a-trip.html" > Plan a trip </a>
+<a href="../../day-passes.html" > Day Passes </a>
 
 <a href="../../culinary-experiences.html"> Culinary Experiences </a> 
  
@@ -78,11 +78,10 @@
 
 </div>
 
-
 <li> <a href="../../rewards-and-recognition.html" > <span > REWARDS AND RECOGNITION </span> </a> </li>
 <li class="dropdown-link" > <a href="../../contact.html"  > CONTACT </a>
 </li> 
-<li class="dropdown-link" > <a href="../../shop.html"  > SHOP </a>
+<li class="dropdown-link" > <a href="../../blog/index.html"  > BLOG </a>
 </li> 
 
 
@@ -91,32 +90,10 @@
 </ul>  
 </nav>
 
-<header>
-   <div style="float:right;padding:10px;" id="google_translate_element"></div>
-
+<header  class="" >
+<div style="float:right;padding:10px;" id="google_translate_element"></div> 
 </header>
 
-<header style="text-align:center;padding:30px;" >
-<ul class="topnav-top">
-
-
-
- <li class="logo_link">  </li>
-
-<li class="dropdown-link"> 
-
-
-
-
-</li>  
-
-
-
-
-
-</ul>
-<a href="../../index.html" ><img src="/images/logo_header.png" class="logo" ></a>
-</header>
 
 <header class="topnav-header">
 
@@ -140,7 +117,8 @@
 
 <div class="dropdown-content">
 
-      <a href="../../plan-a-trip.html" > Plan a trip </a>
+      <a href="../../day-passes.html" > Day Passes</a>
+      
  <a href="../../culinary-experiences.html"> Culinary Experiences </a>
 <a href="../../beaches.html" > Beaches </a>
 
@@ -158,10 +136,9 @@
 
 <li> <a href="../../rewards-and-recognition.html" > <span > REWARDS AND RECOGNITION </span> </a> </li> <span class= "menudivider" >| </span>
 
-<li class="dropdown-link" > <a href="../../contact.html"  > <span >  CONTACT </span></a>
-</li><span class= "menudivider" >| </span>  <li class="dropdown-link" > <a href="../../shop.html"  > <span >  SHOP </span></a>
+<li class="dropdown-link" > <a href="../contact.html"  > <span >  CONTACT </span></a>
+</li><span class= "menudivider" >| </span>  <li class="dropdown-link" > <a href="../../blog/index.html"  > <span >  BLOG </span></a>
 </li> 
-
 <li class="icon">
     <a href="javascript:void(0);" style="font-size:15px;" onclick="openNav()">☰</a>
 </li>
@@ -170,6 +147,28 @@
 
 </ul></header>
 
+
+<header  class="topnav-top-header" >
+<ul class="topnav-top">
+
+
+
+ <li class="logo_link">  </li>
+
+<li class="dropdown-link"> 
+
+
+
+
+</li>  
+
+
+
+
+
+</ul>
+<a href="index.html" ><img src="/images/logo_header.png" class="logo" ></a>
+</header>
 
 <div class="slideshow-container">
 
@@ -351,10 +350,10 @@ Lorenzo Dow Baker, the man credited with single-handedly jumpstarting banana pro
 
 
 <!-- The Modal -->
-<div id="myModal" class="modal">
+<div id="myModal" class="modal" onclick="document.getElementById('myModal').style.display='none'">
 
   <!-- The Close Button -->
-  <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+  <span class="" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
 
   <!-- Modal Content (The Image) -->
   <img class="modal-content" id="img01">
@@ -365,6 +364,33 @@ Lorenzo Dow Baker, the man credited with single-handedly jumpstarting banana pro
 
 
 </div>
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal-footer-panel">
+
+  <!-- Modal content -->
+  <div class="modal-content-footer">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <p>This website uses cookies</p>
+    </div>
+    <div class="modal-body">
+
+
+      <p>We use cookies to help make this website better, to improve our services and for advertising purposes. </p> <p> You can learn more about our use of cookies and change your browser settings in order to avoid cookies by clicking <a href="privacy-and-cookies-statement.html"> here. </a> </p>
+
+      <p> Would you like to continue ? <div class="radio">
+  <label><input type="radio" name="optradio" class="cookies-yes" value="yes">&nbsp;Yes</label>
+</div>
+<div class="radio">
+  <label><input type="radio" name="optradio" class="cookies-no" value="no">&nbsp;No</label>
+</div> </p>
+    </div>
+ 
+  </div>
+
+  </div>
 
 <footer>
 <div class="row firstrow">
@@ -502,7 +528,11 @@ Lorenzo Dow Baker, the man credited with single-handedly jumpstarting banana pro
 <script src="../../scripts/main.js" ></script>
 
 
-
+  <script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'de,en,es,fr,it,ja,la,nl,pa,pl,pt,ru,sv,th,zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 
 </html>
