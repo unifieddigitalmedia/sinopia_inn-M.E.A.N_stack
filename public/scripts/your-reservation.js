@@ -2,8 +2,6 @@
 $('#mc-embedded-subscribe-form').submit(function(ev) {
    
 
-
-
  document.cookie = "subscribers_email=" + document.getElementById("#subscribers_email").value;
 
 

@@ -2,15 +2,18 @@
 
 .bookinglabel, .shortcodeform{
 
+
  background-color:#f0f0f1!important;
 
  padding:10px;
+
+
 
 }
 
 .bookinglabel label{
 
-font-weight:100!important;font-size:200%!important; 
+font-weight:300!important;font-size:200%!important;  color:#cb410b;
 
 }
 

@@ -17,14 +17,21 @@ var span = document.getElementsByClassName("close")[0];
 
 
 span.onclick = function() {
+
    $(".modal-footer-panel").css("display", "none");
 }
 
-// When the user clicks anywhere outside of the modal, close it
+
 window.onclick = function(event) {
+
+var modal = document.getElementById('myModal');
+
     if (event.target == modal) {
+  
        $(".modal-footer-panel").css("display", "none");
+  
     }
+
 }
 
 }
@@ -422,14 +429,16 @@ mainRowDiv.className = "row";
 
 if(z == 0 ){
 
-  mainRowDiv.setAttribute("style","width:100%; background-color:#f8f6f6;padding:100px;border:thin solid #d2d2d2;");
+ // mainRowDiv.setAttribute("style","width:100%; background-color:#f8f6f6;padding:100px;border:thin solid #d2d2d2;");
+
+mainRowDiv.setAttribute("style","width:105%; background-color:#f8f6f6;border:thin solid #d2d2d2; padding:30px; ");
 
 }else{
 
 
-  mainRowDiv.setAttribute("style","width:100%; background-color:white;padding:100px;");
+ // mainRowDiv.setAttribute("style","width:100%; background-color:white;padding:100px;");
 
-
+mainRowDiv.setAttribute("style","width:105%; padding:30px; background-color:white;");
 }
 
 
