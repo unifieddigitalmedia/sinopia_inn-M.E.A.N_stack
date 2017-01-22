@@ -16,23 +16,6 @@
    }(document, 'script', 'facebook-jssdk'));
 
 
-
-
-document.getElementById('fbShareBtn').onclick = function() {
-
-FB.ui(
-
-  {
-    method: 'share',
-    href: 'http://www.sinopiainn.com',
-  },
-  // callback
-  function(response) {}
-
-);
-
-}
-
 window.pAsyncInit = function() {
         PDK.init({
             appId: "4880316741500023076", // Change this
@@ -47,4 +30,53 @@ window.pAsyncInit = function() {
         js.src = "//assets.pinterest.com/sdk/sdk.js";
         pjs.parentNode.insertBefore(js, pjs);
     }(document, 'script', 'pinterest-jssdk'));
+
+
+    function socialShareMail (para) {
+
+
+var url = 'mailto:?subject='+document.title+'&body='+this.location.href;
+
+window.open(url,'_self');
+
+
+}
+
+
+function socialShareTwitter (para) {
+
+
+var url = 'https://twitter.com/share?text='+document.title;
+
+window.open(url,'_self');
+
+
+}
+
+
+function socialShare (para) {
+
+FB.ui(
+
+  {
+    method: 'share',
+    href:this.location.href,
+
+  }, function(response) {}
+
+);
+
+}
+
+
+
+function socialSharePinInterest (para) {
+
+
+var url = 'https://twitter.com/share?text='+document.title;
+
+window.open(url,'_self');
+
+
+}
     
