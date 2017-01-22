@@ -1,5 +1,13 @@
-extends layout
-
-block content
-  h1= title
-  p Welcome to #{title}
+doctype html
+html
+  head
+    title my jade template
+    link(rel='stylesheet', href='/styles/main.css')
+    link(rel='stylesheet', href='//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css')
+    link(rel='stylesheet', href='http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/bootstrap/dist/css/bootstrap.min.css')
+    script(type='text/javascript').
+     var name = "#{name}"
+     var email = "#{email}"
+  body
+    include ../public/guest-survey.html

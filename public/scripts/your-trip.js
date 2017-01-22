@@ -50,7 +50,7 @@ jQuery(document).ready(function(){
 
 
 
-if( getCookie("privacy").length == 0 ){
+if( getCookie("privacy") == 'no' ){
 
 
 var modal = document.getElementById('myModal');
@@ -87,7 +87,7 @@ document.cookie = "privacy=yes";
  modal.style.display = "none";
  }else{
 
-document.cookie = "privacy=";
+document.cookie = "privacy=no";
  modal.style.display = "none";
 
  }

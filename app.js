@@ -23,6 +23,9 @@ var db = mongoose.createConnection(MONGOLAB_URI);
 var routes = require('./routes/index');
 var users = require('./routes/users');
 //var nodemailer = require('nodemailer');
+
+
+
 var client = new pdf.Pdfcrowd('sinopiainn', 'fcfaaea5b060744db668d1bee67ccaae');
 
 var gcm = require('node-gcm');
@@ -42,6 +45,10 @@ var bucket = 'sinopiainn.reservations';
 
 
 var app = express();
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
 
 app.use(busboy());
 
@@ -132,7 +139,29 @@ console.log(req);
 });
 
 //server.listen(3000);
+
+
+//var server =  app.listen(3000);
+
+
+app.get('/guest-survey', function (req, res) {
+
 console.log("Server is listening");
+
+res.render("index", { name:"test", email:"test email" });
+/*
+fs.readFile('public/guest-survey.html', function (err, data) {
+        res.writeHead(200, {
+            'Content-Type': 'text/html',
+                'Content-Length': data.length
+        });
+        res.write(data);
+        res.end();
+    });
+*/
+
+});
+
 
 app.get('/booking-confirmation/', function (req, res) {
 
@@ -3707,9 +3736,7 @@ mandrill_client.messages.sendTemplate({"template_name": template_name, "template
 
 module.exports = app;
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

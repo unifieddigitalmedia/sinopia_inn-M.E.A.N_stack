@@ -5,9 +5,7 @@ $(document).ready(function(){
 
 
 
-if( getCookie("privacy").length == 0 ){
-
-
+if( getCookie("privacy").length == 0 ) {
 
 
 $(".modal-footer-panel").css("display", "block");
@@ -36,6 +34,7 @@ var modal = document.getElementById('myModal');
 
 }
 
+
 $("input[name='optradio']").change(function(){
 
 
@@ -47,7 +46,7 @@ document.cookie = "privacy=yes";
 $(".modal-footer-panel").css("display", "none");
  }else{
 
-document.cookie = "privacy=";
+document.cookie = "privacy=no";
 
 $(".modal-footer-panel").css("display", "none");
 
