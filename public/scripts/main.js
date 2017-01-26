@@ -4,6 +4,59 @@ $(document).ready(function(){
 
 
 
+$.get("https://api.instagram.com/v1/users/self/media/recent/?access_token=207254463.22050d9.9df9602edcf9424082d95c1f55be004e", function(data, status){
+
+ alert("Data:" + data + "\nStatus: " + status);
+
+/*var photoCount = 20;
+
+    var length = data != 'undefined' ? data.length : 0;
+   
+    var limit = photoCount != null && photoCount < length ? photoCount : length;
+  
+ 
+
+
+       
+
+ if(limit > 0) {
+
+
+      for(var i = 0; i < limit; i++) {
+ 
+
+
+
+var myslidesDiv = document.createElement("div");
+
+myslidesDiv.className = "mySlides fade";
+
+document.getElementById("slideshow-container").appendChild(myslidesDiv);
+
+
+var articleImage = document.createElement("img");
+
+articleImage.setAttribute("src",data[i].images.standard_resolution.url);
+
+articleImage.setAttribute("style","width:100%;");
+
+myslidesDiv.appendChild(articleImage);
+
+
+      }
+ 
+
+
+
+    }
+*/
+
+
+
+    });
+
+
+
 
 if( getCookie("privacy").length == 0 ) {
 
@@ -118,6 +171,7 @@ $("#subscribe_button").click(function() {
    document.cookie = "subscribers_email=" + document.getElementById("subscribers_email").value;
 
 
+
    window.location = "connect.html" ;
 
 
@@ -170,6 +224,69 @@ var app = angular.module('sinopia', ['ngResource','typeofbusinessfilter','typeof
 
 app.controller('reservationsystem', function($scope,$http,$resource,$compile) {
 
+
+
+
+
+$scope.loadpics = function(){
+
+$http.get("http://www.sinopiainn.com/public/instagram_test_feed.js").then(function(response) {
+
+    var photoCount = 20;
+
+
+
+ //document.getElementById("slideshow-container").appendChild(document.createTextNode(JSON.stringify(response)));
+
+    var length = response.data.data != 'undefined' ? response.data.data.length : 0;
+   
+
+
+    var limit = photoCount != null && photoCount < length ? photoCount : length;
+  
+ 
+
+
+       
+
+ if(limit > 0) {
+
+
+      for(var i = 0; i < limit; i++) {
+ 
+
+
+
+var myslidesDiv = document.createElement("div");
+
+myslidesDiv.className = "mySlides fade";
+
+document.getElementById("slideshow-container").appendChild(myslidesDiv);
+
+
+var articleImage = document.createElement("img");
+
+articleImage.className = "w3-round";
+
+articleImage.setAttribute("src",response.data.data[i].images.standard_resolution.url);
+
+articleImage.setAttribute("style","max-width: 100%;height: auto;");
+
+myslidesDiv.appendChild(articleImage);
+
+
+      }
+ 
+
+
+
+    }
+  
+    });
+
+
+
+}
 
 $scope.numofdays = 0 ;
 
@@ -540,41 +657,23 @@ var articleItemTitle = document.createElement("p");
 
 articleItemTitle.className = "side_menu_title_blog_summary";
 
-articleItem.setAttribute("style","text-align:center!important;");
+articleItem.setAttribute("style","color:red!important;text-align:center!important;font-weight:200!mportant;");
 
 articleItemTitle.appendChild(document.createTextNode(itemList[counter].childNodes[3].innerHTML));
 
+
+var articleItemTitleLink = document.createElement("a");
+
+articleItemTitleLink.className = "side_menu_title_blog_link";
+
+articleItemTitleLink.setAttribute("href",itemList[counter].childNodes[5].innerHTML);
+
+articleItemTitleLink.appendChild(document.createTextNode("READ THE FULL STORY"));
+
+articleItemTitle.appendChild(articleItemTitleLink);
+
+
 row2col1.appendChild(articleItemTitle);
-
-
-
-
-
-var row3 = document.createElement("div");
-row3.className = "row";
-row2.appendChild(row3);
-
-
-
-
-var row3col1 = document.createElement("div");
-row3col1.className = "col-sm-12";
-row3.appendChild(row3col1);
-
-
-
-
-var articleItemTitle = document.createElement("a");
-
-articleItemTitle.className = "side_menu_title_blog_link";
-
-articleItemTitle.setAttribute("href",itemList[counter].childNodes[5].innerHTML);
-
-articleItemTitle.appendChild(document.createTextNode("READ THE FULL STORY"));
-
-row3col1.appendChild(articleItemTitle);
-
-
 
 
 
@@ -773,7 +872,7 @@ alert("You must be staying with us to book this trip. Please specify the dates y
 
 
 
-$http.get("http://localhost:3000/api/checkavailability/?fromdate="+$scope.fromdate+"&todate="+$scope.todate+"&promo="+$scope.promo).then(function(response) {
+$http.get("http://www.sinopiainn.com/api/checkavailability/?fromdate="+$scope.fromdate+"&todate="+$scope.todate+"&promo="+$scope.promo).then(function(response) {
 
 
                                                           $scope.roomlist = response.data[0];
@@ -929,7 +1028,7 @@ $scope.error = 'Checking availability';
 
 
 
-$http.get("http://localhost:3000/api/checkavailability/?fromdate="+getCookie('fromdate')+"&todate="+getCookie('todate')+"&promo="+getCookie('promo')).then(function(response) {
+$http.get("http://www.sinopiainn.com/api/checkavailability/?fromdate="+getCookie('fromdate')+"&todate="+getCookie('todate')+"&promo="+getCookie('promo')).then(function(response) {
 
 
 
@@ -1642,7 +1741,7 @@ return total;
 
 $scope.reserve = function() {
 
-var resource = $resource('http://localhost:3000/api/personaldetails/',{
+var resource = $resource('http://www.sinopiainn.com/api/personaldetails/',{
 
           id:"@id",
           fname:"@fname",
@@ -1719,7 +1818,7 @@ alert(reserve.ReservationID);
 
                             document.cookie = "promo=" ;
 
-                            window.location = "http://localhost:3000/booking-details.html" ;
+                            window.location = "http://www.sinopiainn.com/booking-details.html" ;
 
 }
   
@@ -1779,7 +1878,7 @@ alert(reserve.ReservationID);
 
                             document.cookie = "promo=" ;
 
-                            window.location = "http://localhost:3000/booking-details.html" ;
+                            window.location = "http://www.sinopiainn.com/booking-details.html" ;
 
 }
   
@@ -1813,7 +1912,7 @@ alert(getCookie('reservationID'));
 
 $scope.sendpaymentmethodnonce = function(para,para1) {
 
-var resource = $resource('http://localhost:3000/checkout/',{
+var resource = $resource('http://www.sinopiainn.com/checkout/',{
 
           payment_method_nonce:"@payment_method_nonce",
           total:"@total",
@@ -1843,7 +1942,7 @@ if(reserve.ERROR){ alert(reserve.ERROR); } else {
                            
 
 
-                            window.location = "http://localhost:3000/booking-confirmation.html" ;
+                            window.location = "http://www.sinopiainn.com/booking-confirmation.html" ;
 
 }
   
@@ -1888,7 +1987,7 @@ if (y.document)y = y.document;*/
 
 
 
-$http.get("http://localhost:3000/api/businesses").then(function(response) {
+$http.get("http://www.sinopiainn.com/api/businesses").then(function(response) {
 
 
 $scope.businesses = response.data;
@@ -2518,7 +2617,7 @@ $scope.booktrip = function (para,content)
 
 
 
-var resource = $resource('http://localhost:3000/api/booktrip/',{
+var resource = $resource('http://www.sinopiainn.com/api/booktrip/',{
 
           triptoken:"@triptoken", 
           distance:"@distance",   
@@ -2556,7 +2655,7 @@ var reserve = resource.save(
 
 
 
-                            window.location = "http://localhost:3000/make-a-reservation.html" ;
+                            window.location = "http://www.sinopiainn.com/make-a-reservation.html" ;
 
 
         }
@@ -2874,32 +2973,27 @@ function currentDiv(n) {
   showDivs(slideIndex = n);
 }
 
+var slideIndex = 0;
+showSlides();
+
+
 
 function showSlides(n) {
 
- 
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-
-
-
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length} ;
-
-
-
-
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";  
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-
-
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
+ var i;
+    var slides = document.getElementsByClassName("mySlides");
+    //var dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex> slides.length) {slideIndex = 1}    
+    /*for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }*/
+    slides[slideIndex-1].style.display = "block";  
+    //dots[slideIndex-1].className += " active";
+    setTimeout(showSlides, 3000); // Change image every 2 seconds
 }
 
 var slideIndex = null;
@@ -2965,4 +3059,6 @@ var captionText = document.getElementById("caption");
     captionText.innerHTML = para.alt;
 
 }
+
+
 

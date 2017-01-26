@@ -1,3 +1,24 @@
+
+#google_translate_element a{
+padding:0px;margin-right:5px;width:100%;font-size:70%;
+}
+
+#google_translate_element span::before { 
+
+    content: "\00a0 "; 
+
+}
+
+#google_translate_element span::after { 
+
+    content: "\00a0 "; 
+
+}
+/**
+
+#google_translate_element img{
+  display: none;
+}**/
 /*********START OF RESERVATION FORM *******/
 
 .bookinglabel, .shortcodeform{
@@ -224,20 +245,22 @@ ul.topnav-top li { display: inline-block;  vertical-align:middle; }
 
 /******** START OF SLIDER CONTAINER CSS ********/
 
-
-
+.mySlides{display:none;}
 
 .mySlides-main {height:auto;width:100%;margin:0 auto;}
 
-.mySlides {height:auto;width:100%;margin:0 auto;}
+.mySlides {height:auto;width:auto;margin:0 auto;}
+
+
 
 .slideshow-container-main {
 
-   width:auto;max-width:auto; 
+  width:auto;max-width:auto; 
   position: relative;
   margin: auto;
   height:40%;
   margin-top:10px;
+
 }
 /* 
 
@@ -247,18 +270,19 @@ padding:0px!important; margin:0px!important;width:auto;max-width:auto;  height:8
 
   */
 
-
-
-
-
 .slideshow-container {
- width:auto;
- max-width:auto; 
-  position: relative;
-  margin: auto;
-  height:40%;
-  margin-top:10px;
+
+max-width: auto;
+    height: auto;
+ position: relative;
+ margin: auto;
+ height:40%;
+ margin-top:10px;
+
+
+
 }
+
 /* Caption text */
 .text {
   color: #f2f2f2;
@@ -299,23 +323,25 @@ padding:0px!important; margin:0px!important;width:auto;max-width:auto;  height:8
 * {box-sizing:border-box}
 
 
+
 /* Fading animation */
 .fade {
   -webkit-animation-name: fade;
-  -webkit-animation-duration: 11.5s;
+  -webkit-animation-duration: 3s;
   animation-name: fade;
-  animation-duration: 11.5s;
+  animation-duration: 3s;
 }
 
 @-webkit-keyframes fade {
-  from {opacity: .8} 
+  from {opacity: .4} 
   to {opacity: 1}
 }
 
 @keyframes fade {
-  from {opacity: .8} 
+  from {opacity: .4} 
   to {opacity: 1}
 }
+
 
 
 
@@ -415,11 +441,11 @@ body{margin:0!important;padding:0!important;}
 .side_menu_title{  border-bottom:#cb410b thin dotted;padding-bottom:10px;padding-top:10px; font-size:250%;font-weight:100!important; }
 
 
-.side_menu_title_blog { text-align:center!important; color:#cb410b; border-bottom:#d2d2d2 thin dotted;padding:25px;font-size:250%;font-weight:200!important; }
+.side_menu_title_blog { text-align:center!important; color:#cb410b; border-bottom:#d2d2d2 thin dotted;padding:15px;font-size:250%;font-weight:200!important; }
 
-.side_menu_title_blog_summary {text-align:center!important;  color:#979696; border-bottom:#d2d2d2 thin dotted;padding:25px;font-size:150%;font-weight:400!important; }
+.side_menu_title_blog_summary {text-align:left!important;  color:#979696; padding:15px;font-size:150%;font-weight:200!important; }
 
-.side_menu_title_blog_link { text-decoration:none; text-align:center!important;  color:#000000; padding:35px; font-size:100%;font-weight:400!important; }
+.side_menu_title_blog_link { text-decoration:none; text-align:center!important;  color:#000000; padding:15px; font-size:70%;font-weight:400!important; }
 
 .side_menu_title_blog_link:hover {  color:#cb410b; text-decoration:none; }
 

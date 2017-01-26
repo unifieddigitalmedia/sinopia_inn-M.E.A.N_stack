@@ -1,0 +1,20 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+ <title>Instagramify your website</title> 
+</head>
+<body>
+<div id="instafeed"></div>
+ <script type="text/javascript" src="scripts/instafeed.min.js"></script>
+ <script type="text/javascript">
+ var feed = new Instafeed({
+ get: 'tagged',
+ tagName: 'awesome',
+ clientId: '02b47e1b98ce4f04adc271ffbd26611d',
+ accessToken: '623597756.02b47e1.3dbf3cb6dc3f4dccbc5b1b5ae8c74a72',
+ template: '<a href="{{link}}"><img src="{{image}}" /></a>'
+ });
+ feed.run();
+</script>
+</body>
+</html>

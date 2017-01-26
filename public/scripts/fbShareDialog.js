@@ -42,9 +42,7 @@ window.open(url,'_self');
 
 }
 
-
 function socialShareTwitter (para) {
-
 
 var url = 'https://twitter.com/share?text='+document.title;
 

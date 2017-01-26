@@ -40,13 +40,13 @@
 
 <title> Sinopia Inn  -  Self Catering Holiday Villa in Portland Jamaica  | Home </title>
 
-
+<script> </script>
 </head>
 
-<body ng-app="sinopia" ng-controller = "reservationsystem" >
+<body ng-app="sinopia" ng-controller = "reservationsystem" onload="showSlides()">
 
 
-<nav id="mySidenav" class="sidenav">
+<nav id="mySidenav" class="sidenav" ng-init="loadpics()">
 
 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
 
@@ -99,12 +99,16 @@
 
 
 <header>
-<!--   -->
+<!--  <div  style="float:right;padding:10px;" id="google_translate_element"></div>  -->
 
 </header>
 
 <header  class="" >
-<div style="float:right;padding:10px;" id="google_translate_element"></div> 
+
+<div  style="float:right;padding:10px;" id="google_translate_element"></div> 
+
+
+
 </header>
 
 
@@ -260,6 +264,7 @@ Sinopia Inn would like to welcome you to its rustic hideaway. Here you can exper
 </div>
 
 
+
 <div  class="container-fluid maindiv">
 
 
@@ -349,9 +354,17 @@ Sinopia Inn would like to welcome you to its rustic hideaway. Here you can exper
 
 <p>
 SINOPIA is an early twentieth century house refurbished with modern interior decor which is set on two acres of lush green gardens, filled with palm trees - making it a stunning hideaway. The relaxed environment with rustic views is complemented by personalised services and accommodation.</p>
-
+</br>
 
 <p> Its panoramic views with an outdoor patio, man-made jerk pit and an indoor lounge that doubles as a meeting place to wile away an afternoon, makes it ideal for hip travellers, family and friends. Guests are encouraged to invite friends and family making this a winning experience.</p>
+
+</br>
+<p> 
+
+Here you're able to experience tranquil nights and good accommodation alternatives to the resort locations of Montego Bay, Ocho Rios and Negril. It’s not like you’re turning your back on traditional island vacations that include all-inclusive beaches and drinks, but it is a positive alternative experience of the cool countryside, its beaches and local culture.
+
+</p>
+
 
 </br>
 
@@ -361,188 +374,19 @@ SINOPIA is an early twentieth century house refurbished with modern interior dec
 
 <p class="side_menu_title ">  &nbsp; </p>
 
-<div class="slideshow-container">
-
-<div class="mySlides  fade"  >
-  <div class="numbertext">1 / 3</div>
-
-<div class="row" style="margin:0px!important;">
-
-    <div class="col-sm-4 " >
-         
-
-<!--
-
-<div class='home_text'>
-
-<div class="home_text_innerdiv"  > 
-
-
-<p class="home_text_caption" >
-
-WELCOME
-
-</p>
-
-
-<p class="home_text_sub_caption" >
-
-Sinopia Inn would like to welcome you to its rustic hideaway. Here you can experience rustic views with lush green hills and skies streaked with colour - not to mention amazing sunsets that will have you feeling the vibes to just chill.
-
-
-</p> 
+<!--<div class="slideshow-container" id="slideshow-container">
 
 
 
-
-<p class="home_text_sub_sub_caption" > 
-
-
-
-
-</p> 
-
-</div>
 
 
 </div>-->
 
+<div id="instafeed" style="text-align:center;width:100%;"></div>
 
-    </div>
-
-     <div class="col-sm-8 " > </div>
-
-</div>
-
-
-<img src="images/homepage1.jpg" style="width:100%"/>
-
-
-</div>
-
-<div class="mySlides  fade"  >
-  <div class="numbertext">2 / 3</div>
-
-
-
-
-
-<div class="row" style="margin:0px!important;">
-  
-    <div class="col-sm-4 " >
-         
-
-<!--
-
-<div class='home_text'>
-
-<div class="home_text_innerdiv"  > 
-
-
-<p class="home_text_caption" >
-
-OPEN PLAN DINING AREA
-
-</p>
-
-
-<p class="home_text_sub_caption" >
-
-Doubles as a meeting place to while away an afternoon with wood-grained ceramic floor tiles and ceiling work that evokes a feeling of times past - as the wooden beams used to support the roof have remained intact for years.
-
-
-</p> 
-
-
-
-
-<p class="home_text_sub_sub_caption" > 
-
-
-
-
-</p> 
-
-</div>
-
-
-</div>-->
-
-
-    </div>
-
-     <div class="col-sm-8 " > </div>
-</div>
-
-<img src="images/homepage2.jpg" style="width:100%">
-
-</div>
-
-<div class="mySlides fade" >
-  
-  <div class="numbertext">3 / 3</div>
-
-
-
-
-<div class="row" style="margin:0px!important;">
-  
-    <div class="col-sm-4 " >
-         
-
-<!--
-
-<div class='home_text'>
-
-<div class="home_text_innerdiv"  > 
-
-
-<p class="home_text_caption" >
-
-ENSUITE BEDROOMS
-
-</p>
-
-
-<p class="home_text_sub_caption" >
-
-
-Where an old world meets the new as the refurbished wooden flooring and antique furniture creates a rustic environment while our super comfortable mattresses provide absolute comfort for a sound sleep. 
-
-</p> 
-
-
-
-<p class="home_text_sub_sub_caption" > 
-
-
-
-
-</p> 
-
-</div>
-
-
-</div> -->
-
-
-    </div>
-
-     <div class="col-sm-8 " > </div>
-</div>
- 
- <img src="images/homepage3.jpg" style="width:100%">
-
-</div>
-
-</div>
 <br>
 
-<div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span> 
-  <span class="dot" onclick="currentSlide(2)"></span> 
-  <span class="dot" onclick="currentSlide(3)"></span> 
-</div>
+
 
 
 
@@ -786,6 +630,8 @@ Where an old world meets the new as the refurbished wooden flooring and antique 
 
 </footer>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" ></script>
+
 <script src="/jquery/dist/jquery.min.js" ></script>
 
 <script src="/bootstrap/dist/js/bootstrap.min.js" ></script>
@@ -802,34 +648,34 @@ Where an old world meets the new as the refurbished wooden flooring and antique 
 
 <script src="/scripts/fbShareDialog.js" ></script>
 
-  <script type="text/javascript">
+<script type="text/javascript">
+
 function googleTranslateElementInit() {
+
   new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'de,en,es,fr,it,ja,la,nl,pa,pl,pt,ru,sv,th,zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+
 }
+
 </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-<script>
-$(document).ready(function(){
-   
- 
-
-$("#subscribe_button").click(function() {
-
-
-   document.cookie = "subscribers_email=" + document.getElementById("subscribers_email").value;
-
-
-   window.location = "connect.html" ;
 
 
 
+<script type="text/javascript" src="/scripts/instafeed.js"></script>
 
-});
+<script type="text/javascript">
 
 
-});
-
- 
-
+  var userFeed = new Instafeed({
+    get: 'user',
+    userId: '207254463',
+    clientId: '22050d93815945ac9f575e3fcf38962d',
+    accessToken: '207254463.22050d9.9df9602edcf9424082d95c1f55be004e',
+    sortBy: 'most-recent',
+    template: '<img src="{{image}}" style="padding:3px;"/>',
+    limit: 9,
+    links: false
+  });
+  userFeed.run();
 
 </script>
 </body>

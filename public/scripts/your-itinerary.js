@@ -171,7 +171,7 @@ var init = function () {
 
 $scope.itinerary_array = JSON.parse(getCookie('itinerary'));
 
-$http.get("http://localhost:3000/api/businesses").then(function(response) {
+$http.get("http://www.sinopiainn.com/api/businesses").then(function(response) {
 
 $scope.businesses = response.data;
 
@@ -182,7 +182,7 @@ $scope.miles = $scope.filterBylocation($scope.businesses,$scope.itinerary_array)
                                                                           });
 
 
-$http.get("http://localhost:3000/api/hotels").then(function(response) {
+$http.get("http://www.sinopiainn.com/api/hotels").then(function(response) {
 
 $scope.accomodations = response.data;
 
@@ -293,7 +293,7 @@ $scope.bookTrip = function(){
 
 
 
-var resource = $resource('http://localhost:3000/api/booktrip/',{
+var resource = $resource('http://www.sinopiainn.com/api/booktrip/',{
 
           id:"@id",
           name:"@name",

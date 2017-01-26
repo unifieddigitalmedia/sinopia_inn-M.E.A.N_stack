@@ -286,7 +286,7 @@ Email info@sinopiainn.com</p>
 
 <!-- Begin MailChimp Signup Form -->
 <div class="container-fluid" style="color: black;">
-<div id="mc_embed_signup"><form action="//sinopiainn.us12.list-manage.com/subscribe/post?u=bfd67fe6d111372ab18c5a6a4&amp;id=d6e44c0b81" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+<div id="mc_embed_signup"><form action="//sinopiainn.us12.list-manage.com/subscribe/post?u=bfd67fe6d111372ab18c5a6a4&id=d6e44c0b81" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 <div id="mc_embed_signup_scroll">
 <div class="row">
 <div class="col-sm-4">
@@ -822,11 +822,29 @@ var app = angular.module('sinopia', []);
 
 app.controller('reservationsystem', function($scope,$http) {
 
-$scope.asda = "ASDAD";
 
-$scope.connectemail = getCookie("connectemail");
+$scope.connectemail = getCookie("subscribers_email");
 
-alert($scope.connectemail);
+function getCookie(cname) {
+
+    var name = cname + "=";
+  
+    var ca = document.cookie.split(';');
+  
+    for(var i=0; i<ca.length; i++) {
+  
+        var c = ca[i];
+  
+        while (c.charAt(0)==' ') c = c.substring(1);
+  
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+  
+    }
+  
+    return "";
+
+}
+
 
 });
 

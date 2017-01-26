@@ -47,8 +47,7 @@ var bucket = 'sinopiainn.reservations';
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+
 
 app.use(busboy());
 
@@ -130,11 +129,10 @@ app.get('/', function (req, res) {
 
 var http = require('http');
 
-
 var server = http.createServer(function (req, res) {
 
-
 console.log(req);
+
 
 });
 
@@ -148,7 +146,11 @@ app.get('/guest-survey', function (req, res) {
 
 console.log("Server is listening");
 
-res.render("index", { name:"test", email:"test email" });
+app.set('views', path.join(__dirname, 'views'));
+
+app.set('view engine', 'jade');
+
+res.render("index.jade", { name:req.query.name, email:req.query.email });
 /*
 fs.readFile('public/guest-survey.html', function (err, data) {
         res.writeHead(200, {
@@ -880,9 +882,9 @@ app.get('/api/timeline/', function(req, res) {
 
 var containerArray= [];
 
-var reservationID = new mongo.ObjectID(req.query.name);
+var reservationID = new mongo.ObjectID(req.query.email);
 
-db.collection('reservation').find({"name":req.query.name},{}).toArray(function(e, results){
+db.collection('reservation').find({"email":req.query.email},{}).toArray(function(e, results){
 
 if (e) return next(e)
 
