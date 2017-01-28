@@ -20,11 +20,8 @@ var fs = require('fs-extra');
 var mongoose = require('mongoose');
 var MONGOLAB_URI = 'mongodb://sinopiainn-administrator:321123ETz$@ds057476.mlab.com:57476/heroku_mn2k4bdf';
 var db = mongoose.createConnection(MONGOLAB_URI);
-var routes = require('./routes/index');
-var users = require('./routes/users');
+
 //var nodemailer = require('nodemailer');
-
-
 
 var client = new pdf.Pdfcrowd('sinopiainn', 'fcfaaea5b060744db668d1bee67ccaae');
 
@@ -39,9 +36,6 @@ AWS.config.loadFromPath('config.json');
 var s3 = new AWS.S3();
 
 var bucket = 'sinopiainn.reservations';
-
-
-
 
 
 var app = express();
@@ -125,24 +119,15 @@ app.get('/', function (req, res) {
 
       res.sendFile(path.join(__dirname + "/index.html"));
 
-      })
-
-var http = require('http');
-
-var server = http.createServer(function (req, res) {
-
-console.log(req);
-
-
-});
-
-//server.listen(3000);
-
-
-//var server =  app.listen(3000);
+      });
 
 
 app.get('/guest-survey', function (req, res) {
+
+
+var routes = require('./routes/index');
+
+var users = require('./routes/users');
 
 console.log("Server is listening");
 
@@ -169,13 +154,13 @@ app.get('/booking-confirmation/', function (req, res) {
 
       res.sendFile(path.join(__dirname + "/public/booking-confirmation.html"));
 
-      })
+      });
 
 app.get('connect', function (req, res) {
 
       res.sendFile(path.join(__dirname + "/public/connect.html"));
 
-      })
+      });
 
 
 app.use(express.static('bower_components'));
@@ -670,10 +655,88 @@ if(err){ res.json({"ERROR": "There was an error on our saerver'" });}else{
 
 
 
+app.post('/api/upload-bulk-reservation-photo', function(req, res) {
+
+var fileNames = [];
+
+console.log(req.query.fileNames);
+
+var d = new Date();
+
+var date_created = d.toDateString();
+
+var time_created = d.toDateString();
+
+var reservationID = new mongo.ObjectID(req.query.resID);
+
+
+
+waterfall([function(callback){
+
+for(var x = 0 ; x < req.query.fileNames.length; x++){
+
+var directory =  req.query.name.trim()+"/"+req.query.fileNames[x]; 
+
+db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos": { 
+
+"image_url" : "https://s3-us-west-2.amazonaws.com/"+bucket+"/"+directory,
+"text" : "" , 
+"date_created" : date_created,
+"time_created" : time_created,
+
+}  } } , function(err, results) { 
+
+  if (err) return next(err)
+
+ 
+
+});
+
+
+}
+
+callback(null);
+
+},function(callback){
+
+
+
+ var response = {"ERROR":""};
+
+ res.json(response);
+
+
+
+
+}], function(err, results) { 
+
+ if (err) {
+            
+
+            var response = {"ERROR":"Error uploading your picture:"};
+
+            res.json(results);
+
+            console.log("Error uploading data: ", err);
+
+        } else {
+
+
+ res.json(results);
+
+        }
+
+
+});
+
+
+
+
+
+});
+
 
 app.post('/api/upload-reservation-photo', multipartMiddleware, function(req, res) {
-
-console.log("got");
 
 var d = new Date();
 
@@ -682,6 +745,7 @@ var reservationID = new mongo.ObjectID(req.query.resID);
 var date_created = d.toDateString();
 
 var time_created = d.toDateString();
+
 
 var filename =  req.files.displayImage.originalFilename;
 
@@ -723,8 +787,7 @@ var name = req.query.name.trim();
         } else {
            
          
-
-          db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos": { 
+db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos": { 
 
 "image_url" : "https://s3-us-west-2.amazonaws.com/"+bucket+"/"+directory,
 "text" : req.query.message , 
@@ -735,9 +798,11 @@ var name = req.query.name.trim();
 
   if (err) return next(err)
 
-  var response = {"ERROR":""};
+ 
+   
+ var response = {"ERROR":""};
 
-    res.json(response);
+ res.json(response);
 
 
 
@@ -755,134 +820,18 @@ var name = req.query.name.trim();
    }
 
 });
-      
 
-/*
-var directory = "public/reservations/"+req.query.name+"/"; 
-
-
-
-if (fs.existsSync(directory)) {
-
-
-
-fs.readFile(req.files.displayImage.path, function (err, data) {
-
-
-   if (err) {
-
-
-      return console.error(err);
-   
-      var response = {"ERROR":"There was an system error. Please contact the web administrator."};
-
-      res.json(response);
-
-
-
-   }
-
-fs.writeFile(directory+filename, data, function (err) {
-
- if (err) return next(err)
-
-db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos": { 
-
-"image_url" : directory+filename,
-"text" : req.query.message , 
-"date_created" : date_created,
-"time_created" : time_created,
-
-}  } } , function(err, results) { 
-
-  if (err) return next(err)
-
-  var response = {"ERROR":""};
-
-    res.json(response);
-
-
-
- });
-
- });
 
 
 
 
 });
-
-
-}else{
-
-  fs.mkdir(directory,function(err){
-
-   if (err) {
-      return console.error(err);
-   }
-
-
-fs.readFile(req.files.displayImage.path, function (err, data) {
-
-
-   if (err) {
-
-
-      return console.error(err);
-   
-      var response = {"ERROR":"There was an system error. Please contact the web administrator."};
-
-      res.json(response);
-
-
-
-   }
-
-fs.writeFile(directory+filename, data, function (err) {
-
- if (err) return next(err)
-
-db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos": { 
-
-"image_url" : directory+filename,
-"text" : req.query.message , 
-"date_created" : date_created,
-"time_created" : time_created,
-
-}  } } , function(err, results) { 
-
-  if (err) return next(err)
-
-  var response = {"ERROR":""};
-
-    res.json(response);
-
-
-
- });
-
- });
-
-
-
-
-});
-
-
-});
-
-}*/
-
-
-});
-
 
 
 app.get('/api/timeline/', function(req, res) {
 
 var containerArray= [];
 
-var reservationID = new mongo.ObjectID(req.query.email);
 
 db.collection('reservation').find({"email":req.query.email},{}).toArray(function(e, results){
 
@@ -1518,7 +1467,7 @@ mandrill_client.messages.sendTemplate({"template_name": template_name, "template
 
 if(e){return  console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message); }
    
- 
+   callback(null,o_id,results);
 });
 
 
@@ -3732,14 +3681,6 @@ mandrill_client.messages.sendTemplate({"template_name": template_name, "template
 
 
 
-
-
-
-
-module.exports = app;
-
-
-
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -3748,8 +3689,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-app.use('/users', users);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -3758,7 +3699,7 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-// error handlers
+/*// error handlers
 
 // development error handler
 // will print stacktrace
@@ -3781,6 +3722,6 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
+*/
 
 module.exports = app;

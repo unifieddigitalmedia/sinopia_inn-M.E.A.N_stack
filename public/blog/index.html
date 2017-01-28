@@ -177,17 +177,12 @@
 
 <div class="row booking-form-row" style="margin:0px!important;">
 
-    <div class="col-sm-1">
-
-
-    </div>
-
-    <div class="col-sm-4 bookingform-connect">
-
-
+     <div class="col-sm-5 bookingform-connect">
+</br></br>
+<!--<div id="instafeed" style="text-align:center;width:100%;"></div>-->
 
     </div>
-<div class="col-sm-1"> </div>
+ <div class="col-sm-1"> </div>
     <div class="col-sm-5"> 
 <div class="bookingform-rewards">
       <h2 >  
@@ -296,7 +291,7 @@
 
           <div class="col-sm-4 divbox" >
 
-<i class="fa fa-cloud" style="font-size:80px;color:#cb410b;text-shadow:2px 2px 4px #000000;"> 1 </i>
+<i class="fa fa-cloud" style="font-size:60px;color:#cb410b;text-shadow:2px 2px 4px #000000;"> 1 </i>
 
 <p> <i> Continents Visited </i> </p>
           </div>
@@ -304,7 +299,7 @@
           <div class="col-sm-4 divbox" >
 
 
-<i class="fa fa-plane" style="font-size:80px;color:#cb410b;text-shadow:2px 2px 4px #000000;"> 1 </i>
+<i class="fa fa-plane" style="font-size:60px;color:#cb410b;text-shadow:2px 2px 4px #000000;"> 1 </i>
 <p> <i> Countries Visited </i> </p>
 
 
@@ -482,7 +477,24 @@ function googleTranslateElementInit() {
 }
 </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
+<script type="text/javascript" src="../scripts/instafeed.js"></script>
 
+<script type="text/javascript">
+
+
+  var userFeed = new Instafeed({
+    get: 'user',
+    userId: '207254463',
+    clientId: '22050d93815945ac9f575e3fcf38962d',
+    accessToken: '207254463.22050d9.9df9602edcf9424082d95c1f55be004e',
+    sortBy: 'most-recent',
+    template: '<img src="{{image}}" style="padding:3px;"/>',
+    limit: 4,
+    links: false
+  });
+  userFeed.run();
+
+</script>
 </body>
 
 </html>
