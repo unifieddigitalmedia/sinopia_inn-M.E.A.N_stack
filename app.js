@@ -676,7 +676,7 @@ waterfall([function(callback){
 for(var x = 0 ; x < req.query.fileNames.length; x++){
 
 
-var name = req.query.name.trim();
+var name = req.query.name;
 
 var directory =  name+"/"+req.query.fileNames[x]; 
 
@@ -686,6 +686,7 @@ db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos
 "text" : "" , 
 "date_created" : date_created,
 "time_created" : time_created,
+"reservationID" : reservationID 
 
 }  } } , function(err, results) { 
 
