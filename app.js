@@ -797,6 +797,7 @@ db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos
 "text" : req.query.message , 
 "date_created" : date_created,
 "time_created" : time_created,
+"id":req.query.resID
 
 }  } } , function(err, results) { 
 
@@ -845,7 +846,7 @@ if (e) return next(e)
 for (var x = 0 ; x < results.length ; x++){
 
 
-containerArray.push({ images : results[x].photos , name : req.query.name ,  location : "" , from : results[x].fromdate ,  to : results[x].todate });
+containerArray.push({ images : results[x].photos , name : req.query.name ,  location : "" , from : results[x].fromdate ,  to : results[x].todate , id: results[x]._id });
 
 
 }
