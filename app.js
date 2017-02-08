@@ -56,7 +56,7 @@ app.use(express.static(__dirname + '/'));
 process.env.NODE_ENV = 'development';
 
 
-var hotelID = '5855a1f3523d3f70c7dd48ac';
+var hotelID = '5899be76abfda66ea097c580';
 
 
 var braintree = require("braintree");
@@ -439,7 +439,7 @@ app.get('/api/mobile/checkhotelavailability/', function (req, res) {
 
 
 
-var o_id = new mongo.ObjectID("5855a1f3523d3f70c7dd48ac");
+var o_id = new mongo.ObjectID("5899be76abfda66ea097c580");
 
 var availability = [];
 
@@ -655,11 +655,11 @@ if(err){ res.json({"ERROR": "There was an error on our saerver'" });}else{
 
 
 
-app.post('/api/upload-bulk-reservation-photo', function(req, res) {
+app.get('/api/upload-bulk-reservation-photo', function(req, res) {
 
 var fileNames = [];
 
-console.log(req.query.fileNames);
+console.log("RESID - "+req.query.resID);
 
 var d = new Date();
 
@@ -669,16 +669,11 @@ var time_created = d.toDateString();
 
 var reservationID = new mongo.ObjectID(req.query.resID);
 
-
-
 waterfall([function(callback){
 
-for(var x = 0 ; x < req.query.fileNames.length; x++){
+var name = req.query.email;
 
-
-var name = req.query.name;
-
-var directory =  name+"/"+req.query.fileNames[x]; 
+var directory =  name+"/"+req.query.fileNames; 
 
 db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos": { 
 
@@ -686,7 +681,7 @@ db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos
 "text" : "" , 
 "date_created" : date_created,
 "time_created" : time_created,
-"reservationID" : reservationID 
+"id":reservationID
 
 }  } } , function(err, results) { 
 
@@ -697,7 +692,6 @@ db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos
 });
 
 
-}
 
 callback(null);
 
@@ -797,7 +791,7 @@ db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos
 "text" : req.query.message , 
 "date_created" : date_created,
 "time_created" : time_created,
-"id":req.query.resID
+"id":reservationID
 
 }  } } , function(err, results) { 
 
@@ -846,7 +840,7 @@ if (e) return next(e)
 for (var x = 0 ; x < results.length ; x++){
 
 
-containerArray.push({ images : results[x].photos , name : req.query.name ,  location : "" , from : results[x].fromdate ,  to : results[x].todate , id: results[x]._id });
+containerArray.push({ images : results[x].photos , name : req.query.name ,  location : "" , from : results[x].fromdate ,  to : results[x].todate , id:results[x]._id });
 
 
 }
@@ -949,7 +943,7 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '5855a1f3523d3f70c7dd48ac');
+var hotelID = new mongo.ObjectID( '5899be76abfda66ea097c580');
 
 var offerArray = [];
 
@@ -1521,7 +1515,7 @@ var name = req.query.fname.concat(" ").concat(req.query.lname);
 
 name = name.trim();
 
-var directory =  name+"/"+arg2+".jpg"; 
+var directory =  req.query.email+"/"+arg2+".jpg"; 
 
 var s3Bucket = new AWS.S3( { params: {Bucket: bucket} } );
 
@@ -1557,7 +1551,7 @@ var params = {Key: directory, Body: data};
            
 var directory =  name+"/"+arg2; 
 
-var arg1 = arg1.toString();
+//var arg1 = arg1.toString();
 
 var params = {Key: directory, Body: arg1};
 
@@ -1885,7 +1879,7 @@ db.collection('hotels').updateOne( {"token":req.query.token}, { $set: { "tripID"
 
 app.get('/api/checkhotelavailability/', function (req, res) {
 
-var o_id = new mongo.ObjectID("5855a1f3523d3f70c7dd48ac");
+var o_id = new mongo.ObjectID("5899be76abfda66ea097c580");
 
 var availability = [];
 
@@ -2231,7 +2225,7 @@ app.get("/api/reservation-details/", function (req, res) {
 
 
 
-var hotelID = new mongo.ObjectID( '5855a1f3523d3f70c7dd48ac');
+var hotelID = new mongo.ObjectID( '5899be76abfda66ea097c580');
 
 var o_id = new mongo.ObjectID(req.query.reservationID);
 
@@ -2283,7 +2277,7 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '5855a1f3523d3f70c7dd48ac');
+var hotelID = new mongo.ObjectID( '5899be76abfda66ea097c580');
 
 var offerArray = [];
 
@@ -2563,7 +2557,7 @@ db.collection('hotels').updateOne( {"rooms._id":req.body['roomarray[]'][x]._id},
 
 
 
-var directory = req.query.fname+" "+req.query.lname+"/"+arg1; 
+var directory = req.query.email+"/"+arg1; 
 
 var s3Bucket = new AWS.S3( { params: {Bucket: bucket} } );
 
