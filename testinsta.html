@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"> 
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="description" content="Self Catering Holiday Villa in Portland Jamaica">
+
+<meta name="keywords" content="Holiday,Villa,Portland,Port Antonio,Jamaica,Self Catering,Travel, Excursions, Beaches, Experiential Trips. Tours, Sight seeing, Yoga, Waterfalls, Rivers, Rafting, Blue Lagoon, Sun ,Sand, Sea">
+
+<meta name="author" content="Machel Slack">
+
+
+
+<meta property="fb:app_id"             content="619443938242215" />
+<meta property="og:url"                content="http://www.sinopiainn.com/" />
+<meta property="og:type"               content="website" />
+<meta property="og:title"              content="Sinopia Inn - Self Catering Holiday Villa in Portland Jamaica | Home" />
+<meta property="og:description"        content="Self Catering Holiday Villa in Portland Jamaica" />
+<meta property="og:image"              content="http://www.sinopiainn.com/images/homepage1.jpg" />
+
+
+<link rel="stylesheet" type="text/css" href="/styles/main.css">
+
+<link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+  
+<link rel="icon" type="image/png"  href="/images/jmtrax_icon.png">
+  
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="description" content="Self Catering Holiday Villa in Portland Jamaica">
+
+<title> Sinopia Inn  -  Self Catering Holiday Villa in Portland Jamaica  | Home </title>
+
+
+</head>
+
+<body ng-app="sinopia" ng-controller = "reservationsystem" onload="showSlides()">
+ 
+<!-- The Modal -->
+<div id="myModal" class="modal-footer-panel">
+
+  <!-- Modal content -->
+  <div class="modal-content-footer">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <p>This website uses cookies. We use cookies to help make this website better, to improve our services and for advertising purposes.You can learn more about our use of cookies and change your browser settings in order to avoid cookies by clicking <a href="privacy-and-cookies-statement.html"> here. </a>  Would you like to continue ?   <label><input type="radio" name="optradio" class="cookies-yes" value="yes">&nbsp;Yes</label>&nbsp;<label><input type="radio" name="optradio" class="cookies-no" value="no">&nbsp;No</label></p>
+    </div>
+    <div class="modal-body">
+
+
+     
+
+      <p><div class="radio">
+ 
+</div>
+<div class="radio">
+  
+</div> </p>
+    </div>
+ 
+  </div>
+
+  </div>
+
+<nav id="mySidenav" class="sidenav" ng-init="loadpics()">
+
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+
+<ul>
+
+<li class="dropdown-link"> <a href="index.html" >   HOME   </a>  </li>
+
+<li class="dropdown-link"> <a href="our-villa.html" > OUR VILLA </a> 
+
+
+
+</li>  
+
+<li class="dropdown-link" > <a href="rooms-and-rates.html"  >ROOMS AND RATES </a>
+</li>  
+
+<li class="dropdown-link"> <a href="food-and-travel.html"  >FOOD AND TRAVEL</a>  
+
+<div class="dropdown-content">
+
+<a href="day-passes.html" > Day Passes </a>
+
+<a href="culinary-experiences.html"> Culinary Experiences </a> 
+ 
+<a href="beaches.html" > Beaches </a>
+
+ <a href="treks.html" > Mountain and Bike Treks </a>
+ 
+ <a href="yoga.html" > Yoga</a>
+ 
+ <a href="experiential-trips.html" > Experiential Trips</a>
+ 
+ <a href="local-experiences.html" > Local Experiences and Events</a>
+
+ <a href="family-sporting-trips.html" > Family and Sporting Trips </a>
+
+</div>
+
+<li> <a href="rewards-and-recognition.html" > <span > REWARDS AND RECOGNITION </span> </a> </li>
+<li class="dropdown-link" > <a href="contact.html"  > CONTACT </a>
+</li> 
+<li class="dropdown-link" > <a href="/blog/index.html"  > BLOG </a>
+</li> 
+
+
+
+
+</ul>  
+</nav>
+
+
+<header>
+<!--  <div  style="float:right;padding:10px;" id="google_translate_element"></div>  -->
+
+</header>
+
+<header  class="" >
+
+<div  style="float:right;padding:10px;" id="google_translate_element"></div> 
+
+
+
+</header>
+
+
+<header class="topnav-header">
+
+
+<ul class="topnav">
+
+<li class="dropdown-link"> <a href="index.html" >  <span > HOME </span>   </a>  
+
+
+</li>  <span class= "menudivider" >| </span>
+
+<li class="dropdown-link"> <a href="our-villa.html" >  <span > OUR VILLA </span>   </a>  
+
+
+</li>  <span class= "menudivider" >| </span>
+
+<li class="dropdown-link" > <a href="rooms-and-rates.html"  > <span >  ROOMS AND RATES</span></a>
+</li>  <span class= "menudivider" >| </span>
+
+<li class="dropdown-link"> <a href="food-and-travel.html"  > <span > FOOD AND TRAVEL </span></a>  
+
+<div class="dropdown-content">
+
+      <a href="day-passes.html" > Day Passes</a>
+      
+ <a href="culinary-experiences.html"> Culinary Experiences </a>
+<a href="beaches.html" > Beaches </a>
+
+ <a href="treks.html" > Mountain and Bike Treks </a>
+ 
+ <a href="yoga.html" > Yoga</a>
+ 
+ <a href="experiential-trips.html" > Experiential Trips</a>
+ 
+ <a href="local-experiences.html" > Local Experiences</a>
+
+ <a href="family-sporting-trips.html" > Family and Sporting Trips </a>
+
+</div></li> <span class= "menudivider" >| </span>
+
+<li> <a href="rewards-and-recognition.html" > <span > REWARDS AND RECOGNITION </span> </a> </li> <span class= "menudivider" >| </span>
+
+<li class="dropdown-link" > <a href="contact.html"  > <span >  CONTACT </span></a>
+</li><span class= "menudivider" >| </span>  <li class="dropdown-link" > <a href="/blog/index.html"  > <span >  BLOG </span></a>
+</li> 
+<li class="icon">
+    <a href="javascript:void(0);" style="font-size:15px;" onclick="openNav()">☰</a>
+</li>
+
+
+
+</ul></header>
+
+
+<header  class="topnav-top-header" >
+<ul class="topnav-top">
+
+
+
+ <li class="logo_link">  </li>
+
+<li class="dropdown-link"> 
+
+
+
+
+</li>  
+
+
+
+
+
+</ul>
+<a href="index.html" ><img src="/images/logo_header.png" class="logo" ></a>
+</header>
+
+
+<div class="slideshow-container">
+
+<div class=""  >
+
+
+<div class="row" style="margin:0px!important;">
+
+    <div class="col-sm-4 " >
+         
+
+
+<div class='home_text'>
+
+<div class="home_text_innerdiv"  > 
+
+
+<p class="home_text_caption" >
+
+WELCOME
+
+</p>
+
+
+<p class="home_text_sub_caption" >
+
+Sinopia Inn would like to welcome you to its rustic hideaway. Here you can experience rustic views with lush green hills and skies streaked with colour - not to mention amazing sunsets that will have you feeling the vibes to just chill.
+
+
+</p> 
+
+
+
+
+<p class="home_text_sub_sub_caption" > 
+
+
+
+
+</p> 
+
+</div>
+
+
+</div>
+
+
+    </div>
+
+     <div class="col-sm-8 " > </div>
+
+</div>
+
+
+<img src="images/homepage1a.jpg" style="width:100%"/>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+<div class="shortcodeformOuterform">
+
+<form method="post" id="shortcodeform"  name="shortcodeform" ng-init="reservationinit()" >
+ 
+
+<div class="row checkavaiabiltyrow shortcodeform" ng-hide='availabilty'>
+
+
+<div class="col-sm-3 " id='checkavaiabiltyrow' >
+
+<div class="form-group has-success has-feedback">
+
+<label> CHECK IN DATE </label>
+
+<input type="text" class="form-control"  id="fromdate" name="from" ng-model="fromdate"  placeholder="DD-MM-YYYY"  > 
+
+<span class="glyphicon glyphicon-calendar form-control-feedback" ></span> 
+
+</input> 
+
+</div>
+
+</div>
+
+<div class="col-sm-3" id='checkavaiabiltyrow' >
+
+<div class="form-group has-success has-feedback">
+
+<label> CHECK OUT DATE </label>
+
+<input type="text" class="form-control" id="todate"  name="to" ng-model="todate" placeholder="DD-MM-YYYY"> 
+
+<span class="glyphicon glyphicon-calendar form-control-feedback"></span>  
+
+</input> 
+
+</div>
+
+</div>
+
+<div class="col-sm-3" id='checkavaiabiltyrow' >
+
+<div class="form-group has-success has-feedback">
+
+<label> PROMO CODE  </label>
+
+<input id="promo" class="form-control" type="text" name='promo' ng-model="promo" /> 
+
+<span class="glyphicon glyphicon-qrcode form-control-feedback"></span>
+
+</div>
+
+</div> 
+
+<div class="col-sm-3" id='checkavaiabiltyrow' >
+
+<label> </label>
+
+<button class="btn btn-default btn-block" type="button"  id="checkavailability"  ng-click="checkavailability()">CHECK AVAILABILITY</button> 
+
+</div>
+
+</div>
+
+
+
+<div id='errormessage' class='checking'> <p id="error" class="error"> {{error}} </p> </div>
+
+
+</form>
+
+</div>
+
+
+<div  class="container-fluid maindiv">
+
+<div class="row">
+
+<div class="col-sm-6" >
+
+<p class="side_menu_title ">  SINOPIA INN </p>
+
+<p>
+SINOPIA is an early twentieth century house refurbished with modern interior decor which is set on two acres of lush green gardens, filled with palm trees - making it a stunning hideaway. The relaxed environment with rustic views is complemented by personalised services and accommodation.</p>
+</br>
+
+<p> Its panoramic views with an outdoor patio, man-made jerk pit and an indoor lounge that doubles as a meeting place to wile away an afternoon, makes it ideal for hip travellers, family and friends. Guests are encouraged to invite friends and family making this a winning experience.</p>
+
+</br>
+<p> 
+
+Here you're able to experience tranquil nights and good accommodation alternatives to the resort locations of Montego Bay, Ocho Rios and Negril. It’s not like you’re turning your back on traditional island vacations that include all-inclusive beaches and drinks, but it is a positive alternative experience of the cool countryside, its beaches and local culture.
+
+</p>
+
+
+</br>
+
+</div>
+
+<div class="col-sm-6" >
+
+<p class="side_menu_title ">  &nbsp; </p>
+
+<!--<div class="slideshow-container" id="slideshow-container">
+
+
+
+
+
+</div>-->
+
+<!--<div id="instafeed" style="text-align:center;width:100%;"></div>-->
+
+<br>
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+<div class="row" style="margin-top:100px;">
+    <div class="col-sm-3" >
+
+  <div >
+  <div >
+    <img src="images/things-to-do.jpg" style="width:100%">
+    <div class="w3-container">
+       <p class="side_menu_title p_centering">  THINGS TO DO</p>
+      <p>Our city and rustic island excursions take you to the heart of Jamaica where you’ll will find positive vibrations, energy and spirit.  </p>
+      <a style="float: right;" href="leisure-and-nightlife.html">BOOK NOW </a>
+    </div>
+  </div>
+</div>
+
+</div>
+   <div class="col-sm-3" >
+
+
+  <div>
+  <div>
+    <img src="images/f&t.png" style="width:100%">
+    <div class="w3-container">
+    
+       <p class="side_menu_title p_centering"> FOOD AND TRAVEL</p>
+<p>Sinopia Inn is real foodie territory. It is where you'll ﬁnd ﬂavoursome dishes that combine spices and herbs from around the globe.</p>
+<a style="float: right;" href="food-and-travel.html">ASK THE CHEF </a>
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+  <div class="col-sm-3" >
+
+
+  <div>
+  <div>
+    <img src="images/mobile-app.png" style="width:100%">
+    <div class="w3-container">
+     
+    <p class="side_menu_title p_centering"> SMARTPHONE APP</p>
+    <p>Our app is committed to offering exclusive content and personalised experiences to make your stay memorable.</p>
+    <a style="float: right;" href="mobile-app.html">DOWNLOAD NOW </a>
+    </div>
+ 
+  </div>
+
+</div>
+
+</div>
+
+
+   <div class="col-sm-3" ><div >
+
+  <div >
+    <img src="images/rewards-home.png" style="width:100%">
+    <div class="w3-container">
+       <p class="side_menu_title p_centering"> LOYALTY </p>
+<p>What makes us truly exclusive are our offers, discounted rates and the amazing range of lesiure activites and experiences </p>
+<a style="float: right;" href="rewards-and-recognition.html">SIGN UP NOW </a>
+    </div>
+  </div>
+</div></div>
+  
+  </div>
+
+
+</div>
+
+
+
+<div class="container-fluid maindiv">
+
+<p class="side_menu_title"> TESTIMONIALS</p>
+
+</div>
+
+
+
+
+<footer>
+<div class="row firstrow">
+
+  <div class="col-sm-4" id="footer_column_3">  
+
+
+
+
+
+<h6> CONNECT WITH SINOPIA INN </h6>
+</br>
+<div class="row iconset">
+  
+  <div class="col-sm-12"> 
+
+<img  src="/images/social-media/facebook.png" onclick="socialShare(this)" style="cursor:pointer;">  <img  src="/images/social-media/pin.png" onclick="socialSharePinInterest(this)" style="cursor:pointer;">   <img  src="/images/social-media/tube.png">   <img  src="/images/social-media/twitter.png" onclick="socialShareTwitter(this)" style="cursor:pointer;"> <img  src="/images/social-media/linkedIn.png"> <img  src="/images/social-media/mail.png" onclick="socialShareMail(this)" style="cursor:pointer;">
+  </div>
+
+</div>
+
+</br>
+
+<div class="row">
+
+  <div class="col-sm-12 download_buttons_col" > 
+
+<h6> <i class="fa fa-mobile" style="font-size:30px;color:black"></i><i class="fa fa-mobile" style="font-size:36px;color:black"></i>  &nbsp;GET THE MOBILE APP </h6>
+  
+  </div>
+
+ </div>
+
+
+<div class="row">
+
+  <div class="col-sm-12 download_buttons_col" > 
+
+
+   <input class="download_buttons" src="/images/google_button.png" type="image" /> <input class="download_buttons"  src="/images/apple_button.png" type="image" />
+
+ 
+  </div>
+
+
+ 
+</div>
+
+</br>
+
+<a href="index.html"><img src='images/logo.png' /></a>
+&nbsp;</br>
+<p>Zion Hill, Fairy Hill P.O  Portland, Jamaica </br> +1 212 888 7000 - info@sinopiainn.com </p>
+
+
+ </div>
+
+
+
+ <div class="col-sm-4" id="footer_column_3">  
+
+
+
+
+
+<h6>MORE LINKS </h6>
+
+<ul> 
+
+<li> <a href="directions-and-location.html" > Location & Directions </a> </li>
+ 
+<li> <a href="reservation.html" > Make a reservation</li>
+ 
+<li> <a href="events.html" > Upcoming Events </li>
+
+<li> <a href="mobile-app.html" > Smartphone App</li>
+  
+</ul>
+
+<h6> <a href="blog/index.html" class="footer_column_3_link_title"> RECENT BLOG POSTS </a> </h6> 
+
+<ul id="recent_blog_posts" style="list-type:square!important;"></ul>
+
+
+
+   </div>
+
+   <div class="col-sm-4" id="footer_column_3">  
+
+
+<h6>STAY IN TOUCH</h6>
+
+<p style="padding-bottom:20px;font-size:small;">Missed us when we’re away? Add your email below so we can update you on news and offers from us at Sinopia Inn.</p>
+
+<form  method="POST" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"   role="form">
+
+
+<div class="input-group" style="padding-bottom:20px;" >
+
+<input type="text" id="subscribers_email" class="form-control" placeholder="Please enter your email address" name="subscribers_email">
+
+<span class="input-group-btn">
+<button class="btn btn-secondary" type="button"   id="subscribe_button">
+<span class="glyphicon glyphicon-triangle-right" aria-hidden="true">
+</button>
+</span>
+</div>
+
+</form>
+
+<p  style="padding-bottom:10px;font-size:small;">For more information on how we use your personal details please refer to our Privacy Policy and  Cookie Policy
+
+</p>
+
+   </div>
+
+   </div>
+
+</div>
+
+</footer>
+ 
+ <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    var dateFormat = "mm/dd/yy",
+      from = $( "#fromdate" )
+        .datepicker({
+          defaultDate: "+1w",
+          changeMonth: true,
+          numberOfMonths: 3
+        })
+        .on( "change", function() {
+          to.datepicker( "option", "minDate", getDate( this ) );
+        }),
+      to = $( "#todate" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        numberOfMonths: 3
+      })
+      .on( "change", function() {
+        from.datepicker( "option", "maxDate", getDate( this ) );
+      });
+ 
+    function getDate( element ) {
+      var date;
+      try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+      } catch( error ) {
+        date = null;
+      }
+ 
+      return date;
+    }
+  } );
+  </script>
+</body>
+</html>

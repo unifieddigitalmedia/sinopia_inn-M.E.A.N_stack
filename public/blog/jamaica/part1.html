@@ -49,7 +49,19 @@
 
 <body ng-app="sinopia">
 
+<!-- The Modal -->
+<div id="myModal" class="modal-footer-panel">
 
+  <!-- Modal content -->
+  <div class="modal-content-footer">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <p>This website uses cookies. We use cookies to help make this website better, to improve our services and for advertising purposes.You can learn more about our use of cookies and change your browser settings in order to avoid cookies by clicking <a href="privacy-and-cookies-statement.html"> here. </a>  Would you like to continue ?   <label><input type="radio" name="optradio" class="cookies-yes" value="yes">&nbsp;Yes</label>&nbsp;<label><input type="radio" name="optradio" class="cookies-no" value="no">&nbsp;No</label></p>
+    </div>
+ 
+  </div>
+
+  </div>
 <nav id="mySidenav" class="sidenav">
 
 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
@@ -223,7 +235,7 @@
 
 <p class="side_menu_title" style="text-align:center!important"> DISCOVERING JA - A SIX PART SERIES</br>
 
- <img  src="/images/social-media/facebook.png"  onclick="socialShare(this)" alt="http://www.sinopiainn.com/blog/jamaica/part1.html" >  <img  src="/images/social-media/pin.png"  onclick="socialSharePinInterest(this)" alt="http://www.sinopiainn.com/blog/jamaica/part1.html" >     <img  src="/images/social-media/twitter.png"   onclick="socialShareTwitter(this)" alt="DISCOVERING JA - A SIX PART SERIES" >  <img  src="/images/social-media/email.png"  onclick="socialShareMail(this)" alt="DISCOVERING JA - A SIX PART SERIES" style="cursor:pointer;"></p>
+ <img  src="/images/social-media/facebook.png"  onclick="socialShare(this)" alt="http://www.sinopiainn.com/blog/jamaica/part1.html" >  <img  src="/images/social-media/pin.png"  onclick="socialSharePinInterest(this)" alt="http://www.sinopiainn.com/blog/jamaica/part1.html" >     <img  src="/images/social-media/twitter.png"   onclick="socialShareTwitter(this)" alt="DISCOVERING JA - A SIX PART SERIES" >  <img  src="/images/social-media/mail.png"  onclick="socialShareMail(this)" alt="DISCOVERING JA - A SIX PART SERIES" style="cursor:pointer;"></p>
 
     </div>
 
@@ -267,13 +279,13 @@ Being the son of a Jamaican lecturer and Facilities Manager, I was fortunate to 
 <p> 
 
 
-When I arrived during the month of October, I immediately checked into a small hotel fitted with a contemporary decor   <img src="../../images/image[2].jpeg" class="w3-round myImg" alt="Villa driveway" style="width:50%;float:left;padding:20px;" onclick="displayModal(this)">   and art that showcases the work of Jamaican artists. After enjoying time to relax I head to Scotchies to enjoy traditional jerk, rice and beans and a festival, washed down with an ice cold coconut water, followed by a Red Stripe beer. 
+When I arrived during the month of October, I immediately checked into a small hotel fitted with a contemporary decor and art that showcases the work of Jamaican artists. 
 
-
+ <img src="../../images/image[2].jpeg" class="w3-round myImg" alt="Villa driveway" style="width:50%;float:left;padding:20px;" onclick="displayModal(this)">  
 
 
 </p>
-
+<p>After enjoying time to relax I head to Scotchies to enjoy traditional jerk, rice and beans and a festival, washed down with an ice cold coconut water, followed by a Red Stripe beer. </p>
 
 
 
@@ -352,32 +364,6 @@ On August 8th, the pair host an annual wellness festival that showcases their pi
 </div>
 
 
-
-<!-- The Modal -->
-<div id="myModal" class="modal-footer-panel">
-
-  <!-- Modal content -->
-  <div class="modal-content-footer">
-    <div class="modal-header">
-      <span class="close">&times;</span>
-      <p>This website uses cookies</p>
-    </div>
-    <div class="modal-body">
-
-
-      <p>We use cookies to help make this website better, to improve our services and for advertising purposes. </p> <p> You can learn more about our use of cookies and change your browser settings in order to avoid cookies by clicking <a href="privacy-and-cookies-statement.html"> here. </a> </p>
-
-      <p> Would you like to continue ? <div class="radio">
-  <label><input type="radio" name="optradio" class="cookies-yes" value="yes">&nbsp;Yes</label>
-</div>
-<div class="radio">
-  <label><input type="radio" name="optradio" class="cookies-no" value="no">&nbsp;No</label>
-</div> </p>
-    </div>
- 
-  </div>
-
-  </div>
 
 <footer>
 <div class="row firstrow">
@@ -515,11 +501,20 @@ On August 8th, the pair host an annual wellness festival that showcases their pi
 <script src="../../scripts/main.js" ></script><script src="../../scripts/socialShare.js" ></script>
 
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
   <script type="text/javascript">
+
 function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'de,en,es,fr,it,ja,la,nl,pa,pl,pt,ru,sv,th,zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+
 }
+
 </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
 </body>
 
 </html>

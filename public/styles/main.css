@@ -1,3 +1,4 @@
+
 .w3-round{
 
 width:50%!important;float:left;padding:20px!important;
@@ -36,6 +37,18 @@ padding:0px;margin-right:5px;width:100%;font-size:70%;
     content: "\00a0 "; 
 
 }
+
+
+.goog-logo-link {
+   display:none !important;
+}
+.goog-te-gadget{
+   color: transparent !important;
+}
+.goog-te-gadget .goog-te-combo{
+   color: black !important;
+}
+
 /**
 
 #google_translate_element img{
@@ -43,13 +56,84 @@ padding:0px;margin-right:5px;width:100%;font-size:70%;
 }**/
 /*********START OF RESERVATION FORM *******/
 
+.homepage-link {
+
+ font-family: 'Waiting for the Sunrise'!important;font-size:180%;font-weight:2000;
+
+}
+
+.outline        {
+  
+                    border: 1px solid #cb410b!important;
+                    
+                    color: #ffffff!important;
+                    
+                    background: #cb410b!important;
+
+                    font-family: 'Waiting for the Sunrise'!important;
+
+
+               
+               }
+.outline-res {  background-color:none!important; color:#3b0053!important;border:thin solid #3b0053!important}
+
+
+.outline-res:hover, .outline-res:focus, .outline-res:active, .outline.active,  {
+
+                    color: #33a6cc;
+                    
+                    border-color: #33a6cc;
+
+                     background: none!important;
+
+}
+
+.form-control{
+
+
+  border-color: #f9f8f8!important;
+}
+
+
+.form-control:focus { 
+    border-color: #f9f8f8!important; outline:none!important; box-shadow: 0 0 5px #cb410b!important;
+}
+
+.glyphicon{
+
+color:#cb410b!important;
+
+}
+.shortcodeformOuterform {
+
+position:relative;
+margin-top:10px;
+background-color:#f9f8f8;
+width:100%;
+
+
+}
+
+.sticky{
+
+
+	position:fixed!important;
+}
+
+.shortcodeform label{
+
+
+  font-weight:200;color:#cb410b;
+
+}
 .bookinglabel, .shortcodeform{
 
 
- background-color:#f0f0f1!important;
+background-color:#f9f8f8!important;
 
- padding:10px;
+ padding:20px;
 
+ width:60%; margin:0 auto!important;
 
 
 }
@@ -159,7 +243,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb410b', end
 .dropdown-link:hover .dropdown-content { display: block; }
 
 
-
+.dropdown-link:hover {color: black!important}
 .sidenav {
     height:600px;
     width:0%;
@@ -397,13 +481,23 @@ z-index: 99;margin-bottom:200px!important;
 
 .bookingform-rewards{margin-top:100px;}
 
-.bookingform-rewards-heading{color:white;font-size:180%!important;}
+.bookingform-rewards-heading{color:white;font-size:180%!important;font-weight:200;}
 
-.bookingform-rewards-heading1{font-size:180%;color:#3b0053;}
+.bookingform-rewards-heading1{font-size:180%;color:#3b0053;font-family: 'Waiting for the Sunrise';font-weight:900;}
+
+.bookingform-rewards-cta{color:#ffffff;font-family: 'Waiting for the Sunrise'!important;font-weight:900!important;float:right;font-size:150%!important;}
+
+.bookingform-rewards-cta:hover {color:#eedc00;text-decoration: none; }
 
 .bookingform-subtext {color:black;line-height:none;font-size:100%;}
 
 .booking-form-row {padding:0px 50px 0px 50px; }
+
+.infowindowLogo {padding:20px!important;}
+
+.infowindowTitle{font-weight:200!important;font-size:200%!important;}
+
+.infowindowDescription{font-family: 'Waiting for the Sunrise'!important;color:#000000 !important;font-size:150%!important;}
 
 /*.home_text{ position:relative; border:black solid thin; padding:5px;background-color:black;opacity: 0.8;filter: alpha(opacity=80); 
 }
@@ -474,7 +568,7 @@ body{margin:0!important;padding:0!important;}
 
 .bloglocations {width:80%;margin:0 auto!important;background-color:white;padding-top: 50px; padding-bottom: 50px; }
 
-.divbox{border:#d2d2d2 thin dotted;text-align:center;}
+.divbox{border:#ffffff thin dotted;text-align:center;}
 
 .divbox i {padding:25px;}
 
@@ -611,7 +705,8 @@ padding: none!important;margin: none!important;
 }
 
 #footer_column_3 h6 {
-
+font-size:200%;
+font-family: 'Waiting for the Sunrise';
 color:black!important;
 padding: none!important;margin: none!important;
 
@@ -870,6 +965,19 @@ section h3{color: #cb410b!important; font-size:100%!important;}
 
 
 .container-fluid{width:95%!important;margin:100px auto!important;  background-color:white!important;}
+
+
+.shortcodeformOuterform {
+
+position:relative;
+margin-top:200px;
+background-color:#f9f8f8;
+width:100%;
+
+
+}
+
+
 }
 
 
@@ -977,7 +1085,7 @@ section h3{color: #cb410b!important; font-size:100%!important;}
 /* The Modal (background) */
 .modal-footer-panel {
     display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
+    position: relative; /* Stay in place */
     z-index: 99; /* Sit on top */
     left: 0;
     top: 0;
@@ -1001,15 +1109,15 @@ section h3{color: #cb410b!important; font-size:100%!important;}
 
 .modal-header {
 
-text-align:center;
+font-size:50%;
 }
 
 
 
 /* Modal Content */
 .modal-content-footer {
-    position: fixed;
-    bottom: 0;
+    position: relative;
+    top: 0;
    
     width: 100%;
     -webkit-animation-name: slideIn;
@@ -1018,15 +1126,16 @@ text-align:center;
     animation-duration: 0.4s;
 
 
-     background-color:black;opacity: 0.8;filter: alpha(opacity=80);
+     background-color:black;
 }
 
 /* The Close Button */
 .close {
-    color: white;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+    color: white!important;
+   
+    font-size: 40px!important;
+    font-weight: 900!important;
+    z-index:99!important;
 }
 
 .close:hover,
@@ -1068,13 +1177,13 @@ text-align:center;
 
 /* Add Animation */
 @-webkit-keyframes slideIn {
-    from {bottom: -300px; opacity: 0} 
-    to {bottom: 0; opacity: 1}
+    from {top: -300px; opacity: 0} 
+    to {top: 0; opacity: 1}
 }
 
 @keyframes slideIn {
-    from {bottom: -300px; opacity: 0}
-    to {bottom: 0; opacity: 1}
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
 }
 
 @-webkit-keyframes fadeIn {

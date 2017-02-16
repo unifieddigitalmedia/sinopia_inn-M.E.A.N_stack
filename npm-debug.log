@@ -7,8 +7,8 @@
 6 silly lifecycle sinopia_inn-M.E.A.N_stack@0.0.0~prestart: no script for prestart, continuing
 7 info lifecycle sinopia_inn-M.E.A.N_stack@0.0.0~start: sinopia_inn-M.E.A.N_stack@0.0.0
 8 verbose lifecycle sinopia_inn-M.E.A.N_stack@0.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle sinopia_inn-M.E.A.N_stack@0.0.0~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/machelslack/Desktop/sinopia_inn-M.E.A.N_stack/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
-10 verbose lifecycle sinopia_inn-M.E.A.N_stack@0.0.0~start: CWD: /Users/machelslack/Desktop/sinopia_inn-M.E.A.N_stack
+9 verbose lifecycle sinopia_inn-M.E.A.N_stack@0.0.0~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/machelslack/Downloads/2017030nW1-Archive-3/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+10 verbose lifecycle sinopia_inn-M.E.A.N_stack@0.0.0~start: CWD: /Users/machelslack/Downloads/2017030nW1-Archive-3
 11 silly lifecycle sinopia_inn-M.E.A.N_stack@0.0.0~start: Args: [ '-c', 'node ./bin/www' ]
 12 silly lifecycle sinopia_inn-M.E.A.N_stack@0.0.0~start: Returned: code: 1  signal: null
 13 info lifecycle sinopia_inn-M.E.A.N_stack@0.0.0~start: Failed to exec start script
@@ -23,7 +23,7 @@
 14 verbose stack     at maybeClose (internal/child_process.js:890:16)
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
 15 verbose pkgid sinopia_inn-M.E.A.N_stack@0.0.0
-16 verbose cwd /Users/machelslack/Desktop/sinopia_inn-M.E.A.N_stack
+16 verbose cwd /Users/machelslack/Downloads/2017030nW1-Archive-3
 17 error Darwin 16.4.0
 18 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "start"
 19 error node v7.5.0

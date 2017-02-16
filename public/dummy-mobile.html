@@ -32,9 +32,10 @@
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   
+
 <link rel="icon" 
       type="image/png" 
-      href="/images/jmtrax_icon.png">
+      href="/images/jmtrax_icon.png"><link href='//fonts.googleapis.com/css?family=Waiting for the Sunrise' rel='stylesheet'>
   
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -50,7 +51,21 @@
 
 <body ng-app="sinopia" ng-controller = "reservationsystem" onload="showDivs(4)">
 
-<nav id="mySidenav" class="sidenav">
+<!-- The Modal -->
+<div id="myModal" class="modal-footer-panel">
+
+  <!-- Modal content -->
+  <div class="modal-content-footer">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <p>This website uses cookies. We use cookies to help make this website better, to improve our services and for advertising purposes.You can learn more about our use of cookies and change your browser settings in order to avoid cookies by clicking <a href="privacy-and-cookies-statement.html"> here. </a>  Would you like to continue ?   <label><input type="radio" name="optradio" class="cookies-yes" value="yes">&nbsp;Yes</label>&nbsp;<label><input type="radio" name="optradio" class="cookies-no" value="no">&nbsp;No</label></p>
+    </div>
+ 
+  </div>
+
+  </div>
+
+<nav id="mySidenav" class="sidenav" >
 
 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
 
@@ -362,31 +377,7 @@ Every interaction is an opportunity to lay back relax and enjoy a showcase of wh
 </div>
 
 
-<!-- The Modal -->
-<div id="myModal" class="modal-footer-panel">
-
-  <!-- Modal content -->
-  <div class="modal-content-footer">
-    <div class="modal-header">
-      <span class="close">&times;</span>
-      <p>This website uses cookies</p>
-    </div>
-    <div class="modal-body">
-
-
-      <p>We use cookies to help make this website better, to improve our services and for advertising purposes. </p> <p> You can learn more about our use of cookies and change your browser settings in order to avoid cookies by clicking <a href="privacy-and-cookies-statement.html"> here. </a> </p>
-
-      <p> Would you like to continue ? <div class="radio">
-  <label><input type="radio" name="optradio" class="cookies-yes" value="yes">&nbsp;Yes</label>
-</div>
-<div class="radio">
-  <label><input type="radio" name="optradio" class="cookies-no" value="no">&nbsp;No</label>
-</div> </p>
-    </div>
- 
-  </div>
-
-  </div><footer>
+<footer>
 <div class="row firstrow">
 
   <div class="col-sm-4" id="footer_column_3">  
@@ -531,9 +522,13 @@ Every interaction is an opportunity to lay back relax and enjoy a showcase of wh
 <script src="/scripts/fbShareDialog.js" ></script>
 
   <script type="text/javascript">
+
 function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'de,en,es,fr,it,ja,la,nl,pa,pl,pt,ru,sv,th,zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+
 }
+
 </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script>

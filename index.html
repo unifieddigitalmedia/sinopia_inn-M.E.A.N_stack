@@ -23,28 +23,42 @@
 
 <link rel="stylesheet" type="text/css" href="/styles/main.css">
 
-<link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  
-<link rel="icon" 
-      type="image/png" 
-      href="/images/jmtrax_icon.png">
-  
 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+
+<link href='//fonts.googleapis.com/css?family=Waiting for the Sunrise' rel='stylesheet'>
+
+<link rel="icon" type="image/png"  href="/images/jmtrax_icon.png">
+  
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <meta name="description" content="Self Catering Holiday Villa in Portland Jamaica">
 
-
-
 <title> Sinopia Inn  -  Self Catering Holiday Villa in Portland Jamaica  | Home </title>
 
-<script> </script>
+
 </head>
 
 <body ng-app="sinopia" ng-controller = "reservationsystem" onload="showSlides()">
 
+
+<!-- The Modal -->
+<div id="myModal" class="modal-footer-panel">
+
+  <!-- Modal content -->
+  <div class="modal-content-footer">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <p>This website uses cookies. We use cookies to help make this website better, to improve our services and for advertising purposes.You can learn more about our use of cookies and change your browser settings in order to avoid cookies by clicking <a href="privacy-and-cookies-statement.html"> here. </a>  Would you like to continue ?   <label><input type="radio" name="optradio" class="cookies-yes" value="yes">&nbsp;Yes</label>&nbsp;<label><input type="radio" name="optradio" class="cookies-no" value="no">&nbsp;No</label></p>
+    </div>
+ 
+  </div>
+
+  </div>
 
 <nav id="mySidenav" class="sidenav" ng-init="loadpics()">
 
@@ -249,32 +263,16 @@ Sinopia Inn would like to welcome you to its rustic hideaway. Here you can exper
 
 
 </div>
-<br>
-
-<div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span> 
-
-</div>
-
-
-
-
 
 
 </div>
 
 
 
-<div  class="container-fluid maindiv">
+<div class="shortcodeformOuterform">
 
-
-<form method="post" id="shortcodeform" class="" name="shortcodeform" ng-init="reservationinit()" style="margin-top:50px;">
+<form method="post"  >
  
-<div class="row " >
-
-<div class="col-sm-3 bookinglabel" id='bookinglabel' > <label> Reserve online </label> </div><div class="col-sm-9" > </div>
-
-</div>
 
 <div class="row checkavaiabiltyrow shortcodeform" ng-hide='availabilty'>
 
@@ -283,11 +281,11 @@ Sinopia Inn would like to welcome you to its rustic hideaway. Here you can exper
 
 <div class="form-group has-success has-feedback">
 
-<label> CHECK IN DATE </label>
 
-<input type="text" class="form-control"  id="fromdate" name="from" ng-model="fromdate"  placeholder="DD-MM-YYYY" autofocus > 
 
-<span class="glyphicon glyphicon-th form-control-feedback"></span> 
+<input type="text" class="form-control"  id="fromdate" name="from" ng-model="fromdate"  placeholder="CHECK IN"  > 
+
+<span class="glyphicon glyphicon-calendar form-control-feedback" ></span> 
 
 </input> 
 
@@ -299,11 +297,11 @@ Sinopia Inn would like to welcome you to its rustic hideaway. Here you can exper
 
 <div class="form-group has-success has-feedback">
 
-<label> CHECK OUT DATE </label>
 
-<input type="text" class="form-control" id="todate"  name="to" ng-model="todate" placeholder="DD-MM-YYYY"> 
 
-<span class="glyphicon glyphicon-th form-control-feedback"></span>  
+<input type="text" class="form-control" id="todate"  name="to" ng-model="todate" placeholder="CHECK OUT"> 
+
+<span class="glyphicon glyphicon-calendar form-control-feedback"></span>  
 
 </input> 
 
@@ -311,12 +309,13 @@ Sinopia Inn would like to welcome you to its rustic hideaway. Here you can exper
 
 </div>
 
-
 <div class="col-sm-3" id='checkavaiabiltyrow' >
 
 <div class="form-group has-success has-feedback">
-<label> PROMO CODE  </label>
-<input id="promo" class="form-control" type="text" name='promo' ng-model="promo" /> 
+
+
+
+<input id="promo" class="form-control" type="text" name='promo' ng-model="promo" placeholder="PROMO CODE" /> 
 
 <span class="glyphicon glyphicon-qrcode form-control-feedback"></span>
 
@@ -324,12 +323,11 @@ Sinopia Inn would like to welcome you to its rustic hideaway. Here you can exper
 
 </div> 
 
-
 <div class="col-sm-3" id='checkavaiabiltyrow' >
 
-<label> </label>
 
-<button class="btn btn-default btn-block" type="button"  id="checkavailability"  ng-click="checkavailability()">CHECK AVAILABILITY</button> 
+
+<button class="btn btn-default btn-block outline" type="button"  id="checkavailability"  ng-click="checkavailability()">CHECK AVAILABILITY</button> 
 
 </div>
 
@@ -340,11 +338,12 @@ Sinopia Inn would like to welcome you to its rustic hideaway. Here you can exper
 <div id='errormessage' class='checking'> <p id="error" class="error"> {{error}} </p> </div>
 
 
-
-
-
-
 </form>
+
+</div>
+
+
+<div  class="container-fluid maindiv">
 
 <div class="row">
 
@@ -370,9 +369,9 @@ Here you're able to experience tranquil nights and good accommodation alternativ
 
 </div>
 
-<div class="col-sm-6" >
+<div class="col-sm-6" style="text-align:center!important">
 
-<p class="side_menu_title ">  &nbsp; </p>
+<p class="side_menu_title " >  &nbsp; </p>
 
 <!--<div class="slideshow-container" id="slideshow-container">
 
@@ -390,7 +389,9 @@ Here you're able to experience tranquil nights and good accommodation alternativ
 
 
 
-
+<!-- SnapWidget -->
+<script src="https://snapwidget.com/js/snapwidget.js"></script>
+<iframe src="https://snapwidget.com/embed/335979" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:80%; "></iframe>
 
 
 </div>
@@ -408,7 +409,7 @@ Here you're able to experience tranquil nights and good accommodation alternativ
     <div class="w3-container">
        <p class="side_menu_title p_centering">  THINGS TO DO</p>
       <p>Our city and rustic island excursions take you to the heart of Jamaica where you’ll will find positive vibrations, energy and spirit.  </p>
-      <a style="float: right;" href="leisure-and-nightlife.html">BOOK NOW </a>
+      <a style="float: right;" href="leisure-and-nightlife.html" class="homepage-link">HAVE SOME FUN</a>
     </div>
   </div>
 </div>
@@ -424,7 +425,7 @@ Here you're able to experience tranquil nights and good accommodation alternativ
     
        <p class="side_menu_title p_centering"> FOOD AND TRAVEL</p>
 <p>Sinopia Inn is real foodie territory. It is where you'll ﬁnd ﬂavoursome dishes that combine spices and herbs from around the globe.</p>
-<a style="float: right;" href="food-and-travel.html">ASK THE CHEF </a>
+<a style="float: right;" href="food-and-travel.html" class="homepage-link">ASK THE CHEF </a>
     </div>
   </div>
 </div>
@@ -442,7 +443,7 @@ Here you're able to experience tranquil nights and good accommodation alternativ
      
     <p class="side_menu_title p_centering"> SMARTPHONE APP</p>
     <p>Our app is committed to offering exclusive content and personalised experiences to make your stay memorable.</p>
-    <a style="float: right;" href="mobile-app.html">DOWNLOAD NOW </a>
+    <a style="float: right;" href="mobile-app.html" class="homepage-link" >PLAN A TRIP </a>
     </div>
  
   </div>
@@ -459,7 +460,7 @@ Here you're able to experience tranquil nights and good accommodation alternativ
     <div class="w3-container">
        <p class="side_menu_title p_centering"> LOYALTY </p>
 <p>What makes us truly exclusive are our offers, discounted rates and the amazing range of lesiure activites and experiences </p>
-<a style="float: right;" href="rewards-and-recognition.html">SIGN UP NOW </a>
+<a style="float: right;" href="rewards-and-recognition.html" class="homepage-link">CLAIM YOUR REWARDS </a>
     </div>
   </div>
 </div></div>
@@ -478,31 +479,7 @@ Here you're able to experience tranquil nights and good accommodation alternativ
 </div>
 
 
-<!-- The Modal -->
-<div id="myModal" class="modal-footer-panel">
 
-  <!-- Modal content -->
-  <div class="modal-content-footer">
-    <div class="modal-header">
-      <span class="close">&times;</span>
-      <p>This website uses cookies</p>
-    </div>
-    <div class="modal-body">
-
-
-      <p>We use cookies to help make this website better, to improve our services and for advertising purposes. </p> <p> You can learn more about our use of cookies and change your browser settings in order to avoid cookies by clicking <a href="privacy-and-cookies-statement.html"> here. </a> </p>
-
-      <p> Would you like to continue ? <div class="radio">
-  <label><input type="radio" name="optradio" class="cookies-yes" value="yes">&nbsp;Yes</label>
-</div>
-<div class="radio">
-  <label><input type="radio" name="optradio" class="cookies-no" value="no">&nbsp;No</label>
-</div> </p>
-    </div>
- 
-  </div>
-
-  </div>
 
 <footer>
 <div class="row firstrow">
@@ -619,30 +596,24 @@ Here you're able to experience tranquil nights and good accommodation alternativ
 
    </div>
 
-  
-
    </div>
-
-  
-
 
 </div>
 
 </footer>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" ></script>
 
-<script src="/jquery/dist/jquery.min.js" ></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-<script src="/bootstrap/dist/js/bootstrap.min.js" ></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<script src="/angular/angular.min.js" ></script>
+<script src="/angular/angular.min.js"></script>
 
 <script src="/angular-resource/angular-resource.min.js" ></script>
 
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script src="/scripts/main.js" ></script>
 
@@ -652,11 +623,15 @@ Here you're able to experience tranquil nights and good accommodation alternativ
 
 function googleTranslateElementInit() {
 
-  new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'de,en,es,fr,it,ja,la,nl,pa,pl,pt,ru,sv,th,zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
 
 }
 
 </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+
+
 
 
 
@@ -678,6 +653,7 @@ function googleTranslateElementInit() {
   userFeed.run();
 
 </script>
+
 </body>
 
 </html>

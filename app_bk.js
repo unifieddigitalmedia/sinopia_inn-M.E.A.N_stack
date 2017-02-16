@@ -20,28 +20,14 @@ var fs = require('fs-extra');
 var mongoose = require('mongoose');
 var MONGOLAB_URI = 'mongodb://sinopiainn-administrator:321123ETz$@ds057476.mlab.com:57476/heroku_mn2k4bdf';
 var db = mongoose.createConnection(MONGOLAB_URI);
-
+var routes = require('./routes/index');
+var users = require('./routes/users');
 //var nodemailer = require('nodemailer');
-
 var client = new pdf.Pdfcrowd('sinopiainn', 'fcfaaea5b060744db668d1bee67ccaae');
 
 var gcm = require('node-gcm');
 
-var s3 = require('s3');
-
-var AWS = require('aws-sdk');
-
-AWS.config.loadFromPath('config.json');
-
-var s3 = new AWS.S3();
-
-var bucket = 'sinopiainn.reservations';
-
-
 var app = express();
-
-// view engine setup
-
 
 app.use(busboy());
 
@@ -56,7 +42,7 @@ app.use(express.static(__dirname + '/'));
 process.env.NODE_ENV = 'development';
 
 
-var hotelID = '5855a1f3523d3f70c7dd48ac';
+var hotelID = '58499b2a3f7f3b0d70b11653';
 
 
 var braintree = require("braintree");
@@ -119,48 +105,20 @@ app.get('/', function (req, res) {
 
       res.sendFile(path.join(__dirname + "/index.html"));
 
-      });
-
-
-app.get('/guest-survey', function (req, res) {
-
-
-var routes = require('./routes/index');
-
-var users = require('./routes/users');
-
-console.log("Server is listening");
-
-app.set('views', path.join(__dirname, 'views'));
-
-app.set('view engine', 'jade');
-
-res.render("index.jade", { name:req.query.name, email:req.query.email });
-/*
-fs.readFile('public/guest-survey.html', function (err, data) {
-        res.writeHead(200, {
-            'Content-Type': 'text/html',
-                'Content-Length': data.length
-        });
-        res.write(data);
-        res.end();
-    });
-*/
-
-});
+      })
 
 
 app.get('/booking-confirmation/', function (req, res) {
 
       res.sendFile(path.join(__dirname + "/public/booking-confirmation.html"));
 
-      });
+      })
 
 app.get('connect', function (req, res) {
 
       res.sendFile(path.join(__dirname + "/public/connect.html"));
 
-      });
+      })
 
 
 app.use(express.static('bower_components'));
@@ -437,9 +395,7 @@ db.collection('itinerary').insert( [
 
 app.get('/api/mobile/checkhotelavailability/', function (req, res) {
 
-
-
-var o_id = new mongo.ObjectID("5855a1f3523d3f70c7dd48ac");
+var o_id = new mongo.ObjectID("58499b2a3f7f3b0d70b11653");
 
 var availability = [];
 
@@ -504,8 +460,6 @@ if ( (new Date(results[0].rooms[x].booking[y][z].fromdate) <= new Date(fromdate)
 
 },function(arg1,arg2,callback){
 
-var booked = false ;
-
 if(arg1.length > 0 ) {
 
 var obj = [];
@@ -516,30 +470,17 @@ for (i = 0; i < obj.length; i++) {
 
 if(arg1.indexOf(obj[i]._id) != -1 ){
 
-var booked = true ;
-    
 
-}
-
-
-
-}
-
-
-
-if(booked){
-
-   var response = {"ERROR":"One or more of your rooms has now been booked."};
-        
-      res.json(response);
-
-}else{
-
- var response = {"ERROR":""};
+     var response = {"ERROR":"One or more of your rooms has now been booked."};
         
       res.json(response);
 
 }
+
+
+
+}
+
 
 
 } else {
@@ -655,90 +596,6 @@ if(err){ res.json({"ERROR": "There was an error on our saerver'" });}else{
 
 
 
-app.post('/api/upload-bulk-reservation-photo', function(req, res) {
-
-var fileNames = [];
-
-console.log(req.query.fileNames);
-
-var d = new Date();
-
-var date_created = d.toDateString();
-
-var time_created = d.toDateString();
-
-var reservationID = new mongo.ObjectID(req.query.resID);
-
-
-
-waterfall([function(callback){
-
-for(var x = 0 ; x < req.query.fileNames.length; x++){
-
-
-var name = req.query.name;
-
-var directory =  name+"/"+req.query.fileNames[x]; 
-
-db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos": { 
-
-"image_url" : "https://s3-us-west-2.amazonaws.com/"+bucket+"/"+directory,
-"text" : "" , 
-"date_created" : date_created,
-"time_created" : time_created,
-"reservationID" : reservationID 
-
-}  } } , function(err, results) { 
-
-  if (err) return next(err)
-
- 
-
-});
-
-
-}
-
-callback(null);
-
-},function(callback){
-
-
-
- var response = {"ERROR":""};
-
- res.json(response);
-
-
-
-
-}], function(err, results) { 
-
- if (err) {
-            
-
-            var response = {"ERROR":"Error uploading your picture:"};
-
-            res.json(results);
-
-            console.log("Error uploading data: ", err);
-
-        } else {
-
-
- res.json(results);
-
-        }
-
-
-});
-
-
-
-
-
-});
-
 
 app.post('/api/upload-reservation-photo', multipartMiddleware, function(req, res) {
 
@@ -750,10 +607,15 @@ var date_created = d.toDateString();
 
 var time_created = d.toDateString();
 
+var filename =  req.files.displayImage.originalFilename.replace(" ", "");
 
-var filename =  req.files.displayImage.originalFilename;
 
-var s3Bucket = new AWS.S3( { params: {Bucket: bucket} } );
+var directory = "public/reservations/"+req.query.name+"/"; 
+
+
+
+if (fs.existsSync(directory)) {
+
 
 fs.readFile(req.files.displayImage.path, function (err, data) {
 
@@ -769,76 +631,53 @@ fs.readFile(req.files.displayImage.path, function (err, data) {
 
 
 
-   }else{
+   }
 
-var name = req.query.name.trim();
+fs.writeFile(directory+filename, data, function (err) {
 
- var directory =  name+"/"+filename; 
+ if (err) return next(err)
 
-       var params = {Key: directory, Body: data};
-
-        s3Bucket.putObject(params, function(err, data) {
-  
-        if (err) {
-            
-
-            var response = {"ERROR":"Error uploading your picture:"};
-
-            res.json(response);
-
-            console.log("Error uploading data: ", err);
-
-        } else {
-           
-         
 db.collection('reservation').updateOne( {"_id":reservationID}, { $push: {"photos": { 
 
-"image_url" : "https://s3-us-west-2.amazonaws.com/"+bucket+"/"+directory,
+"image_url" : directory+filename,
 "text" : req.query.message , 
 "date_created" : date_created,
 "time_created" : time_created,
-"id":req.query.resID
 
 }  } } , function(err, results) { 
 
   if (err) return next(err)
 
- 
-   
- var response = {"ERROR":""};
+  var response = {"ERROR":""};
 
- res.json(response);
+    res.json(response);
 
 
 
  });
 
-
-           
-        }
-    });
-
-
-
-
-
-   }
-
-});
-
+ });
 
 
 
 
 });
+
+
+}
+
+
+});
+
 
 
 app.get('/api/timeline/', function(req, res) {
 
 var containerArray= [];
 
+var reservationID = new mongo.ObjectID(req.query.name);
 
-db.collection('reservation').find({"email":req.query.email},{}).toArray(function(e, results){
+db.collection('reservation').find({"name":req.query.name},{}).toArray(function(e, results){
 
 if (e) return next(e)
 
@@ -846,7 +685,7 @@ if (e) return next(e)
 for (var x = 0 ; x < results.length ; x++){
 
 
-containerArray.push({ images : results[x].photos , name : req.query.name ,  location : "" , from : results[x].fromdate ,  to : results[x].todate , id: results[x]._id });
+containerArray.push({ images : results[x].photos , name : req.query.name ,  location : "" , from : results[x].fromdate ,  to : results[x].todate });
 
 
 }
@@ -917,11 +756,6 @@ res.json(result);
 
 app.post('/api/mobile/payment/', multipartMiddleware, function(req,res) {
 
-console.log("request : ",req);
-
-console.log("request body: ",req.body);
-
-console.log("request query: ",req.query);
 
 //var rString = randomString(5, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
 
@@ -949,7 +783,7 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '5855a1f3523d3f70c7dd48ac');
+var hotelID = new mongo.ObjectID( '58499b2a3f7f3b0d70b11653');
 
 var offerArray = [];
 
@@ -963,8 +797,6 @@ obj = JSON.parse(req.query.offerarray[0]); offerArray = obj ; } else { offerArra
 
 
 if (typeof req.query.amenityarray != 'undefined')  { var obj = [];
-
-console.log(req.query.amenityarray[0]);
 
 obj = JSON.parse(req.query.amenityarray[0]); amentityArray = obj ; } else { amentityArray = null  ; } ;
 
@@ -1027,8 +859,6 @@ if ( (new Date(results[0].rooms[x].booking[y][z].fromdate) <= new Date(fromdate)
 
 },function(arg1,arg2,callback){
 
-var booked = false;
-
 if(arg1.length > 0 ){
 
 var obj = [];
@@ -1040,27 +870,16 @@ for (i = 0; i < obj.length; i++) {
 if(arg1.indexOf(obj[i]._id) != -1 ){
 
 
-    booked = true;
-
-}
-
-
-
-}
-
-if(booked){
-
-var response = {"ERROR":"One or more of your rooms has now been booked."};
+     var response = {"ERROR":"One or more of your rooms has now been booked."};
         
       res.json(response);
 
+}
 
-} else {
-
-callback(null);
 
 
 }
+
 
 
 }else{
@@ -1077,10 +896,7 @@ callback(null);
 var nonce = req.query.payment_method_nonce;
 
 var deposit = req.query.deposit;
-
-console.log(deposit);
-
-
+ 
 gateway.transaction.sale({
   
                                     amount:deposit,
@@ -1132,15 +948,12 @@ else
 {
 
 
-console.log("Payment ERRORS NONE");
-
-var tripID ;
+var tripID;
 
 console.log(req.query.tripID);
 
-if(req.query.tripID){
+if(req.query.tripID == 1){
 
-console.log("trip"+req.query.tripID);
 
 db.collection('itinerary').insert( [
 
@@ -1163,58 +976,27 @@ db.collection('itinerary').insert( [
           "places":req.query.places,
 
 
+
 }], function(err, results) { 
 
 
-tripID  = results.insertedIds[0];
 
-console.log("trip"+results.insertedIds[0]);
+
+         tripID  = results.insertedIds[0];
+
       
-console.log("trip"+tripID);
-
-callback(null,tripID);
-
 
 });
+
+
+
 
 //= new mongo.ObjectID( req.query.tripID);
 
-}else{
-
-
-callback(null,tripID);
-
 
 
 }
-                      
 
-}
-  
-
-  }
-
-
-
-
-
-
-
-
-
-});
-
-
-
-
-   },function(arg1,callback){
-
-
-tripID = arg1; 
-
-var name = req.query.fname.concat(" ").concat(req.query.lname);
-
-name = name.trim();
 
 db.collection('reservation').insert( [
 
@@ -1245,19 +1027,23 @@ db.collection('reservation').insert( [
           "amenities":amentityArray,
           "rooms":roomsArray,
           "photos":[],
-          "name":name,
+          "name":req.query.fname.concat(" ").concat(req.query.lname),
    
 
 
 }], function(err, results) { 
+
+
+          
+
+
 
 var o_id = new mongo.ObjectID(results.insertedIds[0]);
 
 db.collection('reservation').findOne({ "_id": o_id  },function(e, results){
 
 
-if (e) return next(e)
-
+                                                           if (e) return next(e)
 var costofrooms = 0 ;
 
 var costofbreakfast = 0 ;
@@ -1416,11 +1202,6 @@ var message = {
         },{
             "name": "balance",
             "content": balance
-        },{
-
-            "name":"token",
-            "content":rString
-
         }
 
         ],
@@ -1472,7 +1253,7 @@ mandrill_client.messages.sendTemplate({"template_name": template_name, "template
 
 if(e){return  console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message); }
    
-   callback(null,o_id,results);
+ 
 });
 
 
@@ -1480,7 +1261,37 @@ if(e){return  console.log('A mandrill error occurred: ' + e.name + ' - ' + e.mes
  });
 
 
+        
+
+
+
+
+
+
+
+
+
 });
+
+                      
+
+}
+  
+
+  }
+
+
+
+
+
+
+
+
+
+});
+
+
+
 
    } ,function(arg1, arg2, callback){
 
@@ -1517,93 +1328,10 @@ for (x = 0; x < obj.length; x++) {
   },function(arg1,arg2){
 
 
-var name = req.query.fname.concat(" ").concat(req.query.lname);
-
-name = name.trim();
-
-var directory =  name+"/"+arg2+".jpg"; 
-
-var s3Bucket = new AWS.S3( { params: {Bucket: bucket} } );
-
-fs.readFile(req.files.displayImage.path, function (err, data) {
-
-
-   if (err) {
-
-
-      return console.error(err);
-   
-      var response = {"ERROR":"There was an system error. Please contact the web administrator."};
-
-      res.json(response);
-
-   }else{
-
-
-var params = {Key: directory, Body: data};
-
-    s3Bucket.putObject(params, function(err, data) {
-  
-        if (err) {
-            
-
-            var response = {"ERROR":"Error creating your booking:"};
-
-            res.json(response);
-
-            console.log("Error uploading data: ", err);
-
-        } else {
-           
-var directory =  name+"/"+arg2; 
-
-var arg1 = arg1.toString();
-
-var params = {Key: directory, Body: arg1};
-
-  s3Bucket.putObject(params, function(err, data) {
-  
-        if (err) {
-            
-
-            var response = {"ERROR":"Error creating your booking:"};
-
-            res.json(response);
-
-            console.log("Error uploading data: ", err);
-
-        } else {
-           
-         
-
-            var response = {"ERROR":"","ReservationID":arg1};
-
-            res.json(response);
-
-
-           
-        }
-
-
-    });
-
-
-           
-        }
-    });
-
-
-   }
-
-
- });
-
     
+    var directory = "public/reservations/"+req.query.name+"/"; 
 
-/*
 
-
-var directory = "public/reservations/"+name+"/"; 
 
 if (!fs.existsSync(directory)) {
 
@@ -1643,10 +1371,6 @@ fs.readFile(req.files.displayImage.path, function (err, data) {
 
    res.json(response);
   
-  console.log(response);
-
-  console.log(directory+arg2+'.jpg');
-
    console.log("Directory created successfully!");
 
 
@@ -1668,50 +1392,9 @@ fs.readFile(req.files.displayImage.path, function (err, data) {
 
 
 
-}else {
-
-
-
-  fs.readFile(req.files.displayImage.path, function (err, data) {
-
-
-   if (err) {
-
-
-      return console.error(err);
-   
-      var response = {"ERROR":"There was an system error. Please contact the web administrator."};
-
-      res.json(response);
-
-
-
-   }
-
-
-
- fs.writeFile(directory+arg2+'.jpg', data, function (err) {
-
-
-   var balance = Number(req.query.total) - Number(req.query.deposit);
-
-   var response = {"ERROR":"","Reservation":arg1};
-
-   res.json(response);
-  
-  console.log(directory+arg2+'.jpg');
-
-   console.log("Directory created successfully!");
-
-
-
-        });
-
- });
-
 }
 
-*/
+
 
 
 
@@ -1835,7 +1518,7 @@ db.collection('itinerary').insert( [
 
 {
 
-          "token":req.query.token,
+
           "name":req.query.name,
           "email":req.query.email,
           "phone":req.query.phone,
@@ -1846,9 +1529,6 @@ db.collection('itinerary').insert( [
           "subtotaladmission":req.query.subtotaladmission,
           "subtotalavergae":req.query.subtotalavergae,
           "carhire":req.query.carhire,
-          "mileFare":req.query.milesFare,
-          "minuteFare":req.query.minuteFare,
-          "dist":req.query.dist,
           "tax":req.query.tax,
           "total":req.query.total,
           "places[]":req.body['places[]'],
@@ -1861,6 +1541,10 @@ resID = results.insertedIds[0];
 
 db.collection('hotels').updateOne( {"token":req.query.token}, { $set: { "tripID": resID } } , function(err, results) { 
 
+
+
+
+       
 
        var response = {"ERROR":"","tripID":resID};
         
@@ -1885,7 +1569,7 @@ db.collection('hotels').updateOne( {"token":req.query.token}, { $set: { "tripID"
 
 app.get('/api/checkhotelavailability/', function (req, res) {
 
-var o_id = new mongo.ObjectID("5855a1f3523d3f70c7dd48ac");
+var o_id = new mongo.ObjectID("58499b2a3f7f3b0d70b11653");
 
 var availability = [];
 
@@ -2113,20 +1797,17 @@ if (e) return next(e)
 
  } 
 
+var nights = '"'+req.query.nights+'"';
+
+db.collection("hotels").find({"_id":o_id }, { "offers": { $elemMatch: { "nights":{ $gte : nights }  } } }  ).toArray(function(e, results){
 
 
-db.collection("hotels").find({"_id":o_id }, { "offers": { $elemMatch: { "nights":{ $lte : Number(req.query.nights) }  } } }  ).toArray(function(e, results){
 
-
-console.log(results[0].offers);
 
 if (e) return next(e)
 
 
-if(  typeof results[0].offers != 'undefined'  ){
-
-
-  if (results.length > 0 ) {
+      if (results.length > 0 ) {
 
 
             arg1.push(results[0].offers[0]);
@@ -2134,9 +1815,6 @@ if(  typeof results[0].offers != 'undefined'  ){
 
       }
 
-
-}
-    
 
     availability.push(arg1);
 
@@ -2231,7 +1909,7 @@ app.get("/api/reservation-details/", function (req, res) {
 
 
 
-var hotelID = new mongo.ObjectID( '5855a1f3523d3f70c7dd48ac');
+var hotelID = new mongo.ObjectID( '58499b2a3f7f3b0d70b11653');
 
 var o_id = new mongo.ObjectID(req.query.reservationID);
 
@@ -2269,8 +1947,6 @@ app.post('/api/personaldetails/', function(req,res) {
 
 var tripID = new mongo.ObjectID(req.query.tripID);
 
-console.log(tripID);
-
 var availability = [];
 
 var offersArray = [];
@@ -2283,7 +1959,7 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '5855a1f3523d3f70c7dd48ac');
+var hotelID = new mongo.ObjectID( '58499b2a3f7f3b0d70b11653');
 
 var offerArray = [];
 
@@ -2305,7 +1981,7 @@ if (typeof req.body['roomarray[]'] != 'undefined')  { roomsArray = req.body['roo
 
 waterfall([function(callback){
 
-console.log("block 1");
+
 
 db.collection("hotels").find({"_id":hotelID}, {'rooms': true} ).toArray(function(err, results) {
   
@@ -2343,49 +2019,29 @@ if ( (new Date(results[0].rooms[x].booking[y][z].fromdate) <= new Date(fromdate)
 
 
 }, function(arg1,arg2,callback){
-   
-   var booked = false ;
+    
 
-console.log("block 2");
 
      if(arg1.length > 0 )
     {
 
 
-console.log("rooms array length" + roomsArray.length);
 
 for (i = 0; i < roomsArray.length; i++) { 
 
-console.log(arg1);
 
-console.log(roomsArray[i]._id);
-
-if(arg1.indexOf(roomsArray[i]._id) != -1 ){
-
-booked = true; 
-    
-
-}
+if(arg1.indexOf(roomsArray._id) != -1 ){
 
 
-
-}
-
-
-
-if(booked) {
-
- var response = {"ERROR":"One or more of your rooms has now been booked."};
+     var response = {"ERROR":"One or more of your rooms has now been booked."};
         
       res.json(response);
 
-
-}else{
-
-  callback(null);
-
 }
 
+
+
+}
 
 
 
@@ -2397,7 +2053,7 @@ if(booked) {
     
     {
 
-console.log("block 2 going to next");
+
 
           callback(null);
 
@@ -2410,7 +2066,7 @@ console.log("block 2 going to next");
 
   },  function(callback){
    
-console.log("block 3");
+
     
 var nonce = req.query.payment_method_nonce;
 
@@ -2507,7 +2163,7 @@ db.collection('reservation').insert( [
 
           resID = results.insertedIds[0];
 
-          callback(null,results.insertedIds[0],results);
+          callback(null,results.insertedIds[0]);
 
 
 });
@@ -2532,7 +2188,7 @@ db.collection('reservation').insert( [
 
 
 
-   } ,function(arg1, arg2, callback){
+   } ,function(arg1, callback){
    
 
 for (x = 0; x < req.body['roomarray[]'].length; x++) { 
@@ -2556,44 +2212,16 @@ db.collection('hotels').updateOne( {"rooms._id":req.body['roomarray[]'][x]._id},
 
   //req.body['roomarray[]'].forEach(function(entry) {});
 
-  callback(null,arg1,arg2);
+  callback(null,arg1);
 
    
-  },function(arg1,arg2, callback){
+  },function(arg1, callback){
 
 
 
-var directory = req.query.fname+" "+req.query.lname+"/"+arg1; 
-
-var s3Bucket = new AWS.S3( { params: {Bucket: bucket} } );
-
-    var params = {Key: directory, Body: arg2};
-
-    s3Bucket.putObject(params, function(err, data) {
-  
-        if (err) {
-            
-
-            var response = {"ERROR":"Error creating your booking:"};
-
-            res.json(response);
-
-            console.log("Error uploading data: ", err);
-
-        } else {
-           
-            var balance = Number(req.query.total) - Number(req.query.deposit);
-
-            var response = {"ERROR":"","ReservationID":arg1};
-
-            res.json(response);
-           
-        }
-    });
 
 
-/*
-
+var directory = "public/reservations/"+req.query.fname+" "+req.query.lname+"/"; 
 
 
 
@@ -2630,9 +2258,7 @@ fs.mkdir(directory,function(err){
 
 
 
-
-
-fs.stat("public/reservations/", function (err, stats){
+/*fs.stat("public/reservations/", function (err, stats){
 
   if (err) {
 
@@ -2776,7 +2402,7 @@ var fname =  results.fname.replace(/\w\S*/g, function(txt){return txt.charAt(0).
 
 var balance = Number(total) - Number(results.deposit);
 
-var deposit = results.deposit;
+var deposit = results.deposit.toFixed(2);
 
 balance = balance.toFixed(2);
 
@@ -2876,11 +2502,6 @@ var message = {
         },{
             "name": "balance",
             "content": balance
-        },{
-
-            "name":"token",
-            "content":rString
-
         }
         ],
     "merge_vars": [{
@@ -2992,38 +2613,10 @@ pdf.create(html, options).toFile('businesscard.pdf', function(err, res) {
 /********* START OF ADMIN API'S *********/
 
 
-app.post('/api/trips/', function (req, res) {
-
-
-
-db.collection('itinerary').deleteMany( {}, function(err, results) {
-     
-     
-   });
-
-
-   });
-
-
-app.get('/api/trips/', function (req, res) {
-
-
-db.collection('itinerary').find().toArray(function(e, results){
-
-
-    if (e) return next(e);
-
-res.json(results);
-
-});
-
-});
-
-
 app.get('/api/trip/', function (req, res) {
 
 
-var o_id = new mongo.ObjectID(req.query.tripID);
+var o_id = new mongo.ObjectID(req.query.tripID );
 
 
 db.collection('itinerary').find({ "_id":o_id}).toArray(function(e, results){
@@ -3060,7 +2653,7 @@ db.collection('hotels').deleteMany( {}, function(err, results) {
    });
 
 
-db.collection('hotels').insertOne( {"rooms":[{"_id":"1","name":"Camel", "description":"Air conditioned double occupancy bedroom with ensuite bathroom","occupancy":"2","icon":"/images/parrot_thumb.png","price":"70.00","booking":[],"adults":"0","children":"0","infants":"0"},{"_id":"2","name":"Puce", "description":"Double occupancy bedroom with ensuite bathroom","occupancy":"2","price":"73.00","icon":"/images/parrot_thumb.png","booking":[],"adults":"0","children":"0","infants":"0"},{"_id":"3","name":"Spring Bud","description":"Double occupancy bedroom with ensuite bathroom","occupancy":"2","price":"73.00","icon":"/images/parrot_thumb.png","booking":[],"adults":"0","children":"0","infants":"0"},{"_id":"4","name":"Coquelicot","description":"Quadruple occupancy bedroom with ensuite bathroom and lounge","occupancy":"4","price":"90.00","icon":"/images/parrot_thumb.png","booking":[],"adults":"0","children":"0","infants":"0"}],"offers":[{"_id":"1","name":"Summer & Autumn Discount 10%","description":"Validity period from 20th June to 14th December","amount":".10","validdate":"20-04-2016","exdate":"14-12-2016","token":"","nights":""},{"_id":"2","name":"Friends and family discount 15%","description":"All year","amount":".15","validdate":"","exdate":"","token":"marshmellows","nights":""},{"_id":"3","name":"Breakfast","description":"Traditional Jamaican Break - Mackrel Run Down with Chicken or Calloo alternatives","amount":"0","validdate":"","exdate":"","token":"","nights":3}],"amenities":[{"name":"Breakfast","description":"Traditional Jamaican breakfast","price":"10.00","frequency":"person",},{"name":"Airport Pickup","description":"Transportation to and from airport","price":"30.00","frequency":"room",},{"name":"Private Car Hire","description":"On and Off road SUV - seating capacity 5 plus baggage","price":"60.00","frequency":"night",}],"businessname":"Sinopia Inn","businessaddress":"Matthews Ave Port Antonio, Jamaica","businessphone":"+1 876-993-7267","businesswebsite":"http://www.hotelmockingbirdhill.com/","businessemail":"info@sinopiainn.com","businessdescription":"","country":"","coordinates":{"Latitude":"18.1763329","Longitude":"-76.44973749999997"},"nameofevent":"","timeofevent":"","dateofevent":"","activity":[{"typeofbusiness":"Accomodation","typeofservice":"Villa"}],"typeofactivity":[],"contactname":"","location":"","logourl":"","showcaseurl":[],"comments":[],"averagerating":"","avergaeprice":"","date":"","enabled":""}, function(err, result) {
+db.collection('hotels').insertOne( {"rooms":[{"_id":"1","name":"Camel", "description":"Air conditioned double occupancy bedroom with ensuite bathroom","occupancy":"2","icon":"/images/parrot_thumb.png","price":"160.00","booking":[]},{"_id":"2","name":"Puce", "description":"Double occupancy bedroom with ensuite bathroom","occupancy":"2","price":"135.00","icon":"/images/parrot_thumb.png","booking":[]},{"_id":"3","name":"Spring Bud","description":"Double occupancy bedroom with ensuite bathroom","occupancy":"2","price":"135.00","icon":"/images/parrot_thumb.png","booking":[]},{"_id":"4","name":"Coquelicot","description":"Quadruple occupancy bedroom with ensuite bathroom and lounge","occupancy":"4","price":"180.00","icon":"/images/parrot_thumb.png","booking":[]}],"offers":[{"_id":"1","name":"Summer & Autumn Discount 10%","description":"Validity period from 20th June to 14th December","amount":".10","validdate":"20-04-2016","exdate":"14-12-2016","token":"","nights":""},{"_id":"2","name":"Friends and family discount 15%","description":"All year","amount":".15","validdate":"","exdate":"","token":"marshmellows","nights":""},{"_id":"3","name":"Breakfast","description":"Traditional Jamaican Break - Mackrel Run Down with Chicken or Calloo alternatives","amount":"0","validdate":"","exdate":"","token":"","nights":"3"}],"amenities":[{"name":"Breakfast","description":"Traditional Jamaican breakfast","price":"10.00","frequency":"person",},{"name":"Airport Pickup","description":"Transportation to and from airport","price":"30.00","frequency":"room",},{"name":"Private Car Hire","description":"On and Off road SUV - seating capacity 5 plus baggage","price":"60.00","frequency":"night",}],"businessname":"Sinopia Inn","businessaddress":"Matthews Ave Port Antonio, Jamaica","businessphone":"+1 876-993-7267","businesswebsite":"http://www.hotelmockingbirdhill.com/","businessemail":"info@sinopiainn.com","businessdescription":"","country":"","coordinates":{"Latitude":"18.1763329","Longitude":"-76.44973749999997"},"nameofevent":"","timeofevent":"","dateofevent":"","activity":[{"typeofbusiness":"Accomodation","typeofservice":"Villa"}],"typeofactivity":[],"contactname":"","location":"","logourl":"","showcaseurl":[],"comments":[],"averagerating":"","avergaeprice":"","date":"","enabled":""}, function(err, result) {
  
     res.send("Inserted a document into the hotel collection.");
    
@@ -3285,7 +2878,7 @@ console.log("Data written successfully!");
 
    console.log("Let's read newly written data");
    
- res.status(200, {status: 'OK'});
+ res.send(200, {status: 'OK'});
 
    //dont forgot the delete the temp files.
         });
@@ -3686,6 +3279,16 @@ mandrill_client.messages.sendTemplate({"template_name": template_name, "template
 
 
 
+
+
+
+
+module.exports = app;
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -3694,8 +3297,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-
+app.use('/', routes);
+app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -3704,7 +3307,7 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-/*// error handlers
+// error handlers
 
 // development error handler
 // will print stacktrace
@@ -3727,6 +3330,6 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-*/
+
 
 module.exports = app;

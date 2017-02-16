@@ -13,10 +13,10 @@
 
 <link rel="stylesheet" type="text/css" href="../styles/main.css">
 
-<link rel="stylesheet" type="text/css" href="../styles/w3.css">
 
 <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css">
 
+<link href='//fonts.googleapis.com/css?family=Waiting for the Sunrise' rel='stylesheet'>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -40,6 +40,22 @@
 
 <body ng-app="sinopia" ng-controller = "reservationsystem" >
 
+
+<!-- The Modal -->
+<div id="myModal" class="modal-footer-panel">
+
+  <!-- Modal content -->
+  <div class="modal-content-footer">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <p>This website uses cookies. We use cookies to help make this website better, to improve our services and for advertising purposes.You can learn more about our use of cookies and change your browser settings in order to avoid cookies by clicking <a href="privacy-and-cookies-statement.html"> here. </a>  Would you like to continue ?   <label><input type="radio" name="optradio" class="cookies-yes" value="yes">&nbsp;Yes</label>&nbsp;<label><input type="radio" name="optradio" class="cookies-no" value="no">&nbsp;No</label></p>
+    </div>
+ 
+  </div>
+
+  </div>
+
+  
 <nav id="mySidenav" class="sidenav">
 
 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
@@ -91,7 +107,13 @@
 
 </ul>  
 </nav>
+<header  class="" >
 
+<div  style="float:right;padding:10px;" id="google_translate_element"></div> 
+
+
+
+</header>
 
 <header class="topnav-header">
 
@@ -146,7 +168,7 @@
 </ul></header>
 
 
-<header style="text-align:center;padding:30px;" >
+<header  class="topnav-top-header" >
 <ul class="topnav-top">
 
 
@@ -165,9 +187,8 @@
 
 
 </ul>
-<a href="../index.html" ><img src="/images/logo_header.png" class="logo" ></a>
+<a href="index.html" ><img src="/images/logo_header.png" class="logo" ></a>
 </header>
-
 
 
 
@@ -180,16 +201,20 @@
      <div class="col-sm-5 bookingform-connect">
 </br></br>
 <!--<div id="instafeed" style="text-align:center;width:100%;"></div>-->
-
+<video width="100%" height="auto" controls>
+  <source src="movie.mp4" type="video/mp4">
+  <source src="movie.ogg" type="video/ogg">
+Your browser does not support the video tag.
+</video>
     </div>
  <div class="col-sm-1"> </div>
     <div class="col-sm-5"> 
 <div class="bookingform-rewards">
-      <h2 >  
+      <h2 >   
 
-    <span class="bookingform-rewards-heading1" > Exclusive </span>  </br> <span class="bookingform-rewards-heading" > rewards and recognition. </span> </h2>
-&nbsp;
-    <p class="bookingform-subtext" > STAY CONNECTED FOR NEWS , UPDATES AND OTHER TRAVEL RELATED CONTENT.</p>
+    <span class="bookingform-rewards-heading1" > What a gwann?</span>  </br> <span class="bookingform-rewards-heading" > Well we're glad you asked! </span> </h2>
+
+    <p class="" > Rewards, recognition and access to exclusive content on the go. </br> <a class="bookingform-rewards-cta" href="/reservations.html" > Come check us out </a></p>
 </div>
     </div>
 
@@ -245,6 +270,28 @@
 
 
 </div> 
+
+<header style="text-align:center;" >
+<ul class="topnav-top">
+
+
+
+ <li class="logo_link">  </li>
+
+<li class="dropdown-link"> 
+
+
+
+
+</li>  
+
+
+
+
+
+</ul>
+<a href="../index.html" ><img src="/images/billboard_ad.png"  style="width:50%"></a>
+</header>
 
 <!--style="margin:0px!important;height:auto!important;"-->
 
@@ -312,7 +359,7 @@
 
 <div class="divboxdiv" >
 
-    <h1><span>Destination Archive &nbsp;</span></h1>
+    <h1><span class="bookingform-rewards-cta" style="color:black!important;float:left!important;">Destination Archive &nbsp;</span></h1>
 </br>
 </div>
 </br>
@@ -471,11 +518,22 @@
 
 <script src="../scripts/main.js" ></script>
 
-  <script type="text/javascript">
+<script type="text/javascript">
+
 function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'de,en,es,fr,it,ja,la,nl,pa,pl,pt,ru,sv,th,zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+
 }
+
 </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+
+
+
+
+
 
 <script type="text/javascript" src="../scripts/instafeed.js"></script>
 

@@ -43,7 +43,21 @@
 <body ng-app="sinopia" onload="showDivs(3)">
 
 
-<nav id="mySidenav" class="sidenav">
+<!-- The Modal -->
+<div id="myModal" class="modal-footer-panel">
+
+  <!-- Modal content -->
+  <div class="modal-content-footer">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <p>This website uses cookies. We use cookies to help make this website better, to improve our services and for advertising purposes.You can learn more about our use of cookies and change your browser settings in order to avoid cookies by clicking <a href="privacy-and-cookies-statement.html"> here. </a>  Would you like to continue ?   <label><input type="radio" name="optradio" class="cookies-yes" value="yes">&nbsp;Yes</label>&nbsp;<label><input type="radio" name="optradio" class="cookies-no" value="no">&nbsp;No</label></p>
+    </div>
+ 
+  </div>
+
+  </div>
+
+<nav id="mySidenav" class="sidenav" >
 
 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
 
@@ -176,39 +190,159 @@
 
 <!--style='background-image:url("images/sinopia_inn.jpg"); background-repeat: no-repeat;background-size:cover;'-->
 
-
 <div class="slideshow-container">
 
-<div class="mySlides"  >
-  <div class="numbertext">1 / 3</div>
+<div class=""  >
+
 
 <div class="row" style="margin:0px!important;">
-    <div class="col-sm-4 " > </div>
+
     <div class="col-sm-4 " >
          
 
 
+<div class='home_text'>
+
+<div class="home_text_innerdiv"  > 
+
+
+<p class="home_text_caption" >
+
+SINOPIA INN 
+
+</p>
+
+
+<p class="home_text_sub_caption" >
+
+Not just a villa , refining your experience here in Jamaica
+
+
+</p> 
+
+
+
+
+<p class="home_text_sub_sub_caption" > 
+
+
+
+
+</p> 
+
+</div>
+
+
+</div>
 
 
     </div>
-</div>
 
-
-<div itemscope itemtype="http://schema.org/VideoObject"><meta itemprop="uploadDate" content="2016-11-30T17:00:55+0000" /><meta itemprop="name" content="beach.m4v" /><meta itemprop="thumbnailUrl" content="http://content.jwplatform.com/thumbs/gyXyH69M-1280.jpg" /><meta itemprop="contentUrl" content="http://content.jwplatform.com/videos/gyXyH69M-B7Z4erL4.mp4" /><script src="//content.jwplatform.com/players/gyXyH69M-0cRv1FH1.js"></script></div>
-
+     <div class="col-sm-8 " > </div>
 
 </div>
 
 
+<img src="../images/directions.jpg" style="width:100%"/>
 
-<div ng-controller = "reservationsystem" class="container-fluid maindiv">
+
+</div>
+
+
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+<div class="shortcodeformOuterform">
+
+<form method="post"  >
+ 
+
+<div class="row checkavaiabiltyrow shortcodeform" ng-hide='availabilty'>
+
+
+<div class="col-sm-3 " id='checkavaiabiltyrow' >
+
+<div class="form-group has-success has-feedback">
+
+
+
+<input type="text" class="form-control"  id="fromdate" name="from" ng-model="fromdate"  placeholder="CHECK IN"  > 
+
+<span class="glyphicon glyphicon-calendar form-control-feedback" ></span> 
+
+</input> 
+
+</div>
+
+</div>
+
+<div class="col-sm-3" id='checkavaiabiltyrow' >
+
+<div class="form-group has-success has-feedback">
+
+
+
+<input type="text" class="form-control" id="todate"  name="to" ng-model="todate" placeholder="CHECK OUT"> 
+
+<span class="glyphicon glyphicon-calendar form-control-feedback"></span>  
+
+</input> 
+
+</div>
+
+</div>
+
+<div class="col-sm-3" id='checkavaiabiltyrow' >
+
+<div class="form-group has-success has-feedback">
+
+
+
+<input id="promo" class="form-control" type="text" name='promo' ng-model="promo" placeholder="PROMO CODE" /> 
+
+<span class="glyphicon glyphicon-qrcode form-control-feedback"></span>
+
+</div>
+
+</div> 
+
+<div class="col-sm-3" id='checkavaiabiltyrow' >
+
+
+
+<button class="btn btn-default btn-block outline" type="button"  id="checkavailability"  ng-click="checkavailability()">CHECK AVAILABILITY</button> 
+
+</div>
+
+</div>
+
+
+
+<div id='errormessage' class='checking'> <p id="error" class="error"> {{error}} </p> </div>
+
+
+</form>
+
+</div><div  class="container-fluid maindiv">
 
 <section>
 
 
-<p class="side_menu_title">  SINOPIA INN </p> 
-
-<p> not just a villa its a Jamaican experience</p> 
 
 <h3>Mailing address </h3>
 <p>Zion Hill, Fairy Hill P.O  Portland, Jamaica </br> Call : +1 212 888 7000 </br> Write to : info@sinopiainn.com </p>
@@ -403,31 +537,7 @@ Pass by Temple Hall New Testament Church Of God (on the left in 2.1 km)</li>
 
 </div>
 
-<!-- The Modal -->
-<div id="myModal" class="modal-footer-panel">
-
-  <!-- Modal content -->
-  <div class="modal-content-footer">
-    <div class="modal-header">
-      <span class="close">&times;</span>
-      <p>This website uses cookies</p>
-    </div>
-    <div class="modal-body">
-
-
-      <p>We use cookies to help make this website better, to improve our services and for advertising purposes. </p> <p> You can learn more about our use of cookies and change your browser settings in order to avoid cookies by clicking <a href="privacy-and-cookies-statement.html"> here. </a> </p>
-
-      <p> Would you like to continue ? <div class="radio">
-  <label><input type="radio" name="optradio" class="cookies-yes" value="yes">&nbsp;Yes</label>
-</div>
-<div class="radio">
-  <label><input type="radio" name="optradio" class="cookies-no" value="no">&nbsp;No</label>
-</div> </p>
-    </div>
- 
-  </div>
-
-  </div><footer>
+<footer>
 <div class="row firstrow">
 
   <div class="col-sm-4" id="footer_column_3">  
@@ -565,9 +675,13 @@ Pass by Temple Hall New Testament Church Of God (on the left in 2.1 km)</li>
 <script src="/scripts/fbShareDialog.js" ></script>
 
   <script type="text/javascript">
+
 function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'de,en,es,fr,it,ja,la,nl,pa,pl,pt,ru,sv,th,zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+
 }
+
 </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 

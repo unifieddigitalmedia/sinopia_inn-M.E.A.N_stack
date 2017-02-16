@@ -1,12 +1,61 @@
 
 $(document).ready(function(){
 
+  $( function() {
+    var dateFormat = "dd-mm-yy",
+      from = $( "#fromdate" )
+        .datepicker({
+          defaultDate: "+1w",
+          changeMonth: true,
+          numberOfMonths: 3,
+          dateFormat: 'D, d M, yy'
+        })
+        .on( "change", function() {
+          to.datepicker( "option", "minDate", getDate( this ) );
+        }),
+      to = $( "#todate" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        numberOfMonths: 3,
+        dateFormat: 'D, d M, yy'
+      })
+      .on( "change", function() {
+        from.datepicker( "option", "maxDate", getDate( this ) );
+      });
+ 
+    function getDate( element ) {
+      var date;
+      try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+      } catch( error ) {
+        date = null;
+      }
+ 
+      return date;
+    }
+  } );
+
+
+$(window).scroll(function() {
+
+
+if ($(".shortcodeformOuterform").css('top') == 0){  
+
+
+    $(".shortcodeformOuterform").addClass("sticky");
+
+  }
+  else{
+    
+    $(".shortcodeformOuterform").removeClass("sticky");
+  }
+
+});
 
 
 
 $.get("https://api.instagram.com/v1/users/self/media/recent/?access_token=207254463.22050d9.9df9602edcf9424082d95c1f55be004e", function(data, status){
 
- alert("Data:" + data + "\nStatus: " + status);
 
 /*var photoCount = 20;
 
@@ -132,29 +181,7 @@ function getCookie(cname) {
 $(".checking").hide();
 
 
-$(function() {
-    $( "#fromdate" ).datepicker({
 
-      minDate: -0 ,
-      dateFormat: "dd-mm-yy",
-      defaultDate: "+1w",
-      changeMonth: true,
-      numberOfMonths: 3,
-      onClose: function( selectedDate ) {
-        $( "#todate" ).datepicker( "option", "minDate", selectedDate );
-      }
-    });
-    $( "#todate" ).datepicker({
-       minDate: -0 ,
-       dateFormat: "dd-mm-yy",
-      defaultDate: "+1w",
-      changeMonth: true,
-      numberOfMonths: 3,
-      onClose: function( selectedDate ) {
-        $( "#fromdate" ).datepicker( "option", "maxDate", selectedDate );
-      }
-    });
-  });
 
 
 $(".trip").click(function() {
@@ -193,7 +220,7 @@ function currentSlide(n) {
 
 var slideIndex = 0;
 
-showSlides();
+//showSlides();
 
 function showSlides() {
     var i;
@@ -230,7 +257,7 @@ app.controller('reservationsystem', function($scope,$http,$resource,$compile) {
 
 $scope.loadpics = function(){
 
-$http.get("http://www.sinopiainn.com/public/instagram_test_feed.js").then(function(response) {
+$http.get("http://localhost:3000/public/instagram_test_feed.js").then(function(response) {
 
     var photoCount = 20;
 
@@ -489,9 +516,14 @@ row3.appendChild(row3col1);
 
 var articleItemTitle = document.createElement("a");
 
-articleItemTitle.className = "side_menu_title_blog_link";
+articleItemTitle.className = "side_menu_title_blog_link bookingform-rewards-cta";
 
 articleItemTitle.setAttribute("href",itemList[counter].childNodes[5].innerHTML);
+articleItemTitle.setAttribute("style","font-family: 'Waiting for the Sunrise'!important;font-weight:900!important;float:right;font-size:180%!important;");
+
+
+
+
 
 articleItemTitle.appendChild(document.createTextNode("READ THE FULL STORY"));
 
@@ -547,14 +579,14 @@ if(z == 0 ){
 
  // mainRowDiv.setAttribute("style","width:100%; background-color:#f8f6f6;padding:100px;border:thin solid #d2d2d2;");
 
-mainRowDiv.setAttribute("style","width:105%; background-color:#f8f6f6;border:thin solid #d2d2d2; padding:30px; ");
+mainRowDiv.setAttribute("style","width:100%; background-color:#f9f8f8;border:thin solid #ffffff; padding:30px;margin:0 auto!important; ");
 
 }else{
 
 
  // mainRowDiv.setAttribute("style","width:100%; background-color:white;padding:100px;");
 
-mainRowDiv.setAttribute("style","width:105%; padding:30px; background-color:white;");
+mainRowDiv.setAttribute("style","width:100%; padding:30px; background-color:white;margin:0 auto!important;");
 }
 
 
@@ -668,9 +700,14 @@ articleItemTitleLink.className = "side_menu_title_blog_link";
 
 articleItemTitleLink.setAttribute("href",itemList[counter].childNodes[5].innerHTML);
 
+articleItemTitleLink.setAttribute("style","font-family: 'Waiting for the Sunrise'!important;font-weight:900!important;float:right;font-size:100%!important;");
+
 articleItemTitleLink.appendChild(document.createTextNode("READ THE FULL STORY"));
 
 articleItemTitle.appendChild(articleItemTitleLink);
+
+
+
 
 
 row2col1.appendChild(articleItemTitle);
@@ -730,7 +767,7 @@ var articleItemTitle = document.createElement("a");
 
 articleItemTitle.className = "side_menu_title_blog_link";
 
-articleItemTitle.setAttribute("style","text-decoration:none;");
+articleItemTitle.setAttribute("style","text-decoration:none;font-family: 'PT Sans', sans-serif; font-weight:100;");
 
 articleItemTitle.setAttribute("href",itemList[counter].childNodes[11].innerHTML);
 
@@ -872,7 +909,7 @@ alert("You must be staying with us to book this trip. Please specify the dates y
 
 
 
-$http.get("http://www.sinopiainn.com/api/checkavailability/?fromdate="+$scope.fromdate+"&todate="+$scope.todate+"&promo="+$scope.promo).then(function(response) {
+$http.get("http://localhost:3000/api/checkavailability/?fromdate="+$scope.fromdate+"&todate="+$scope.todate+"&promo="+$scope.promo).then(function(response) {
 
 
                                                           $scope.roomlist = response.data[0];
@@ -957,13 +994,28 @@ $scope.numofinfants;
 
 }
 
+
+
+function returnDate(d) {
+
+var d = new Date(d);
+
+var month = d.getMonth()  + 1;
+
+return d.getDate() + "-" +month+ "-" + d.getFullYear();
+
+}
+
+
+
+
 $scope.lengthofstay = function(para,para1) {
 
 
 
-$scope.fromarray = para.split("-");
+$scope.fromarray = returnDate(para).split("-");
 
-$scope.toarray =   para1.split("-");
+$scope.toarray =   returnDate(para1).split("-");
 
 
 $scope.startDate = new Date($scope.fromarray[2],Number($scope.fromarray[1])-1,$scope.fromarray[0]); 
@@ -983,6 +1035,7 @@ $scope.error = 'Checking availability';
 
 
     $scope.checkavailability = function() {
+
 
 
                      
@@ -1008,10 +1061,11 @@ $scope.error = 'Checking availability';
 							
 
 
-                            document.cookie = "fromdate=" + $("#fromdate").val();
+
+                            document.cookie = "fromdate=" + $("#fromdate").val(); 
 
   
-                            document.cookie = "todate=" + $("#todate").val();
+                            document.cookie = "todate=" + $("#todate").val(); 
 
 
                             document.cookie = "promo=" + $("#promo").val();
@@ -1028,7 +1082,7 @@ $scope.error = 'Checking availability';
 
 
 
-$http.get("http://www.sinopiainn.com/api/checkavailability/?fromdate="+getCookie('fromdate')+"&todate="+getCookie('todate')+"&promo="+getCookie('promo')).then(function(response) {
+$http.get("http://localhost:3000/api/checkavailability/?fromdate="+getCookie('fromdate')+"&todate="+getCookie('todate')+"&promo="+getCookie('promo')).then(function(response) {
 
 
 
@@ -1205,6 +1259,7 @@ $scope.validateDates = function(from,to) {
 
 
 
+
 if(!from || !to )
 
 {
@@ -1219,13 +1274,21 @@ else
 
 $scope.today = new Date();
 
-$scope.fromarray = from.split("-");
+$scope.fromarray = returnDate(from).split("-");
 
-$scope.toarray = to.split("-");
+
+
+$scope.toarray = returnDate(to).split("-");
+
+
 
 $scope.startDate = new Date($scope.fromarray[2],Number($scope.fromarray[1])-1,$scope.fromarray[0]); 
 
 $scope.endDate = new Date($scope.toarray[2],Number($scope.toarray[1])-1,$scope.toarray[0]);
+
+
+
+
 
 if( $scope.startDate > $scope.endDate )
 
@@ -1741,7 +1804,7 @@ return total;
 
 $scope.reserve = function() {
 
-var resource = $resource('http://www.sinopiainn.com/api/personaldetails/',{
+var resource = $resource('http://localhost:3000/api/personaldetails/',{
 
           id:"@id",
           fname:"@fname",
@@ -1818,7 +1881,7 @@ alert(reserve.ReservationID);
 
                             document.cookie = "promo=" ;
 
-                            window.location = "http://www.sinopiainn.com/booking-details.html" ;
+                            window.location = "http://localhost:3000/booking-details.html" ;
 
 }
   
@@ -1878,7 +1941,7 @@ alert(reserve.ReservationID);
 
                             document.cookie = "promo=" ;
 
-                            window.location = "http://www.sinopiainn.com/booking-details.html" ;
+                            window.location = "http://localhost:3000/booking-details.html" ;
 
 }
   
@@ -1912,7 +1975,7 @@ alert(getCookie('reservationID'));
 
 $scope.sendpaymentmethodnonce = function(para,para1) {
 
-var resource = $resource('http://www.sinopiainn.com/checkout/',{
+var resource = $resource('http://localhost:3000/checkout/',{
 
           payment_method_nonce:"@payment_method_nonce",
           total:"@total",
@@ -1942,7 +2005,7 @@ if(reserve.ERROR){ alert(reserve.ERROR); } else {
                            
 
 
-                            window.location = "http://www.sinopiainn.com/booking-confirmation.html" ;
+                            window.location = "http://localhost:3000/booking-confirmation.html" ;
 
 }
   
@@ -1987,7 +2050,7 @@ if (y.document)y = y.document;*/
 
 
 
-$http.get("http://www.sinopiainn.com/api/businesses").then(function(response) {
+$http.get("http://localhost:3000/api/businesses").then(function(response) {
 
 
 $scope.businesses = response.data;
@@ -2617,7 +2680,7 @@ $scope.booktrip = function (para,content)
 
 
 
-var resource = $resource('http://www.sinopiainn.com/api/booktrip/',{
+var resource = $resource('http://localhost:3000/api/booktrip/',{
 
           triptoken:"@triptoken", 
           distance:"@distance",   
@@ -2655,7 +2718,7 @@ var reserve = resource.save(
 
 
 
-                            window.location = "http://www.sinopiainn.com/make-a-reservation.html" ;
+                            window.location = "http://localhost:3000/make-a-reservation.html" ;
 
 
         }

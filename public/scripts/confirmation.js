@@ -9,7 +9,7 @@ var d = new Date();
 
 document.getElementById("date").innerHTML = d.toDateString();
 
-$http.get("http://www.sinopiainn.com/api/reservation-details/?reservationID="+getCookie('reservationID')).then(function(response) {
+$http.get("http://localhost:3000/api/reservation-details/?reservationID="+getCookie('reservationID')).then(function(response) {
 
                                     $scope.fullname = response.data.fname+' '+response.data.lname;
 
@@ -61,7 +61,7 @@ $scope.deposit = response.data.deposit;
 $scope.balance = balance.toFixed(2);
              
 
-$http.get("http://www.sinopiainn.com/api/booking-confirmation/?reservationID="+getCookie('reservationID')).then(function(response) {
+$http.get("http://localhost:3000/api/booking-confirmation/?reservationID="+getCookie('reservationID')).then(function(response) {
 
 
 

@@ -189,7 +189,7 @@ $scope.temppassword = "";
 
 
 
-$http.get("http://www.sinopiainn.com/api/businesses").then(function(response) {
+$http.get("http://localhost:3000/api/businesses").then(function(response) {
 
 $scope.businesses = $scope.filterBylocation(response.data);
 
@@ -1092,7 +1092,7 @@ $scope.booktrip = function (para,content)
 
 
 /*
-var resource = $resource('http://www.sinopiainn.com/api/booktrip/',{
+var resource = $resource('http://localhost:3000/api/booktrip/',{
 
           triptoken:"@triptoken", 
           distance:"@distance",   
@@ -1130,7 +1130,7 @@ var reserve = resource.save(
 
 
 
-                            window.location = "http://www.sinopiainn.com/make-a-reservation.html" ;
+                            window.location = "http://localhost:3000/make-a-reservation.html" ;
 
 
         }
