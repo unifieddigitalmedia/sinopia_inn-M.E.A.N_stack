@@ -1,5 +1,34 @@
 
 
+#google_translate_element a{
+padding:0px;margin-right:5px;width:100%;font-size:70%;
+}
+
+#google_translate_element span::before { 
+
+    content: "\00a0 "; 
+
+}
+
+#google_translate_element span::after { 
+
+    content: "\00a0 "; 
+
+}
+
+
+.goog-logo-link {
+   display:none !important;
+}
+.goog-te-gadget{
+   color: transparent !important;
+}
+.goog-te-gadget .goog-te-combo{
+   color: black !important;
+}
+
+.translateheader {width:100%;text-align:right;}
+
 .iti-flag {background-image: url("intl-tel-input-9.2.0/build/img/flags.png"); }
 
 .checkavaiabiltyrow{
@@ -628,7 +657,7 @@ border-color:black;
 
 .slideshow-container-reservation{ 
 
-padding:0px!important; margin:0px!important;width:auto;max-width:auto;  height:auto;  background:/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cb410b+0,cb410b+100,c96c4a+100,c9856c+100 */
+padding:0px!important; margin:0px!important;width:auto;max-width:auto; top:10px!important; height:auto;  background:/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cb410b+0,cb410b+100,c96c4a+100,c9856c+100 */
 background: #cb410b; /* Old browsers */
 background: -moz-linear-gradient(top,  #cb410b 0%, #cb410b 100%, #c96c4a 100%, #c9856c 100%); /* FF3.6-15 */
 background: -webkit-linear-gradient(top,  #cb410b 0%,#cb410b 100%,#c96c4a 100%,#c9856c 100%); /* Chrome10-25,Safari5.1-6 */

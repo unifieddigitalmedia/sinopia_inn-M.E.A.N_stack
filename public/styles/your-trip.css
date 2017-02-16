@@ -1,5 +1,33 @@
 
 
+#google_translate_element a{
+padding:0px;margin-right:5px;width:100%;font-size:70%;
+}
+
+#google_translate_element span::before { 
+
+    content: "\00a0 "; 
+
+}
+
+#google_translate_element span::after { 
+
+    content: "\00a0 "; 
+
+}
+
+
+.goog-logo-link {
+   display:none !important;
+}
+.goog-te-gadget{
+   color: transparent !important;
+}
+.goog-te-gadget .goog-te-combo{
+   color: black !important;
+}
+.translateheader {width:100%;text-align:right;}
+
 .itinerary-body-class {
 
  
@@ -884,42 +912,63 @@ ul.topnav-top li { display: inline-block;  vertical-align:middle; }
 /******** END OF HEADER MENU CSS ********/
 
 
+
+/****** Modal CSS ******/
+
 /* The Modal (background) */
 .modal-footer-panel {
     display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
+    position: relative; /* Stay in place */
     z-index: 99; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    -webkit-animation-name: fadeIn; /* Fade in the background */
+ 
+
+
+    /*background-color: rgb(255,255,255); 
+    background-color: rgba(255,255,255,0.4); */
+
+
+    -webkit-animation-name: fadeIn; 
     -webkit-animation-duration: 0.4s;
     animation-name: fadeIn;
     animation-duration: 0.4s
+  
 }
+
+
+.modal-header {
+
+font-size:50%;
+}
+
+
 
 /* Modal Content */
 .modal-content-footer {
-    position: fixed;
-    bottom: 0;
-    background-color: #fefefe;
+    position: relative;
+    top: 0;
+   
     width: 100%;
     -webkit-animation-name: slideIn;
     -webkit-animation-duration: 0.4s;
     animation-name: slideIn;
-    animation-duration: 0.4s
+    animation-duration: 0.4s;
+
+
+     background-color:black;
 }
 
 /* The Close Button */
 .close {
-    color: white;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+    color: white!important;
+   
+    font-size: 40px!important;
+    font-weight: 900!important;
+    z-index:99!important;
 }
 
 .close:hover,
@@ -930,12 +979,22 @@ ul.topnav-top li { display: inline-block;  vertical-align:middle; }
 }
 
 .modal-header {
+  color:#ffffff!important;font-weight:200;
     padding: 2px 16px;
-    background-color: #cb410b;
-    color: white;
+   /*background-color: #f9f8f8;*/
+
+   background-color:black;opacity: 0.8;filter: alpha(opacity=80);
+   
 }
 
-.modal-body {padding: 2px 16px;}
+.modal-header p{
+  color:#ffffff!important;font-weight:200;font-size:200%;
+   
+   
+}
+.modal-body {padding: 2px 16px; text-align:center;border:mone!important;}
+
+.modal-body p {color:#ffffff!important;}
 
 .modal-body a {color:#cb410b; }
 
@@ -943,19 +1002,21 @@ ul.topnav-top li { display: inline-block;  vertical-align:middle; }
 
 .modal-footer {
     padding: 2px 16px;
-    background-color: #cb410b;
-    color: white;
+
+
+       background-color:black;
+    color: #cb410b;
 }
 
 /* Add Animation */
 @-webkit-keyframes slideIn {
-    from {bottom: -300px; opacity: 0} 
-    to {bottom: 0; opacity: 1}
+    from {top: -300px; opacity: 0} 
+    to {top: 0; opacity: 1}
 }
 
 @keyframes slideIn {
-    from {bottom: -300px; opacity: 0}
-    to {bottom: 0; opacity: 1}
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
 }
 
 @-webkit-keyframes fadeIn {
@@ -967,4 +1028,3 @@ ul.topnav-top li { display: inline-block;  vertical-align:middle; }
     from {opacity: 0} 
     to {opacity: 1}
 }
-

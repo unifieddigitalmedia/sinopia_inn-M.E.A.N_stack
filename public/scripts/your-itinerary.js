@@ -159,13 +159,16 @@ $scope.filteredbusinesses = [];
 
 $scope.businesses = [];
 
+$scope.distanceurl;
 
 $scope.miles = 0 ;
 
 $scope.hours = 0;
 
 
+
 var init = function () {
+
 
 
 
@@ -173,20 +176,30 @@ $scope.itinerary_array = JSON.parse(getCookie('itinerary'));
 
 $http.get("http://localhost:3000/api/businesses").then(function(response) {
 
+
+
+
 $scope.businesses = response.data;
 
 $scope.subTotal();
 
-$scope.miles = $scope.filterBylocation($scope.businesses,$scope.itinerary_array);
+
+
+$scope.distanceurl = $scope.filterBylocation($scope.businesses,$scope.itinerary_array);
                                                                           
                                                                           });
 
 
 $http.get("http://localhost:3000/api/hotels").then(function(response) {
 
+
+
 $scope.accomodations = response.data;
 
+
+
    });
+
 
 
 
@@ -194,14 +207,61 @@ $scope.accomodations = response.data;
 
 init();
 
+$scope.totalmeters = 0 ;
+
+$scope.totalseconds = 0 ;
+
+$scope.$watch('distanceurl', function() {
+
+
+
+if($scope.distanceurl != undefined ){
+
+var  res = '{"destination_addresses": ["Waterloo Rd, Kingston, Jamaica"],"origin_addresses": ["Dragon Bay Road, Fairy Hill, Jamaica"],"rows": [{"elements": [{"distance": {"text": "61.6 mi","value": 99160},"duration": {"text": "2 hours 21 mins","value": 8474},"status": "OK"}]}],"status": "OK"}';
+
+
+$http.get($scope.distanceurl).then(function(response) {
+
+
+var json = JSON.parse(response.data;);
+
+
+for (i = 0; i < json.rows.length; i++) {
+
+$scope.totalmeters = $scope.totalmeters + Number(json.rows[i].elements[0].distance.value);
+
+$scope.totalseconds = $scope.totalseconds + Number(json.rows[i].elements[0].duration.value);
+
+ }
+
+
+$scope.miles = Number($scope.totalmeters) / 1609.344 ;
+
+$scope.minutes =  Number($scope.totalseconds) / 60 ;
+
+
+
+   });
+
+
+
+
+
+
+}
+
+
+});
+
+
+
 
 $scope.filterBylocation = function( para , para1 ) {
 
-var lastLong = Number(18.1763329);
 
-var lastLat = Number(-76.44973749999997);
 
-var miles = 0;
+var url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=18.166635,-76.381238&key=AIzaSyCKkEyLmhQV-BJObSMv6u3jx3sWQiTHjec&destinations=";
+
 
 angular.forEach(para, function(value, key) {
 
@@ -209,37 +269,18 @@ for (i = 0; i < para.length; i++) {
 
 if ( value._id === para1[i] )  { 
 
-var radlat1 = Math.PI * lastLat/180;
-  
-var radlat2 = Math.PI *  value.coordinates["Latitude"]/180;
-  
-var theta = lastLong-value.coordinates["Longitude"];
-  
-var radtheta = Math.PI * theta/180;
-  
-var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-  
-dist = Math.acos(dist);
-  
-dist = dist * 180/Math.PI;
-  
-dist = dist * 60 * 1.1515;
-
-miles += dist;
-
-lastLong = value.coordinates["Longitude"];
-
-lastLat = value.coordinates["Latitude"];
+url = url+value.coordinates['Latitude']+"%2C"+value.coordinates['Longitude'];
 
 
  }
+
 
  }
 
 });
 
  
-   return miles;
+   return url;
   
 };
 
@@ -255,6 +296,8 @@ $scope.calculatemilefare = function(){
 
 $scope.mileFare = 0 ;
 
+
+
 $scope.mileFare = $scope.miles * Number(2.10);
 
 return $scope.tocurrency($scope.mileFare);
@@ -264,13 +307,15 @@ return $scope.tocurrency($scope.mileFare);
 
 $scope.calculateminutefare = function(){
 
+
+
 $scope.minuteFare = 0 ;
 
-var hrs = Number($scope.miles)  / 30 ; 
+var hrs = Number($scope.miles)  / 45 ; 
 
 var mins = hrs * 30 ; 
 
-$scope.minuteFare = Number(mins) * Number(0.15);
+$scope.minuteFare = Number($scope.minutes) * Number(0.15);
 
 return $scope.tocurrency($scope.minuteFare);
 

@@ -163,7 +163,7 @@ font-size:150%;font-weight:300;
 
 .logo{width:208px; height:30px!important;}
 
-.panel-paragraph {background-color:#aa9d2e!important; padding:20px!important; color:white; font-weight:400;}
+.panel-paragraph {background-color:#aa9d2e!important; padding:20px!important; color:white; font-weight:200;}
 
 .w3-display-bottomleft {color:white;}
 /*
@@ -207,7 +207,7 @@ background-color:white;
 .dropbtn { display: inline-block; color:  #cb410b!important;  font-family: 'PT Sans', sans-serif; font-weight:100; text-align: center; padding: 14px 16px; 
 text-decoration: none;cursor:pointer; }
 
-.topnav{ width:70%;list-style-type: none; color: #cb410b; margin: 0 auto; padding: 0; overflow: hidden; text-align:right; line-height: 100% !important; }
+.topnav{ width:70%;list-style-type: none; color: #cb410b; margin: 0 auto; padding:-20px; overflow: hidden; text-align:right; line-height: 100% !important; }
 
 ul.topnav li.icon {display: none;}
 
@@ -347,6 +347,8 @@ ul.topnav-top li { display: inline-block;  vertical-align:middle; }
 
 .topnav-top li:first-child a:hover { background-color: none !important; }
 
+
+.translateheader {width:100%;text-align:right;}
 /******** END OF HEADER MENU CSS ********/
 
 /******** START OF SLIDER CONTAINER CSS ********/
@@ -454,7 +456,7 @@ max-width: auto;
 
 .slideshow-container-reservation{ 
 
-padding:0px!important; margin:0px!important;width:auto;max-width:auto;  height:auto; position:relative;top:0;  background:/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cb410b+0,cb410b+100,c96c4a+100,c9856c+100 */
+padding:0px!important; margin:0px!important;width:auto;max-width:auto;  height:auto; position:relative;top:10px!important;  background:/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cb410b+0,cb410b+100,c96c4a+100,c9856c+100 */
 background: #cb410b; /* Old browsers */
 background: -moz-linear-gradient(top,  #cb410b 0%, #cb410b 100%, #c96c4a 100%, #c9856c 100%); /* FF3.6-15 */
 background: -webkit-linear-gradient(top,  #cb410b 0%,#cb410b 100%,#c96c4a 100%,#c9856c 100%); /* Chrome10-25,Safari5.1-6 */

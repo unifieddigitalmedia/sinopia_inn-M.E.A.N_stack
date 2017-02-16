@@ -191,9 +191,11 @@ $scope.temppassword = "";
 
 $http.get("http://localhost:3000/api/businesses").then(function(response) {
 
+
+
 $scope.businesses = $scope.filterBylocation(response.data);
 
-
+$scope.$apply()
 
 
 var element = document.getElementById('country');
