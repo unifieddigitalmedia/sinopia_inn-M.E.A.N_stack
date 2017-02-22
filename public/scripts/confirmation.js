@@ -1,7 +1,7 @@
 
 var app = angular.module('sinopia', ['ngResource']);
 
-app.controller('reservationsystem', function($scope,$http,$resource,$compile) {
+app.controller('reservationsystem', function($scope,$https,$resource,$compile) {
 
 var init = function () {
 
@@ -9,7 +9,7 @@ var d = new Date();
 
 document.getElementById("date").innerHTML = d.toDateString();
 
-$http.get("http://localhost:3000/api/reservation-details/?reservationID="+getCookie('reservationID')).then(function(response) {
+$https.get("https://www.sinopiainn.com/api/reservation-details/?reservationID="+getCookie('reservationID')).then(function(response) {
 
                                     $scope.fullname = response.data.fname+' '+response.data.lname;
 
@@ -61,7 +61,7 @@ $scope.deposit = response.data.deposit;
 $scope.balance = balance.toFixed(2);
              
 
-$http.get("http://localhost:3000/api/booking-confirmation/?reservationID="+getCookie('reservationID')).then(function(response) {
+$https.get("https://www.sinopiainn.com/api/booking-confirmation/?reservationID="+getCookie('reservationID')).then(function(response) {
 
 
 

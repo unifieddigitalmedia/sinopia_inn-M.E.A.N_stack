@@ -77,7 +77,7 @@ angular.forEach(input, function(value, key) {
 });
 
 
-app.controller('travelplanner', function($scope,$http,$resource,$compile) {
+app.controller('travelplanner', function($scope,$https,$resource,$compile) {
 
 $scope.itinerary_array = [];
 
@@ -95,7 +95,7 @@ $scope.destination = getCookie('destination');
 
 $scope.itinerary_array = JSON.parse(getCookie('itinerary'));
 
-$http.get("http://www.sinopiainn.com/api/hotels/").then(function(response) {
+$https.get("https://www.sinopiainn.com/api/hotels/").then(function(response) {
 
 
 
@@ -118,7 +118,7 @@ init();
 $scope.bookTrip = function(){
 
 
-var resource = $resource('http://www.sinopiainn.com/api/booktrip/',{
+var resource = $resource('https://www.sinopiainn.com/api/booktrip/',{
 
           id:"@id",
           name:"@name",

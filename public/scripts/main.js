@@ -249,7 +249,7 @@ function showSlides() {
 
 var app = angular.module('sinopia', ['ngResource','typeofbusinessfilter','typeofservicefilter','businessnamefilter','itineraryFilter']);
 
-app.controller('reservationsystem', function($scope,$http,$resource,$compile) {
+app.controller('reservationsystem', function($scope,$https,$resource,$compile) {
 
 
 
@@ -257,7 +257,7 @@ app.controller('reservationsystem', function($scope,$http,$resource,$compile) {
 
 $scope.loadpics = function(){
 
-$http.get("http://localhost:3000/public/instagram_test_feed.js").then(function(response) {
+$https.get("https://www.sinopiainn.com/public/instagram_test_feed.js").then(function(response) {
 
     var photoCount = 20;
 
@@ -321,24 +321,24 @@ $scope.numofdays = 0 ;
 var init = function () {
    
 
-var xhttp = new XMLHttpRequest();
+var xhttps = new XMLhttpsRequest();
 
-xhttp.onreadystatechange = function() {
-
-
-
-    if (xhttp.readyState == 4 && xhttp.status == 200) {
+xhttps.onreadystatechange = function() {
 
 
-        recentBlogPost(xhttp);
+
+    if (xhttps.readyState == 4 && xhttps.status == 200) {
+
+
+        recentBlogPost(xhttps);
 
     }
 
 };
 
-xhttp.open("GET", "public/blog/Feed/index.xml", true);
+xhttps.open("GET", "public/blog/Feed/index.xml", true);
 
-//xhttp.send();
+//xhttps.send();
 
 
 
@@ -350,25 +350,25 @@ $scope.loadArticles = function() {
 
 
 
-var xhttp = new XMLHttpRequest();
+var xhttps = new XMLhttpsRequest();
 
-xhttp.onreadystatechange = function() {
-
-
-
-    if (xhttp.readyState == 4 && xhttp.status == 200) {
+xhttps.onreadystatechange = function() {
 
 
-        BlogArticle1(xhttp);
-        loadArchive(xhttp);
+
+    if (xhttps.readyState == 4 && xhttps.status == 200) {
+
+
+        BlogArticle1(xhttps);
+        loadArchive(xhttps);
     
     }
 
 };
 
-xhttp.open("GET", "Feed/index.xml", true);
+xhttps.open("GET", "Feed/index.xml", true);
 
-xhttp.send();
+xhttps.send();
 
 
 }
@@ -378,25 +378,25 @@ $scope.loadArticlesIndex = function() {
 
 
 
-var xhttp = new XMLHttpRequest();
+var xhttps = new XMLhttpsRequest();
 
-xhttp.onreadystatechange = function() {
-
-
-
-    if (xhttp.readyState == 4 && xhttp.status == 200) {
+xhttps.onreadystatechange = function() {
 
 
-        BlogArticle(xhttp);
+
+    if (xhttps.readyState == 4 && xhttps.status == 200) {
+
+
+        BlogArticle(xhttps);
      
     
     }
 
 };
 
-xhttp.open("GET", "../Feed/index.xml", true);
+xhttps.open("GET", "../Feed/index.xml", true);
 
-xhttp.send();
+xhttps.send();
 
 
 }
@@ -909,7 +909,7 @@ alert("You must be staying with us to book this trip. Please specify the dates y
 
 
 
-$http.get("http://localhost:3000/api/checkavailability/?fromdate="+$scope.fromdate+"&todate="+$scope.todate+"&promo="+$scope.promo).then(function(response) {
+$https.get("https://www.sinopiainn.com/api/checkavailability/?fromdate="+$scope.fromdate+"&todate="+$scope.todate+"&promo="+$scope.promo).then(function(response) {
 
 
                                                           $scope.roomlist = response.data[0];
@@ -1082,7 +1082,7 @@ $scope.error = 'Checking availability';
 
 
 
-$http.get("http://localhost:3000/api/checkavailability/?fromdate="+getCookie('fromdate')+"&todate="+getCookie('todate')+"&promo="+getCookie('promo')).then(function(response) {
+$https.get("https://www.sinopiainn.com/api/checkavailability/?fromdate="+getCookie('fromdate')+"&todate="+getCookie('todate')+"&promo="+getCookie('promo')).then(function(response) {
 
 
 
@@ -1804,7 +1804,7 @@ return total;
 
 $scope.reserve = function() {
 
-var resource = $resource('http://localhost:3000/api/personaldetails/',{
+var resource = $resource('https://www.sinopiainn.com/api/personaldetails/',{
 
           id:"@id",
           fname:"@fname",
@@ -1881,7 +1881,7 @@ alert(reserve.ReservationID);
 
                             document.cookie = "promo=" ;
 
-                            window.location = "http://localhost:3000/booking-details.html" ;
+                            window.location = "https://www.sinopiainn.com/booking-details.html" ;
 
 }
   
@@ -1941,7 +1941,7 @@ alert(reserve.ReservationID);
 
                             document.cookie = "promo=" ;
 
-                            window.location = "http://localhost:3000/booking-details.html" ;
+                            window.location = "https://www.sinopiainn.com/booking-details.html" ;
 
 }
   
@@ -1975,7 +1975,7 @@ alert(getCookie('reservationID'));
 
 $scope.sendpaymentmethodnonce = function(para,para1) {
 
-var resource = $resource('http://localhost:3000/checkout/',{
+var resource = $resource('https://www.sinopiainn.com/checkout/',{
 
           payment_method_nonce:"@payment_method_nonce",
           total:"@total",
@@ -2005,7 +2005,7 @@ if(reserve.ERROR){ alert(reserve.ERROR); } else {
                            
 
 
-                            window.location = "http://localhost:3000/booking-confirmation.html" ;
+                            window.location = "https://www.sinopiainn.com/booking-confirmation.html" ;
 
 }
   
@@ -2050,7 +2050,7 @@ if (y.document)y = y.document;*/
 
 
 
-$http.get("http://localhost:3000/api/businesses").then(function(response) {
+$https.get("https://www.sinopiainn.com/api/businesses").then(function(response) {
 
 
 $scope.businesses = response.data;
@@ -2680,7 +2680,7 @@ $scope.booktrip = function (para,content)
 
 
 
-var resource = $resource('http://localhost:3000/api/booktrip/',{
+var resource = $resource('https://www.sinopiainn.com/api/booktrip/',{
 
           triptoken:"@triptoken", 
           distance:"@distance",   
@@ -2718,7 +2718,7 @@ var reserve = resource.save(
 
 
 
-                            window.location = "http://localhost:3000/make-a-reservation.html" ;
+                            window.location = "https://www.sinopiainn.com/make-a-reservation.html" ;
 
 
         }

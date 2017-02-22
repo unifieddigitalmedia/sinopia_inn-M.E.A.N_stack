@@ -139,7 +139,7 @@ jQuery( "#subscribe_button" ).click(function() {
 
 var app = angular.module('travellight', ['ngResource','typeofbusinessfilter','typeofservicefilter','businessnamefilter','itineraryFilter']);
 
-app.controller('travelplanner', function($scope,$http,$resource,$compile) {
+app.controller('travelplanner', function($scope,$https,$resource,$compile) {
 
 var latlng;
 
@@ -189,7 +189,7 @@ $scope.temppassword = "";
 
 
 
-$http.get("http://localhost:3000/api/businesses").then(function(response) {
+$https.get("https://www.sinopiainn.com/api/businesses").then(function(response) {
 
 
 
@@ -1094,7 +1094,7 @@ $scope.booktrip = function (para,content)
 
 
 /*
-var resource = $resource('http://localhost:3000/api/booktrip/',{
+var resource = $resource('https://www.sinopiainn.com/api/booktrip/',{
 
           triptoken:"@triptoken", 
           distance:"@distance",   
@@ -1132,7 +1132,7 @@ var reserve = resource.save(
 
 
 
-                            window.location = "http://localhost:3000/make-a-reservation.html" ;
+                            window.location = "https://www.sinopiainn.com/make-a-reservation.html" ;
 
 
         }
