@@ -43,7 +43,7 @@
 
 </head>
 
-<body ng-app="sinopia" ng-controller = "reservationsystem">
+<body>
 <!-- The Modal -->
 <div id="myModal" class="modal-footer-panel">
 
@@ -253,9 +253,9 @@ you will have access to 87120 sq ft of land and all of it's amenities
    
 
   </div>
-<div class="shortcodeformOuterform">
+<div class="shortcodeformOuterform" id="span" ng-app='sinopia' ng-controller="reservationsystem" >
 
-<form method="post"  >
+<form    action="/reservation/" method="get" name="reservationform" class="reservationform" id="reservationform">
  
 
 <div class="row checkavaiabiltyrow shortcodeform" ng-hide='availabilty'>
@@ -319,7 +319,7 @@ you will have access to 87120 sq ft of land and all of it's amenities
 
 
 
-<div id='errormessage' class='checking'> <p id="error" class="error"> {{error}} </p> </div>
+<div id='errormessage' class='checking'> <p id="error" class="error"> {{Javascript_is_disable_Enable_Javascript_for_an_enhanced_experience}} </p> </div>
 
 
 </form>

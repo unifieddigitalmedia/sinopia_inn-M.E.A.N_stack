@@ -1,0 +1,428 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='Self Catering Holiday Villa in Portland Jamaica')
+    meta(name='keywords', content='Holiday,Villa,Portland,Port Antonio,Jamaica,Self Catering,Travel, Excursions, Beaches, Experiential Trips. Tours, Sight seeing, Yoga, Waterfalls, Rivers, Rafting, Blue Lagoon, Sun ,Sand, Sea')
+    meta(name='author', content='Machel Slack')
+    meta(property='fb:app_id', content='619443938242215')
+    meta(property='og:url', content='http://www.sinopiainn.com/reservation.html')
+    meta(property='og:type', content='website')
+    meta(property='og:title', content='Sinopia Inn - Self Catering Holiday Villa in Portland Jamaica | Make A Reservation')
+    meta(property='og:description', content='Self Catering Holiday Villa in Portland Jamaica')
+    meta(property='og:image', content='http://www.sinopiainn.com/images/homepage1.jpg')
+    link(rel='stylesheet', type='text/css', href='/styles/reservation.css')
+    // Latest compiled and minified CSS
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    link(rel='stylesheet', href='http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css')
+    link(rel='stylesheet', href='intl-tel-input-9.2.0/build/css/intlTelInput.css')
+    script(src='/braintree-web/client.js')
+    link(rel='icon', type='image/png', href='/images/jmtrax_icon.png')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='Self Catering Holiday Villa in Portland Jamaica')
+    meta(name='keywords', content='Holiday,Villa,Portland,Port Antonio,Jamaica,Self Catering,Travel, Excursions, Beaches, Experiential Trips. Tours, Sight seeing, Yoga, Waterfalls, Rivers, Rafting, Blue Lagoon, Sun ,Sand, Sea')
+    title
+      | Sinopia Inn  -  Self Catering Holiday Villa in Portland Jamaica  | Make A Reservation
+  body.body-class(ng-app='travellight', ng-controller='travelplanner', ng-cloak='')
+    // The Modal
+    #myModal.modal-footer-panel
+      // Modal content
+      .modal-content-footer
+        .modal-header
+          span.close ×
+          p
+            | This website uses cookies. We use cookies to help make this website better, to improve our services and for advertising purposes.You can learn more about our use of cookies and change your browser settings in order to avoid cookies by clicking 
+            a(href='privacy-and-cookies-statement.html')  here. 
+            |   Would you like to continue ?
+            label
+              input.cookies-yes(type='radio', name='optradio', value='yes')
+              |  Yes
+            label
+              input.cookies-no(type='radio', name='optradio', value='no')
+              |  No
+    nav#mySidenav.sidenav
+      a.closebtn(href='javascript:void(0)', onclick='closeNav()') ×
+      ul
+        li.dropdown-link
+          a(href='index.html')    HOME   
+        li.dropdown-link
+          a(href='our-villa.html')  OUR VILLA 
+        li.dropdown-link
+          a(href='rooms-and-rates.html') ROOMS AND RATES 
+        li.dropdown-link
+          a(href='food-and-travel.html') FOOD AND TRAVEL
+          .dropdown-content
+            a(href='day-passes.html')  Day Passes 
+            a(href='culinary-experiences.html')  Culinary Experiences 
+            a(href='beaches.html')  Beaches 
+            a(href='treks.html')  Mountain and Bike Treks 
+            a(href='yoga.html')  Yoga
+            a(href='experiential-trips.html')  Experiential Trips
+            a(href='local-experiences.html')  Local Experiences and Events
+            a(href='family-sporting-trips.html')  Family and Sporting Trips 
+        li
+          a(href='rewards-and-recognition.html')
+            span  REWARDS AND RECOGNITION 
+        li.dropdown-link
+          a(href='contact.html')  CONTACT 
+        li.dropdown-link
+          a(href='/blog/index.html')  BLOG 
+    header.translateheader
+      #google_translate_element
+    header.topnav-header
+      ul.topnav
+        li.dropdown-link
+          a(href='index.html')
+            span  HOME 
+        span.menudivider  
+        li.dropdown-link
+          a(href='our-villa.html')
+            span  OUR VILLA 
+        span.menudivider  
+        li.dropdown-link
+          a(href='rooms-and-rates.html')
+            span   ROOMS AND RATES
+        span.menudivider  
+        li.dropdown-link
+          a(href='food-and-travel.html')
+            span  FOOD AND TRAVEL 
+          .dropdown-content
+            a(href='day-passes.html')  Day Passes
+            a(href='culinary-experiences.html')  Culinary Experiences 
+            a(href='beaches.html')  Beaches 
+            a(href='treks.html')  Mountain and Bike Treks 
+            a(href='yoga.html')  Yoga
+            a(href='experiential-trips.html')  Experiential Trips
+            a(href='local-experiences.html')  Local Experiences
+            a(href='family-sporting-trips.html')  Family and Sporting Trips 
+        span.menudivider  
+        li
+          a(href='rewards-and-recognition.html')
+            span  REWARDS AND RECOGNITION 
+        span.menudivider  
+        li.dropdown-link
+          a(href='contact.html')
+            span   CONTACT 
+        span.menudivider  
+        li.dropdown-link
+          a(href='/blog/index.html')
+            span   BLOG 
+        li.icon
+          a(href='javascript:void(0);', style='font-size:15px;', onclick='openNav()') ☰
+    header.topnav-top-header
+      ul.topnav-top
+        li.logo_link   
+        li.dropdown-link
+      a(href='index.html')
+        img.logo(src='/images/logo_header.png')
+    .slideshow-container-reservation
+      .row.booking-form-row(style='margin:0px!important;')
+        .col-sm-5.bookingform-connect
+          br
+          // <div id="instafeed" style="text-align:center;width:100%;"></div>
+        .col-sm-1  
+        .col-sm-5
+          .bookingform-rewards
+            h2
+              span.bookingform-rewards-heading1  Amazing Value 
+              br
+              span.bookingform-rewards-heading  at affordable rates. 
+            p.bookingform-subtext You can have access to the entire villa and all of it's amenities.
+        .col-sm-1  
+      .row(style='margin:0px!important;')
+        .col-sm-3
+          .w3-padding-top.side_menu_title_para-res
+            i.fa.fa-coffee.service_icon-res
+            p.service_icon-res-heading  Jamaican Breakfast 
+            p.service_icon-res-text  when you spend three nights or more 
+        .col-sm-3
+          .w3-padding-top.side_menu_title_para-res
+            i.fa.fa-car.service_icon-res
+            p.service_icon-res-heading Private Car Hire
+            p.service_icon-res-text for group bookings 
+        .col-sm-3
+          .w3-padding-top.side_menu_title_para-res
+            i.fa.fa-bus.service_icon-res
+            p.service_icon-res-heading Airport Pick / Drop Off
+            p.service_icon-res-text for Gold, Platinum and Black  members
+        .col-sm-3
+          .w3-padding-top.side_menu_title_para-res
+            i.fa.fa-wifi.service_icon-res
+            p.service_icon-res-heading WIFI 24/7
+            p.service_icon-res-text connection in all rooms
+    .container-fluid.maindiv
+      .container-fluid.maindiv
+        form(action='/confirmation/', method='get')
+          section
+            .row(style='margin:0px!important;')
+              .col-sm-12.booking-confirmation-row1
+                section.reservation-hotel-section
+                  .container-fluid.maindiv
+                    #ratescol.row
+                      .col-sm-5
+                      .col-sm-2
+                      .col-sm-5
+                        #ratescol.row
+                          .col-sm-12
+                            #toprow.row
+                              .col-sm-12
+                                h6
+                                  | Rates
+                                  h6  
+                            #toprow.row
+                              .col-sm-12
+                                h6
+                                  | Rooms
+                                  h6  
+                            .rtsrms
+                              table(style='width:100%;')
+                                tr.row(ng-repeat='room in roomsArray')
+                                  td.col-sm-6
+                                    p {{room.name}}
+                                  td.col-sm-3
+                                    p  USD 
+                                  td.col-sm-3
+                                    // <p> {{tocurrency(room.price * numofdays * room.adults ) }} </p>
+                                    p  {{tocurrency(calRoom($index))}} 
+                            #toprow.row
+                              .col-sm-12
+                                h6
+                                  | Amenities
+                                  h6  
+                            .rtsaddons
+                              table(style='width:100%;')
+                                tr.row(ng-if='tripID')
+                                  td.col-sm-6
+                                    p
+                                      | Excursion 
+                                      i * estimate not included in final price . To be discussed onced checked in
+                                  td.col-sm-3
+                                    p  USD 
+                                  td.col-sm-3 {{tocurrency(tripTotal)}}
+                              table(style='width:100%;')
+                                tr.row(ng-repeat="room in amenityArray | filter:room.checked='true'")
+                                  td.col-sm-6
+                                    p {{room.name}}
+                                  td.col-sm-3
+                                    p  USD 
+                                  td.col-sm-3
+                                    p(ng-if="room.frequency === 'person' ")
+                                      | {{
+                                      | tocurrency(room.price * numofadults)
+                                      | }}
+                                    p(ng-if="room.frequency === 'room' ")
+                                      | {{
+                                      | tocurrency(room.price * roomsArray.length)
+                                      | }}
+                                    p(ng-if="room.frequency === 'night' ")
+                                      | {{
+                                      | tocurrency(room.price * numofdays)
+                                      | }}
+                                    p(ng-if="room.frequency === 'distance' ")
+                                      | {{
+                                      | tocurrency(room.price * numofdays)
+                                      | }}
+                            #toprow.row
+                              .col-sm-12
+                                h6
+                                  | Offers
+                                  h6  
+                            .rtsoffs
+                              table(style='with:100%;')
+                                tr.row(ng-repeat='offer in offersArray')
+                                  td.col-sm-6
+                                    p {{offer.name}}
+                                  td.col-sm-3
+                                    p  USD 
+                                  td.col-sm-3
+                                    p ({{tocurrency(calculateoffertotal($index))}} )
+                            #firstinnerrow.row
+                              .col-sm-6
+                                h6
+                                  | Tax
+                                  h6  
+                              .col-sm-3
+                                p
+                                p  
+                              .col-sm-3
+                                p
+                                p  
+                            #toprow.row
+                              .col-sm-6
+                                h6
+                                  | Total
+                                  h6  
+                              .col-sm-3
+                                p
+                                p  
+                              .col-sm-3
+                                p.rtstlt {{tocurrency(calculatetotals() - calculatediscounttotal())}}
+                                p
+                            .row
+                              .col-sm-6
+                                p
+                                p  
+                              .col-sm-3
+                                p
+                                p  
+                              .col-sm-3
+                                p
+                                  button#totalid.btn.btn-default.input-sm.outline(type='button', ng-click='personaldetails()')  CONTINUE
+                                p  
+                        #detailscol.row
+                          h2  You're ready to confirm your stay with us. 
+                          section.device-compatiability-icon-section
+                            .row
+                              .col-sm-12
+                                h5  We're accepting the following payments  
+                                .row
+                                  .col-sm-2
+                                    img(src='/credit_card_&_payment_logos/large/amex-1-l.png', style='width:100%')
+                                  .col-sm-2
+                                    img(src='/credit_card_&_payment_logos/large/visa-1-l.png', style='width:100%')
+                                  .col-sm-2
+                                    img(src='/credit_card_&_payment_logos/large/mastercard-1-l.png', style='width:100%')
+                                  .col-sm-2
+                                    img(src='/credit_card_&_payment_logos/large/maestro-1-l.png', style='width:100%')
+                                  .col-sm-2
+                                    img(src='/credit_card_&_payment_logos/large/jcb-1-l.png', style='width:100%')
+                                  .col-sm-2
+                                    img(src='/credit_card_&_payment_logos/large/paypal-1-l.png', style='width:100%')
+                          #firstinnerrow.row
+                            .col-sm-6
+                              input#resfirstname.form-control(type='text', placeholder='Enter first name', data-ng-model='fname')
+                            .col-sm-6
+                              input#reslastname.form-control(type='text', placeholder='Enter last name', data-ng-model='lname')
+                          #firstinnerrow.row
+                            .col-sm-6
+                              input#phone.form-control(type='tel', data-ng-model='phone')
+                              script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+                              script(src='intl-tel-input-9.2.0/build/js/intlTelInput.js')
+                              script.
+                                $("#phone").intlTelInput();
+                            .col-sm-6
+                              input#resemail.form-control(type='text', placeholder='Enter email', data-ng-model='email')
+                          br
+                          span#detailserror(style='color:red;font-weight:bold;')  {{detailserror}} 
+                          br
+                          #firstinnerrow.row
+                            .col-sm-12
+                              #dropin-container
+                          #firstinnerrow.row
+                            .col-sm-12
+                              label
+                                input#ckhterms(type='checkbox', name='terms')
+                                |  Please agree to the terms of our villa 
+                                a(href='', style='color:#cb410b')  below
+                                |  before continuing
+                          .row
+                            .col-sm-6
+                              p
+                              p  
+                            .col-sm-3
+                              p
+                              p  
+                            .col-sm-3
+                              p
+                                form#checkout-form.checkout-form(action='booking-confirmation', method='post', name='checkout-form')
+                                  button.btn.btn-default.input-sm.outline(type='submit')  Pay $ {{caldeposit(total)}}
+                              p   
+                          .row
+                            .col-sm-12
+                              p
+                                | Rates are per room per night, quoted in U.S. dollars, and are based on double occupancy per room. Rates quoted do not include government duties.
+                              h4 DEPOSIT POLICY:
+                              p(style='text-align:left;')
+                                | $ {{deposit}} USD deposit is required upon making a reservation. Final payment is due in full 14 days prior to arrival date, 30 days for Easter and 60 days for Christmas/New Year. This payment is non-refundable.
+                              h4 CANCELLATION, NO-SHOW AND REFUND POLICIES:
+                              p
+                                | A full refund is due when cancelled 45 days prior to arrival, 60 days for Easter and 90 days during Christmas and New Year. The full amount of the stay is non-refundable when inside 45 days, 60 days for Easter and 90 days during Christmas and New Year.
+                              p No refund and full amount of stay is forfeited when there is a no-show.
+    footer
+      .row.firstrow
+        #footer_column_3.col-sm-4
+          h6  CONNECT WITH SINOPIA INN 
+          .row.iconset
+            .col-sm-12
+              img(src='/images/social-media/facebook.png', onclick='socialShare(this)', style='cursor:pointer;')
+              img(src='/images/social-media/pin.png', onclick='socialSharePinInterest(this)', style='cursor:pointer;')
+              img(src='/images/social-media/tube.png')
+              img(src='/images/social-media/twitter.png', onclick='socialShareTwitter(this)', style='cursor:pointer;')
+              img(src='/images/social-media/linkedIn.png')
+              img(src='/images/social-media/mail.png', onclick='socialShareMail(this)', style='cursor:pointer;')
+          br
+          .row
+            .col-sm-12.download_buttons_col
+              h6
+                i.fa.fa-mobile(style='font-size:30px;color:black')
+                i.fa.fa-mobile(style='font-size:36px;color:black')
+                |    GET THE MOBILE APP
+          .row
+            .col-sm-12.download_buttons_col
+              input.download_buttons(src='/images/google_button.png', type='image')
+              input.download_buttons(src='/images/apple_button.png', type='image')
+          br
+          a(href='index.html')
+            img(src='images/logo.png')
+          br
+          p
+            | Zion Hill, Fairy Hill P.O  Portland, Jamaica 
+            br
+            |  +1 212 888 7000 - info@sinopiainn.com
+        #footer_column_3.col-sm-4
+          h6 MORE LINKS 
+          ul
+            li
+              a(href='directions-and-location.html')  Location & Directions 
+            li
+              a(href='reservation.html')  Make a reservation
+            li
+              a(href='mobile-app.html')  Smartphone App
+          h6
+            a.footer_column_3_link_title(href='blog/index.html')  RECENT BLOG POSTS 
+          ul#recent_blog_posts(style='list-type:square!important;')
+        #footer_column_3.col-sm-4
+          h6 STAY IN TOUCH
+          p(style='padding-bottom:20px;font-size:small;')
+            | Missed us when we’re away? Add your email below so we can update you on news and offers from us at Sinopia Inn.
+          form#mc-embedded-subscribe-form(action='connect.html', method='POST', name='mc-embedded-subscribe-form', validate='', role='form')
+            .input-group(style='padding-bottom:20px;')
+              input#subscribers_email.form-control(type='email', placeholder='Please enter your email address', name='subscribers_email')
+              span.input-group-btn
+                button.btn.btn-secondary(type='button')
+                  span.glyphicon.glyphicon-triangle-right(aria-hidden='true')
+          p(style='padding-bottom:10px;font-size:small;')
+            | For more information on how we use your personal details please refer to our Privacy Policy and  Cookie Policy
+    // jQuery library
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+    // Latest compiled JavaScript
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    script(src='/angular/angular.min.js')
+    script(src='/angular-resource/angular-resource.min.js')
+    script(src='//code.jquery.com/jquery-1.10.2.js')
+    script(src='//code.jquery.com/ui/1.11.4/jquery-ui.js')
+    script(src='/scripts/your-reservation.js')
+    script(src='https://js.braintreegateway.com/js/braintree-2.23.0.min.js')
+    script(src='/braintree-web/hosted-fields.js')
+    script(src='/braintree-web/paypal.js')
+    script(src='/braintree-web/data-collector.js')
+    script(type='text/javascript').
+      function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+      }
+    script(type='text/javascript', src='//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit')
+    script(type='text/javascript', src='/scripts/instafeed.js')
+    script(type='text/javascript').
+      var userFeed = new Instafeed({
+      get: 'user',
+      userId: '207254463',
+      clientId: '22050d93815945ac9f575e3fcf38962d',
+      accessToken: '207254463.22050d9.9df9602edcf9424082d95c1f55be004e',
+      sortBy: 'most-recent',
+      template: '<img src="{{image}}" style="padding:3px;"/>',
+      limit: 4,
+      links: false
+      });
+      userFeed.run();

@@ -136,19 +136,37 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 res.render("index.jade", { name:req.query.name, email:req.query.email });
-/*
-fs.readFile('public/guest-survey.html', function (err, data) {
-        res.writeHead(200, {
-            'Content-Type': 'text/html',
-                'Content-Length': data.length
-        });
-        res.write(data);
-        res.end();
-    });
-*/
+
 
 });
 
+
+
+app.get('/reservation/', function (req, res) {
+
+
+
+app.set('views', path.join(__dirname, 'views'));
+
+app.set('view engine', 'jade');
+
+res.render("reservation.jade", { name:req.query.name, email:req.query.email });
+
+
+});
+
+app.get('/order/',function(req,res) {
+
+
+app.set('views', path.join(__dirname, 'views'));
+
+app.set('view engine', 'jade');
+
+res.render("order.jade", { name:req.query.name, email:req.query.email });
+
+
+
+});
 
 app.get('/booking-confirmation/', function (req, res) {
 
@@ -2225,7 +2243,7 @@ app.get("/api/reservation-details/", function (req, res) {
 
 
 
-var hotelID = new mongo.ObjectID( '5899be76abfda66ea097c580');
+var hotelID = new mongo.ObjectID('5899be76abfda66ea097c580');
 
 var o_id = new mongo.ObjectID(req.query.reservationID);
 
@@ -2414,7 +2432,7 @@ gateway.transaction.sale({
   
                                     amount:deposit,
   
-                                    paymentMethodNonce:nonce,
+                                      paymentMethodNonce:"fake-valid-nonce",
   options: {
 
     submitForSettlement: true
@@ -2560,8 +2578,10 @@ db.collection('hotels').updateOne( {"rooms._id":req.body['roomarray[]'][x]._id},
 var directory = req.query.email+"/"+arg1; 
 
 var s3Bucket = new AWS.S3( { params: {Bucket: bucket} } );
+ 
 
-    var params = {Key: directory, Body: arg2};
+
+    var params = {Key: directory, Body: JSON.stringify(arg2)};
 
     s3Bucket.putObject(params, function(err, data) {
   
@@ -2873,7 +2893,7 @@ var message = {
         },{
 
             "name":"token",
-            "content":rString
+            "content":results.token
 
         }
         ],

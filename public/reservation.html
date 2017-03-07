@@ -43,7 +43,7 @@
 
 </head>
 
-<body class="body-class" ng-app="travellight" ng-controller="travelplanner" ng-cloak>
+<body id="span" class="body-class" ng-app="travellight" ng-controller="travelplanner" ng-cloak >
 
 
 <!-- The Modal -->
@@ -276,8 +276,15 @@
 
 </div>
 
+<div class="row"  id="from_travel">
+<div class="col-sm-12 booking-confirmation-row1">
+<h1>You must be staying with us to book a trip. Please tell us the dates you would like to travel below.</h1>
+<h2> once you've booked a room your ready to go </h2>
 
-<div class="shortcodeformOuterform">
+</div>
+</div>
+
+<div class="shortcodeformOuterform" >
 
 <form method="post" id="shortcodeform"  name="shortcodeform" ng-init="reservationinit()" >
  
@@ -344,7 +351,7 @@
 
 
 
-<div id='errormessage' class='checking'> <p id="error" class="error"> {{error}} </p> </div>
+<div id='errormessage' class='checking'> <p id="error" class="error"> {{Javascript_is_disable_Enable_Javascript_for_an_enhanced_experience}} </p> </div>
 
 
 </form>
@@ -360,13 +367,7 @@
 
 <section >
 
-<div class="row" ng-hide="from_travel">
-<div class="col-sm-12 booking-confirmation-row1">
-<h1>You must be staying with us to book a trip. Please tell us the dates you would like to travel below.</h1>
-<h2> once you've booked a room your ready to go </h2>
 
-</div>
-</div>
 &nbsp;
 
 
@@ -1027,7 +1028,7 @@
 
    <div class="col-sm-12"> 
 
-    <label><input type="checkbox" id="ckhterms" name="terms"/> Please agree to the terms of our villa <a href="" style="color:#cb410b"> below</a> before continuing </label> </div> </div>
+    <label><input type="checkbox" id="ckhterms" name="terms"/> Please agree to the terms of our villa <a href="" style="color:#cb410b!important"> below</a> before continuing </label> </div> </div>
     
   <div class="row"  > 
 
@@ -1223,19 +1224,9 @@
 
 </footer>
 
-<script src="/jquery/dist/jquery.min.js" ></script>
 
-<script src="/bootstrap/dist/js/bootstrap.min.js" ></script>
 
-<script src="/angular/angular.min.js" ></script>
 
-<script src="/angular-resource/angular-resource.min.js" ></script>
-
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-
-<script src="/scripts/your-reservation.js" ></script>
 
 <script src="https://js.braintreegateway.com/js/braintree-2.23.0.min.js"></script>
 
@@ -1244,6 +1235,25 @@
 <script src="/braintree-web/paypal.js"></script>
 
 <script src="/braintree-web/data-collector.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="/angular/angular.min.js"></script>
+
+<script src="/angular-resource/angular-resource.min.js" ></script>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script src="/scripts/your-reservation.js" ></script>
+
+<script src="/scripts/fbShareDialog.js" ></script>
+
+
+
 
   <script type="text/javascript">
 
@@ -1255,24 +1265,7 @@ function googleTranslateElementInit() {
 
 </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-<script type="text/javascript" src="/scripts/instafeed.js"></script>
 
-<script type="text/javascript">
-
-
-  var userFeed = new Instafeed({
-    get: 'user',
-    userId: '207254463',
-    clientId: '22050d93815945ac9f575e3fcf38962d',
-    accessToken: '207254463.22050d9.9df9602edcf9424082d95c1f55be004e',
-    sortBy: 'most-recent',
-    template: '<img src="{{image}}" style="padding:3px;"/>',
-    limit: 4,
-    links: false
-  });
-  userFeed.run();
-
-</script>
 </body>
 
 </html>

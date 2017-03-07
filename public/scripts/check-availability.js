@@ -95,7 +95,7 @@ $scope.destination = getCookie('destination');
 
 $scope.itinerary_array = JSON.parse(getCookie('itinerary'));
 
-$https.get("https://www.sinopiainn.com/api/hotels/").then(function(response) {
+$https.get("http://www.sinopiainn.com/api/hotels/").then(function(response) {
 
 
 
@@ -118,7 +118,7 @@ init();
 $scope.bookTrip = function(){
 
 
-var resource = $resource('https://www.sinopiainn.com/api/booktrip/',{
+var resource = $resource('http://www.sinopiainn.com/api/booktrip/',{
 
           id:"@id",
           name:"@name",

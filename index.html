@@ -43,7 +43,12 @@
 
 </head>
 
-<body ng-app="sinopia" ng-controller = "reservationsystem" onload="showSlides()">
+<body  >
+
+
+
+<div onload="showSlides()">
+
 
 
 <!-- The Modal -->
@@ -263,13 +268,12 @@ Sinopia Inn would like to welcome you to its rustic hideaway. Here you can exper
 </div>
 
 
+<div class="shortcodeformOuterform" id="span" ng-app='sinopia' ng-controller="reservationsystem" >
 
-<div class="shortcodeformOuterform">
-
-<form method="post"  >
+<form    action="/reservation/" method="get" name="reservationform" class="reservationform" id="reservationform">
  
 
-<div class="row checkavaiabiltyrow shortcodeform" ng-hide='availabilty'>
+<div class="row checkavaiabiltyrow shortcodeform" >
 
 
 <div class="col-sm-3 " id='checkavaiabiltyrow' >
@@ -278,7 +282,7 @@ Sinopia Inn would like to welcome you to its rustic hideaway. Here you can exper
 
 
 
-<input type="text" class="form-control"  id="fromdate" name="from" ng-model="fromdate"  placeholder="CHECK IN"  > 
+<input type="text" class="form-control"  id="fromdate" name="from" ng-model="fromdate"  placeholder="CHECK IN"  name="fromdate" > 
 
 <span class="glyphicon glyphicon-calendar form-control-feedback" ></span> 
 
@@ -294,7 +298,7 @@ Sinopia Inn would like to welcome you to its rustic hideaway. Here you can exper
 
 
 
-<input type="text" class="form-control" id="todate"  name="to" ng-model="todate" placeholder="CHECK OUT"> 
+<input type="text" class="form-control" id="todate"  name="to" ng-model="todate" placeholder="CHECK OUT" name="todate"> 
 
 <span class="glyphicon glyphicon-calendar form-control-feedback"></span>  
 
@@ -322,7 +326,8 @@ Sinopia Inn would like to welcome you to its rustic hideaway. Here you can exper
 
 
 
-<button class="btn btn-default btn-block outline" type="button"  id="checkavailability"  ng-click="checkavailability()">CHECK AVAILABILITY</button> 
+
+<button class="btn btn-default btn-block outline" type="submit"  id="checkavailability"  ng-click="checkavailability()">CHECK AVAILABILITY</button> 
 
 </div>
 
@@ -330,7 +335,7 @@ Sinopia Inn would like to welcome you to its rustic hideaway. Here you can exper
 
 
 
-<div id='errormessage' class='checking'> <p id="error" class="error"> {{error}} </p> </div>
+<div id='errormessage' class='checking'> <p id="error" class="error"> {{Javascript_is_disable_Enable_Javascript_for_an_enhanced_experience}} </p> </div>
 
 
 </form>
@@ -592,7 +597,7 @@ Sinopia Inn would like to welcome you to its rustic hideaway. Here you can exper
 
 </footer>
 
-
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -643,6 +648,7 @@ function googleTranslateElementInit() {
   userFeed.run();
 
 </script>
+
 
 </body>
 

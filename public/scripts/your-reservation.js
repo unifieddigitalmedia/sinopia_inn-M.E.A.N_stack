@@ -1,176 +1,13 @@
 
-$('#mc-embedded-subscribe-form').submit(function(ev) {
+var app = angular.module('travellight', ['ngResource']);
+
+app.controller('travelplanner', function($scope,$http,$resource,$compile) {
+
+
+
+
+   $("#from_travel").hide();
    
-
- document.cookie = "subscribers_email=" + document.getElementById("#subscribers_email").value;
-
-
-});
-
-function showResponsivemenu() {
-    document.getElementsByClassName("topnav")[0].classList.toggle("responsive");
-}
-
-
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-}
-
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-}
-
-
-function myFunction() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-        x.className += " responsive";
-    } else {
-        x.className = "topnav";
-    }
-}
-
-$(document).ready(function(){
-
-
-
-
-if( getCookie("privacy").length == 0 ){
-
-
-var modal = document.getElementById('myModal');
-
-
-modal.style.display = "block";
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-
-span.onclick = function() {
-    modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-
-}
-
-$("input[name='optradio']").change(function(){
-
-var modal = document.getElementById('myModal');
-
-
- if($(this).val() == 'yes' ){
-
-document.cookie = "privacy=yes";
-
- modal.style.display = "none";
-
- }else{
-
-document.cookie = "privacy=no";
-
- modal.style.display = "none";
-
- }
-
-
-});
-
-
-function getCookie(cname) {
-
-    var name = cname + "=";
-  
-    var ca = document.cookie.split(';');
-  
-    for(var i=0; i<ca.length; i++) {
-  
-        var c = ca[i];
-  
-        while (c.charAt(0)==' ') c = c.substring(1);
-  
-        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
-  
-    }
-  
-    return "";
-
-}
-
-
-$( "#subscribe_button" ).click(function() {
-
-
-
-   window.location = "connect.html" ;
-
-   document.cookie = "subscribers_email=" + document.getElementById("#subscribers_email").value;
-
-
-
-});
-
-  $(".itinerary-main-section").css("height","auto");
-  $(".itinerary-main-section-left").css("height",window.innerHeight);
-  $(".Itinerary-right-side").css("height",window.innerHeight);
-
-
-
-  jQuery(document).on("click",".destination-room",function(event){
-
-
-
-var pos = this.value;
-
-
-document.cookie = "hotelID=" + this.value; 
-
-window.location = "reservation.html" ;
-
-
-});
-
-jQuery(function() {
-
-                jQuery('#fromdate').datepicker({
-                   
-      defaultDate: "+1w",
-      dateFormat: 'dd-mm-yy',
-      changeMonth: true,
-      numberOfMonths: 3,
-      onClose: function( selectedDate ) {
-
-        $( "#todate" ).datepicker( "option", "minDate", selectedDate );
-
-      }
-
-
-                });
-
-            jQuery('#todate').datepicker({
-                   
-      defaultDate: "+1w",
-      dateFormat: 'dd-mm-yy',
-      changeMonth: true,
-      numberOfMonths: 3,
-      onClose: function( selectedDate ) {
-
-        $( "#fromdate" ).datepicker( "option", "maxDate", selectedDate );
-
-      }
-
-
-                });
-
-            });
-
-
    $(".checking").hide();
 
    $("#availablecol").hide();
@@ -183,203 +20,11 @@ jQuery(function() {
 
    $("#detailscol").hide();
 
-});
-
-
-
-
-
-
-
-
-var app = angular.module('travellight', ['ngResource']);
-
-app.filter('itineraryFilter', function() {
-
-  return function(input,para) {
-      
-
-
-
-var businessnames = [];
-
-angular.forEach(input, function(value, key) {
-
- 
-
- for (i = 0; i < para.length; i++) {
-
-
-
- if ( value._id === para[i] )  { this.push(value); }
-
-
-
- }
-                         
-
-                                                     
-
-                                             }, businessnames);
-
-
-
-  return businessnames;
-
-
-    };
-
-
-});
-
-
-app.controller('travelplanner', function($scope,$https,$resource,$compile) {
-
-
-
-$scope.bookingdetailsandconfirm = function() {
-
-
-
-
-$https.get("https://www.sinopiainn.com/api/checkout/").then(function(response) {
-
-
-braintree.setup(response.data, "dropin", {
-
-  container: "dropin-container",
-   form: 'checkout-form',
-  paypal: {
-    button: {
-      type: 'checkout'
-    }
-  },
-
-  onPaymentMethodReceived: function (obj) {
-
-
-    $scope.reserve(obj.nonce);
-    
-  
-    }
-  
-});
-
-
-});
-        
-
-
-
-                            }
-
-$scope.sendpaymentmethodnonce = function(para,para1) {
-
-var resource = $resource('https://www.sinopiainn.com/checkout/',{
-
-          payment_method_nonce:"@payment_method_nonce",
-          fname:"@fname",
-          lname:"@lname",
-          phone:"@phone",
-          email:"@email",
-          numofdays:"@numofdays",
-          numofadults:"@numofadults",
-          numofchildren:"@numofchildren",
-          numofinfants:"@numofinfants",
-          fromdate:"@fromdate",
-          todate:"@todate",
-          subtotal:"@subtotal",
-          discount:"@discount",
-          amenityTotal:"@amenityTotal",
-          total:"@total",
-          "roomarray[]":"@rooms",
-          "offerarray[]":"@offers",
-          "amenityarray[]":"@amenities"
-       
-
-
-});
-
-
-var reserve = resource.save(
-
-{
-
-          payment_method_nonce:para,
-          total:para1,
-          id:$scope.reservationID,
-          fname:$scope.fname,
-          lname:$scope.lname,
-          phone:$scope.phone,
-          email:$scope.email,
-          numofdays:$scope.numofdays,
-          numofadults:$scope.numofadults,
-          numofchildren:$scope.numofchildren,
-          numofinfants:$scope.numofinfants,
-          fromdate:getCookie('fromdate'),
-          todate:getCookie('todate'),
-          subtotal:$scope.tocurrency($scope.calculatetotals()), 
-          discount:$scope.tocurrency($scope.calculatediscounttotal()),
-          amenityTotal : $scope.tocurrency($scope.calTotalAmentities()),
-          total:$scope.tocurrency($scope.total),
-          "roomarray[]":$scope.roomsArray,
-          "offerarray[]":$scope.offersArray,
-          "amenityarray[]":$scope.amenityArray,
-        
-         
-
-
-}, function() {
-
-
-if(reserve.ERROR){ alert(reserve.ERROR); } else {   
-
-
-
-                            window.location = "https://www.sinopiainn.com/booking-confirmation.html" ;
-
-
-}
-  
-
-
-  });
-
-
-
-
-
-}
-
-
-
-
-
-function getCookie(cname) {
-
-    var name = cname + "=";
-  
-    var ca = document.cookie.split(';');
-  
-    for(var i=0; i<ca.length; i++) {
-  
-        var c = ca[i];
-  
-        while (c.charAt(0)==' ') c = c.substring(1);
-  
-        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
-  
-    }
-  
-    return "";
-
-}
-
-
-$scope.from_travel = "false";
+$scope.Javascript_is_disable_Enable_Javascript_for_an_enhanced_experience = 'Checking availability';
 
 
 $scope.reservationinit = function () {
+
 
 
 if(getCookie("tripID"))
@@ -390,11 +35,11 @@ if(getCookie("tripID"))
 
 $scope.tripID = getCookie("tripID"); 
 
-$https.get("https://www.sinopiainn.com/api/trip/?tripID="+getCookie("tripID")).then(function(response) {
+$http.get("http://www.sinopiainn.com/api/trip/?tripID="+getCookie("tripID")).then(function(response) {
 
 $scope.tripTotal = response.data[0].total ; 
 
-$scope.from_travel = "false";
+     $("#from_travel").show();
 
 });
 
@@ -433,87 +78,16 @@ $scope.numofchildren;
 $scope.numofinfants;
 
 
-function returnDate(d) {
-
-var d = new Date(d);
-
-var month = d.getMonth()  + 1;
-
-return d.getDate() + "-" +month+ "-" + d.getFullYear();
-
-}
+$scope.checkavailability = function(){
 
 
 
-$scope.lengthofstay = function(para,para1) {
-
-
-
-$scope.fromarray = returnDate(para).split("-");
-
-$scope.toarray =   returnDate(para1).split("-");
-
-
-$scope.startDate = new Date($scope.fromarray[2],Number($scope.fromarray[1])-1,$scope.fromarray[0]); 
-
-$scope.endDate = new Date($scope.toarray[2],Number($scope.toarray[1])-1,$scope.toarray[0]);
-
-$scope.numofdays = Math.round(($scope.endDate - $scope.startDate)/(1000*60*60*24));
-
-
-return $scope.numofdays;
-
-
-}
-
-$scope.error = 'Checking availability';
-
-
-
-$scope.checkavailability = function() {
-
-
-if( getCookie("privacy") == 'no' ){
-
-
-var modal = document.getElementById('myModal');
-
-
-modal.style.display = "block";
-
-
-var span = document.getElementsByClassName("close")[0];
-
-
-span.onclick = function() {
-    modal.style.display = "none";
-}
-
-
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-
-}
-else{
-
-
-$scope.error = 'Checking availability';
-
-
-                     $("html,body").animate({scrollTop:$(".checking").offset().top }, "slow");
-                     
-                     $(".checking").slideDown("slow" , function() {
-
-                
-
-
+   $(".checking").slideDown("slow" , function() {
+        
             setTimeout(function(){     
 
+              $(".checking").slideUp("slow", function() {
 
-                  $(".checking").slideUp("slow", function() {
 
           if(!$scope.validateDates($("#fromdate").val(),$("#todate").val()))
 
@@ -521,71 +95,98 @@ $scope.error = 'Checking availability';
                     {
 
 
-                            document.cookie = "fromdate=" + $("#fromdate").val();
+                             
+              
+
+
+
+                            document.cookie = "fromdate=" + $("#fromdate").val(); 
 
   
-                            document.cookie = "todate=" + $("#todate").val();
+                            document.cookie = "todate=" + $("#todate").val(); 
 
 
                             document.cookie = "promo=" + $("#promo").val();
 
                            
 
+                          
+
                                   if (document.getElementById("shortcodeform")) 
 
                                 
                                 {
-                 
-                    $https.get("https://www.sinopiainn.com/api/checkhotelavailability/?nights="+$scope.lengthofstay(getCookie('fromdate'),getCookie('todate'))+"&hotelID="+getCookie('hotelID')+"&fromdate="+getCookie('fromdate')+"&todate="+getCookie('todate')+"&promo="+getCookie('promo')).then(function(response) {
+                      
+
+
+//alert("http://www.sinopiainn.com/api/checkhotelavailability/?fromdate="+returnDate($("#fromdate").val())+"&todate="+returnDate($("#todate").val())+"&promo="+getCookie('promo'));
+
+$http.get("http://www.sinopiainn.com/api/checkhotelavailability/?fromdate="+returnDate($("#fromdate").val())+"&todate="+returnDate($("#todate").val())+"&promo="+getCookie('promo')).then(function(response) {
 
 
 
-if(response.data.length > 2 ){
 
-  $scope.roomlist = response.data[0];
+
+                                                            $scope.reservationID = getCookie("reservationID");
+
+
+                                                            $scope.token = getCookie("token");
+
+
+                                                            $scope.distance = getCookie("distance");
+
+
+                                                          $scope.roomlist = response.data[0];
+
                                                       
-  $scope.offerlist = response.data[1];
-
-  $scope.amenityArray = response.data[2];
-
-} else if(response.data.length == 2) {
-
-  $scope.roomlist = response.data[0];
-
-  $scope.amenityArray = response.data[1];
+                                                          $scope.offerlist = response.data[1];
 
 
-}
-          else{
+                                                          $scope.amenityArray = response.data[2];
+
+                                                          
+if(getCookie("reservationID"))
 
 
-            $scope.availabilityerrorreturn = 'No rooms are available';
-          
-
-          }                                              
-                           
-
-
-                              $scope.numofdays = $scope.lengthofstay(getCookie('fromdate'),getCookie('todate'));
-
-
-
-
-  if($("#availablecol").is(":hidden"))
 {
-   
 
-  $("#availablecol").slideToggle("slow");
+
+$scope.reservationID = getCookie("reservationID");
+
+
+$scope.token = getCookie("token");
+
+
+$scope.distance = getCookie("distance");
+
+$scope.trip = {       
+
+
+        "name":"to book Planned Trip - token : "+ $scope.token, 
+        "description":"",
+        "price":$scope.distance ,
+        "frequency":"distance",
+       
+      
+    };
+
+ $scope.amenityArray.push($scope.trip);
+
+ 
+}
+
+
+
+
+                                                          $scope.numofdays = $scope.lengthofstay(getCookie('fromdate'),getCookie('todate'));
+
+
+  
+                              $("#availablecol").slideToggle("slow");
 
                               $("#offerscol").slideToggle("slow");
 
-                            
-
-
-}
-
-
-                              $("html,body").animate({scrollTop:$("#availablecol").offset().top }, "slow");
+$("html,body").animate({scrollTop:$("#availablecol").offset().top }, "slow");
 
 
 
@@ -606,7 +207,7 @@ if(response.data.length > 2 ){
                                           setTimeout(function(){ 
 
                                           location.assign("reservation.html");
-                                      
+                                        
 
                                           
                                           }, 2000);
@@ -627,7 +228,8 @@ if(response.data.length > 2 ){
                     {
 
 
-                        $scope.error = $scope.validateDates($("#fromdate").val(),$("#todate").val());
+                        $scope.Javascript_is_disable_Enable_Javascript_for_an_enhanced_experience = $scope.validateDates($("#fromdate").val(),$("#todate").val());
+
 
 $scope.$apply();
 
@@ -686,9 +288,7 @@ $scope.$apply();
               
 
 
-         
-}
-           
+                  
 
     }
 
@@ -706,15 +306,15 @@ if(!from || !to )
 return 'Please check your reservation dates.';
 
 }
+
 else
+
 {
 
 
 $scope.today = new Date();
 
 $scope.fromarray = returnDate(from).split("-");
-
-
 
 $scope.toarray = returnDate(to).split("-");
 
@@ -741,7 +341,9 @@ return 'Dates cannot be in the past.';
 
 
 }
+
 else if( $scope.endDate ==  'Invalid Date' || $scope.startDate == 'Invalid Date')
+
 {
 
 return 'Please check your reservation dates.';
@@ -750,6 +352,7 @@ return 'Please check your reservation dates.';
 }
 
 else
+
 {
 
 return '';
@@ -764,6 +367,39 @@ return '';
 
 
  
+
+}
+
+
+function returnDate(d) {
+
+var d = new Date(d);
+
+var month = d.getMonth()  + 1;
+
+return d.getDate() + "-" +month+ "-" + d.getFullYear();
+
+}
+
+
+$scope.lengthofstay = function(para,para1) {
+
+
+
+$scope.fromarray = returnDate(para).split("-");
+
+$scope.toarray =   returnDate(para1).split("-");
+
+
+$scope.startDate = new Date($scope.fromarray[2],Number($scope.fromarray[1])-1,$scope.fromarray[0]); 
+
+$scope.endDate = new Date($scope.toarray[2],Number($scope.toarray[1])-1,$scope.toarray[0]);
+
+$scope.numofdays = Math.round(($scope.endDate - $scope.startDate)/(1000*60*60*24));
+
+
+return $scope.numofdays;
+
 
 }
 
@@ -975,10 +611,21 @@ $scope.numofchildren = 0;
 
 $scope.numofinfants = 0;
 
-
+$scope.adult = false;
 
 $scope.roomsArray = jQuery.grep($scope.roomsArray, function( a,i ) { 
 
+
+if(adltIn[i].value != 0){
+
+$scope.adult = true;
+
+}else{
+
+$scope.adult = false;
+
+
+}
 
                                       $scope.numofadults += Number(adltIn[i].value);
 
@@ -1005,7 +652,7 @@ $scope.roomsArray = jQuery.grep($scope.roomsArray, function( a,i ) {
                                         //$scope.calculatetotals (para,para1,para2);
 
 
-if($scope.numofadults == 0 ){
+if(!$scope.adult){
 
 
 $scope.bookingerror = "An adult is need to stay here to continue a booking.";
@@ -1330,8 +977,8 @@ $scope.tocurrency = function (para) {
 $scope.personaldetails = function() {
 
 
-                        $scope.bookingdetailsandconfirm();
-
+						$scope.bookingdetailsandconfirm();
+                        
                         $("#detailscol").slideDown("slow");
 
                         $("html,body").animate({scrollTop:$("#detailscol").offset().top }, "slow");
@@ -1340,6 +987,58 @@ $scope.personaldetails = function() {
 
 
 }
+
+
+$('#checkout-form').submit(function(ev) {
+
+  ev.preventDefault(); 
+  
+  angular.element(document.getElementById('span')).scope().reserve($scope.paymentnonce);
+  
+
+});
+
+
+
+                     
+
+$scope.bookingdetailsandconfirm = function() {
+
+
+
+
+$http.get("http://www.sinopiainn.com/api/checkout/").then(function(response) {
+
+
+braintree.setup(response.data, "dropin", {
+
+  container: "dropin-container",
+   form: 'checkout-form',
+  paypal: {
+    button: {
+      type: 'checkout'
+    }
+  },
+
+  onPaymentMethodReceived: function (obj) {
+
+
+
+$scope.paymentnonce = obj.nonce;
+
+   
+    
+  
+    }
+  
+});
+
+
+});
+
+
+}
+
 
 $scope.calTotalAmentities = function () {
 
@@ -1404,6 +1103,8 @@ $scope.offersArra = [];
 
 $scope.amenityArray = [];
 
+
+
 $scope.reserve = function(para) {
 
 var email = document.getElementById("resemail").value;
@@ -1441,7 +1142,7 @@ $scope.detailserror = "";
 
 
 
-var resource = $resource('https://www.sinopiainn.com/api/personaldetails/',{
+var resource = $resource('http://www.sinopiainn.com/api/personaldetails/',{
 
         
           tripID:"@tripID",
@@ -1559,9 +1260,70 @@ document.cookie = "reservationID=";
 
 }
 
+
 });
 
 
+function getCookie(cname) {
+
+    var name = cname + "=";
+  
+    var ca = document.cookie.split(';');
+  
+    for(var i=0; i<ca.length; i++) {
+  
+        var c = ca[i];
+  
+        while (c.charAt(0)==' ') c = c.substring(1);
+  
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+  
+    }
+  
+    return "";
+
+}
 
 
 
+$(document).ready(function(){
+
+
+  $( function() {
+    var dateFormat = "dd-mm-yy",
+      from = $( "#fromdate" )
+        .datepicker({
+          defaultDate: "+1w",
+          changeMonth: true,
+          numberOfMonths: 3,
+          dateFormat: 'D, d M, yy'
+        })
+        .on( "change", function() {
+          to.datepicker( "option", "minDate", getDate( this ) );
+        }),
+      to = $( "#todate" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        numberOfMonths: 3,
+        dateFormat: 'D, d M, yy'
+      })
+      .on( "change", function() {
+        from.datepicker( "option", "maxDate", getDate( this ) );
+      });
+ 
+    function getDate( element ) {
+      var date;
+      try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+      } catch( error ) {
+        date = null;
+      }
+ 
+      return date;
+    }
+  
+  } );
+
+
+
+});

@@ -1,7 +1,7 @@
 
 var app = angular.module('sinopia', ['ngResource']);
 
-app.controller('reservationsystem', function($scope,$https,$resource,$compile) {
+app.controller('reservationsystem', function($scope,$http,$resource,$compile) {
 
 var init = function () {
 
@@ -9,11 +9,12 @@ var d = new Date();
 
 document.getElementById("date").innerHTML = d.toDateString();
 
-$https.get("https://www.sinopiainn.com/api/reservation-details/?reservationID="+getCookie('reservationID')).then(function(response) {
+$http.get("http://www.sinopiainn.com/api/reservation-details/?reservationID="+getCookie('reservationID')).then(function(response) {
 
-                                    $scope.fullname = response.data.fname+' '+response.data.lname;
 
-$scope.fullname = $scope.fullname.toUpperCase();
+                                 $scope.fullname = response.data.fname+' '+response.data.lname;
+
+                                    $scope.fullname = $scope.fullname.toUpperCase();
 
                                     $scope.bookingID = response.data._id;
  
@@ -61,7 +62,7 @@ $scope.deposit = response.data.deposit;
 $scope.balance = balance.toFixed(2);
              
 
-$https.get("https://www.sinopiainn.com/api/booking-confirmation/?reservationID="+getCookie('reservationID')).then(function(response) {
+$http.get("http://www.sinopiainn.com/api/booking-confirmation/?reservationID="+getCookie('reservationID')).then(function(response) {
 
 
 
@@ -71,14 +72,12 @@ $https.get("https://www.sinopiainn.com/api/booking-confirmation/?reservationID="
   });
 
 
-
                                   });
 
 
 };
 
 init();
-
 
 function getCookie(cname) {
 
@@ -233,6 +232,7 @@ $scope.tocurrency = function (para) {
 
 
                                       }
+
 
 
 
