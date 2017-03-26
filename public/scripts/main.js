@@ -350,8 +350,73 @@ return $scope.numofdays;
 $(document).ready(function(){
 
 
+var slideshowImages = ["trek.jpg", "sand.JPG", "beach.JPG", "rafting.JPG", "lagoon.JPG", "gate.jpg", "grill.JPG"];
+
+var slideIndex = 0;
+
+$(".parallaxNextimg").css("opacity",0);
 
 
+function changeImage(id, image){
+
+
+
+  $(id).css('background-image', "url('../images/slideshow/"+image+"')");
+};
+
+
+showparallaxSlides();
+
+function showparallaxSlides() {
+
+
+    changeImage('.parallaxNextimg', slideshowImages[slideIndex]);
+
+    changeBackground();
+
+    function changeBackground() {
+
+      $('.parallaxNextimg').animate({"opacity": 1}, 2000, function(){ 
+
+
+
+          changeImage('.parallax', slideshowImages[slideIndex]);
+          
+           slideIndex++;
+           
+          if (slideIndex  >= slideshowImages.length) { slideIndex = 0; } 
+          //$(".parallaxNextimg").css("opacity", 0);
+
+
+           $('.parallaxNextimg').animate({"opacity": 0}, 2000, function(){ 
+
+
+
+
+          changeImage('.parallaxNextimg', slideshowImages[slideIndex]);
+
+             });
+       
+        
+
+      });
+    
+   
+
+    }
+
+
+    setInterval(changeBackground, 3000);
+
+    /*if (slideIndex > slideshowImages.length) {slideIndex = 0}    
+   
+    $(".parallaxNextimg").css("background-image", "url('../images/slideshow/"+slideshowImages[slideIndex]+"')");
+
+    slideIndex++;
+
+    setTimeout(showparallaxSlides, 1000); // Change image every 2 seconds*/
+
+}
 
 
 
