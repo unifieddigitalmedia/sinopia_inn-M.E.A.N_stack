@@ -94,7 +94,7 @@ border-top:thin solid #f0f0f1;
 
 body{
 
-  background-color:#f0f0f1!important;
+
 
 }
 
@@ -613,7 +613,7 @@ font-size:150%;font-weight:300;
 }
 .w3-card-6 a:hover {color:#cb410b;}
 
-.logo{width:208px; height:30px!important;}
+.logo{width:100%; height:90px!important;}
 
 .panel-paragraph {background-color:#aa9d2e!important; padding:20px!important; color:white; font-weight:400;}
 
@@ -634,6 +634,7 @@ background: #EE632C;  header.sticky { height: 100px; background: #efc47D; paddin
   text-align: left;
   padding-left: 20px;
 */
+
 
 .sticky_logo {  height: 25px; }
 
@@ -659,7 +660,7 @@ background-color:white;
 .dropbtn { display: inline-block; color:  #cb410b!important;  font-family: 'PT Sans', sans-serif; font-weight:100; text-align: center; padding: 14px 16px; 
 text-decoration: none;cursor:pointer; }
 
-.topnav{ width:70%;list-style-type: none; color: #cb410b; margin: 0 auto; padding: 0; overflow: hidden; text-align:right; line-height: 100% !important; }
+.topnav{ width:100%;list-style-type: none; color: #cb410b;  padding:-20px; overflow: hidden; text-align:center; line-height: 100% !important; }
 
 ul.topnav li.icon {display: none;}
 
@@ -667,35 +668,32 @@ ul.topnav li { display: inline-block;  vertical-align:middle; padding:0px; }
 
 .topnav li.dropdown-link {display: inline-block; }
 
-.topnav li a { padding:16px 10px!important; display: block; color: #cb410b; font-family: 'PT Sans', sans-serif; font-weight:50!important; font-size:12px;text-align: center;  text-decoration: none;cursor:pointer; }
+.topnav li a { padding:16px 10px!important; display: block; color: #000000; font-family: 'PT Sans', sans-serif; font-weight:50!important; font-size:13px;text-align: center;  text-decoration: none;cursor:pointer; }
 
 
 .topnav li a span { padding: 12px   }
 
-.dropdown-content a { color:black !important; padding: 12px 16px !important;text-decoration: none !important; display:block !important; 
+.dropdown-content a { color: #000000 !important; padding: 12px 16px !important;text-decoration: none !important; display:block !important; 
   text-align: left !important; 
 }
 
+/*box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
 
-.dropdown-content { display: none; background-color: white; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); 
+.dropdown-content { display: none; background-color: white; min-width: 160px; 
   position: absolute !important;z-index:99;background-color: white; opacity: 0.9; filter: alpha(opacity=90);
  
 }
 
 .dropdown-content:hover{opacity:1.0; filter: alpha(opacity=1); }
 
-.dropdown-content a:hover {color: #ffffff!important;font-weight:bold;background:/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cb410b+0,cb410b+100,c96c4a+100,c9856c+100 */
-background: #cb410b; /* Old browsers */
-background: -moz-linear-gradient(top,  #cb410b 0%, #cb410b 100%, #c96c4a 100%, #c9856c 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top,  #cb410b 0%,#cb410b 100%,#c96c4a 100%,#c9856c 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom,  #cb410b 0%,#cb410b 100%,#c96c4a 100%,#c9856c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb410b', endColorstr='#c9856c',GradientType=0 ); /* IE6-9 */}/*background-color: #cb410b;*/
+.dropdown-content a:hover {color: #cb410b!important;font-weight:bold;background:/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cb410b+0,cb410b+100,c96c4a+100,c9856c+100 */
+}/*background-color: #cb410b;*/
 
 
 .dropdown-link:hover .dropdown-content { display: block; }
 
 
-
+.dropdown-link:hover {color: black!important}
 .sidenav {
     height:600px;
     width:0%;
@@ -798,6 +796,9 @@ ul.topnav-top li { display: inline-block;  vertical-align:middle; }
 .topnav-top li.dropdown-link {display: inline-block; }
 
 .topnav-top li:first-child a:hover { background-color: none !important; }
+
+
+.translateheader {width:100%;text-align:right;}
 
 /******** END OF HEADER MENU CSS ********/
 

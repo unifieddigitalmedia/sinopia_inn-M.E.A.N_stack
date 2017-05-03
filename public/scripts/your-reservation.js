@@ -35,7 +35,7 @@ if(getCookie("tripID"))
 
 $scope.tripID = getCookie("tripID"); 
 
-$http.get("http://www.sinopiainn.com/api/trip/?tripID="+getCookie("tripID")).then(function(response) {
+$http.get("https://www.sinopiainn.com/api/trip/?tripID="+getCookie("tripID")).then(function(response) {
 
 $scope.tripTotal = response.data[0].total ; 
 
@@ -119,9 +119,10 @@ $scope.checkavailability = function(){
                       
 
 
-//alert("http://www.sinopiainn.com/api/checkhotelavailability/?fromdate="+returnDate($("#fromdate").val())+"&todate="+returnDate($("#todate").val())+"&promo="+getCookie('promo'));
+//alert("https://www.sinopiainn.com/api/checkhotelavailability/?fromdate="+returnDate($("#fromdate").val())+"&todate="+returnDate($("#todate").val())+"&promo="+getCookie('promo')+"&nights="+$scope.numofNights(returnDate($("#fromdate").val()),returnDate($("#todate").val())));
 
-$http.get("http://www.sinopiainn.com/api/checkhotelavailability/?fromdate="+returnDate($("#fromdate").val())+"&todate="+returnDate($("#todate").val())+"&promo="+getCookie('promo')).then(function(response) {
+
+$http.get("https://www.sinopiainn.com/api/checkhotelavailability/?fromdate="+returnDate($("#fromdate").val())+"&todate="+returnDate($("#todate").val())+"&promo="+getCookie('promo')+"&nights="+$scope.numofNights(returnDate($("#fromdate").val()),returnDate($("#todate").val()))).then(function(response) {
 
 
 
@@ -139,6 +140,8 @@ $http.get("http://www.sinopiainn.com/api/checkhotelavailability/?fromdate="+retu
                                                           $scope.roomlist = response.data[0];
 
                                                       
+
+
                                                           $scope.offerlist = response.data[1];
 
 
@@ -381,6 +384,26 @@ return d.getDate() + "-" +month+ "-" + d.getFullYear();
 
 }
 
+$scope.numofNights = function(para,para1) {
+
+
+
+$scope.fromarray = para.split("-");
+
+$scope.toarray =   para1.split("-");
+
+
+$scope.startDate = new Date($scope.fromarray[2],Number($scope.fromarray[1])-1,$scope.fromarray[0]); 
+
+$scope.endDate = new Date($scope.toarray[2],Number($scope.toarray[1])-1,$scope.toarray[0]);
+
+$scope.numofdays = Math.round(($scope.endDate - $scope.startDate)/(1000*60*60*24));
+
+
+return $scope.numofdays;
+
+
+}
 
 $scope.lengthofstay = function(para,para1) {
 
@@ -853,10 +876,15 @@ $scope.calRoom = function (para) {
 
 
 
-var amt = (parseInt($scope.roomsArray[para].price) * parseInt($scope.numofdays)) * parseInt($scope.roomsArray[para].numofguest) ;
+var amt = (parseInt($scope.roomsArray[para].price) * parseInt($scope.numofdays))  ;
 
 
 return amt; 
+
+
+/** parseInt($scope.roomsArray[para].numofguest)*/
+
+
 }
 
 
@@ -877,7 +905,9 @@ $scope.roomsArray = jQuery.grep($scope.roomsArray, function( a,i ) {
 
 //parseInt(a.adults) *  parseInt(a.children)
 
-                                      $scope.total += (parseInt(a.price) * parseInt($scope.numofdays) ) *  parseInt(a.numofguest)  ;
+//*  parseInt(a.numofguest) 
+
+                                      $scope.total += (parseInt(a.price) * parseInt($scope.numofdays) )  ;
 
                                 
                                                                         return a; 
@@ -1007,7 +1037,7 @@ $scope.bookingdetailsandconfirm = function() {
 
 
 
-$http.get("http://www.sinopiainn.com/api/checkout/").then(function(response) {
+$http.get("https://www.sinopiainn.com/api/checkout/").then(function(response) {
 
 
 braintree.setup(response.data, "dropin", {
@@ -1142,7 +1172,7 @@ $scope.detailserror = "";
 
 
 
-var resource = $resource('http://www.sinopiainn.com/api/personaldetails/',{
+var resource = $resource('https://www.sinopiainn.com/api/personaldetails/',{
 
         
           tripID:"@tripID",
@@ -1173,6 +1203,8 @@ $scope.amenityArray = jQuery.grep($scope.amenityArray, function( a,i ) {return (
 
 alert("Please wait while we process your reservation");
 
+
+//+"&nights="+$scope.numofNights(returnDate($("#fromdate").val()),returnDate($("#todate").val()))
 var reserveBooking = resource.save(
 
 {
@@ -1188,8 +1220,8 @@ var reserveBooking = resource.save(
           numofadults:$scope.numofadults,
           numofchildren:$scope.numofchildren,
           numofinfants:$scope.numofinfants,
-          fromdate:getCookie('fromdate'),
-          todate:getCookie('todate'),
+          fromdate:returnDate($("#fromdate").val()),
+          todate:returnDate($("#todate").val()),
           deposit:$scope.deposit,
           subtotal:$scope.tocurrency($scope.calculatetotals()), 
           discount:$scope.tocurrency($scope.discountedamounttotal),

@@ -300,7 +300,7 @@
 var contentString = '<div id="content" class="infowindowLogo" >'+
         '<div id="siteNotice">'+
         '</div>'+
-        '<img src="/images/logo_header.png" class="logo" ><p class="infowindowDescription" >  your home away from home here in Jamaica </p>'+
+        '<img src="/images/logo_header.png" class="logo" style="width:200px;height:50px!important;"><p class="infowindowDescription" >  your home away from home here in Jamaica </p>'+
         '</div>';
 
     var infowindow = new google.maps.InfoWindow({

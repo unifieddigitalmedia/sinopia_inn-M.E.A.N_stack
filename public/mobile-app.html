@@ -11,6 +11,9 @@
 
 <meta name="author" content="Machel Slack">
 
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 <link rel="stylesheet" type="text/css" href="/styles/main.css">
 
 <link rel="stylesheet" type="text/css" href="/styles/responsive.css">
@@ -58,7 +61,7 @@
   </div>
 
   
-<nav id="mySidenav" class="sidenav" >
+<nav id="mySidenav" class="sidenav" ng-init="loadpics()">
 
 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
 
@@ -66,43 +69,48 @@
 
 <li class="dropdown-link"> <a href="index.html" >   HOME   </a>  </li>
 
-<li class="dropdown-link"> <a href="our-villa.html" > OUR VILLA </a> 
+<li class="dropdown-link"> <a href="our-villa.html" >SINOPIA INN </a> 
 
 
 
 </li>  
 
-<li class="dropdown-link" > <a href="rooms-and-rates.html"  >ROOMS AND RATES </a>
+<li class="dropdown-link" > <a href="rooms-and-rates.html"  >ROOMS </a>
 </li>  
 
 <li class="dropdown-link"> <a href="food-and-travel.html"  >FOOD AND TRAVEL</a>  
 
 <div class="dropdown-content">
 
-<a href="day-passes.html" > Plan a trip </a>
+<a href="day-passes.html" >PLAN A TRIP</a>
+      
+<a href="travel.html#beaches" > BEACHES </a>
 
-<a href="culinary-experiences.html"> Culinary Experiences </a> 
+<a href="travel.html#experiential" > EXPERIENTIAL TRIPS</a>
  
-<a href="beaches.html" > Beaches </a>
-
- <a href="treks.html" > Mountain and Bike Treks </a>
- 
- <a href="yoga.html" > Yoga</a>
- 
- <a href="experiential-trips.html" > Experiential Trips</a>
- 
- <a href="local-experiences.html" > Local Experiences and Events</a>
-
- <a href="family-sporting-trips.html" > Family and Sporting Trips </a>
+<a href="travel.html#family" > LOCAL, FAMILY AND SPORTING EXPERIENCES </a>
 
 </div>
 
+<li> <a href="rewards.html" > <span > REWARDS  </span> </a> </li>
 
-<li> <a href="rewards-and-recognition.html" > <span > REWARDS AND RECOGNITION </span> </a> </li>
 <li class="dropdown-link" > <a href="contact.html"  > CONTACT </a>
 </li> 
-<li class="dropdown-link" > <a href="/blog/index.html"  > BLOG </a>
-</li> 
+
+<li class="dropdown-link"> <a href="/shop/index.html" >  <span > SHOP </span>   </a>  
+
+
+</li>  
+
+<li class="dropdown-link"> <a href="/blog/index.html" >  <span > BLOG </span>   </a>  
+
+
+</li>  
+
+<li class="dropdown-link"> <a href="reservations.html" >  <span > RESERVATIONS </span>   </a>  
+
+
+</li>
 
 
 
@@ -128,39 +136,57 @@
 
 </li>  <span class= "menudivider" >| </span>
 
-<li class="dropdown-link"> <a href="our-villa.html" >  <span > OUR VILLA </span>   </a>  
+<li class="dropdown-link"> <a href="our-villa.html" >  <span > SINOPIA INN </span>   </a>  
 
 
 </li>  <span class= "menudivider" >| </span>
 
-<li class="dropdown-link" > <a href="rooms-and-rates.html"  > <span >  ROOMS AND RATES</span></a>
+<li class="dropdown-link"> <a href="index.html#breakfast" >  <span > BREAKFAST </span>   </a>  
+
+
 </li>  <span class= "menudivider" >| </span>
 
-<li class="dropdown-link"> <a href="food-and-travel.html"  > <span > FOOD AND TRAVEL </span></a>  
+<li class="dropdown-link" > <a href="rooms.html"  > <span >  ROOMS</span></a>
+</li>  <span class= "menudivider" >| </span>
+
+<li class="dropdown-link"> <a href="travel.html"  > <span > FOOD AND TRAVEL </span></a>  
 
 <div class="dropdown-content">
+<a href="day-passes.html" >PLAN A TRIP</a>
+      
+<a href="travel.html#beaches" > BEACHES </a>
 
-      <a href="day-passes.html" > Plan a trip </a>
- <a href="culinary-experiences.html"> Culinary Experiences </a>
-<a href="beaches.html" > Beaches </a>
+<a href="travel.html#experiential" > EXPERIENTIAL TRIPS</a>
+ 
+<a href="travel.html#family" > LOCAL, FAMILY AND SPORTING EXPERIENCES </a>
 
- <a href="treks.html" > Mountain and Bike Treks </a>
- 
- <a href="yoga.html" > Yoga</a>
- 
- <a href="experiential-trips.html" > Experiential Trips</a>
- 
- <a href="local-experiences.html" > Local Experiences</a>
-
- <a href="family-sporting-trips.html" > Family and Sporting Trips </a>
 
 </div></li> <span class= "menudivider" >| </span>
 
-<li> <a href="rewards-and-recognition.html" > <span > REWARDS AND RECOGNITION </span> </a> </li> <span class= "menudivider" >| </span>
+<li> <a href="rewards.html" > <span > REWARDS </span> </a> </li> <span class= "menudivider" >| </span>
 
-<li class="dropdown-link" > <a href="contact.html"  > <span >  CONTACT </span></a>
-</li><span class= "menudivider" >| </span>  <li class="dropdown-link" > <a href="/blog/index.html"  > <span >  BLOG </span></a>
-</li> 
+<li class="dropdown-link" > <a href="mobile-app.html"  > <span >  MOBILE APP </span></a>
+</li><span class= "menudivider" >| </span> <li class="dropdown-link" > <a href="contact.html"  > <span >  CONTACT </span></a>
+</li><span class= "menudivider" >| </span> 
+
+
+<li class="dropdown-link"> <a href="/shop/index.html" >  <span > SHOP </span>   </a>  
+
+
+</li>  <span class= "menudivider" >| </span>
+
+
+<li class="dropdown-link"> <a href="/blog/index.html" >  <span > BLOG </span>   </a>  
+
+
+</li>  <span class= "menudivider" >| </span>
+
+<li class="dropdown-link"> <a href="reservation.html" >  <span > RESERVATIONS </span>   </a>  
+
+
+</li>  <span class= "menudivider" >
+
+
 
 <li class="icon">
     <a href="javascript:void(0);" style="font-size:15px;" onclick="openNav()">☰</a>
@@ -170,26 +196,31 @@
 
 </ul></header>
 <header  class="topnav-top-header" >
-<ul class="topnav-top">
+
+<div class="row" style="margin:0px!important;">
+
+     <div class="col-sm-4" >
+&nbsp;
+     </div>
+
+      <div class="col-sm-4" >
+
+<a href="index.html" ><img src="/images/brochure-logo.png" class="logo" ></a>
+     </div>
+
+      <div class="col-sm-4" style="display:table-cell!important;">
 
 
 
- <li class="logo_link">  </li>
-
-<li class="dropdown-link"> 
+     </div>
 
 
 
-
-</li>  
-
+</div>
 
 
-
-
-</ul>
-<a href="index.html" ><img src="/images/logo_header.png" class="logo" ></a>
 </header>
+
 
 
 
@@ -278,76 +309,21 @@
 
 
 <div  class="container-fluid maindiv">
-
-<div class="row" style="margin:0px!important;">
-
-<div class="col-sm-12" >
-
-<p class="side_menu_title "> BOOKING TRAVEL WITH US IS EASY</p>
-
-</div>
-
-</div>
-
-<div class="row">
-
-<div class="col-sm-6 download_buttons_col_parent_row_left" >
-
-<p>
-Every interaction is an opportunity to lay back relax and enjoy a showcase of what makes Jamaica,a must visit destination of the Caribbean. Here you’ll truly live the moments, feel the experiences and enjoy the lifestyles of the Caribbean by planing and booking exclusive travel throughout the island. So forget the flights and pack light as you’ll be taken on experimental trips; local experiences and rides for the whole family. Come and enjoy gourmet foods; shopping; beaches; leisure; nightlife and a personalised service. Our hidden gems take you on a journey to the heart of Jamaica where the true essence lies.</p>
-
-
-
-</div>
-
-
-
-<div class="col-sm-6 " style="text-align:center;">
-
-   <h3><span> </span> We are almost ready to 
-               launch our mobile app </h3> 
-
-               
-                  <div class="timing">
-                   
-                    <div id="count-down" data-date="2017-07-01 00:00:00">
-                      
-                    </div>
-
-
-
-                  </div>
-
-  
-
-
-              
-<!--
-
-<div class="col-sm-6 download_buttons_col_parent_row" style="text-align:center;">
-
-<div class="row">
-
-<div class="col-sm-12 download_buttons_col"  > 
 </br>
-</br>
-<p> <i class="fa fa-mobile" style="font-size:30px;color:black"></i><i class="fa fa-mobile" style="font-size:36px;color:black"></i> &nbsp;GET THE MOBILE APP </p>
-  
-<input class="download_buttons" src="/images/google_button.png" type="image" /> <input class="download_buttons"  src="/images/apple_button.png" type="image" />
+<div class="sinopia-inn-homepage">
+
+<p class="side_menu_title ">  BOOKING TRAVEL WITH US IS EASY  </p>
+
+<p>Every interaction is an opportunity to lay back relax and enjoy a showcase of what makes Jamaica,a must visit destination of the Caribbean. Here you’ll truly live the moments, feel the experiences and enjoy the lifestyles of the Caribbean by planing and booking exclusive travel throughout the island. So forget the flights and pack light as you’ll be taken on experimental trips; local experiences and rides for the whole family. Come and enjoy gourmet foods; shopping; beaches; leisure; nightlife and a personalised service. Our hidden gems take you on a journey to the heart of Jamaica where the true essence lies.</p>
+
+</div>
+
+</div>
 
 </br>
 
-</div>
-
-</div>-->
 
 
-</div>
-
-</div>
-
-
-</div>
 
 
 <footer>
@@ -417,10 +393,10 @@ Every interaction is an opportunity to lay back relax and enjoy a showcase of wh
 
 <li> <a href="directions-and-location.html" > Location & Directions </a> </li>
  
-<li> <a href="reservation.html" > Make a reservation</li>
- 
-<li> <a href="mobile-app.html" > Smartphone App</li>
-  
+<li> <a href="events.html" > Upcoming Events </li>
+
+
+
 </ul>
 
 <h6> <a href="blog/index.html" class="footer_column_3_link_title"> RECENT BLOG POSTS </a> </h6> 
@@ -436,7 +412,7 @@ Every interaction is an opportunity to lay back relax and enjoy a showcase of wh
 
 <h6>STAY IN TOUCH</h6>
 
-<p style="padding-bottom:20px;font-size:small;">Missed us when we’re away? Add your email below so we can update you on news and offers from us at Sinopia Inn.</p>
+<p style="padding-bottom:20px;font-size:small;">Missed us when we’re away? Add your email below so we can update you on offers and the latest food and travel ideas sent straight to your inbox from us at Sinopia Inn.</p>
 
 <form action="connect.html" method="POST" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" validate  role="form">
 

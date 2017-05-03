@@ -349,8 +349,8 @@ return $scope.numofdays;
 
 $(document).ready(function(){
 
-
-var slideshowImages = ["trek.jpg", "sand.JPG", "beach.JPG", "rafting.JPG", "lagoon.JPG", "gate.jpg", "grill.JPG"];
+//"blue-lagoon-4.jpg","blue-lagoon-2.jpg",  "blue-lagoon-5.jpg", "Blue-Lagoon.jpg",
+var slideshowImages = ["trek.jpg","beach.jpg","beach_front.jpg","dragon_bay_hotel.jpg" ,"rafting.jpg", "lagoon1.jpg", "lagoon2.jpg",  "blue-lagoon-2.jpg",  "lagoon.jpg", "castle.jpg", "gate.jpg", "grill.jpg", "football.jpg"];
 
 var slideIndex = 0;
 
@@ -362,10 +362,13 @@ function changeImage(id, image){
 
 
   $(id).css('background-image', "url('../images/slideshow/"+image+"')");
+
+
+  
 };
 
 
-showparallaxSlides();
+//showparallaxSlides();
 
 function showparallaxSlides() {
 
@@ -376,7 +379,7 @@ function showparallaxSlides() {
 
     function changeBackground() {
 
-      $('.parallaxNextimg').animate({"opacity": 1}, 2000, function(){ 
+      $('.parallaxNextimg').animate({"opacity": 1}, 3000, function(){ 
 
 
 
@@ -388,7 +391,7 @@ function showparallaxSlides() {
           //$(".parallaxNextimg").css("opacity", 0);
 
 
-           $('.parallaxNextimg').animate({"opacity": 0}, 2000, function(){ 
+           $('.parallaxNextimg').animate({"opacity": 0}, 3000, function(){ 
 
 
 
@@ -406,7 +409,7 @@ function showparallaxSlides() {
     }
 
 
-    setInterval(changeBackground, 3000);
+    setInterval(changeBackground, 4500);
 
     /*if (slideIndex > slideshowImages.length) {slideIndex = 0}    
    
@@ -826,6 +829,55 @@ var captionText = document.getElementById("caption");
     
     captionText.innerHTML = para.alt;
 
+}
+
+
+/******************/
+
+
+var slideIndex = 0;
+
+showDivs(slideIndex);
+
+function plusDivs(n) {
+
+  showDivs(slideIndex += n);
+
+}
+
+function currentDiv(n) {
+
+  showDivs(slideIndex = n);
+
+}
+
+function showDivs(n) {
+
+
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+
+  if (n > x.length) {slideIndex = 1}
+
+  if (n < 1) {slideIndex = x.length}
+  
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  
+
+
+  }
+  
+  for (i = 0; i < dots.length; i++) {
+     dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+
+
+
+
+  }
+  x[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " w3-opacity-off";
 }
 
 

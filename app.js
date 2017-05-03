@@ -56,7 +56,7 @@ app.use(express.static(__dirname + '/'));
 process.env.NODE_ENV = 'development';
 
 
-var hotelID = '5899be76abfda66ea097c580';
+var hotelID = '58e8bb4b4fc64d02fb4ccb1e';
 
 
 var braintree = require("braintree");
@@ -457,7 +457,7 @@ app.get('/api/mobile/checkhotelavailability/', function (req, res) {
 
 
 
-var o_id = new mongo.ObjectID("5899be76abfda66ea097c580");
+var o_id = new mongo.ObjectID("58e8bb4b4fc64d02fb4ccb1e");
 
 var availability = [];
 
@@ -961,7 +961,7 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '5899be76abfda66ea097c580');
+var hotelID = new mongo.ObjectID( '58e8bb4b4fc64d02fb4ccb1e');
 
 var offerArray = [];
 
@@ -1554,12 +1554,14 @@ fs.readFile(req.files.displayImage.path, function (err, data) {
 
 var params = {Key: directory, Body: data};
 
+
+
     s3Bucket.putObject(params, function(err, data) {
   
         if (err) {
             
 
-            var response = {"ERROR":"Error creating your booking:"};
+            var response = {"ERROR":err};
 
             res.json(response);
 
@@ -1567,18 +1569,21 @@ var params = {Key: directory, Body: data};
 
         } else {
            
-var directory =  name+"/"+arg2; 
+var directory =  req.query.email+"/"+arg2; 
 
 //var arg1 = arg1.toString();
 
-var params = {Key: directory, Body: arg1};
+//var params = {Key: directory, Body: arg1};
+
+
+ var params = {Key: directory, Body: JSON.stringify(arg1)};
 
   s3Bucket.putObject(params, function(err, data) {
   
         if (err) {
             
 
-            var response = {"ERROR":"Error creating your booking:"};
+            var response = {"ERROR":err};
 
             res.json(response);
 
@@ -1897,7 +1902,7 @@ db.collection('hotels').updateOne( {"token":req.query.token}, { $set: { "tripID"
 
 app.get('/api/checkhotelavailability/', function (req, res) {
 
-var o_id = new mongo.ObjectID("5899be76abfda66ea097c580");
+var o_id = new mongo.ObjectID("58e8bb4b4fc64d02fb4ccb1e");
 
 var availability = [];
 
@@ -2126,7 +2131,6 @@ if (e) return next(e)
  } 
 
 
-
 db.collection("hotels").find({"_id":o_id }, { "offers": { $elemMatch: { "nights":{ $lte : Number(req.query.nights) }  } } }  ).toArray(function(e, results){
 
 
@@ -2243,7 +2247,7 @@ app.get("/api/reservation-details/", function (req, res) {
 
 
 
-var hotelID = new mongo.ObjectID('5899be76abfda66ea097c580');
+var hotelID = new mongo.ObjectID('58e8bb4b4fc64d02fb4ccb1e');
 
 var o_id = new mongo.ObjectID(req.query.reservationID);
 
@@ -2295,13 +2299,19 @@ var fromdate = req.query.fromdate.split("-")[2]+"-"+req.query.fromdate.split("-"
 
 var todate = req.query.todate.split("-")[2]+"-"+req.query.todate.split("-")[1]+"-"+req.query.todate.split("-")[0];
 
-var hotelID = new mongo.ObjectID( '5899be76abfda66ea097c580');
+var hotelID = new mongo.ObjectID( '58e8bb4b4fc64d02fb4ccb1e');
 
 var offerArray = [];
 
 var amentityArray = [];
 
 var roomsArray = [];
+
+
+console.log(req.query.fromdate);
+
+console.log(req.query.todate);
+
 
 if (typeof req.body['offerarray[]'] != 'undefined') { offerArray = req.body['offerarray[]'] ; } else { offerArray = null ; } ;
 
@@ -2445,7 +2455,7 @@ gateway.transaction.sale({
 
  if (err) {
 
-
+console.log("payment error");
 
     console.log(err.type); // "notFoundError"
     console.log(err.name); // "notFoundError"
@@ -2477,6 +2487,7 @@ else
 
 
 
+console.log("no payment error");
 
 var name = req.query.fname.concat(" ").concat(req.query.lname);
 
@@ -2516,7 +2527,8 @@ db.collection('reservation').insert( [
 
 }], function(err, results) { 
 
-
+          console.log("reservation made payment error");
+          
           resID = results.insertedIds[0];
 
           callback(null,results.insertedIds[0],results);
@@ -2573,14 +2585,12 @@ db.collection('hotels').updateOne( {"rooms._id":req.body['roomarray[]'][x]._id},
    
   },function(arg1,arg2, callback){
 
-
+console.log("bucket ");
 
 var directory = req.query.email+"/"+arg1; 
 
 var s3Bucket = new AWS.S3( { params: {Bucket: bucket} } );
  
-
-
     var params = {Key: directory, Body: JSON.stringify(arg2)};
 
     s3Bucket.putObject(params, function(err, data) {
@@ -2596,6 +2606,8 @@ var s3Bucket = new AWS.S3( { params: {Bucket: bucket} } );
 
         } else {
            
+           console.log("no error ");
+
             var balance = Number(req.query.total) - Number(req.query.deposit);
 
             var response = {"ERROR":"","ReservationID":arg1};
@@ -3074,7 +3086,7 @@ db.collection('hotels').deleteMany( {}, function(err, results) {
    });
 
 
-db.collection('hotels').insertOne( {"rooms":[{"_id":"1","name":"Camel", "description":"Air conditioned double occupancy bedroom with ensuite bathroom","occupancy":"2","icon":"/images/parrot_thumb.png","price":"70.00","booking":[],"adults":"0","children":"0","infants":"0"},{"_id":"2","name":"Puce", "description":"Double occupancy bedroom with ensuite bathroom","occupancy":"2","price":"73.00","icon":"/images/parrot_thumb.png","booking":[],"adults":"0","children":"0","infants":"0"},{"_id":"3","name":"Spring Bud","description":"Double occupancy bedroom with ensuite bathroom","occupancy":"2","price":"73.00","icon":"/images/parrot_thumb.png","booking":[],"adults":"0","children":"0","infants":"0"},{"_id":"4","name":"Coquelicot","description":"Quadruple occupancy bedroom with ensuite bathroom and lounge","occupancy":"4","price":"90.00","icon":"/images/parrot_thumb.png","booking":[],"adults":"0","children":"0","infants":"0"}],"offers":[{"_id":"1","name":"Summer & Autumn Discount 10%","description":"Validity period from 20th June to 14th December","amount":".10","validdate":"20-04-2016","exdate":"14-12-2016","token":"","nights":""},{"_id":"2","name":"Friends and family discount 15%","description":"All year","amount":".15","validdate":"","exdate":"","token":"marshmellows","nights":""},{"_id":"3","name":"Breakfast","description":"Traditional Jamaican Break - Mackrel Run Down with Chicken or Calloo alternatives","amount":"0","validdate":"","exdate":"","token":"","nights":3}],"amenities":[{"name":"Breakfast","description":"Traditional Jamaican breakfast","price":"10.00","frequency":"person",},{"name":"Airport Pickup","description":"Transportation to and from airport","price":"30.00","frequency":"room",},{"name":"Private Car Hire","description":"On and Off road SUV - seating capacity 5 plus baggage","price":"60.00","frequency":"night",}],"businessname":"Sinopia Inn","businessaddress":"Matthews Ave Port Antonio, Jamaica","businessphone":"+1 876-993-7267","businesswebsite":"http://www.hotelmockingbirdhill.com/","businessemail":"info@sinopiainn.com","businessdescription":"","country":"","coordinates":{"Latitude":"18.1763329","Longitude":"-76.44973749999997"},"nameofevent":"","timeofevent":"","dateofevent":"","activity":[{"typeofbusiness":"Accomodation","typeofservice":"Villa"}],"typeofactivity":[],"contactname":"","location":"","logourl":"","showcaseurl":[],"comments":[],"averagerating":"","avergaeprice":"","date":"","enabled":""}, function(err, result) {
+db.collection('hotels').insertOne( {"rooms":[{"_id":"1","name":"Camel", "description":"Air conditioned family sized bedroom with ensuite bathroom","occupancy":"3","icon":"/images/parrot_thumb.png","price":"135.00","booking":[],"adults":"0","children":"0","infants":"0"},{"_id":"2","name":"Puce", "description":"Double occupancy bedroom with ensuite bathroom","occupancy":"2","price":"125.00","icon":"/images/parrot_thumb.png","booking":[],"adults":"0","children":"0","infants":"0"},{"_id":"3","name":"Spring Bud","description":"Double occupancy bedroom with ensuite bathroom","occupancy":"2","price":"125.00","icon":"/images/parrot_thumb.png","booking":[],"adults":"0","children":"0","infants":"0"},{"_id":"4","name":"Coquelicot","description":"Family sized bedroom with air conditioning and ensuite bathroom and lounge","occupancy":"5","price":"135.00","icon":"/images/parrot_thumb.png","booking":[],"adults":"0","children":"0","infants":"0"}],"offers":[{"_id":"1","name":"Summer & Autumn Discount 10%","description":"Validity period from 20th June to 14th December","amount":".10","validdate":"20-04-2016","exdate":"14-12-2016","token":"","nights":""},{"_id":"2","name":"Friends and family discount 15%","description":"All year","amount":".15","validdate":"","exdate":"","token":"marshmellows","nights":""},{"_id":"3","name":"Breakfast","description":"Traditional Jamaican Break - Mackrel Run Down with Chicken or Calloo alternatives","amount":"0","validdate":"","exdate":"","token":"","nights":3}],"amenities":[{"name":"Breakfast","description":"Traditional Jamaican breakfast","price":"10.00","frequency":"person",},{"name":"Airport Pickup","description":"Transportation to and from airport","price":"30.00","frequency":"room",},{"name":"Private Car Hire","description":"On and Off road SUV - seating capacity 5 plus baggage","price":"60.00","frequency":"night",}],"businessname":"Sinopia Inn","businessaddress":"Matthews Ave Port Antonio, Jamaica","businessphone":"+1 876-993-7267","businesswebsite":"http://www.hotelmockingbirdhill.com/","businessemail":"info@sinopiainn.com","businessdescription":"","country":"","coordinates":{"Latitude":"18.1763329","Longitude":"-76.44973749999997"},"nameofevent":"","timeofevent":"","dateofevent":"","activity":[{"typeofbusiness":"Accomodation","typeofservice":"Villa"}],"typeofactivity":[],"contactname":"","location":"","logourl":"","showcaseurl":[],"comments":[],"averagerating":"","avergaeprice":"","date":"","enabled":""}, function(err, result) {
  
     res.send("Inserted a document into the hotel collection.");
    
@@ -3259,6 +3271,8 @@ else
 app.get("/api/confirm/", function (req, res) {
 
 var o_id = new mongo.ObjectID(req.query.resID);
+
+
 
 db.collection('reservation').findOne({ "_id": o_id  },function(e, results){
 
@@ -3696,7 +3710,12 @@ mandrill_client.messages.sendTemplate({"template_name": template_name, "template
 
 });
 
+app.get('/api/schedule', function (req, res) {
 
+
+  res.render("dashboard.jade",{});
+
+});
 
 
 
@@ -3707,6 +3726,267 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+/*    */
+
+app.get('/api/members', function (req, res) {
+
+
+
+app.set('views', path.join(__dirname, 'views'));
+
+app.set('view engine', 'jade');
+
+
+db.collection('members').findOne({ "credentials.username": req.query.username , "credentials.password": req.query.password   },function(e, results){
+
+
+    if (e) return next(e)
+
+ 			var response = {"reservation":results};
+  
+
+
+  			if(results != null){
+
+
+					if(results.type === 'business'){
+
+ 
+							res.render("dashboard.jade",{ username:results.credentials.username});
+
+
+					}
+					else if(results.type === 'guest'){
+
+
+
+							 res.json("Welcome back"+results.credentials.username);
+
+
+
+					}
+  			
+  			}else{
+
+
+
+ 				 res.json("Username not found");
+
+
+  			}
+                                                          
+
+  
+                                                                            });
+
+
+
+});
+
+
+
+
+
+app.post('/api/members', multipartMiddleware , function (req, res) {
+
+
+db.collection('members').insertOne( { 
+
+"credentials" : {
+         "username" : req.body.email,
+         "password" : req.body.password,
+         "dateAdded" : new Date(),
+         "dateModified" :""
+      },
+"personal" : {
+         "name" :req.body.name,
+         "email" : req.body.email,
+         "company" :req.body.company ,
+         "address" : req.body.address,
+         "city" :req.body.city ,
+         "country" :req.body.country ,
+         "countryCode":req.body.countryCode ,
+         "phone":req.body.phone ,
+      },
+"type" : req.body.type,
+
+  } , function(err, result) {
+ 
+    res.json("Inserted a document into the hotel collection.");
+   
+  });
+
+ });
+
+
+app.delete('/api/members', function (req, res) {
+
+
+db.collection('members').deleteMany( {}, function(err, results) {
+      res.json(results);
+     
+   });
+
+   });
+
+app.get('/api/shop', function (req, res) {
+
+
+db.collection('products').find().toArray(function(e, results){
+
+
+   res.json(results);
+
+
+});
+
+
+});
+
+app.delete('/api/shop', function (req, res) {
+
+
+db.collection('products').deleteMany( {}, function(err, results) {
+      res.json(results);
+     
+   });
+
+   });
+
+
+app.get('/api/product/', function (req, res) {
+
+
+db.collection('products').findOne({ "items.productCode": req.query.product } , {_id: 0, 'items':1 },function(e, results){
+
+
+  
+for(var i = 0; i < results.items.length; i++) {
+    if (results.items[i].productCode == req.query.product ) {
+        
+         res.json(results.items[i]);
+        break;
+    }
+}
+
+});
+
+
+
+});
+
+
+app.get('/api/catergory', function (req, res) {
+
+
+db.collection('products').findOne({ "catergory": req.query.catergory , "page":  Number(req.query.page)   },function(e, results){
+
+
+   res.json(results);
+
+
+});
+
+
+
+});
+
+app.get('/api/catergory/filter/', function (req, res) {
+
+
+
+
+
+});
+
+
+
+
+app.post('/api/shop', function (req, res) {
+
+db.collection('products').insertOne( { 
+
+    "catergory": "food",
+    "count": 50,
+    "page": 1,
+    "per_page": 12,
+    "items": [
+      {
+        "productCode": "p02b4jth",
+        "price": "programme_large",
+        "displayPrice": "Abadas",
+        "type":"qeqwe",
+        "occasion":"qeqwe",
+        "brand":"qeqwe",
+        "images": [ {
+          "type": "image",
+          "standard": "https://ichef.bbci.co.uk/images/ic/{recipe}/p02c72z7.jpg"
+        },{
+          "type": "image",
+          "standard": "https://ichef.bbci.co.uk/images/ic/{recipe}/p02c72z7.jpg"
+        },
+      
+        ],
+      "Product details":""
+
+      }
+
+     ]
+
+  } , function(err, result) {
+ 
+    res.send("Inserted a document into the hotel collection.");
+   
+  });
+
+ });
+
+
+
+/*   */
+
+
+app.get('/login', function (req, res) {
+
+app.set('views', path.join(__dirname, 'views'));
+
+app.set('view engine', 'jade');
+
+res.render("login.jade");
+
+});
+
+app.post('/dashboard', function (req, res) {
+
+
+
+});
+
+
+app.get('/snapshot', function (req, res) {
+
+console.log(__dirname, 'views');
+
+app.set('views', path.join(__dirname, 'views'));
+
+app.set('view engine', 'jade');
+
+res.render("snapshot.jade", { name:req.query.name, email:req.query.email });
+
+});
+
+app.get('/interests', function (req, res) {
+
+console.log(__dirname, 'views');
+
+app.set('views', path.join(__dirname, 'views'));
+
+app.set('view engine', 'jade');
+
+res.render("interests.jade", { name:req.query.name, email:req.query.email });
+
+});
 
 
 

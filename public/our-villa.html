@@ -20,6 +20,9 @@
 
 <link rel="stylesheet" type="text/css" href="/styles/main.css">
 
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
 
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -59,7 +62,7 @@
 
   </div>
 
-<nav id="mySidenav" class="sidenav" >
+<nav id="mySidenav" class="sidenav" ng-init="loadpics()">
 
 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
 
@@ -67,43 +70,48 @@
 
 <li class="dropdown-link"> <a href="index.html" >   HOME   </a>  </li>
 
-<li class="dropdown-link"> <a href="our-villa.html" > OUR VILLA </a> 
+<li class="dropdown-link"> <a href="our-villa.html" >SINOPIA INN </a> 
 
 
 
 </li>  
 
-<li class="dropdown-link" > <a href="rooms-and-rates.html"  >ROOMS AND RATES </a>
+<li class="dropdown-link" > <a href="rooms-and-rates.html"  >ROOMS </a>
 </li>  
 
 <li class="dropdown-link"> <a href="food-and-travel.html"  >FOOD AND TRAVEL</a>  
 
 <div class="dropdown-content">
 
-<a href="day-passes.html" > Plan a trip </a>
+<a href="day-passes.html" >PLAN A TRIP</a>
+      
+<a href="travel.html#beaches" > BEACHES </a>
 
-<a href="culinary-experiences.html"> Culinary Experiences </a> 
+<a href="travel.html#experiential" > EXPERIENTIAL TRIPS</a>
  
-<a href="beaches.html" > Beaches </a>
-
- <a href="treks.html" > Mountain and Bike Treks </a>
- 
- <a href="yoga.html" > Yoga</a>
- 
- <a href="experiential-trips.html" > Experiential Trips</a>
- 
- <a href="local-experiences.html" > Local Experiences and Events</a>
-
- <a href="family-sporting-trips.html" > Family and Sporting Trips </a>
+<a href="travel.html#family" > LOCAL, FAMILY AND SPORTING EXPERIENCES </a>
 
 </div>
 
+<li> <a href="rewards.html" > <span > REWARDS  </span> </a> </li>
 
-<li> <a href="rewards-and-recognition.html" > <span > REWARDS AND RECOGNITION </span> </a> </li>
 <li class="dropdown-link" > <a href="contact.html"  > CONTACT </a>
 </li> 
-<li class="dropdown-link" > <a href="/blog/index.html"  > BLOG </a>
-</li> 
+
+<li class="dropdown-link"> <a href="/shop/index.html" >  <span > SHOP </span>   </a>  
+
+
+</li>  
+
+<li class="dropdown-link"> <a href="/blog/index.html" >  <span > BLOG </span>   </a>  
+
+
+</li>  
+
+<li class="dropdown-link"> <a href="reservations.html" >  <span > RESERVATIONS </span>   </a>  
+
+
+</li>
 
 
 
@@ -129,39 +137,57 @@
 
 </li>  <span class= "menudivider" >| </span>
 
-<li class="dropdown-link"> <a href="our-villa.html" >  <span > OUR VILLA </span>   </a>  
+<li class="dropdown-link"> <a href="our-villa.html" >  <span > SINOPIA INN </span>   </a>  
 
 
 </li>  <span class= "menudivider" >| </span>
 
-<li class="dropdown-link" > <a href="rooms-and-rates.html"  > <span >  ROOMS AND RATES</span></a>
+<li class="dropdown-link"> <a href="index.html#breakfast" >  <span > BREAKFAST </span>   </a>  
+
+
 </li>  <span class= "menudivider" >| </span>
 
-<li class="dropdown-link"> <a href="food-and-travel.html"  > <span > FOOD AND TRAVEL </span></a>  
+<li class="dropdown-link" > <a href="rooms.html"  > <span >  ROOMS</span></a>
+</li>  <span class= "menudivider" >| </span>
+
+<li class="dropdown-link"> <a href="travel.html"  > <span > FOOD AND TRAVEL </span></a>  
 
 <div class="dropdown-content">
+<a href="day-passes.html" >PLAN A TRIP</a>
+      
+<a href="travel.html#beaches" > BEACHES </a>
 
-      <a href="day-passes.html" > Plan a trip </a>
- <a href="culinary-experiences.html"> Culinary Experiences </a>
-<a href="beaches.html" > Beaches </a>
+<a href="travel.html#experiential" > EXPERIENTIAL TRIPS</a>
+ 
+<a href="travel.html#family" > LOCAL, FAMILY AND SPORTING EXPERIENCES </a>
 
- <a href="treks.html" > Mountain and Bike Treks </a>
- 
- <a href="yoga.html" > Yoga</a>
- 
- <a href="experiential-trips.html" > Experiential Trips</a>
- 
- <a href="local-experiences.html" > Local Experiences</a>
-
- <a href="family-sporting-trips.html" > Family and Sporting Trips </a>
 
 </div></li> <span class= "menudivider" >| </span>
 
-<li> <a href="rewards-and-recognition.html" > <span > REWARDS AND RECOGNITION </span> </a> </li> <span class= "menudivider" >| </span>
+<li> <a href="rewards.html" > <span > REWARDS </span> </a> </li> <span class= "menudivider" >| </span>
 
-<li class="dropdown-link" > <a href="contact.html"  > <span >  CONTACT </span></a>
-</li><span class= "menudivider" >| </span>  <li class="dropdown-link" > <a href="/blog/index.html"  > <span >  BLOG </span></a>
-</li> 
+<li class="dropdown-link" > <a href="mobile-app.html"  > <span >  MOBILE APP </span></a>
+</li><span class= "menudivider" >| </span> <li class="dropdown-link" > <a href="contact.html"  > <span >  CONTACT </span></a>
+</li><span class= "menudivider" >| </span> 
+
+
+<li class="dropdown-link"> <a href="/shop/index.html" >  <span > SHOP </span>   </a>  
+
+
+</li>  <span class= "menudivider" >| </span>
+
+
+<li class="dropdown-link"> <a href="/blog/index.html" >  <span > BLOG </span>   </a>  
+
+
+</li>  <span class= "menudivider" >| </span>
+
+<li class="dropdown-link"> <a href="reservation.html" >  <span > RESERVATIONS </span>   </a>  
+
+
+</li>  <span class= "menudivider" >
+
+
 
 <li class="icon">
     <a href="javascript:void(0);" style="font-size:15px;" onclick="openNav()">☰</a>
@@ -171,31 +197,36 @@
 
 </ul></header>
 <header  class="topnav-top-header" >
-<ul class="topnav-top">
+
+<div class="row" style="margin:0px!important;">
+
+     <div class="col-sm-4" >
+&nbsp;
+     </div>
+
+      <div class="col-sm-4" >
+
+<a href="index.html" ><img src="/images/brochure-logo.png" class="logo" ></a>
+     </div>
+
+      <div class="col-sm-4" style="display:table-cell!important;">
 
 
 
- <li class="logo_link">  </li>
-
-<li class="dropdown-link"> 
+     </div>
 
 
 
-
-</li>  
-
+</div>
 
 
-
-
-</ul>
-<a href="index.html" ><img src="/images/logo_header.png" class="logo" ></a>
 </header>
+
 
 
 <div class="slideshow-container">
 
-<div class="mySlides"  >
+<div class="" >
   <div class="numbertext">1 / 1</div>
 
 <div class="row" style="margin:0px!important;">
@@ -337,274 +368,81 @@ For the price of a standard room at other luxury hotels you will enjoy real valu
 
 <section>
 
-<div class="row">
 
-<div class="col-sm-12" >
 
-<p class="side_menu_title "> FINDING SINOPIA INN IS EASY </p>
+
+<div class="sinopia-inn-homepage">
+
+<p class="side_menu_title ">  SINOPIA INN </p>
+
+</br>
+
+<p>With Sinopia Inn every stay is a path to the heart of Jamaica – to the true essence of the country. This is a country home. It was first built in the early 20th century as a country home and rebuilt in the same spirit – nestling on the slopes of Zion Hill, with a contemporary interior decor that complements the parish's natural rustic charm.</p>
+
+</br>
+
+<div class="w3-content" style="max-width:1200px">
+
+  <img class="mySlides" src="images/our-villa/f5bc7c0a-9c94-4174-8ae7-82c5f9ab3d0c.jpg" style="width:100%">
+  <img class="mySlides" src="images/our-villa/f89bf2f9-41bf-4edd-8a38-b83f7227c4f1.jpg" style="width:100%">
+  <img class="mySlides" src="images/our-villa/08aaca02-1e16-4906-92f0-fbd4dd6963a2.jpg" style="width:100%">
+
+  <div class="w3-row-padding w3-section">
+    <div class="w3-col s4">
+
+      <img class="demo w3-opacity w3-hover-opacity-off" src="images/our-villa/f5bc7c0a-9c94-4174-8ae7-82c5f9ab3d0c.jpg" style="width:100%" onclick="currentDiv(1)">
+     
+    </div>
+    <div class="w3-col s4">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="images/our-villa/f89bf2f9-41bf-4edd-8a38-b83f7227c4f1.jpg" style="width:100%" onclick="currentDiv(2)">
+    </div>
+    <div class="w3-col s4">
+     <img class="demo w3-opacity w3-hover-opacity-off" src="images/our-villa/08aaca02-1e16-4906-92f0-fbd4dd6963a2.jpg" style="width:100%" onclick="currentDiv(3)">
+    </div>
+  </div>
+</div>
+
 
 </div>
 
+
+
+
+
+</section>
+
+
+<section>
+
+
+
+
+
+<div class="sinopia-inn-homepage">
+</br>
+</br>
+<p>
+
+It is a great holiday location only 7 miles from the parish capital of Port Antonio. With the Blue Lagoon (Blue Hole) and Winnifred Beach (Jamaica’s best) within walking distance either way.  Close also are the internationally loved beaches of Frenchman’s Cove and San San. We offer 2 double and 2 family size rooms that can be booked collectively for entertaining a great family / social vacation or individually but with full access to the property – while wifi access allows connection with work and home.
+
+</p>
+
+
+
 </div>
 
 
 
 </section>
 
-<section>
-
-  <div class="row">
-  
-    <div class="col-sm-6" >
-
-<p> With Sinopia Inn every stay is a path to the heart of Jamaica – to the true essence of the country. This is a country home. It was first built in the early 20th century as a country home and rebuilt in the same spirit – nestling on the slopes of Zion Hill, with a contemporary interior decor that complements the parish's natural rustic charm. It is a great holiday location only 7 miles from the parish capital of Port Antonio. </p>
-
-    </div>
- <div class="col-sm-6" >
-
-<p> With the Blue Lagoon (Blue Hole) and Winnifred Beach (Jamaica’s best) within walking distance either way.  Close also are the internationally loved beaches of Frenchman’s Cove and San San. We offer 4 double rooms that can be booked collectively for entertaining a great family / social vacation or individually but with full access to the property – while wifi access allows connection with work and home.</p>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-<section>
-
-  <div class="row">
-  
-    <div class="col-sm-6" >
-
-
-<img src="/images/our-villa-1.png" class="w3-round" alt="Villa driveway" style="width:100%!important;">
-
-
- </br>
-
-    </div>
- <div class="col-sm-6" >
-
-
-<img src="/images/our-villa-2.png" class="w3-round" alt="Villa verandah" style="width:100%!important;">
-</br>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<section>
-
-  <div class="row">
-  
-    <div class="col-sm-6" >
-
-<ul> 
-
-
-<li> Villa Facilities </li>
- 
-<li>2120 SQ / FT SITUATED ON 2 ACRES OF LUSH GREENLAND</li>
- 
-<li>SLEEPS 10</li>
- 
-<li>ROOM PRICES STARTING AT $145 USD</li>
-
-
-
-</ul>
-
-<ul> 
-
-
-<li> OPEN-PLAN LOUNGE AND DINING ROOM
- 
-<p> You’ll have a seating area with satellite TV and DVD player - with a spacious dining area and an additional bathroom/powder room 
- </p> </li>
- 
-<li>KITCHEN
- 
-<p>There’s plenty of room in the kitchen with fitted units and built in appliances.</p> </li>
- 
-<li>4 DOUBLE BEDROOMS</li>
- 
-<li>EN SUITE BATHROOMS </li>
- 
-<li>BARBEQUE / JERK PIT</li>
- 
-<li>OUTDOOR DECK LOOKING OUT TO THE COOL HILLS OF PORTLAND</li>
-
-
-
-</ul>
-
-<ul> 
-
-
-<li> ONSITE SECURITY 
- 
-<p> Including manned gatehouse to ensure privacy. </p> </li>
- 
-<li>PRIVATE CAR HIRE</li>
-
-
-</ul>
-    </div>
- <div class="col-sm-6" >
-</br></br>
-<h4 class="side_menu_title">Our services</h4>
-
-<p> 
- 
-We offer a taste of local food as part of our breakfast menu as well as international fare. Our self-catering jerk pit is available – perfect for hosting friends and family on those hot summer days.
- </p>
-   
-   <p> To underline the quality travel requirements expected by guests, private car hire services and personal tour guides can be made available. Portland will not disappoint with its many attractions: Reach Falls, Nonsuch Caves, Boston Beach and its jerk centres; and the fishing districts of Long Bay and Manchioneal further along the eastern Portland coastline. In the other direction, we have all the bustling day and night life of Port Antonio with its historic ruins (Folly, Titchfield Great House etc.), local shops, buzzing bars and leisurely/duty free marina.</p>
-
-
-
-<img src="/images/our-villa-3.png" class="w3-round" alt="Villa outdoor deck" style="width:100%!important;" />
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<section>
-
-  <div class="row">
-  
-    <div class="col-sm-6" >
-
-
-  <img src="/images/our-villa-4.png" class="w3-round" alt="Villa water feature and gazebo" style="width:100%!important;">
-
-    </div>
- <div class="col-sm-6" >
-
-
-     <img src="/images/our-villa-6.png" class="w3-round" alt="Villa man made jerk pit" style="width:100%!important;">
-</br>
-
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<section>
-
-  <div class="row">
-  
-    <div class="col-sm-6" >
-
-
-
-    </div>
- <div class="col-sm-6" >
-
-
-    </div>
-
-  </div>
-
-</section>
-
-<section>
-
-  <div class="row">
-  
-    <div class="col-sm-6" >
-
-</br>
-
- 
-
-    </div>
- <div class="col-sm-6" >
-
-</br>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-
-
-<section>
-
-  <div class="row">
-  
-    <div class="col-sm-6" >
-
-
-
-
-    </div>
- <div class="col-sm-6" >
-
-
-
-
-    </div>
-
-  </div>
-
-</section>
-
-<section>
-
-  <div class="row">
-  
-    <div class="col-sm-6" >
-
-
-    </div>
- <div class="col-sm-6" >
-
-   
-</br>
-
-    </div>
-
-  </div>
-
-</section>
-
-<section>
-
-  <div class="row">
-  
-    <div class="col-sm-6" >
-
-   
-
-    </div>
- <div class="col-sm-6" >
-
-
-    </div>
-
-  </div>
-
-</section>
 
 
 </div>
+
+
+
+
+
 
 <footer>
 <div class="row firstrow">
@@ -673,10 +511,10 @@ We offer a taste of local food as part of our breakfast menu as well as internat
 
 <li> <a href="directions-and-location.html" > Location & Directions </a> </li>
  
-<li> <a href="reservation.html" > Make a reservation</li>
- 
-<li> <a href="mobile-app.html" > Smartphone App</li>
-  
+<li> <a href="events.html" > Upcoming Events </li>
+
+
+
 </ul>
 
 <h6> <a href="blog/index.html" class="footer_column_3_link_title"> RECENT BLOG POSTS </a> </h6> 
@@ -692,7 +530,7 @@ We offer a taste of local food as part of our breakfast menu as well as internat
 
 <h6>STAY IN TOUCH</h6>
 
-<p style="padding-bottom:20px;font-size:small;">Missed us when we’re away? Add your email below so we can update you on news and offers from us at Sinopia Inn.</p>
+<p style="padding-bottom:20px;font-size:small;">Missed us when we’re away? Add your email below so we can update you on offers and the latest food and travel ideas sent straight to your inbox from us at Sinopia Inn.</p>
 
 <form action="connect.html" method="POST" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" validate  role="form">
 

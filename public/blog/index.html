@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
+<!--
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-1167506574811017",
+    enable_page_level_ads: true
+  });
+</script>-->
+
+
     <meta charset="utf-8"> 
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,20 +22,23 @@
 
 <meta name="author" content="Machel Slack">
 
-<link rel="stylesheet" type="text/css" href="../styles/main.css">
 
 
-<link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/styles/mainBlog.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <link href='//fonts.googleapis.com/css?family=Waiting for the Sunrise' rel='stylesheet'>
 
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  
-<link rel="icon" 
-      type="image/png" 
-      href="../images/jmtrax_icon.png">
+<link rel="icon" type="image/png"  href="images/jmtrax_icon.png">
   
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,7 +52,7 @@
 
 </head>
 
-<body ng-app="sinopia" ng-controller = "reservationsystem" >
+<body onload="loadArticles()" >
 
 
 <!-- The Modal -->
@@ -62,45 +76,78 @@
 
 <ul>
 
-<li class="dropdown-link"> <a href="../index.html" >   HOME   </a>  </li>
+<li class="dropdown-link"> <a href="index.html" >   SINOPIA INN   </a>  </li>
 
-<li class="dropdown-link"> <a href="../our-villa.html" > OUR VILLA </a> 
+<li class="dropdown-link">  <a href="our-villa.html" > HOME </a> 
 
 
 
 </li>  
 
-<li class="dropdown-link" > <a href="../rooms-and-rates.html"  >ROOMS AND RATES </a>
+<li class="dropdown-link" > <a href="rooms-and-rates.html"  >INTERESTS </a> <ul class="dropdown-content">
+
+<li> <a href="/family trips/index.html"> Family Trips </a>
+
+</li>
+
+ <li><a href="treks.html" > Beaches </a> </li>
+
+<li><a href="family-sporting-trips.html" >Food & Drink </a></li>
+
+<li><a href="local-experiences.html" > History & Culture </a></li>
+
+<li><a href="beaches.html" > Island Hopping & Crusing</a></li>
+
+<li><a href="plan-a-trip.html" >  New Discoveries </a></li>
+ 
+<li><a href="yoga.html" > Off The Beaten Path </a></li>
+
+<li><a href="family-sporting-trips.html" > Spa & Welness </a></li>
+
+<li><a href="experiential-trips.html" > Wildlife & Going Green </a></li>
+
+</ul>
+
 </li>  
 
-<li class="dropdown-link"> <a href="../food-and-travel.html"  >FOOD AND TRAVEL</a>  
+<li class="dropdown-link"> <a href="travel-stories.html"  >STORIES</a>  
 
-<div class="dropdown-content">
+<div class="dropdown-content" >
 
-<a href="../plan-a-trip.html" > Plan a trip </a>
+<a href="culinary-experiences.html"> Family Trips </a> 
 
-<a href="../culinary-experiences.html"> Culinary Experiences </a> 
+<a href="treks.html" > Beaches </a>
+
+<a href="family-sporting-trips.html" >Food & Drink </a>
+
+<a href="local-experiences.html" > History & Culture </a>
+
+<a href="beaches.html" > Island Hopping & Crusing</a>
+
+<a href="plan-a-trip.html" >  New Discoveries </a>
  
-<a href="../beaches.html" > Beaches </a>
+<a href="yoga.html" > Off The Beaten Path </a>
 
- <a href="../treks.html" > Mountain and Bike Treks </a>
- 
- <a href="../yoga.html" > Yoga</a>
- 
- <a href="../experiential-trips.html" > Experiential Trips</a>
- 
- <a href="../local-experiences.html" > Local Experiences and Events</a>
+<a href="family-sporting-trips.html" > Spa & Welness </a>
 
- <a href="../family-sporting-trips.html" > Family and Sporting Trips </a>
+<a href="experiential-trips.html" > Wildlife & Going Green </a>
+
 
 </div>
 
 
-<li> <a href="../rewards-and-recognition.html" > <span > REWARDS AND RECOGNITION </span> </a> </li>
-<li class="dropdown-link" > <a href="../contact.html"  > CONTACT </a>
+
+</li>
+
+
+<li> <a href="rewards-and-recognition.html" > <span > HEALTHY EATING </span> </a> </li>
+
+<li class="dropdown-link" > <a href="blog.html"  >VACATION SHOP </a>
 </li> 
-<li class="dropdown-link" > <a href="../blog.html"  > BLOG </a>
+
+<li class="dropdown-link" > <a href="contact.html"  > CONTACT </a>
 </li> 
+
 
 
 
@@ -108,57 +155,107 @@
 </ul>  
 </nav>
 
+<header  class="topnav-top-header" >
 
-<header  class="translateheader" >
+<div class="row" style="margin:0px!important;">
 
-<div id="google_translate_element"></div> 
+     <div class="col-sm-4" >
+&nbsp;
+     </div>
 
+      <div class="col-sm-4" >
+
+<a href="index.html" ><img src="/images/brochure-logo-blog.png" class="logo" ></a>
+     </div>
+
+      <div class="col-sm-4" style="display:table-cell!important;">
+<ul>
+<li>
+  
+<a href="mailto:info@sinopiainn.com" class="" style="vertical-align:middle!important;font-size: 120%;">   <span class="bookingform-rewards-heading1" style="color:white!important" >  write to us at info@sinopiainn.com  </span > </a> 
+
+
+
+</li>
+
+</ul>
+
+
+     </div>
+
+
+
+</div>
 </header>
-
-
-<header class="topnav-header">
+<header class="topnav-header" >
 
 
 <ul class="topnav">
 
-<li class="dropdown-link"> <a href="../index.html" >  <span > HOME </span>   </a>  
+<li class="dropdown-link"> <a href="../../../index.html" >  <span > SINOPIA INN </span>   </a>   
 
 
+</li>  <span class= "menudivider" > | </span>
+
+
+<li class="dropdown-link" > <a class="menu_icon_home" >  <span > BLOG HOME </span></a> <!-- <div class="inner-dropdown-content">
+
+<a href="/blog/thrill/family trips/index.html" class="menu_icon_family" > &nbsp; FAMILY TRIPS </a> 
+
+<a href="/blog/thrill/beaches/index.html" class="menu_icon_beaches" > &nbsp; BEACHES </a>
+
+<a href="/blog/thrill/festivals/index.html" class="menu_icon_festivals" >&nbsp;FESTIVALS </a>
+
+<a href="/blog/thrill/food & drink/index.html" class="menu_icon_food" > &nbsp;FOOD & DRINK </a>
+
+<a href="/blog/thrill/history arts & culture/index.html" class="menu_icon_art" > &nbsp;HISTORY, ARTS & CULTURE </a>
+
+<a href="/blog/thrill/island hoping & crusing/index.html" class="menu_icon_island" > &nbsp;ISLAND HOPPING & CRUSING</a>
+
+<a href="/blog/thrill/new discoveries/index.html" class="menu_icon_discoveries" >  &nbsp;NEW DISCOVERIES </a>
+ 
+<a href="/blog/thrill/off the beaten path/index.html" class="menu_icon_offroad" > &nbsp;OFF THE BEATEN PATH </a>
+
+<a href="/blog/thrill/spa & wellness/index.html" class="menu_icon_spa" > &nbsp;SPA & WELLNESS </a>
+
+<a href="/blog/thrill/sporting & gaming /index.html" class="menu_icon_casino" > &nbsp;SPORTS & GAMING  </a>
+
+<a href="/blog/thrill/wildlife & going green/index.html" class="menu_icon_green" >&nbsp; WILDLIFE & GOING GREEN </a>
+
+</div> --> 
 </li>  <span class= "menudivider" >| </span>
 
-<li class="dropdown-link"> <a href="../our-villa.html" >  <span > OUR VILLA </span>   </a>  
+<li class="dropdown-link"> <a class="menu_icon_travel" >  <span >TRAVEL STORIES </span></a>
+
+<div class="dropdown-content" id="blog-archive-menu">
 
 
-</li>  <span class= "menudivider" >| </span>
+</div>
 
-<li class="dropdown-link" > <a href="../rooms-and-rates.html"  > <span >  ROOMS AND RATES</span></a>
-</li>  <span class= "menudivider" >| </span>
+</li> <span class= "menudivider" >| </span>
 
-<li class="dropdown-link"> <a href="../food-and-travel.html"  > <span > FOOD AND TRAVEL </span></a>  
+<li> <a href="healthy eating/index.html" class="menu_icon_health" >  <span > HEALTHY EATING </span> </a> </li> <span class= "menudivider" >| </span>
 
-<div class="dropdown-content">
+<li class="dropdown-link" > <a href="../shop/index.html" class="menu_icon_vacation" >  <span> VACATION SHOP </span></a>
 
-      <a href="../plan-a-trip.html" > Plan a trip </a>
- <a href="../culinary-experiences.html"> Culinary Experiences </a>
-<a href="../beaches.html" > Beaches </a>
-
- <a href="../treks.html" > Mountain and Bike Treks </a>
- 
- <a href="../yoga.html" > Yoga</a>
- 
- <a href="../experiential-trips.html" > Experiential Trips</a>
- 
- <a href="../local-experiences.html" > Local Experiences</a>
-
- <a href="../family-sporting-trips.html" > Family and Sporting Trips </a>
-
-</div></li> <span class= "menudivider" >| </span>
-
-<li> <a href="../rewards-and-recognition.html" > <span > REWARDS AND RECOGNITION </span> </a> </li> <span class= "menudivider" >| </span>
-
-<li class="dropdown-link" > <a href="../contact.html"  > <span >  CONTACT </span></a>
-</li><span class= "menudivider" >| </span>  <li class="dropdown-link" > <a href="../blog.html"  > <span >  BLOG </span></a>
 </li> 
+<span class= "menudivider" >| </span>
+<li class="dropdown-link" > <a href="contact.html" class="menu_icon_contact" >  <span >  CONTACT </span></a>
+</li><span class= "menudivider" >| </span>
+<li class="dropdown-link" > <a class="menu_icon_more" >  <span >  MORE </span></a> <ul class="dropdown-content">
+
+<li> <a href="/blog/competitions.html" class="menu_icon_competition" > &nbsp; COMPETITIONS </a> </li>
+
+<li><a href="/blog/get-inspired.html" class="menu_icon_beaches" > &nbsp; GET INSPIRED </a> </li>
+
+<li><a href="/blog/beaches/index.html" class="menu_icon_beaches" > &nbsp; QUESTIONS & ANSWERS </a></li>
+
+<li><a href="working with us.html" class="menu_icon_work"  >&nbsp; WORKING WITH US </a></li>
+
+
+</ul>
+</li>
+
 
 <li class="icon">
     <a href="javascript:void(0);" style="font-size:15px;" onclick="openNav()">☰</a>
@@ -169,32 +266,7 @@
 </ul></header>
 
 
-<header  class="topnav-top-header" >
-<ul class="topnav-top">
-
-
-
- <li class="logo_link">  </li>
-
-<li class="dropdown-link"> 
-
-
-
-
-</li>  
-
-
-
-
-
-</ul>
-<a href="index.html" ><img src="/images/logo_header.png" class="logo" ></a>
-</header>
-
-
-
-
-<div class="slideshow-container-reservation">
+<div class="slideshow-container-reservation" >
 
 
 <div class="row booking-form-row" style="margin:0px!important;">
@@ -202,20 +274,20 @@
      <div class="col-sm-5 bookingform-connect">
 </br></br>
 <!--<div id="instafeed" style="text-align:center;width:100%;"></div>-->
-<video width="100%" height="auto" controls>
+<!--<video width="100%" height="auto" controls>
   <source src="movie.mp4" type="video/mp4">
   <source src="movie.ogg" type="video/ogg">
 Your browser does not support the video tag.
-</video>
+</video>-->
     </div>
  <div class="col-sm-1"> </div>
     <div class="col-sm-5"> 
 <div class="bookingform-rewards">
       <h2 >   
 
-    <span class="bookingform-rewards-heading1" > What a gwann?</span>  </br> <span class="bookingform-rewards-heading" > Well we're glad you asked! </span> </h2>
+    <span class="bookingform-rewards-heading1" style="color:yellow!important;"> What a gwann?</span>  </br> <span class="bookingform-rewards-heading" > Well we're glad you asked! </span> </h2>
 
-    <p class="" > Rewards, recognition and access to exclusive content on the go. </br> <a class="bookingform-rewards-cta" href="/reservations.html" > Come check us out </a></p>
+    <p class="" style="color:white"> Rewards, recognition and access to exclusive content on the go. </br> <a class="bookingform-rewards-cta" href="/reservations.html" > Come check us out </a></p>
 </div>
     </div>
 
@@ -272,42 +344,70 @@ Your browser does not support the video tag.
 
 </div> 
 
-<header style="text-align:center;" >
-<ul class="topnav-top">
-
-
-
- <li class="logo_link">  </li>
-
-<li class="dropdown-link"> 
-
-
-
-
-</li>  
-
-
-
-
-
-</ul>
-<a href="../index.html" ><img src="/images/billboard_ad.png"  style="width:50%"></a>
-</header>
 
 <!--style="margin:0px!important;height:auto!important;"-->
 
-<div ng-controller = "reservationsystem" >
+<div >
 
-         <section ng-init="loadArticles()" >
+
+
+ <div class="row blogtopics">
+
+ <div class="col-sm-12 " >  <div class="" > <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1167506574811017"
+     data-ad-slot="8273574687"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+
+ </div>
+
+  </div>
+
+  </br>
+         <section  >
 
          <div class="row" style="margin:0px!important;">
-         <div class="col-sm-12" >
+         <div class="col-sm-8" >
      
          <section id="blog-section">
          </section>
 
          </div>
 
+
+          <div class="col-sm-4 buttonloadOuterContainer" >
+ <h3 class="buttonloadContainerHeading"> CONNECT WITH US</h3> 
+
+
+</br>
+
+<div class="buttonloadContainer">
+
+
+<button class="buttonload facebook" onclick="window.location.assign('https://www.w3schools.com')">
+ &nbsp; <i class="fa fa-facebook"></i>fans
+</button>
+</br>
+<button class="buttonload instagram" onclick="window.location.assign('https://www.w3schools.com')">
+  &nbsp; <i class="fa fa-instagram"></i>followers
+</button>
+</br>
+<button class="buttonload twitter" onclick="window.location.assign('https://www.w3schools.com')" >
+  &nbsp; <i class="fa fa-twitter"></i>followers
+</button>
+</br>
+
+<button class="buttonload youtube" onclick="window.location.assign('https://www.w3schools.com')">
+  &nbsp; <i class="fa fa-youtube"></i>subscribers
+</button>
+
+ </div>
+          </div>
           <!-- <div class="col-sm-1" style="margin:0px!important;" >
 
           </div>
@@ -343,12 +443,32 @@ Your browser does not support the video tag.
 
 <p> <i> Continents Visited </i> </p>
           </div>
-          <div class="col-sm-4" ></div>
+          <div class="col-sm-4 divbox " style="text-align:left!important;"> 
+
+          <h3 class="buttonloadContainerHeading" style="text-align:center!important;" > FAQs</h3> </br>
+<p>
+          <small> <a href="faqs.html?#">What are the passport requirements for my trip?</a></small> </br>
+
+          <small> <a href="faqs.html?#">Do I need to advise of any requirements before I book?</a></small> </br>
+
+          <small> <a href="faqs.html?#">How can I change my accommodation booking?</a></small> </br>
+
+          <small> <a href="faqs.html?#">Can I write a review about my hotel and the resort?</a></small> </br>
+
+          <small> <a href="faqs.html?#">How do I report a problem with my booking?</a></small>
+          </p>
+
+
+ </div>
           <div class="col-sm-4 divbox" >
 
 
+          
 <i class="fa fa-plane" style="font-size:60px;color:#cb410b;text-shadow:2px 2px 4px #000000;"> 1 </i>
 <p> <i> Countries Visited </i> </p>
+
+</br>
+
 
 
           </div>
@@ -364,13 +484,27 @@ Your browser does not support the video tag.
 </br>
 </div>
 </br>
+
+  <div class="row ">
+
+          <div class="col-sm-4" >
+
+
+
           <section id="blog-archive-section">
 
 
           </section>
+          
 
+          </div>
 
+ <div class="col-sm-8" >
+<div id="map" class="map" ></div>
 
+ </div>
+
+  </div>
           </div>
 
          
@@ -378,6 +512,226 @@ Your browser does not support the video tag.
           
 
           </div>
+
+<div class="row blogtopics" >
+
+          <div class="col-sm-4 " > 
+
+
+<div class="Imagecontainer">
+  <img src="/images/brochure-logo.jpg" alt="Avatar" class="image">
+  <div class="overlay">
+    <div class="text">FAMILY TRIPS</div>
+  </div>
+</div>
+
+          </div>
+
+          <div class="col-sm-4 " > 
+
+
+<div class="Imagecontainer">
+  <img src="/images/brochure-logo.jpg" alt="Avatar" class="image">
+  <div class="overlay">
+    <div class="text">BEACHES</div>
+  </div>
+</div>
+
+ </div>
+
+          <div class="col-sm-4 " > 
+
+
+<div class="Imagecontainer">
+  <img src="/images/brochure-logo.jpg" alt="Avatar" class="image">
+  <div class="overlay">
+    <div class="text">FESTIVALS</div>
+  </div>
+</div>
+
+
+           </div>
+
+</div>
+
+
+
+ <div class="row blogtopics">
+
+ <div class="col-sm-12 " >  <div class="billboardContainer" > <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Leaderboard -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1167506574811017"
+     data-ad-slot="8273574687"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+<!--<form action="/login"> <input type="image" src="/images/billBoard.png" alt="Submit" style="width:100%;"> </form> --> </div>
+
+ </div>
+
+
+</div>
+
+ <div class="row blogtopics" style="margin:0 auto!important">
+
+ <div class="col-sm-10 " > 
+
+<div class="row blogtopics" >
+
+          <div class="col-sm-4 " > <div class="Imagecontainer">
+  <img src="/images/brochure-logo.jpg" alt="Avatar" class="image">
+  <div class="overlay">
+    <div class="text">FOOD & DRINK</div>
+  </div>
+</div></div>
+
+          <div class="col-sm-4 " > <div class="Imagecontainer">
+  <img src="/images/brochure-logo.jpg" alt="Avatar" class="image">
+  <div class="overlay">
+    <div class="text">HISTORY ARTS & CULTURE</div>
+  </div>
+</div> </div>
+
+          <div class="col-sm-4 " ><div class="Imagecontainer">
+  <img src="/images/brochure-logo.jpg" alt="Avatar" class="image">
+  <div class="overlay">
+    <div class="text">ISLAND HOPPING & CRUSING</div>
+  </div>
+</div> </div>
+
+</div>
+<div class="row blogtopics" >
+
+          <div class="col-sm-4 " > <div class="Imagecontainer">
+  <img src="/images/brochure-logo.jpg" alt="Avatar" class="image">
+  <div class="overlay">
+    <div class="text">NEW DISCOVERIES</div>
+  </div>
+</div></div>
+
+          <div class="col-sm-4 " ><div class="Imagecontainer">
+  <img src="/images/brochure-logo.jpg" alt="Avatar" class="image">
+  <div class="overlay">
+    <div class="text">OFF THE BEATEN PATH</div>
+  </div>
+</div> </div>
+
+          <div class="col-sm-4 " > <div class="Imagecontainer">
+  <img src="/images/brochure-logo.jpg" alt="Avatar" class="image">
+  <div class="overlay">
+    <div class="text">SPA & WELLNESS</div>
+  </div>
+</div> </div>
+
+</div>
+
+<div class="row blogtopics" >
+
+          <div class="col-sm-4 " > <div class="Imagecontainer">
+  <img src="/images/brochure-logo.jpg" alt="Avatar" class="image">
+  <div class="overlay">
+    <div class="text">SPORTING & GAMING</div>
+  </div>
+</div></div>
+
+          <div class="col-sm-4 " ><div class="Imagecontainer">
+  <img src="/images/brochure-logo.jpg" alt="Avatar" class="image">
+  <div class="overlay">
+    <div class="text">WILDLIFE & GOING GREEEN</div>
+  </div>
+</div> </div>
+
+          <div class="col-sm-4 " >  </div>
+
+</div>
+
+
+ </div>
+
+  <div class="col-sm-2 " >
+
+<div class="doubleSkyscrapperContainer" ><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Leaderboard -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1167506574811017"
+     data-ad-slot="8273574687"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script><!--
+  <form action="/login"> <input type="image" src="/images/doubleSkyscrapper.png" alt="Submit" style="width:100%;"> </form>  --></div>
+
+  </div>
+
+
+
+ </div>
+
+
+ <div class="row " style="margin:0 auto!important">
+
+ <div class="col-sm-10 " > 
+
+
+
+ <div class="row ">
+
+          <div class="col-sm-6 " >
+
+ <h1 class="buttonloadContainerHeading"> COMPETITONS</h1> 
+
+
+</br>
+
+          </div>
+         
+          <div class="col-sm-6 " >
+
+
+ <h1 class="buttonloadContainerHeading"> QUESTIONS AND ANSWERS</h1> 
+
+
+</br>
+
+
+</br>
+
+
+
+          </div>
+          </div>
+
+
+
+ </div>
+
+  <div class="col-sm-2 " >
+<div class="doubleSkyscrapperContainer" ><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Leaderboard -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1167506574811017"
+     data-ad-slot="8273574687"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script><!--
+  <form action="/login"> <input type="image" src="/images/doubleSkyscrapper.png" alt="Submit" style="width:100%;"> </form> --> </div>
+
+
+  </div>
+
+
+
+ </div>
+
+
 
 
         </section>
@@ -457,7 +811,7 @@ Your browser does not support the video tag.
   
 </ul>
 
-<h6> <a href="../blog/index.html" class="footer_column_3_link_title"> RECENT BLOG POSTS </a> </h6> 
+<h6> <a href="blog/index.html" class="footer_column_3_link_title"> RECENT BLOG POSTS </a> </h6> 
 
 <ul id="recent_blog_posts" style="list-type:square!important;"></ul>
 
@@ -467,12 +821,12 @@ Your browser does not support the video tag.
 
    <div class="col-sm-4" id="footer_column_3">  
 
-
+https://www.airbnb.co.uk/manage-listing/16317173/basics
 <h6>STAY IN TOUCH</h6>
 
-<p style="padding-bottom:20px;font-size:small;">Missed us when we’re away? Add your email below so we can update you on news and offers from us at Sinopia Inn.</p>
+<p style="padding-bottom:20px;font-size:small;">Missed us when we’re away? Add your email below so we can update you on offers and the latest food and travel ideas sent straight to your inbox from us at Sinopia Inn.</p>
 
-<form action="../connect.html" method="POST" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" validate  role="form">
+<form action="connect.html" method="POST" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" validate  role="form">
 
 
 <div class="input-group" style="padding-bottom:20px;">
@@ -505,21 +859,20 @@ Your browser does not support the video tag.
 
 </footer>
 
-<script src="../jquery/dist/jquery.min.js" ></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
 
-<script src="../bootstrap/dist/js/bootstrap.min.js" ></script>
+<script src="http://code.highcharts.com/highcharts.js" type="text/javascript"></script>
 
-<script src="../angular/angular.min.js" ></script>
+<script src="http://code.highcharts.com/maps/highmaps.js" type="text/javascript"></script>
 
-<script src="../angular-resource/angular-resource.min.js" ></script>
+<script src="http://code.highcharts.com/maps/modules/map.js" type="text/javascript"></script>
 
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.highcharts.com/mapdata/custom/world.js" type="text/javascript"></script>
 
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-
-<script src="../scripts/main.js" ></script>
+<script src="/scripts/mainBlogIndex.js" type="text/javascript"></script>
 
 <script type="text/javascript">
+
 
 function googleTranslateElementInit() {
 
@@ -531,29 +884,6 @@ function googleTranslateElementInit() {
 
 
 
-
-
-
-
-
-<script type="text/javascript" src="../scripts/instafeed.js"></script>
-
-<script type="text/javascript">
-
-
-  var userFeed = new Instafeed({
-    get: 'user',
-    userId: '207254463',
-    clientId: '22050d93815945ac9f575e3fcf38962d',
-    accessToken: '207254463.22050d9.9df9602edcf9424082d95c1f55be004e',
-    sortBy: 'most-recent',
-    template: '<img src="{{image}}" style="padding:3px;"/>',
-    limit: 4,
-    links: false
-  });
-  userFeed.run();
-
-</script>
 </body>
 
 </html>

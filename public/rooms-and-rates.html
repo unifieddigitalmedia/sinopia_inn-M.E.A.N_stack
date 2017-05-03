@@ -20,6 +20,9 @@
 
 <link rel="stylesheet" type="text/css" href="/styles/main.css">
 
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
 
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -59,7 +62,7 @@
 
   </div>
 
-<nav id="mySidenav" class="sidenav" >
+<nav id="mySidenav" class="sidenav" ng-init="loadpics()">
 
 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
 
@@ -67,43 +70,50 @@
 
 <li class="dropdown-link"> <a href="index.html" >   HOME   </a>  </li>
 
-<li class="dropdown-link"> <a href="our-villa.html" > OUR VILLA </a> 
+<li class="dropdown-link"> <a href="our-villa.html" >SINOPIA INN </a> 
 
 
 
 </li>  
 
-<li class="dropdown-link" > <a href="rooms-and-rates.html"  >ROOMS AND RATES </a>
+<li class="dropdown-link" > <a href="rooms-and-rates.html"  >ROOMS </a>
 </li>  
 
 <li class="dropdown-link"> <a href="food-and-travel.html"  >FOOD AND TRAVEL</a>  
 
 <div class="dropdown-content">
 
-<a href="day-passes.html" > Plan a trip </a>
+<a href="day-passes.html" >PLAN A TRIP</a>
+      
+<a href="travel.html#beaches" > BEACHES </a>
 
-<a href="culinary-experiences.html"> Culinary Experiences </a> 
+<a href="travel.html#experiential" > EXPERIENTIAL TRIPS</a>
  
-<a href="beaches.html" > Beaches </a>
-
- <a href="treks.html" > Mountain and Bike Treks </a>
- 
- <a href="yoga.html" > Yoga</a>
- 
- <a href="experiential-trips.html" > Experiential Trips</a>
- 
- <a href="local-experiences.html" > Local Experiences and Events</a>
-
- <a href="family-sporting-trips.html" > Family and Sporting Trips </a>
+<a href="travel.html#family" > LOCAL, FAMILY AND SPORTING EXPERIENCES </a>
 
 </div>
 
+<li> <a href="rewards-and-recognition.html" > <span > REWARDS  </span> </a> </li>
+<li> <a href="mobile-app.html" > <span > MOBILE APP </span> </a> </li>
 
-<li> <a href="rewards-and-recognition.html" > <span > REWARDS AND RECOGNITION </span> </a> </li>
+
 <li class="dropdown-link" > <a href="contact.html"  > CONTACT </a>
 </li> 
-<li class="dropdown-link" > <a href="/blog/index.html"  > BLOG </a>
-</li> 
+
+<li class="dropdown-link"> <a href="/shop/index.html" >  <span > SHOP </span>   </a>  
+
+
+</li>  
+
+<li class="dropdown-link"> <a href="/blog/index.html" >  <span > BLOG </span>   </a>  
+
+
+</li>  
+
+<li class="dropdown-link"> <a href="reservations.html" >  <span > RESERVATIONS </span>   </a>  
+
+
+</li>
 
 
 
@@ -129,39 +139,57 @@
 
 </li>  <span class= "menudivider" >| </span>
 
-<li class="dropdown-link"> <a href="our-villa.html" >  <span > OUR VILLA </span>   </a>  
+<li class="dropdown-link"> <a href="our-villa.html" >  <span > SINOPIA INN </span>   </a>  
 
 
 </li>  <span class= "menudivider" >| </span>
 
-<li class="dropdown-link" > <a href="rooms-and-rates.html"  > <span >  ROOMS AND RATES</span></a>
+<li class="dropdown-link"> <a href="index.html#breakfast" >  <span > BREAKFAST </span>   </a>  
+
+
 </li>  <span class= "menudivider" >| </span>
 
-<li class="dropdown-link"> <a href="food-and-travel.html"  > <span > FOOD AND TRAVEL </span></a>  
+<li class="dropdown-link" > <a href="rooms.html"  > <span >  ROOMS</span></a>
+</li>  <span class= "menudivider" >| </span>
+
+<li class="dropdown-link"> <a href="travel.html"  > <span > FOOD AND TRAVEL </span></a>  
 
 <div class="dropdown-content">
+<a href="day-passes.html" >PLAN A TRIP</a>
+      
+<a href="travel.html#beaches" > BEACHES </a>
 
-      <a href="day-passes.html" > Plan a trip </a>
- <a href="culinary-experiences.html"> Culinary Experiences </a>
-<a href="beaches.html" > Beaches </a>
+<a href="travel.html#experiential" > EXPERIENTIAL TRIPS</a>
+ 
+<a href="travel.html#family" > LOCAL, FAMILY AND SPORTING EXPERIENCES </a>
 
- <a href="treks.html" > Mountain and Bike Treks </a>
- 
- <a href="yoga.html" > Yoga</a>
- 
- <a href="experiential-trips.html" > Experiential Trips</a>
- 
- <a href="local-experiences.html" > Local Experiences</a>
-
- <a href="family-sporting-trips.html" > Family and Sporting Trips </a>
 
 </div></li> <span class= "menudivider" >| </span>
 
-<li> <a href="rewards-and-recognition.html" > <span > REWARDS AND RECOGNITION </span> </a> </li> <span class= "menudivider" >| </span>
+<li> <a href="rewards.html" > <span > REWARDS </span> </a> </li> <span class= "menudivider" >| </span>
 
-<li class="dropdown-link" > <a href="contact.html"  > <span >  CONTACT </span></a>
-</li><span class= "menudivider" >| </span>  <li class="dropdown-link" > <a href="/blog/index.html"  > <span >  BLOG </span></a>
-</li> 
+<li class="dropdown-link" > <a href="mobile-app.html"  > <span >  MOBILE APP </span></a>
+</li><span class= "menudivider" >| </span> <li class="dropdown-link" > <a href="contact.html"  > <span >  CONTACT </span></a>
+</li><span class= "menudivider" >| </span> 
+
+
+<li class="dropdown-link"> <a href="/shop/index.html" >  <span > SHOP </span>   </a>  
+
+
+</li>  <span class= "menudivider" >| </span>
+
+
+<li class="dropdown-link"> <a href="/blog/index.html" >  <span > BLOG </span>   </a>  
+
+
+</li>  <span class= "menudivider" >| </span>
+
+<li class="dropdown-link"> <a href="reservation.html" >  <span > RESERVATIONS </span>   </a>  
+
+
+</li>  <span class= "menudivider" >
+
+
 
 <li class="icon">
     <a href="javascript:void(0);" style="font-size:15px;" onclick="openNav()">☰</a>
@@ -171,26 +199,31 @@
 
 </ul></header>
 <header  class="topnav-top-header" >
-<ul class="topnav-top">
+
+<div class="row" style="margin:0px!important;">
+
+     <div class="col-sm-4" >
+&nbsp;
+     </div>
+
+      <div class="col-sm-4" >
+
+<a href="index.html" ><img src="/images/brochure-logo.png" class="logo" ></a>
+     </div>
+
+      <div class="col-sm-4" style="display:table-cell!important;">
 
 
 
- <li class="logo_link">  </li>
-
-<li class="dropdown-link"> 
+     </div>
 
 
 
-
-</li>  
-
+</div>
 
 
-
-
-</ul>
-<a href="index.html" ><img src="/images/logo_header.png" class="logo" ></a>
 </header>
+
 
 
 
@@ -333,182 +366,71 @@ The rooms are fitted with double beds and ensuite bathrooms. In an environment t
 
 
 
+<!--<section>
 
-<section>
+<div class="row">
 
-</section>
-<p class="side_menu_title"> A good laugh and a long sleep are just what the doctor order. </p> 
+ <div class="col-sm-6" > 
+
+ <img src="images/rooms/8accf2b3-7add-4be4-9a99-3671660b6c2d.jpg" class="w3-round" style="width:100%!important;padding:10px!important;" alt="Norway">
 
 
-<section>
+</div>
 
-  <div class="row">
+
+
+  <div class="col-sm-6" > 
+
   
-    <div class="col-sm-6" >
+ <img src="images/rooms/42474600-c731-4c3a-9a0c-29d165431897.jpg" class="w3-round" style="width:100%!important;padding:10px!important;" alt="Norway">
+
+  </div> 
+
+</div>
 
 
- <img src="images/stock-photo-63890851-photo-of-laughing-young-friends-hanging-out-at-home.jpg" class="w3-round" style="width:100%!important;float:left;padding:10px!important;" alt="Norway">
- 
+</section>-->
+
+<section>
 
 
 
 
+<div class="sinopia-inn-homepage">
+
+<p>Prices range from £115–£140 for a double or family size room, depending on the day and the season. Please use the form to search rates and availability. Guests are welcome to check in from 1pm onwards and we need them to check out before 11am. A valid credit or debit card is required to confirm the booking. If the booking is cancelled less before arrival then a charge may apply depending on the season. In the event of a ‘no show’ the full cost of the booking will be charged.  During peak season, a minimum three-night stay may be required.</p>
+
+
+<div class="w3-content" style="max-width:1200px">
+  <img class="mySlides" src="img_nature_wide.jpg" style="width:100%">
+  <img class="mySlides" src="img_fjords_wide.jpg" style="width:100%">
+  <img class="mySlides" src="img_mountains_wide.jpg" style="width:100%">
+
+  <div class="w3-row-padding w3-section">
+    <div class="w3-col s4">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="img_nature_wide.jpg" style="width:100%" onclick="currentDiv(1)">
     </div>
- <div class="col-sm-6" >
-
-
-</br>
-
-</br>
-<ul> 
-
-
-<li> 2120 sq ft contemporary design villa </li>
- 
-<li> Sleeps 10</li>
- 
-<li> Rooms starting at $135 USD</li>
- 
-<li> 4 double occupancy ensuite bedrooms</li>
- 
-<li>Outdoor deck overlooking the hills</li>
- 
-<li>Open plan living and dining room area</li>
-
-<li> Summer barbeques, Winter getaways and relaxing weekend breaks </l1> 
-
-
-
-</ul>
+    <div class="w3-col s4">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="img_fjords_wide.jpg" style="width:100%" onclick="currentDiv(2)">
     </div>
-
+    <div class="w3-col s4">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="img_mountains_wide.jpg" style="width:100%" onclick="currentDiv(3)">
+    </div>
   </div>
+</div>
+
+
+</div>
+
+
+
 
 </section>
 
-<section>
-
-<div class="row">
-
- <div class="col-sm-6" > 
-
-
-<div class="row">
-  
- <div class="col-sm-6" > 
-
-<h6> GROUP/VILLA BOOKINGS– starting at $580 USD sleeps 7 </h6> 
- 
-<a href='rewards-and-recognition.html' id="cpnbtn" style="color:#aa9d2e!important;"> Learn more </a>
-
-</br>
-</br>
-<h6> STAY 3 NIGHTS AND ENJOY ALL GOLD LEVEL PRIVILEGES PLUS </h6>
-
-<ul> 
-
-<li> One Platinum level local experience </li>
-<li> Complimentary bag of coffee </li>
-<li> Late check out at 3pm</li>
-<li> Local amenity</li>
-
-</ul>
-
-<a href='rewards-and-recognition.html' style="color:#aa9d2e!important;"> Learn more </a> 
-
-
-</div> 
- <div class="col-sm-6" > 
-
-<h6>SUMMER OFFERS - valid between 1st June - 31st October</h6> 
- 
-<a href='rewards-and-recognition.html' id="cpnbtn" style="color:#aa9d2e!important;"> Learn more </a>
-
-</br>
-</br>
-
-<h6> STAY 7 NIGHTS AND ENJOY ALL PLATINUM LEVEL PRIVILEGES PLUS </h6>
- 
-
-<ul> 
-
-<li> One Black level local experience </li>
-<li> Early check-in at 9am </li>
-<li> Late check out at 6pm </li>
-<li> Choice of amenity </li>
-
-</ul>
-
-<a href='rewards-and-recognition.html' style="color:#aa9d2e!important;"> Learn more </a> 
-
-
-
-</div> 
-</div> 
-
- </div> 
-
-  <div class="col-sm-6" > 
-
-
-
- <img src="images/young_couple.png" class="w3-round" style="width:100%!important;padding:10px!important;" alt="Norway">
-
-  </div> 
-
-</div>
-
-  </section>
-</br>
-
-<section>
-
-<div class="row">
-
- <div class="col-sm-6" > 
-
-
-
-<div class="row">
-  
- <div class="col-sm-6" > 
-
-
-
-</div> 
-
-  <div class="col-sm-6 " > 
-
-
-
-</div> 
-
-</div>
-
-</br>
-
-</br>
-<div style="vertical-align:middle;line-height:300%">
 
 
 
 </div>
-
- </div> 
-
-  <div class="col-sm-6" > 
-
-  
-
-  </div> 
-
-</div>
-
-</div>
-</section>
-
-</br>
-
 <footer>
 <div class="row firstrow">
 
@@ -576,10 +498,10 @@ The rooms are fitted with double beds and ensuite bathrooms. In an environment t
 
 <li> <a href="directions-and-location.html" > Location & Directions </a> </li>
  
-<li> <a href="reservation.html" > Make a reservation</li>
- 
-<li> <a href="mobile-app.html" > Smartphone App</li>
-  
+<li> <a href="events.html" > Upcoming Events </li>
+
+
+
 </ul>
 
 <h6> <a href="blog/index.html" class="footer_column_3_link_title"> RECENT BLOG POSTS </a> </h6> 
@@ -595,7 +517,7 @@ The rooms are fitted with double beds and ensuite bathrooms. In an environment t
 
 <h6>STAY IN TOUCH</h6>
 
-<p style="padding-bottom:20px;font-size:small;">Missed us when we’re away? Add your email below so we can update you on news and offers from us at Sinopia Inn.</p>
+<p style="padding-bottom:20px;font-size:small;">Missed us when we’re away? Add your email below so we can update you on offers and the latest food and travel ideas sent straight to your inbox from us at Sinopia Inn.</p>
 
 <form action="connect.html" method="POST" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" validate  role="form">
 

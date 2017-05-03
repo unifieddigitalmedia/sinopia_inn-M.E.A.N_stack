@@ -61,7 +61,7 @@
 
   </div>
 
-<nav id="mySidenav" class="sidenav" >
+<nav id="mySidenav" class="sidenav" ng-init="loadpics()">
 
 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
 
@@ -69,43 +69,53 @@
 
 <li class="dropdown-link"> <a href="index.html" >   HOME   </a>  </li>
 
-<li class="dropdown-link"> <a href="our-villa.html" > OUR VILLA </a> 
+<li class="dropdown-link"> <a href="our-villa.html" >SINOPIA INN </a> 
 
 
 
 </li>  
 
-<li class="dropdown-link" > <a href="rooms-and-rates.html"  >ROOMS AND RATES </a>
+<li class="dropdown-link" > <a href="rooms-and-rates.html"  >ROOMS </a>
 </li>  
 
 <li class="dropdown-link"> <a href="food-and-travel.html"  >FOOD AND TRAVEL</a>  
 
 <div class="dropdown-content">
 
-<a href="day-passes.html" > Day Passes </a>
+<a href="day-passes.html" >PLAN A TRIP</a>
+      
 
-<a href="culinary-experiences.html"> Culinary Experiences </a> 
- 
-<a href="beaches.html" > Beaches </a>
+<a href="travel.html#beaches" > BEACHES </a>
 
- <a href="treks.html" > Mountain and Bike Treks </a>
  
- <a href="yoga.html" > Yoga</a>
+<a href="travel.html#experiential" > EXPERIENTIAL TRIPS</a>
  
- <a href="experiential-trips.html" > Experiential Trips</a>
- 
- <a href="local-experiences.html" > Local Experiences and Events</a>
 
- <a href="family-sporting-trips.html" > Family and Sporting Trips </a>
+<a href="travel.html#family" > LOCAL, FAMILY AND SPORTING EXPERIENCES </a>
 
 </div>
 
+<li> <a href="rewards-and-recognition.html" > <span > REWARDS  </span> </a> </li>
+<li> <a href="mobile-app.html" > <span > MOBILE APP </span> </a> </li>
 
-<li> <a href="rewards-and-recognition.html" > <span > REWARDS AND RECOGNITION </span> </a> </li>
+
 <li class="dropdown-link" > <a href="contact.html"  > CONTACT </a>
 </li> 
-<li class="dropdown-link" > <a href="/blog/index.html"  > BLOG </a>
-</li> 
+
+<li class="dropdown-link"> <a href="/shop/index.html" >  <span > SHOP </span>   </a>  
+
+
+</li>  
+
+<li class="dropdown-link"> <a href="/blog/index.html" >  <span > BLOG </span>   </a>  
+
+
+</li>  
+
+<li class="dropdown-link"> <a href="reservations.html" >  <span > RESERVATIONS </span>   </a>  
+
+
+</li>
 
 
 
@@ -119,8 +129,6 @@
 
 </header>
 
-
-
 <header class="topnav-header">
 
 
@@ -131,71 +139,100 @@
 
 </li>  <span class= "menudivider" >| </span>
 
-<li class="dropdown-link"> <a href="our-villa.html" >  <span > OUR VILLA </span>   </a>  
+<li class="dropdown-link"> <a href="our-villa.html" >  <span > SINOPIA INN </span>   </a>  
 
 
 </li>  <span class= "menudivider" >| </span>
 
-<li class="dropdown-link" > <a href="rooms-and-rates.html"  > <span >  ROOMS AND RATES</span></a>
+<li class="dropdown-link"> <a href="index.html#breakfast" >  <span > BREAKFAST </span>   </a>  
+
+
 </li>  <span class= "menudivider" >| </span>
 
-<li class="dropdown-link"> <a href="food-and-travel.html"  > <span > FOOD AND TRAVEL </span></a>  
+<li class="dropdown-link" > <a href="rooms.html"  > <span >  ROOMS</span></a>
+</li>  <span class= "menudivider" >| </span>
+
+<li class="dropdown-link"> <a href="travel.html"  > <span > FOOD AND TRAVEL </span></a>  
 
 <div class="dropdown-content">
 
-   <a href="day-passes.html" > Day Passes </a>
- <a href="culinary-experiences.html"> Culinary Experiences </a>
-<a href="beaches.html" > Beaches </a>
+<a href="day-passes.html" >PLAN A TRIP</a>
+      
 
- <a href="treks.html" > Mountain and Bike Treks </a>
- 
- <a href="yoga.html" > Yoga</a>
- 
- <a href="experiential-trips.html" > Experiential Trips</a>
- 
- <a href="local-experiences.html" > Local Experiences</a>
+<a href="travel.html#beaches" > BEACHES </a>
 
- <a href="family-sporting-trips.html" > Family and Sporting Trips </a>
+ 
+<a href="travel.html#experiential" > EXPERIENTIAL TRIPS</a>
+ 
+
+<a href="travel.html#family" > LOCAL, FAMILY AND SPORTING EXPERIENCES </a>
 
 </div></li> <span class= "menudivider" >| </span>
 
-<li> <a href="rewards-and-recognition.html" > <span > REWARDS AND RECOGNITION </span> </a> </li> <span class= "menudivider" >| </span>
+<li> <a href="rewards-and-recognition.html" > <span > REWARDS </span> </a> </li> <span class= "menudivider" >| </span>
+
+<li class="dropdown-link" > <a href="mobile-app.html"  > <span >  MOBILE APP </span></a>
+</li><span class= "menudivider" >| </span> 
 
 <li class="dropdown-link" > <a href="contact.html"  > <span >  CONTACT </span></a>
-</li><span class= "menudivider" >| </span>  <li class="dropdown-link" > <a href="/blog/index.html"  > <span >  BLOG </span></a>
-</li> 
+</li><span class= "menudivider" >| </span> 
+
+
+<li class="dropdown-link"> <a href="/shop/index.html" >  <span > SHOP </span>   </a>  
+
+
+</li>  <span class= "menudivider" >| </span>
+
+
+<li class="dropdown-link"> <a href="/blog/index.html" >  <span > BLOG </span>   </a>  
+
+
+</li>  <span class= "menudivider" >| </span>
+
+<li class="dropdown-link"> <a href="reservation.html" >  <span > RESERVATIONS </span>   </a>  
+
+
+</li>  <span class= "menudivider" >
+
 
 <li class="icon">
-    <a href="javascript:void(0);" style="font-size:15px;" onclick="openNav()">☰</a>
+    <a href="javascript:void(0);" style="font-size:46px;" onclick="openNav()">☰</a>
 </li>
+
+
 
 
 
 </ul></header>
 
 
-
 <header  class="topnav-top-header" >
-<ul class="topnav-top">
+
+<div class="row" style="margin:0px!important;">
+
+     <div class="col-sm-4" >
+&nbsp;
+     </div>
+
+      <div class="col-sm-4" >
+
+<a href="index.html" ><img src="/images/brochure-logo.png" class="logo" ></a>
+     </div>
+
+      <div class="col-sm-4" style="display:table-cell!important;">
 
 
 
- <li class="logo_link">  </li>
-
-<li class="dropdown-link"> 
+     </div>
 
 
 
-
-</li>  
-
+</div>
 
 
-
-
-</ul>
-<a href="index.html" ><img src="/images/logo_header.png" class="logo" ></a>
 </header>
+
+
 
 
 <div class="slideshow-container-reservation">
@@ -281,127 +318,128 @@
 
 </div>
 
+<div  class="container-fluid maindiv">
 
+</br>
+
+<div class="sinopia-inn-homepage">
+
+<p class="side_menu_title ">  YOU'VE ONE LIFE. WHY NOT LIVE IT?</p>
+
+<p>
+Head to Portland Jamaica and plan your own trip with Sinopia Inn to venues across the island where you’ll find rare flavoursome dishes, estates of coffee premium liquors and a natural blend of fruits to produce an exotic taste made for paradise. Experience relaxing oceanic view, lush green mountain tops and skies streaking with colour as our island excursions include experimental trips; local culture; multi generation travel ; authentic activities and a personalised service provided by the local people.
+</p>
+
+</br>
+
+
+</div>
+
+</div>
+
+
+
+<a href="your-trip.html"  style="color: #aa9d2e!important;" > 
 
 <div  class="container-fluid maindiv">
 
-<section>
+<div class="sinopia-inn-homepage">
 
-<div class="row">
-  
-<div class="col-sm-4" >
+<p class="side_menu_title ">  PORTLAND</p>
 
-<p class="side_menu_title" > Things to do </p> 
+<p>
+Even though it is a quiet and beautiful haven, Portland isn’t only visited for its charm. If you’ve got an eye for arts and crafts, and all the jewels Jamaica has to offer.</p>
 
-<ul> 
-
-<li> <a> Day Passes </a> </li>
-
-<li><a href="culinary-experiences.html"> Culinary Experiences </a> </li>
-
-<li> <a href="beaches.html" > Beaches </a></li>
-
-<li> <a href="treks.html" > Mountain and Bike Treks </a></li>
- 
-<li> <a href="yoga.html" > Yoga</a></li>
- 
-<li> <a href="experiential-trips.html" > Experiential Trips</a></li>
- 
-<li> <a href="local-experiences.html" > Local Experiences and Events</a></li>
-
-<li> <a href="family-sporting-trips.html" > Family and Sporting Trips </a></l1> 
-
-</ul>
-
-
-<div class="row">
-  
- <div class="col-sm-12" style="text-align:center;"> 
-
-
-</div> 
-
- 
-
-</div>
-
-</div>
- 
-<div class="col-sm-8" >
-
-<p class="side_menu_title"> You’ve one life. Why not live it ? </p> 
-
-<p> Head to Portland Jamaica and plan your own trip with Sinopia Inn to venues across the island where you’ll find rare flavoursome dishes, estates of coffee premium liquors and a natural blend of fruits to produce an exotic taste made for paradise. Experience relaxing oceanic view, lush green mountain tops and skies streaking with colour as our island excursions include experimental trips; local culture; multi generation travel ; authentic activities and a personalised service provided by the local people.</p>
-  
-  
-
-    <div class="row">
-
-<div class="col-sm-6" > 
-<a href="your-trip.html"  style="color: #aa9d2e!important;" > 
-<div class="w3-display-container">
-<img src="../images/Jamaica_BlueandJohnCrowMountains_NannyFalls.jpg" alt="Lights" data-id="portland" style="width:100%" class="trip">
- <div class="w3-display-bottomleft w3-container">Portland</div>
-</div>
-<div class="w3-panel w3-card-8">
-
-  <p class="panel-paragraph">Even though it is a quiet and beautiful haven, Portland isn’t only visited for its charm. If you’ve got an eye for arts and crafts, and all the jewels Jamaica has to offer.</p>
-</div>
-</a>
-</div>
-
-
-<div class="col-sm-6" > 
-<a href="your-trip.html"  style="color: #aa9d2e!important;" > 
-<div class="w3-display-container">
-<img src="../images/ocho_rios.jpg" alt="Lights" data-id="ocho rios" style="width:100%" class="trip">
- <div class="w3-display-bottomleft w3-container">Ocho Rios</div>
-</div>
-<div class="w3-panel w3-card-8">
-  <p class="panel-paragraph">From exquisite luxury plazas, filled with world-class brands, to traditional stalls and stores, where one can uncover all kinds of charming mementos.</p>
-</div>
-</a>
-</div>
-
-    </div>
 </br>
-  <div class="row">
 
-<div class="col-sm-6" > 
-<a href="your-trip.html"  style="color: #aa9d2e!important;" data-id="kingston" class="trip"> 
-<div class="w3-display-container">
-<img src="../images/Jamaica_BlueandJohnCrowMountains_NannyFalls.jpg" alt="Lights" style="width:100%">
- <div class="w3-display-bottomleft w3-container">Kingston</div>
+ <img class="" src="images/Jamaica_BlueandJohnCrowMountains_NannyFalls.jpg" data-id="portland" style="width:100%" class="trip">
+  
+
 </div>
-<div class="w3-panel w3-card-8" >
-  <p class="panel-paragraph"> Kingston is one-of-a-kind. A busy cosmopolitan, half exotic jungle, bursting with sunshine, and half thriving business. With plenty to see and do. </p>
+
 </div>
+
+
 </a>
-</div>
 
 
-<div class="col-sm-6" > 
 <a href="your-trip.html"  style="color: #aa9d2e!important;" > 
-<div class="w3-display-container">
-<img src="../images/negril.jpg" alt="Lights" data-id="montego bay" style="width:100%" class="trip">
- <div class="w3-display-bottomleft w3-container">Montego Bay & Negril </div>
-</div>
-<div class="w3-panel w3-card-8">
-  <p class="panel-paragraph">  Montego Bay & Negril's  white, sandy beaches, can offer you a perfectly long, lazy day, soaking up the sun  under deep blue skies.</p>
+
+<div  class="container-fluid maindiv">
+
+
+<div class="sinopia-inn-homepage">
+
+<p class="side_menu_title ">  OCHO RIOS</p>
+
+<p>
+From exquisite luxury plazas, filled with world-class brands, to traditional stalls and stores, where one can uncover all kinds of charming mementos.</p>
+
+</br>
+
+ <img class="" src="images/ocho_rios.jpg" data-id="ocho rios" style="width:100%" class="trip">
+  
 
 </div>
+
+</div>
+
+
 </a>
+
+
+<a href="your-trip.html"  style="color: #aa9d2e!important;" > 
+
+<div  class="container-fluid maindiv">
+
+
+<div class="sinopia-inn-homepage">
+
+<p class="side_menu_title ">  KINGSTON </p>
+
+<p>
+Kingston is one-of-a-kind. A busy cosmopolitan, half exotic jungle, bursting with sunshine, and half thriving business. With plenty to see and do.</p>
+
+</br>
+
+ <img class="" src="images/travel/sea_shell.jpg" data-id="kingston" style="width:100%" class="trip">
+  
+
+
 </div>
 
-    </div>
+</div>
 
-    </div>
 
-  </div>
+</a>
 
-</section>
+
+<a href="your-trip.html"  style="color: #aa9d2e!important;" > 
+
+<div  class="container-fluid maindiv">
+
+
+<div class="sinopia-inn-homepage">
+
+<p class="side_menu_title "> MONTEGO BAY & NEGRIL</p>
+
+<p>
+ Montego Bay & Negril's  white, sandy beaches, can offer you a perfectly long, lazy day, soaking up the sun  under deep blue skies.</p>
+
+</br>
+
+ <img class="" src="images/negril.jpg" data-id="montego bay" style="width:100%" class="trip">
+  
 
 </div>
+
+
+</div>
+
+
+
+</a>
+
 
 <footer>
 <div class="row firstrow">
@@ -470,10 +508,10 @@
 
 <li> <a href="directions-and-location.html" > Location & Directions </a> </li>
  
-<li> <a href="reservation.html" > Make a reservation</li>
- 
-<li> <a href="mobile-app.html" > Smartphone App</li>
-  
+<li> <a href="events.html" > Upcoming Events </li>
+
+
+
 </ul>
 
 <h6> <a href="blog/index.html" class="footer_column_3_link_title"> RECENT BLOG POSTS </a> </h6> 
@@ -489,7 +527,7 @@
 
 <h6>STAY IN TOUCH</h6>
 
-<p style="padding-bottom:20px;font-size:small;">Missed us when we’re away? Add your email below so we can update you on news and offers from us at Sinopia Inn.</p>
+<p style="padding-bottom:20px;font-size:small;">Missed us when we’re away? Add your email below so we can update you on offers and the latest food and travel ideas sent straight to your inbox from us at Sinopia Inn.</p>
 
 <form action="connect.html" method="POST" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" validate  role="form">
 
